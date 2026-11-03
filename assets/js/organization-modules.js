@@ -13,6 +13,22 @@
   {id:"10002",name:"کارمند نمونه ب",dept:"d3",role:"سرپرست گروه میدانی",status:"قراردادی",education:"کاردانی",tenure:6,training:28,ot:46,leave:3,score:86,gender:"مرد",birth:"۱۳۷۲/۰۹/۰۵",startDate:"۱۳۹۹/۰۶/۱۵",salary:"۲۴٫۸",bonus:"۳٫۶",benefit:"۲٫۴",reward:2,discipline:1,attendance:95,tools:["تبلت عملیاتی","سامانه ثبت مأموریت","بی‌سیم سازمانی"],assets:["تبلت · ۱ دستگاه","بی‌سیم · ۱ دستگاه","لباس و تجهیزات ایمنی · ۱ مجموعه"],skills:["نظارت میدانی","ایمنی کار","گزارش‌نویسی"],strengths:["هماهنگی تیمی","پاسخ‌گویی"],development:"توسعه مهارت مدیریت تیم",history:[["شش‌ماهه اول ۱۴۰۵","۸۴","اجرای مناسب برنامه‌های میدانی"],["سه‌ماهه دوم ۱۴۰۵","۸۶","کاهش تأخیر در گزارش‌ها"],["ماه اخیر","۸۸","بهبود هماهنگی گروه"]],future:"پیشنهاد ارتقا به مسئول ناحیه پس از تکمیل آموزش مدیریت عملیات"},
   {id:"10003",name:"کارمند نمونه پ",dept:"d6",role:"کارشناس پشتیبانی فنی",status:"پیمانی",education:"کارشناسی ارشد",tenure:4,training:64,ot:22,leave:1,score:94,gender:"زن",birth:"۱۳۷۵/۰۲/۲۲",startDate:"۱۴۰۱/۰۳/۰۱",salary:"۳۱٫۲",bonus:"۵٫۱",benefit:"۲٫۸",reward:4,discipline:0,attendance:99,tools:["رایانه تخصصی","کنسول پایش شبکه","سامانه تیکتینگ","دسترسی مدیریت زیرساخت"],assets:["رایانه تخصصی · ۱ دستگاه","تجهیزات تست شبکه · ۱ مجموعه","تلفن سازمانی · ۱ خط"],skills:["شبکه","امنیت اطلاعات","پشتیبانی سامانه"],strengths:["حل مسئله","یادگیری مستمر"],development:"توسعه مستندسازی فنی",history:[["شش‌ماهه اول ۱۴۰۵","۹۲","پایداری خدمات و پاسخ‌گویی"],["سه‌ماهه دوم ۱۴۰۵","۹۵","حل رخدادهای پیچیده"],["ماه اخیر","۹۶","کاهش زمان رفع اشکال"]],future:"آمادگی برای نقش راهبر فنی سامانه‌ها و مشارکت در طراحی معماری زیرساخت"}
  ];
+
+ const profileExtra={
+ "10001":{photo:"../assets/images/person-10001.svg",contact:"داخلی ۱۱۲ · hr-demo@example.invalid",workShift:"شنبه تا چهارشنبه · ۰۸:۰۰ تا ۱۶:۰۰",supervisor:"مدیر اداره اداری و پشتیبانی",contract:"حکم استخدامی نمونه · ۱۴۰۵",insurance:"بیمه پایه و تکمیلی · نمونه",location:"ساختمان مرکزی · طبقه دوم",leaveBreakdown:[["استحقاقی","۱۲ روز"],["استعلاجی","۱ روز"],["بدون حقوق","۰ روز"],["ساعتی","۶ ساعت"]],pay:[["حقوق پایه","۲۴٫۰"],["فوق‌العاده‌ها","۴٫۵"],["کارانه","۴٫۲"],["اضافه‌کاری","۱٫۸"],["کسورات","۶٫۰"]],assets:[{name:"رایانه همراه اداری",type:"۱",qty:1,code:"AST-1001",condition:"سالم",date:"۱۴۰۴/۰۶/۰۱"},{name:"تلفن سازمانی",type:"۲",qty:1,code:"AST-1002",condition:"سالم",date:"۱۴۰۴/۰۶/۰۱"},{name:"کارت تردد",type:"۳",qty:1,code:"AST-1003",condition:"فعال",date:"۱۴۰۵/۰۱/۰۱"}],skills:[["امور اداری",94],["مکاتبات و مستندسازی",92],["کار با سامانه‌ها",88],["ارتباطات سازمانی",90]],tasks:38,missions:12,meetings:6,resolutions:2,certificates:["دوره مکاتبات اداری · ۲۴ ساعت","مدیریت اسناد · ۱۸ ساعت"],serviceTickets:9,commendationNotes:2,disciplineNotes:0},
+ "10002":{photo:"../assets/images/person-10002.svg",contact:"داخلی ۳۰۵ · field-demo@example.invalid",workShift:"شیفت میدانی · متغیر بر اساس برنامه",supervisor:"مسئول عملیات ناحیه",contract:"قرارداد همکاری نمونه · ۱۴۰۵",insurance:"بیمه پایه · نمونه",location:"پایگاه عملیاتی شماره ۳",leaveBreakdown:[["استحقاقی","۱۰ روز"],["استعلاجی","۲ روز"],["بدون حقوق","۰ روز"],["ساعتی","۴ ساعت"]],pay:[["حقوق پایه","۲۰٫۰"],["فوق‌العاده‌ها","۴٫۸"],["کارانه","۳٫۶"],["اضافه‌کاری","۳٫۲"],["کسورات","۶٫۸"]],assets:[{name:"تبلت عملیاتی",type:"۱",qty:1,code:"AST-2001",condition:"سالم",date:"۱۴۰۴/۰۳/۱۲"},{name:"بی‌سیم دستی",type:"۲",qty:1,code:"AST-2002",condition:"سالم",date:"۱۴۰۴/۰۳/۱۲"},{name:"مجموعه تجهیزات ایمنی",type:"۲",qty:1,code:"AST-2003",condition:"نیازمند بازبینی",date:"۱۴۰۵/۰۱/۲۰"},{name:"لباس کار",type:"۳",qty:2,code:"AST-2004",condition:"مصرفی",date:"۱۴۰۵/۰۷/۰۱"}],skills:[["نظارت میدانی",90],["ایمنی کار",85],["گزارش‌نویسی",82],["هماهنگی تیمی",88]],tasks:64,missions:41,meetings:3,resolutions:1,certificates:["ایمنی کار در معابر · ۱۶ ساعت","مدیریت بحران میدانی · ۱۲ ساعت"],serviceTickets:4,commendationNotes:1,disciplineNotes:1},
+ "10003":{photo:"../assets/images/person-10003.svg",contact:"داخلی ۶۰۲ · it-demo@example.invalid",workShift:"شنبه تا چهارشنبه · ۰۸:۰۰ تا ۱۶:۰۰ · آماده‌باش فنی",supervisor:"مدیر اداره فاوا و خدمات فنی",contract:"حکم پیمانی نمونه · ۱۴۰۵",insurance:"بیمه پایه و تکمیلی · نمونه",location:"مرکز فناوری اطلاعات",leaveBreakdown:[["استحقاقی","۸ روز"],["استعلاجی","۰ روز"],["بدون حقوق","۰ روز"],["ساعتی","۳ ساعت"]],pay:[["حقوق پایه","۲۶٫۰"],["فوق‌العاده‌ها","۵٫۲"],["کارانه","۵٫۱"],["اضافه‌کاری","۲٫۴"],["کسورات","۷٫۵"]],assets:[{name:"رایانه تخصصی",type:"۱",qty:1,code:"AST-3001",condition:"سالم",date:"۱۴۰۴/۰۸/۰۱"},{name:"تجهیزات تست شبکه",type:"۲",qty:1,code:"AST-3002",condition:"سالم",date:"۱۴۰۴/۰۸/۰۱"},{name:"تلفن سازمانی",type:"۲",qty:1,code:"AST-3003",condition:"سالم",date:"۱۴۰۴/۰۸/۰۱"}],skills:[["شبکه و زیرساخت",96],["امنیت اطلاعات",92],["پشتیبانی سامانه",95],["تحلیل رخداد",94]],tasks:52,missions:8,meetings:11,resolutions:3,certificates:["امنیت شبکه · ۳۲ ساعت","مدیریت خدمات فناوری · ۲۴ ساعت"],serviceTickets:37,commendationNotes:4,disciplineNotes:0}
+ };
+ people.forEach(p=>Object.assign(p,profileExtra[p.id]||{}));
+ const inventories={
+ "1":[["نوع ۱ · دارایی‌های بادوام",18,"رایانه، چاپگر، مبلمان و تجهیزات اداری"],["نوع ۲ · ابزار و تجهیزات تخصصی",42,"تجهیزات بایگانی، مخابرات و ابزار پشتیبانی"],["نوع ۳ · اقلام مصرفی",1260,"کاغذ، ملزومات، نوشت‌افزار و اقلام جاری"]],
+ "2":[["نوع ۱ · دارایی‌های بادوام",9,"رایانه‌های پژوهشی و تجهیزات ارائه"],["نوع ۲ · ابزار تخصصی",34,"ابزار سنجش، ثبت داده و تجهیزات مطالعاتی"],["نوع ۳ · اقلام مصرفی",310,"مواد مصرفی پژوهش و ملزومات اداری"]],
+ "3":[["نوع ۱ · ناوگان و تجهیزات بادوام",64,"خودرو، موتورسیکلت و تجهیزات پایگاه"],["نوع ۲ · تجهیزات تخصصی و ایمنی",420,"بی‌سیم، لباس ایمنی، ابزار کنترل و علائم"],["نوع ۳ · اقلام مصرفی",1850,"ملزومات میدانی، علائم مصرفی و قطعات جاری"]],
+ "4":[["نوع ۱ · ماشین‌آلات و دارایی‌ها",52,"ماشین‌آلات، خودروهای خدماتی و تجهیزات ثابت"],["نوع ۲ · ابزار فنی و اندازه‌گیری",385,"ابزار تعمیر، تست، ایمنی و اندازه‌گیری"],["نوع ۳ · قطعات و مواد مصرفی",960,"قطعات یدکی، اتصالات، روغن و مواد مصرفی"]],
+ "6":[["نوع ۱ · تجهیزات زیرساختی",36,"سرورها، رایانه‌ها، ذخیره‌ساز و شبکه"],["نوع ۲ · ابزار تخصصی فاوا",148,"تجهیزات تست، ابزار نصب و تجهیزات امنیتی"],["نوع ۳ · اقلام مصرفی فناوری",520,"کابل، اتصالات، مواد مصرفی و لوازم جانبی"]],
+ "7":[["نوع ۱ · ناوگان و ماشین‌آلات",88,"خودروهای جمع‌آوری، ماشین‌آلات و مخازن بادوام"],["نوع ۲ · تجهیزات عملیاتی",560,"مخازن، ابزار ایمنی، تجهیزات تفکیک و پایش"],["نوع ۳ · ملزومات مصرفی",2400,"کیسه، قطعات مصرفی، ملزومات و اقلام جاری"]]
+ };
+
  const orders=[
   {id:"R-1405-021",title:"ساماندهی گزارش‌های عملکرد ماهانه ادارات",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۲",deadline:"۱۴۰۵/۰۸/۱۲",dept:"d1",owner:"کارمند نمونه الف",targetPerson:"کارمند نمونه الف",source:"مکتوب",status:"تکمیل‌شده",progress:100,detail:"یکپارچه‌سازی قالب گزارش و تجمیع اطلاعات دوره‌ای"},
   {id:"R-1405-022",title:"بررسی وضعیت تجهیزات و اولویت‌بندی تعمیرات",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۳",deadline:"۱۴۰۵/۰۸/۱۵",dept:"d4",owner:"مسئول نگهداری",source:"شفاهی",status:"در حال اجرا",progress:65,detail:"تهیه فهرست تجهیزات، تعیین سطح اهمیت و برنامه اقدام"},
@@ -27,7 +43,7 @@
  const fmt=n=>Number(n).toLocaleString("fa-IR");
  const pct=n=>fmt(n)+"٪";
  const sum=k=>departments.reduce((a,d)=>a+d[k],0);
- window.CITY_ORG_DATA={departments,people,orders,byId,fmt,pct,sum};
+ window.CITY_ORG_DATA={departments,people,orders,inventories,byId,fmt,pct,sum};
  function initWorkforce(){
   const root=document.querySelector("[data-workforce]");
   if(!root)return;
@@ -58,11 +74,17 @@
    result.querySelector("[data-person-ot]").textContent=fmt(person.ot)+" ساعت";
    result.querySelector("[data-person-leave]").textContent=fmt(person.leave)+" روز";
    result.querySelector("[data-person-score]").textContent=pct(person.score);
-   result.querySelector("[data-person-skills]").textContent=person.skills.join("، ");
+   result.querySelector("[data-person-skills]")&&(result.querySelector("[data-person-skills]").textContent=person.skills.map(x=>Array.isArray(x)?x[0]:x).join("، "));
    result.querySelector("[data-person-strengths]").textContent=person.strengths.join("، ");
    result.querySelector("[data-person-development]").textContent=person.development;
    const set=(key,value)=>{const n=result.querySelector('[data-person-'+key+']');if(n)n.textContent=value;};
-   set("gender",person.gender);set("birth",person.birth);set("startdate",person.startDate);set("number",person.id);set("salary",person.salary+" میلیون تومان");set("bonus",person.bonus+" میلیون تومان");set("benefit",person.benefit+" میلیون تومان");set("reward",fmt(person.reward)+" مورد");set("discipline",fmt(person.discipline)+" مورد");set("attendance",pct(person.attendance));set("tools",person.tools.join("، "));set("assets",person.assets.map(x=>x.name||x).join("، "));set("tools-count",fmt(person.tools.length)+" مورد");set("assets-count",fmt(person.assets.reduce((n,x)=>n+(x.qty||1),0))+" قلم");set("future",person.future);
+   const photo=result.querySelector("[data-person-photo]");if(photo&&person.photo)photo.src=person.photo;
+   set("gender",person.gender);set("birth",person.birth);set("startdate",person.startDate);set("number",person.id);set("salary",person.salary+" میلیون تومان");set("bonus",person.bonus+" میلیون تومان");set("benefit",person.benefit+" میلیون تومان");set("reward",fmt(person.reward)+" مورد");set("discipline",fmt(person.discipline)+" مورد");set("attendance",pct(person.attendance));set("tools",person.tools.join("، "));set("assets",person.assets.map(x=>x.name||x).join("، "));set("tools-count",fmt(person.tools.length)+" مورد");set("assets-count",fmt(person.assets.reduce((n,x)=>n+(x.qty||1),0))+" قلم");set("future",person.future);set("contact",person.contact);set("shift",person.workShift);set("supervisor",person.supervisor);set("contract",person.contract);set("insurance",person.insurance);set("location",person.location);set("tasks",fmt(person.tasks));set("missions",fmt(person.missions));set("meetings",fmt(person.meetings));set("resolutions",fmt(person.resolutions));set("tickets",fmt(person.serviceTickets));set("commendations",fmt(person.commendationNotes));set("discipline-notes",fmt(person.disciplineNotes));
+   const leave=result.querySelector("[data-person-leave-breakdown]");if(leave)leave.innerHTML=person.leaveBreakdown.map(x=>"<tr><td>"+x[0]+"</td><td>"+x[1]+"</td></tr>").join("");
+   const pay=result.querySelector("[data-person-pay-breakdown]");if(pay)pay.innerHTML=person.pay.map(x=>"<tr><td>"+x[0]+"</td><td>"+x[1]+" میلیون تومان</td></tr>").join("");
+   const skills=result.querySelector("[data-person-skill-list]");if(skills)skills.innerHTML=person.skills.map(x=>"<div class=\"skill-meter-row\"><span>"+x[0]+"</span><i><b style=\"width:"+x[1]+"%\"></b></i><strong>"+fmt(x[1])+"</strong></div>").join("");
+   const assets=result.querySelector("[data-person-assets-list]");if(assets)assets.innerHTML=person.assets.map(x=>"<tr><td>"+x.name+"</td><td>نوع "+x.type+"</td><td>"+fmt(x.qty)+"</td><td>"+x.code+"</td><td>"+x.condition+"</td><td>"+x.date+"</td></tr>").join("");
+   const cert=result.querySelector("[data-person-certificates]");if(cert)cert.innerHTML=person.certificates.map(x=>"<li>"+x+"</li>").join("");
    const history=result.querySelector("[data-person-history]");if(history)history.innerHTML=person.history.map(x=>"<div><span>"+x[0]+"</span><b>"+x[1]+" از ۱۰۰</b><span>"+x[2]+"</span></div>").join("");
    const scale=result.querySelector("[data-person-score-scale]");if(scale)scale.innerHTML="<i style='width:"+person.score+"%'></i>";
   }
@@ -96,6 +118,7 @@
   body.innerHTML=ranked.map((d,i)=>'<tr><td><b class="rank-number">'+fmt(i+1)+'</b></td><td>'+d.name+'</td><td>'+pct(d.completion)+'</td><td>'+pct(d.onTime)+'</td><td>'+pct(d.quality)+'</td><td>'+pct(d.records)+'</td><td><b>'+pct(d.score)+'</b></td></tr>').join("");
   const top=root.querySelector("[data-top-dept]");if(top)top.textContent=ranked[0].name;
  }
+ function initDepartmentInventory(){document.querySelectorAll('[data-dept-inventory]').forEach(root=>{const rows=inventories[root.dataset.deptInventory]||[];const body=root.querySelector('[data-inventory-rows]');if(body)body.innerHTML=rows.map(x=>'<tr><td>'+x[0]+'</td><td>'+fmt(x[1])+'</td><td>'+x[2]+'</td></tr>').join('');const total=root.querySelector('[data-inventory-total]');if(total)total.textContent=fmt(rows.reduce((n,x)=>n+x[1],0));});}
  function initNotifications(){
   const root=document.querySelector("[data-notifications]");if(!root)return;
   const total=orders.length,done=orders.filter(o=>o.status==="تکمیل‌شده").length,late=orders.filter(o=>o.status==="معوق").length,active=total-done-late;
@@ -104,5 +127,5 @@
   const list=root.querySelector("[data-notice-list]");
   if(list)list.innerHTML=orders.slice().sort((a,b)=>(a.status==="معوق"?-1:0)-(b.status==="معوق"?-1:0)).map(o=>'<article class="notice-item '+(o.status==="معوق"?"urgent":o.status==="تکمیل‌شده"?"done":"")+'"><i></i><div><b>'+o.title+'</b><p>'+byId(o.dept).name+' · '+o.owner+' · مهلت '+o.deadline+'</p></div><em>'+o.status+' · '+fmt(o.progress)+'٪</em></article>').join("");
  }
- document.addEventListener("DOMContentLoaded",()=>{initWorkforce();initProfile();initFollowups();initEvaluation();initNotifications()});
+ document.addEventListener("DOMContentLoaded",()=>{initWorkforce();initProfile();initFollowups();initEvaluation();initNotifications();initDepartmentInventory()});
 })();
