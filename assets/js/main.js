@@ -52,6 +52,10 @@ if(search){
  const prefix=inPages?'':'pages/';
  const home=inPages?'../index.html':'index.html';
  const reports=prefix+'department-reports.html';
+ const reportCatalog=prefix+'report-catalog.html';
+ const communications=prefix+'internal-communications.html';
+ const welfare=prefix+'welfare-center.html';
+ const coop=prefix+'staff-coop-store.html';
  const services=prefix+'company-services.html';
  const workforce=prefix+'workforce.html';
  const profile=prefix+'personnel-profile.html';
@@ -61,7 +65,7 @@ if(search){
  const notices=prefix+'notifications-center.html';
  const nav=document.querySelector('.ops-nav');
  if(nav){
-  nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu"><a href="'+prefix+'department-1.html">اداره اداری و پشتیبانی</a><a href="'+prefix+'department-2.html">اداره تحقیق و توسعه</a><a href="'+prefix+'department-3.html">اداره پارک بان و معبربانان</a><a href="'+prefix+'department-4.html">اداره تأسیسات فنی و امور نگهداری</a><a href="'+prefix+'department-6.html">اداره فاوا و خدمات فنی</a><a href="'+prefix+'department-7.html">اداره جمع‌آوری، نگهداری و بازیافت پسماند</a></div></details><details class="nav-dropdown"><summary>مدیریت و ارزیابی</summary><div class="nav-menu"><a href="'+workforce+'">مرکز سرمایه انسانی</a><a href="'+profile+'">پروفایل عملکرد پرسنل</a><a href="'+evaluation+'">ارزیابی و رتبه‌بندی</a><a href="'+followups+'">پیگیری دستورات و مصوبات</a><a href="'+notices+'">مرکز اعلانات ریاست</a><a href="'+calendar+'">تقویم و برنامه زمان‌بندی</a></div></details><a href="'+reports+'">گزارش تلفیقی</a><a href="'+services+'">مرکز خدمات</a>';
+  nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu"><a href="'+prefix+'department-1.html">اداره اداری و پشتیبانی</a><a href="'+prefix+'department-2.html">اداره تحقیق و توسعه</a><a href="'+prefix+'department-3.html">اداره پارک بان و معبربانان</a><a href="'+prefix+'department-4.html">اداره تأسیسات فنی و امور نگهداری</a><a href="'+prefix+'department-6.html">اداره فاوا و خدمات فنی</a><a href="'+prefix+'department-7.html">اداره جمع‌آوری، نگهداری و بازیافت پسماند</a></div></details><details class="nav-dropdown"><summary>مدیریت و ارزیابی</summary><div class="nav-menu"><a href="'+workforce+'">مرکز سرمایه انسانی</a><a href="'+profile+'">پروفایل عملکرد پرسنل</a><a href="'+evaluation+'">ارزیابی و رتبه‌بندی</a><a href="'+followups+'">پیگیری دستورات و مصوبات</a><a href="'+notices+'">مرکز اعلانات ریاست</a><a href="'+calendar+'">تقویم و برنامه زمان‌بندی</a><a href="'+reportCatalog+'">کاتالوگ گزارش‌های دوره‌ای</a></div></details><details class="nav-dropdown"><summary>مرکز خدمات</summary><div class="nav-menu"><a href="'+services+'">نمای کلی مرکز خدمات</a><a href="'+communications+'">ارتباطات امن کارکنان</a><a href="'+welfare+'">مرکز خدمات رفاهی</a><a href="'+coop+'">تعاونی مصرف کارکنان</a></div></details><details class="nav-dropdown"><summary>گزارش‌ها</summary><div class="nav-menu"><a href="'+reports+'">گزارش تلفیقی</a><a href="'+reportCatalog+'">کاتالوگ گزارش‌های دوره‌ای</a></div></details>';
   const current=location.pathname.split('/').pop();
   nav.querySelectorAll('.nav-dropdown').forEach(menu=>{if(menu.querySelector('a[href$="'+current+'"]'))menu.querySelector('summary').classList.add('active')});
   nav.querySelectorAll('a').forEach(a=>{
@@ -77,7 +81,7 @@ if(search){
   [home+'#departments','▦','ادارات','departments'],
   [workforce,'▤','سرمایه انسانی','workforce.html'],
   [followups,'◷','پیگیری ویژه','special-followups.html'],
-  [reports,'▧','گزارش‌ها','department-reports.html'],
+  [reportCatalog,'▧','کاتالوگ','report-catalog.html'],
   [calendar,'▦','تقویم','calendar.html']
  ];
  const current=location.pathname.split('/').pop();
