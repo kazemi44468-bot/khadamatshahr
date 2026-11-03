@@ -977,3 +977,49 @@ html,body{max-width:100%;overflow-x:clip}
  .catalog-kpis article{background:#f7f9f6!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
  .catalog-hide{display:none!important}
 }
+
+/* Personnel competency profile and department-level asset accountability */
+.inventory-status-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
+.inventory-status-grid>div{padding:11px;border:1px solid #e5ebe2;background:#f8faf7;border-radius:9px;min-width:0}
+.inventory-status-grid small{display:block;font-size:8px;color:#849184;line-height:1.7}
+.inventory-status-grid b{display:block;margin-top:4px;font-size:18px;color:#456d4c}
+.department-inventory table{min-width:760px}
+.profile-result .profile-detail-grid{align-items:stretch}
+.profile-result .profile-detail-grid>.dept-panel{min-width:0}
+.profile-result .profile-metric-list>div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #edf1eb;font-size:9px;color:#718071}
+.profile-result .profile-metric-list>div b{color:#466c4d;white-space:nowrap}
+.profile-result .profile-timeline>div{grid-template-columns:95px minmax(100px,.7fr) minmax(120px,1fr)}
+.profile-result .profile-timeline>div span:last-child{color:#849184}
+.profile-result [data-person-competency]{margin-top:10px}
+.profile-result [data-person-access] td:first-child{font-weight:700;color:#4a694f}
+.profile-result [data-person-welfare]>div{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #edf1eb;font-size:9px}
+.profile-result [data-person-welfare] b{color:#476d4e;white-space:nowrap}
+.profile-result .profile-expanded-grid article{min-height:68px}
+.service-process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:14px 0}
+.service-process-grid article{padding:12px;border:1px solid #e4ebe1;border-radius:10px;background:#fff}
+.service-process-grid small{font-size:8px;color:#9a865d}
+.service-process-grid b{display:block;margin:5px 0;color:#466a4c;font-size:11px}
+.service-process-grid span{font-size:9px;line-height:1.9;color:#7c897c}
+.service-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.service-feature-list>div{padding:10px 12px;border-right:3px solid #b7a06e;background:#f8faf7;border-radius:7px}
+.service-feature-list b{display:block;font-size:10px;color:#45684c}
+.service-feature-list span{display:block;margin-top:4px;font-size:9px;line-height:1.8;color:#7b887b}
+.catalog-meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+.catalog-meta span{padding:6px 9px;border:1px solid #e4ebe1;border-radius:7px;background:#f8faf7;color:#758276;font-size:8px}
+.catalog-page-head{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #e8eee5;padding-bottom:10px;margin-bottom:16px}
+.catalog-page-head span{font-size:9px;color:#9a865d}.catalog-page-head b{font-size:9px;color:#5e755f}
+.catalog-page{padding:24px 28px;border-bottom:1px solid #edf1eb;background:#fff}
+.catalog-page h2{font-size:17px;color:#3f6346;margin:14px 0}
+.catalog-page h3{font-size:12px;color:#58765d;margin:18px 0 8px}
+.catalog-page p,.catalog-page li{font-size:10px;line-height:2;color:#6e7d70}
+.catalog-page table{width:100%;border-collapse:collapse;font-size:9px}
+.catalog-page th,.catalog-page td{padding:9px 7px;text-align:right;border-bottom:1px solid #edf1eb}
+.catalog-page th{background:#f5f8f3;color:#58705a}
+.catalog-cover-bottom{gap:12px}
+.catalog-report-code{font-size:9px;color:#8a927f;margin-top:10px}
+@media(max-width:850px){.inventory-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.inventory-status-grid b{font-size:15px}.service-feature-list{grid-template-columns:1fr}.profile-result .profile-timeline>div{grid-template-columns:75px minmax(0,1fr)}.profile-result .profile-timeline>div span:last-child{grid-column:2}.catalog-page{padding:16px 12px}}
+@media print{
+ @page{size:A4;margin:13mm;@bottom-center{content:"صفحه " counter(page) " از " counter(pages);font-family:Vazirmatn,sans-serif;font-size:8pt;color:#788477}}
+ .catalog-report-code{display:block}
+}
