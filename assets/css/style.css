@@ -220,11 +220,14 @@
 
 /* Final visual correction: compact navigation capsule + distinctive page texture */
 .ops-page{
-  background-color:#f2f5ef !important;
+  background-color:#f3f6f1 !important;
   background-image:
-    radial-gradient(ellipse at 8% 8%,rgba(190,170,119,.13) 0,rgba(190,170,119,0) 27%),
-    radial-gradient(ellipse at 94% 18%,rgba(79,119,87,.12) 0,rgba(79,119,87,0) 30%),
-    repeating-linear-gradient(135deg,rgba(75,105,78,.022) 0,rgba(75,105,78,.022) 1px,transparent 1px,transparent 13px) !important;
+    linear-gradient(rgba(75,105,78,.042) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(75,105,78,.042) 1px,transparent 1px),
+    linear-gradient(rgba(191,166,112,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(191,166,112,.045) 1px,transparent 1px) !important;
+  background-size:42px 42px,42px 42px,210px 210px,210px 210px !important;
+  background-position:0 0,0 0,0 0,0 0 !important;
   background-attachment:fixed !important;
   position:relative;
 }
@@ -234,10 +237,16 @@
   z-index:0;
   pointer-events:none;
   inset:0;
-  opacity:.48;
+  opacity:.72;
   background:
-    radial-gradient(circle at 12% 34%,transparent 0 54px,rgba(174,151,99,.10) 55px 56px,transparent 57px 74px,rgba(174,151,99,.07) 75px 76px,transparent 77px),
-    radial-gradient(circle at 88% 72%,transparent 0 78px,rgba(67,111,79,.08) 79px 80px,transparent 81px 104px,rgba(67,111,79,.055) 105px 106px,transparent 107px);
+    linear-gradient(#b9a47755,#b9a47755) right 34px top 34px/54px 1px no-repeat,
+    linear-gradient(#b9a47755,#b9a47755) right 34px top 34px/1px 54px no-repeat,
+    linear-gradient(#b9a47738,#b9a47738) right 43px top 43px/36px 1px no-repeat,
+    linear-gradient(#b9a47738,#b9a47738) right 43px top 43px/1px 36px no-repeat,
+    linear-gradient(#66866d42,#66866d42) left 34px bottom 34px/54px 1px no-repeat,
+    linear-gradient(#66866d42,#66886d42) left 34px bottom 34px/1px 54px no-repeat,
+    linear-gradient(#66866d30,#66866d30) left 43px bottom 43px/36px 1px no-repeat,
+    linear-gradient(#66866d30,#66886d30) left 43px bottom 43px/1px 36px no-repeat;
 }
 .ops-header,.ops-main{position:relative;z-index:1}
 
