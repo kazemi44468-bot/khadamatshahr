@@ -1,12 +1,12 @@
 /* داده‌های نمونه و تعامل ماژول‌های سرمایه انسانی، ارزیابی و پیگیری */
 (()=> {
  const departments=[
-  {id:"d1",code:"01",name:"اداری و پشتیبانی",staff:24,women:10,men:14,permanent:14,contract:6,project:4,education:8,ot:186,otAmount:74,leave:31,training:42,reward:6,discipline:1,sport:18,retirement:1,tenure:8.4,benefits:21,completion:87,onTime:91,quality:89,records:92},
-  {id:"d2",code:"02",name:"تحقیق و توسعه",staff:12,women:5,men:7,permanent:7,contract:3,project:2,education:10,ot:92,otAmount:48,leave:14,training:68,reward:4,discipline:0,sport:9,retirement:0,tenure:6.8,benefits:10,completion:86,onTime:88,quality:94,records:96},
-  {id:"d3",code:"03",name:"پارکبان و معبربانان",staff:86,women:12,men:74,permanent:38,contract:32,project:16,education:19,ot:1240,otAmount:496,leave:104,training:86,reward:12,discipline:7,sport:54,retirement:2,tenure:7.1,benefits:68,completion:81,onTime:84,quality:86,records:82},
-  {id:"d4",code:"04",name:"تأسیسات فنی و امور نگهداری",staff:31,women:4,men:27,permanent:16,contract:10,project:5,education:11,ot:540,otAmount:270,leave:38,training:54,reward:7,discipline:3,sport:22,retirement:1,tenure:9.2,benefits:25,completion:82,onTime:86,quality:91,records:89},
-  {id:"d6",code:"06",name:"فاوا و خدمات فنی",staff:17,women:6,men:11,permanent:9,contract:5,project:3,education:14,ot:214,otAmount:107,leave:19,training:72,reward:5,discipline:1,sport:13,retirement:0,tenure:5.9,benefits:14,completion:87,onTime:90,quality:93,records:95},
-  {id:"d7",code:"07",name:"جمع‌آوری، نگهداری و بازیافت پسماند",staff:78,women:8,men:70,permanent:34,contract:28,project:16,education:16,ot:1080,otAmount:432,leave:96,training:78,reward:9,discipline:8,sport:49,retirement:2,tenure:8.1,benefits:61,completion:80,onTime:82,quality:84,records:80}
+  {id:"d1",code:"01",name:"اداری و پشتیبانی",staff:24,women:10,men:14,permanent:14,contract:6,project:4,education:8,ot:186,otAmount:74,leave:31,training:42,reward:6,discipline:1,sport:18,sportHours:64,workHours:4224,conversion:2,promotion:1,retirement:1,tenure:8.4,benefits:21,completion:87,onTime:91,quality:89,records:92},
+  {id:"d2",code:"02",name:"تحقیق و توسعه",staff:12,women:5,men:7,permanent:7,contract:3,project:2,education:10,ot:92,otAmount:48,leave:14,training:68,reward:4,discipline:0,sport:9,sportHours:42,workHours:2112,conversion:1,promotion:1,retirement:0,tenure:6.8,benefits:10,completion:86,onTime:88,quality:94,records:96},
+  {id:"d3",code:"03",name:"پارکبان و معبربانان",staff:86,women:12,men:74,permanent:38,contract:32,project:16,education:19,ot:1240,otAmount:496,leave:104,training:86,reward:12,discipline:7,sport:54,sportHours:168,workHours:15136,conversion:5,promotion:2,retirement:2,tenure:7.1,benefits:68,completion:81,onTime:84,quality:86,records:82},
+  {id:"d4",code:"04",name:"تأسیسات فنی و امور نگهداری",staff:31,women:4,men:27,permanent:16,contract:10,project:5,education:11,ot:540,otAmount:270,leave:38,training:54,reward:7,discipline:3,sport:22,sportHours:96,workHours:5456,conversion:3,promotion:2,retirement:1,tenure:9.2,benefits:25,completion:82,onTime:86,quality:91,records:89},
+  {id:"d6",code:"06",name:"فاوا و خدمات فنی",staff:17,women:6,men:11,permanent:9,contract:5,project:3,education:14,ot:214,otAmount:107,leave:19,training:72,reward:5,discipline:1,sport:13,sportHours:58,workHours:2992,conversion:2,promotion:1,retirement:0,tenure:5.9,benefits:14,completion:87,onTime:90,quality:93,records:95},
+  {id:"d7",code:"07",name:"جمع‌آوری، نگهداری و بازیافت پسماند",staff:78,women:8,men:70,permanent:34,contract:28,project:16,education:16,ot:1080,otAmount:432,leave:96,training:78,reward:9,discipline:8,sport:49,sportHours:102,workHours:13728,conversion:4,promotion:2,retirement:2,tenure:8.1,benefits:61,completion:80,onTime:82,quality:84,records:80}
  ];
  const people=[
   {id:"10001",name:"کارمند نمونه الف",dept:"d1",role:"کارشناس امور اداری",status:"رسمی",education:"کارشناسی",tenure:9,training:42,ot:18,leave:2,score:91,skills:["امور اداری","مکاتبات","بایگانی"],strengths:["دقت در انجام امور","پیگیری مسئولانه"],development:"تقویت مهارت‌های تحلیل فرایند"},
@@ -31,7 +31,7 @@
  function initWorkforce(){
   const root=document.querySelector("[data-workforce]");
   if(!root)return;
-  const totals={staff:sum("staff"),women:sum("women"),men:sum("men"),ot:sum("ot"),otAmount:sum("otAmount"),leave:sum("leave"),training:sum("training"),reward:sum("reward"),discipline:sum("discipline"),sport:sum("sport"),retirement:sum("retirement"),benefits:sum("benefits")};
+  const totals={staff:sum("staff"),women:sum("women"),men:sum("men"),ot:sum("ot"),otAmount:sum("otAmount"),leave:sum("leave"),training:sum("training"),reward:sum("reward"),discipline:sum("discipline"),sport:sum("sport"),sportHours:sum("sportHours"),workHours:sum("workHours"),conversion:sum("conversion"),promotion:sum("promotion"),education:sum("education"),retirement:sum("retirement"),benefits:sum("benefits")};
   Object.entries(totals).forEach(([k,v])=>{const n=root.querySelector('[data-total="'+k+'"]');if(n)n.textContent=fmt(v)});
   const rows=root.querySelector("[data-workforce-rows]");
   if(rows)rows.innerHTML=departments.map(d=>'<tr><td>'+d.code+' · '+d.name+'</td><td>'+fmt(d.staff)+'</td><td>'+fmt(d.women)+' / '+fmt(d.men)+'</td><td>'+fmt(d.ot)+'</td><td>'+fmt(d.training)+'</td><td>'+fmt(d.benefits)+'</td></tr>').join("");
