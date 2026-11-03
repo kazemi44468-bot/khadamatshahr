@@ -53,9 +53,13 @@ if(search){
  const home=inPages?'../index.html':'index.html';
  const reports=prefix+'department-reports.html';
  const services=prefix+'company-services.html';
+ const workforce=prefix+'workforce.html';
+ const profile=prefix+'personnel-profile.html';
+ const evaluation=prefix+'performance-evaluation.html';
+ const followups=prefix+'special-followups.html';
  const nav=document.querySelector('.ops-nav');
  if(nav){
-  nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu"><a href="'+prefix+'department-1.html">اداره اداری و پشتیبانی</a><a href="'+prefix+'department-2.html">اداره تحقیق و توسعه</a><a href="'+prefix+'department-3.html">اداره پارک بان و معبربانان</a><a href="'+prefix+'department-4.html">اداره تأسیسات فنی و امور نگهداری</a><a href="'+prefix+'department-6.html">اداره فاوا و خدمات فنی</a><a href="'+prefix+'department-7.html">اداره جمع‌آوری، نگهداری و بازیافت پسماند</a></div></details><a href="'+reports+'">گزارش تلفیقی</a><a href="'+services+'">مرکز خدمات</a>';
+  nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu"><a href="'+prefix+'department-1.html">اداره اداری و پشتیبانی</a><a href="'+prefix+'department-2.html">اداره تحقیق و توسعه</a><a href="'+prefix+'department-3.html">اداره پارک بان و معبربانان</a><a href="'+prefix+'department-4.html">اداره تأسیسات فنی و امور نگهداری</a><a href="'+prefix+'department-6.html">اداره فاوا و خدمات فنی</a><a href="'+prefix+'department-7.html">اداره جمع‌آوری، نگهداری و بازیافت پسماند</a></div></details><details class="nav-dropdown"><summary>مدیریت و ارزیابی</summary><div class="nav-menu"><a href="'+workforce+'">مرکز سرمایه انسانی</a><a href="'+profile+'">پروفایل عملکرد پرسنل</a><a href="'+evaluation+'">ارزیابی و رتبه‌بندی</a><a href="'+followups+'">پیگیری دستورات ویژه</a></div></details><a href="'+reports+'">گزارش تلفیقی</a><a href="'+services+'">مرکز خدمات</a>';
   const current=location.pathname.split('/').pop();
   const deptMenu=nav.querySelector('.nav-dropdown');
   if(deptMenu&&deptMenu.querySelector('a[href$="'+current+'"]'))deptMenu.querySelector('summary').classList.add('active');
@@ -70,8 +74,9 @@ if(search){
  const items=[
   [home,'⌂','نمای کلان','index.html'],
   [home+'#departments','▦','ادارات','departments'],
-  [reports,'▤','گزارش تلفیقی','department-reports.html'],
-  [services,'⌘','مرکز خدمات','company-services.html']
+  [workforce,'▤','سرمایه انسانی','workforce.html'],
+  [followups,'◷','پیگیری ویژه','special-followups.html'],
+  [reports,'▧','گزارش‌ها','department-reports.html']
  ];
  const current=location.pathname.split('/').pop();
  items.forEach(([href,icon,label,key])=>{
