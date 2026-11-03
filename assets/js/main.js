@@ -27,3 +27,18 @@ if(search){
   if(empty)empty.hidden=visible!==0;
  });
 }
+
+/* دکمه شناور بازگشت به ابتدای صفحه */
+(()=>{
+ const button=document.createElement('button');
+ button.type='button';
+ button.className='back-to-top';
+ button.setAttribute('aria-label','بازگشت به بالای صفحه');
+ button.setAttribute('title','بازگشت به بالا');
+ button.innerHTML='<span aria-hidden="true">↑</span>';
+ document.body.appendChild(button);
+ const refresh=()=>button.classList.toggle('is-visible',window.scrollY>320);
+ window.addEventListener('scroll',refresh,{passive:true});
+ button.addEventListener('click',()=>window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+ refresh();
+})();
