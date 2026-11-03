@@ -9,18 +9,18 @@
   {id:"d7",code:"07",name:"جمع‌آوری، نگهداری و بازیافت پسماند",staff:78,women:8,men:70,permanent:34,contract:28,project:16,education:16,ot:1080,otAmount:432,leave:96,training:78,reward:9,discipline:8,sport:49,sportHours:102,workHours:13728,conversion:4,promotion:2,retirement:2,tenure:8.1,benefits:61,completion:80,onTime:82,quality:84,records:80}
  ];
  const people=[
-  {id:"10001",name:"کارمند نمونه الف",dept:"d1",role:"کارشناس امور اداری",status:"رسمی",education:"کارشناسی",tenure:9,training:42,ot:18,leave:2,score:91,skills:["امور اداری","مکاتبات","بایگانی"],strengths:["دقت در انجام امور","پیگیری مسئولانه"],development:"تقویت مهارت‌های تحلیل فرایند"},
-  {id:"10002",name:"کارمند نمونه ب",dept:"d3",role:"سرپرست گروه میدانی",status:"قراردادی",education:"کاردانی",tenure:6,training:28,ot:46,leave:3,score:86,skills:["نظارت میدانی","ایمنی کار","گزارش‌نویسی"],strengths:["هماهنگی تیمی","پاسخ‌گویی"],development:"توسعه مهارت مدیریت تیم"},
-  {id:"10003",name:"کارمند نمونه پ",dept:"d6",role:"کارشناس پشتیبانی فنی",status:"پیمانی",education:"کارشناسی ارشد",tenure:4,training:64,ot:22,leave:1,score:94,skills:["شبکه","امنیت اطلاعات","پشتیبانی سامانه"],strengths:["حل مسئله","یادگیری مستمر"],development:"توسعه مستندسازی فنی"}
+  {id:"10001",name:"کارمند نمونه الف",dept:"d1",role:"کارشناس امور اداری",status:"رسمی",education:"کارشناسی",tenure:9,training:42,ot:18,leave:2,score:91,gender:"مرد",birth:"۱۳۶۸/۰۴/۱۲",startDate:"۱۳۹۶/۰۲/۰۱",salary:"۲۸٫۵",bonus:"۴٫۲",benefit:"۳٫۱",reward:3,discipline:0,attendance:98,tools:["رایانه سازمانی","دسترسی اتوماسیون اداری","سامانه مکاتبات","تلفن سازمانی"],assets:["رایانه همراه · ۱ دستگاه","تلفن سازمانی · ۱ خط","کارت تردد · ۱ عدد"],skills:["امور اداری","مکاتبات","بایگانی"],strengths:["دقت در انجام امور","پیگیری مسئولانه"],development:"تقویت مهارت‌های تحلیل فرایند",history:[["شش‌ماهه اول ۱۴۰۵","۹۱","تحقق ۹۴٪ وظایف محوله"],["سه‌ماهه دوم ۱۴۰۵","۸۹","کیفیت مستندسازی مطلوب"],["ماه اخیر","۹۳","بهبود سرعت پاسخ‌گویی"]],future:"آمادگی برای مسئولیت سرپرستی امور دبیرخانه پس از گذراندن دوره مدیریت فرایند"},
+  {id:"10002",name:"کارمند نمونه ب",dept:"d3",role:"سرپرست گروه میدانی",status:"قراردادی",education:"کاردانی",tenure:6,training:28,ot:46,leave:3,score:86,gender:"مرد",birth:"۱۳۷۲/۰۹/۰۵",startDate:"۱۳۹۹/۰۶/۱۵",salary:"۲۴٫۸",bonus:"۳٫۶",benefit:"۲٫۴",reward:2,discipline:1,attendance:95,tools:["تبلت عملیاتی","سامانه ثبت مأموریت","بی‌سیم سازمانی"],assets:["تبلت · ۱ دستگاه","بی‌سیم · ۱ دستگاه","لباس و تجهیزات ایمنی · ۱ مجموعه"],skills:["نظارت میدانی","ایمنی کار","گزارش‌نویسی"],strengths:["هماهنگی تیمی","پاسخ‌گویی"],development:"توسعه مهارت مدیریت تیم",history:[["شش‌ماهه اول ۱۴۰۵","۸۴","اجرای مناسب برنامه‌های میدانی"],["سه‌ماهه دوم ۱۴۰۵","۸۶","کاهش تأخیر در گزارش‌ها"],["ماه اخیر","۸۸","بهبود هماهنگی گروه"]],future:"پیشنهاد ارتقا به مسئول ناحیه پس از تکمیل آموزش مدیریت عملیات"},
+  {id:"10003",name:"کارمند نمونه پ",dept:"d6",role:"کارشناس پشتیبانی فنی",status:"پیمانی",education:"کارشناسی ارشد",tenure:4,training:64,ot:22,leave:1,score:94,gender:"زن",birth:"۱۳۷۵/۰۲/۲۲",startDate:"۱۴۰۱/۰۳/۰۱",salary:"۳۱٫۲",bonus:"۵٫۱",benefit:"۲٫۸",reward:4,discipline:0,attendance:99,tools:["رایانه تخصصی","کنسول پایش شبکه","سامانه تیکتینگ","دسترسی مدیریت زیرساخت"],assets:["رایانه تخصصی · ۱ دستگاه","تجهیزات تست شبکه · ۱ مجموعه","تلفن سازمانی · ۱ خط"],skills:["شبکه","امنیت اطلاعات","پشتیبانی سامانه"],strengths:["حل مسئله","یادگیری مستمر"],development:"توسعه مستندسازی فنی",history:[["شش‌ماهه اول ۱۴۰۵","۹۲","پایداری خدمات و پاسخ‌گویی"],["سه‌ماهه دوم ۱۴۰۵","۹۵","حل رخدادهای پیچیده"],["ماه اخیر","۹۶","کاهش زمان رفع اشکال"]],future:"آمادگی برای نقش راهبر فنی سامانه‌ها و مشارکت در طراحی معماری زیرساخت"}
  ];
  const orders=[
-  {id:"R-1405-021",title:"ساماندهی گزارش‌های عملکرد ماهانه ادارات",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۲",deadline:"۱۴۰۵/۰۸/۱۲",dept:"d1",owner:"مسئول برنامه‌ریزی",source:"مکتوب",status:"تکمیل‌شده",progress:100,detail:"یکپارچه‌سازی قالب گزارش و تجمیع اطلاعات دوره‌ای"},
+  {id:"R-1405-021",title:"ساماندهی گزارش‌های عملکرد ماهانه ادارات",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۲",deadline:"۱۴۰۵/۰۸/۱۲",dept:"d1",owner:"کارمند نمونه الف",targetPerson:"کارمند نمونه الف",source:"مکتوب",status:"تکمیل‌شده",progress:100,detail:"یکپارچه‌سازی قالب گزارش و تجمیع اطلاعات دوره‌ای"},
   {id:"R-1405-022",title:"بررسی وضعیت تجهیزات و اولویت‌بندی تعمیرات",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۳",deadline:"۱۴۰۵/۰۸/۱۵",dept:"d4",owner:"مسئول نگهداری",source:"شفاهی",status:"در حال اجرا",progress:65,detail:"تهیه فهرست تجهیزات، تعیین سطح اهمیت و برنامه اقدام"},
   {id:"R-1405-023",title:"ارائه برنامه آموزش و توانمندسازی کارکنان",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۴",deadline:"۱۴۰۵/۰۸/۱۸",dept:"d1",owner:"کارشناس آموزش",source:"مکتوب",status:"در حال اجرا",progress:45,detail:"نیازسنجی آموزشی و زمان‌بندی دوره‌های تخصصی"},
   {id:"R-1405-024",title:"ارزیابی راهکارهای نوین خدمات شهری",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۵",deadline:"۱۴۰۵/۰۸/۲۰",dept:"d2",owner:"گروه پژوهش",source:"شفاهی",status:"ابلاغ‌شده",progress:15,detail:"مطالعه گزینه‌ها و ارائه گزارش امکان‌سنجی"},
   {id:"R-1405-025",title:"بازبینی مسیرهای جمع‌آوری و زمان‌بندی ناوگان",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۶",deadline:"۱۴۰۵/۰۸/۱۶",dept:"d7",owner:"سرپرست عملیات",source:"مکتوب",status:"معوق",progress:35,detail:"بازنگری مسیرها، ظرفیت ناوگان و زمان‌بندی اجرا"},
-  {id:"R-1405-026",title:"رسیدگی به نقاط پرتردد و ساماندهی محدوده‌ها",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۷",deadline:"۱۴۰۵/۰۸/۱۷",dept:"d3",owner:"مسئول ناحیه",source:"شفاهی",status:"در حال اجرا",progress:72,detail:"بازدید میدانی و تنظیم برنامه اقدام محدوده‌ها"},
-  {id:"R-1405-027",title:"ارتقای پایداری سامانه‌ها و پشتیبان‌گیری",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۸",deadline:"۱۴۰۵/۰۸/۱۹",dept:"d6",owner:"کارشناس زیرساخت",source:"مکتوب",status:"تکمیل‌شده",progress:100,detail:"بازبینی نسخه پشتیبان و آزمون بازیابی اطلاعات"},
+  {id:"R-1405-026",title:"رسیدگی به نقاط پرتردد و ساماندهی محدوده‌ها",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۷",deadline:"۱۴۰۵/۰۸/۱۷",dept:"d3",owner:"کارمند نمونه ب",targetPerson:"کارمند نمونه ب",source:"شفاهی",status:"در حال اجرا",progress:72,detail:"بازدید میدانی و تنظیم برنامه اقدام محدوده‌ها"},
+  {id:"R-1405-027",title:"ارتقای پایداری سامانه‌ها و پشتیبان‌گیری",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۸",deadline:"۱۴۰۵/۰۸/۱۹",dept:"d6",owner:"کارمند نمونه پ",targetPerson:"کارمند نمونه پ",source:"مکتوب",status:"تکمیل‌شده",progress:100,detail:"بازبینی نسخه پشتیبان و آزمون بازیابی اطلاعات"},
   {id:"R-1405-028",title:"تهیه گزارش هزینه و بهره‌وری خدمات",issuer:"ریاست شرکت",date:"۱۴۰۵/۰۸/۰۹",deadline:"۱۴۰۵/۰۸/۲۲",dept:"d4",owner:"کارشناس فنی",source:"شفاهی",status:"ابلاغ‌شده",progress:10,detail:"جمع‌آوری هزینه‌ها و محاسبه شاخص‌های بهره‌وری"}
  ];
  const byId=id=>departments.find(d=>d.id===id);
@@ -61,6 +61,10 @@
    result.querySelector("[data-person-skills]").textContent=person.skills.join("، ");
    result.querySelector("[data-person-strengths]").textContent=person.strengths.join("، ");
    result.querySelector("[data-person-development]").textContent=person.development;
+   const set=(key,value)=>{const n=result.querySelector('[data-person-'+key+']');if(n)n.textContent=value;};
+   set("gender",person.gender);set("birth",person.birth);set("startdate",person.startDate);set("number",person.id);set("salary",person.salary+" میلیون تومان");set("bonus",person.bonus+" میلیون تومان");set("benefit",person.benefit+" میلیون تومان");set("reward",fmt(person.reward)+" مورد");set("discipline",fmt(person.discipline)+" مورد");set("attendance",pct(person.attendance));set("tools",person.tools.join("، "));set("assets",person.assets.join("، "));set("future",person.future);
+   const history=result.querySelector("[data-person-history]");if(history)history.innerHTML=person.history.map(x=>"<div><span>"+x[0]+"</span><b>"+x[1]+" از ۱۰۰</b><span>"+x[2]+"</span></div>").join("");
+   const scale=result.querySelector("[data-person-score-scale]");if(scale)scale.innerHTML="<i style='width:"+person.score+"%'></i>";
   }
   root.querySelector("[data-personnel-search]").addEventListener("click",show);
   input.addEventListener("keydown",e=>{if(e.key==="Enter")show()});
@@ -77,6 +81,9 @@
    root.querySelector("[data-followup-late]").textContent=fmt(list.filter(o=>o.status==="معوق").length);
    const avg=list.length?Math.round(list.reduce((a,o)=>a+o.progress,0)/list.length):0;
    root.querySelector("[data-followup-progress]").textContent=pct(avg);
+   const breakdown=root.querySelector("[data-followup-breakdown]");
+   if(breakdown){const groups=[...departments.map(d=>({label:d.name,items:list.filter(o=>o.dept===d.id)})),...people.map(p=>({label:p.name,items:list.filter(o=>o.targetPerson===p.name)}))].filter(g=>g.items.length);
+    breakdown.innerHTML=groups.map(g=>{const done=g.items.filter(o=>o.status==="تکمیل‌شده").length;const late=g.items.filter(o=>o.status==="معوق").length;return "<tr><td>"+g.label+"</td><td>"+fmt(g.items.length)+"</td><td>"+fmt(done)+"</td><td>"+fmt(late)+"</td><td>"+fmt(g.items.length-done-late)+"</td></tr>";}).join("");}
   }
   dept.addEventListener("change",render);status.addEventListener("change",render);render();
  }
@@ -89,5 +96,13 @@
   body.innerHTML=ranked.map((d,i)=>'<tr><td><b class="rank-number">'+fmt(i+1)+'</b></td><td>'+d.name+'</td><td>'+pct(d.completion)+'</td><td>'+pct(d.onTime)+'</td><td>'+pct(d.quality)+'</td><td>'+pct(d.records)+'</td><td><b>'+pct(d.score)+'</b></td></tr>').join("");
   const top=root.querySelector("[data-top-dept]");if(top)top.textContent=ranked[0].name;
  }
- document.addEventListener("DOMContentLoaded",()=>{initWorkforce();initProfile();initFollowups();initEvaluation()});
+ function initNotifications(){
+  const root=document.querySelector("[data-notifications]");if(!root)return;
+  const total=orders.length,done=orders.filter(o=>o.status==="تکمیل‌شده").length,late=orders.filter(o=>o.status==="معوق").length,active=total-done-late;
+  const put=(key,value)=>{const n=root.querySelector('[data-notice="'+key+'"]');if(n)n.textContent=fmt(value);};
+  put("total",total);put("done",done);put("late",late);put("active",active);
+  const list=root.querySelector("[data-notice-list]");
+  if(list)list.innerHTML=orders.slice().sort((a,b)=>(a.status==="معوق"?-1:0)-(b.status==="معوق"?-1:0)).map(o=>'<article class="notice-item '+(o.status==="معوق"?"urgent":o.status==="تکمیل‌شده"?"done":"")+'"><i></i><div><b>'+o.title+'</b><p>'+byId(o.dept).name+' · '+o.owner+' · مهلت '+o.deadline+'</p></div><em>'+o.status+' · '+fmt(o.progress)+'٪</em></article>').join("");
+ }
+ document.addEventListener("DOMContentLoaded",()=>{initWorkforce();initProfile();initFollowups();initEvaluation();initNotifications()});
 })();
