@@ -580,3 +580,13 @@ html,body{max-width:100%;overflow-x:clip}
 .chart-summary span{font-size:8px;color:#879487}
 .table-status{display:inline-block;padding:3px 8px;border-radius:15px;background:#edf4ec;color:#477451;font-size:8px}
 @media(max-width:560px){.dept-chart-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.dept-chart-grid>.dept-panel{padding:9px 7px}.chart-bars.compact{height:118px;gap:3px;padding:12px 4px 22px}.chart-bar-col small{font-size:6px}.chart-bar-col b{font-size:7px}.chart-donut{width:62px;height:62px}.chart-donut:after{inset:12px}.chart-donut-center{font-size:13px}.chart-donut-center small{font-size:6px}.donut-layout{gap:8px}.donut-labels{font-size:7px;gap:5px}.chart-summary{gap:4px}.chart-summary>div{padding:6px 3px}.chart-summary b{font-size:15px}.chart-summary span{font-size:6px}}
+
+
+@media(max-width:560px){
+ .service-list,.ops-page .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:7px}
+ .service-item,.feature-card{min-width:0;padding:10px 8px}
+ .service-item h3,.feature-card h3{font-size:9px;line-height:1.7}
+ .service-item p,.feature-card p{font-size:7px;line-height:1.8}
+ .ops-card,.dept-panel,.analytics-panel,.report-box{min-width:0}
+ .ops-card-desc,.ops-card-title b,.dept-panel h2{overflow-wrap:anywhere}
+}
