@@ -61,8 +61,7 @@ if(search){
  if(nav){
   nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu"><a href="'+prefix+'department-1.html">اداره اداری و پشتیبانی</a><a href="'+prefix+'department-2.html">اداره تحقیق و توسعه</a><a href="'+prefix+'department-3.html">اداره پارک بان و معبربانان</a><a href="'+prefix+'department-4.html">اداره تأسیسات فنی و امور نگهداری</a><a href="'+prefix+'department-6.html">اداره فاوا و خدمات فنی</a><a href="'+prefix+'department-7.html">اداره جمع‌آوری، نگهداری و بازیافت پسماند</a></div></details><details class="nav-dropdown"><summary>مدیریت و ارزیابی</summary><div class="nav-menu"><a href="'+workforce+'">مرکز سرمایه انسانی</a><a href="'+profile+'">پروفایل عملکرد پرسنل</a><a href="'+evaluation+'">ارزیابی و رتبه‌بندی</a><a href="'+followups+'">پیگیری دستورات ویژه</a></div></details><a href="'+reports+'">گزارش تلفیقی</a><a href="'+services+'">مرکز خدمات</a>';
   const current=location.pathname.split('/').pop();
-  const deptMenu=nav.querySelector('.nav-dropdown');
-  if(deptMenu&&deptMenu.querySelector('a[href$="'+current+'"]'))deptMenu.querySelector('summary').classList.add('active');
+  nav.querySelectorAll('.nav-dropdown').forEach(menu=>{if(menu.querySelector('a[href$="'+current+'"]'))menu.querySelector('summary').classList.add('active')});
   nav.querySelectorAll('a').forEach(a=>{
    const target=a.getAttribute('href').split('#')[0].split('/').pop();
    if(target===current || (current==='index.html'&&a.getAttribute('href').includes('#departments')))a.classList.add('active');
