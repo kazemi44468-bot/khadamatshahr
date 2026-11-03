@@ -822,3 +822,6 @@ html,body{max-width:100%;overflow-x:clip}
 .hr-detail-list>div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #edf1eb;font-size:9px;color:#758276}
 .hr-detail-list b{color:#456a4d;font-size:10px;text-align:left}
 @media(max-width:560px){.hr-detail-grid{grid-template-columns:1fr;gap:7px}.hr-detail-grid>.dept-panel{padding:11px 9px}.hr-detail-list{gap:5px}}
+
+.dept-hr-breakdown-secondary{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:560px){.dept-hr-breakdown-secondary{grid-template-columns:1fr}}
