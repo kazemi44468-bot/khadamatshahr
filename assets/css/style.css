@@ -1026,3 +1026,9 @@ html,body{max-width:100%;overflow-x:clip}
 
 @media(max-width:850px){.inventory-definitions{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.inventory-definitions{grid-template-columns:repeat(2,minmax(0,1fr))}.inventory-definitions span{font-size:8px;padding:8px}}
+
+/* Employee economic empowerment and retiree knowledge center */
+.coop-location-panel .service-feature-list>div{min-height:72px}
+.ops-page .service-hub-card{min-width:0}
+.ops-page .service-hub-card i{font-style:normal}
+@media(max-width:560px){.coop-location-panel .service-feature-list{grid-template-columns:1fr}}
