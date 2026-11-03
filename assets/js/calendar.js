@@ -26,10 +26,12 @@
   {date:"2026-11-18",type:"personal",dept:"1",title:"سالگرد ازدواج همکاران",detail:"۱ مناسبت پرسنلی در این بازه",personCount:1,time:"",place:"اداره اداری و پشتیبانی"},
   {date:"2026-11-26",type:"personal",dept:"3",title:"مناسبت ازدواج همکاران",detail:"۱ مناسبت پرسنلی در این بازه",personCount:1,time:"",place:"اداره پارک بان و معبربانان"},
   {date:"2026-11-29",type:"personal",dept:"7",title:"مناسبت تولد همکاران",detail:"۱ مناسبت پرسنلی در این بازه",personCount:1,time:"",place:"اداره پسماند"},
-  {date:"2026-11-12",type:"resolution",dept:"1",title:"مصوبه یکپارچه‌سازی گزارش عملکرد ماهانه",detail:"مخاطب اجرا: اداره اداری و پشتیبانی · مسئول: کارمند نمونه الف · پرونده R-1405-021",time:"",place:"مهلت ۱۴۰۵/۰۸/۱۲"},
-  {date:"2026-11-15",type:"resolution",dept:"4",title:"مصوبه اولویت‌بندی تعمیرات تجهیزات",detail:"مخاطب اجرا: اداره تأسیسات فنی و امور نگهداری · پرونده R-1405-022",time:"",place:"مهلت ۱۴۰۵/۰۸/۱۵"},
-  {date:"2026-11-16",type:"resolution",dept:"7",title:"مصوبه بازنگری مسیرهای جمع‌آوری پسماند",detail:"مخاطب اجرا: اداره پسماند · پرونده R-1405-025 · نیازمند پیگیری",time:"",place:"مهلت ۱۴۰۵/۰۸/۱۶"}
+  {date:"2026-11-03",type:"resolution",dept:"1",orderId:"R-1405-021",title:"مصوبه یکپارچه‌سازی گزارش عملکرد ماهانه",detail:"",time:"",place:""},
+  {date:"2026-11-06",type:"resolution",dept:"4",orderId:"R-1405-022",title:"مصوبه اولویت‌بندی تعمیرات تجهیزات",detail:"",time:"",place:""},
+  {date:"2026-11-07",type:"resolution",dept:"7",orderId:"R-1405-025",title:"مصوبه بازنگری مسیرهای جمع‌آوری پسماند",detail:"",time:"",place:""}
  ];
+ const shared=window.CITY_ORG_DATA;
+ if(shared)events.forEach(e=>{if(e.orderId){const o=shared.orders.find(x=>x.id===e.orderId);if(o){e.title=o.title;e.detail="مخاطب اجرا: "+shared.byId(o.dept).name+" · مسئول: "+o.owner+" · پرونده "+o.id;e.place="مهلت "+o.deadline+" · "+o.status;}}});
  const typeNames={meeting:"جلسه",session:"نشست",action:"اقدام",personal:"مناسبت پرسنلی",resolution:"مصوبه ریاست"};
  const fa=new Intl.DateTimeFormat("fa-IR-u-ca-persian",{day:"numeric"});
  const fullDate=new Intl.DateTimeFormat("fa-IR-u-ca-persian",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
