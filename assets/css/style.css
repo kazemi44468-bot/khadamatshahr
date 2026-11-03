@@ -907,3 +907,19 @@ html,body{max-width:100%;overflow-x:clip}
  .dept-calendar-events{grid-template-columns:1fr}.dept-calendar-stats{gap:5px}
  .dept-calendar-stats>div{padding:7px}.hr-milestone-strip{align-items:flex-start;flex-direction:column;padding:11px}
 }
+
+.dept-mini-calendar{margin:11px 0 12px;padding:10px 12px;background:#f8faf7;border:1px solid #e7ede4;border-radius:9px}
+.dept-mini-calendar .calendar-toolbar{margin-bottom:6px}
+.dept-mini-calendar .calendar-toolbar b{font-size:10px;color:#526d55}
+.dept-mini-calendar .calendar-toolbar button{width:27px;height:25px;font-size:12px}
+.dept-mini-calendar .calendar-weekdays{gap:3px}
+.dept-mini-calendar .calendar-weekdays span{font-size:7px;padding:2px 0}
+.dept-mini-calendar .calendar-days{gap:3px}
+.dept-mini-calendar .calendar-day{min-height:34px;padding:3px 4px;background:#fff}
+.dept-mini-calendar .calendar-day b{font-size:8px}
+.dept-mini-calendar .calendar-day i{min-height:4px}
+.dept-mini-calendar .calendar-day i em{width:4px;height:4px}
+.dept-mini-footer{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:7px}
+.dept-mini-footer span{font-size:7px;color:#879487}
+.dept-mini-footer button{border:0;background:transparent;color:#53765a;font:inherit;font-size:8px;cursor:pointer;white-space:nowrap}
+@media(max-width:560px){.dept-mini-calendar{padding:8px}.dept-mini-calendar .calendar-day{min-height:30px}}
