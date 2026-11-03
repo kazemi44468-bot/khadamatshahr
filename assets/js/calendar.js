@@ -54,7 +54,7 @@
   const all=filtered();let html="";
   for(let i=0;i<rows*7;i++){const d=new Date(first);d.setDate(d.getDate()-offset+i);const date=iso(d);const dayEvents=all.filter(e=>e.date===date);const outside=keyOf(d)!==keyOf(first);const classes=["calendar-day",outside?"outside":"",date===iso(selected)?"selected":"",date===today?"today":""].filter(Boolean).join(" ");const dots=dayEvents.slice(0,4).map(e=>'<em class="'+e.type+'"></em>').join("");html+='<button type="button" class="'+classes+'" data-day="'+date+'"><b>'+dayNumber(d)+'</b><i>'+dots+'</i></button>';}
   grid.innerHTML=html;
-  grid.querySelectorAll("[data-day]").forEach(b=>b.addEventListener("click",()=>{selected=fromIso(b.dataset.day);render();}));
+  grid.querySelectorAll("[data-day]").forEach(b=>b.addEventListener("click",()=>{selected=fromIso(b.dataset.day);if(keyOf(selected)!==keyOf(monthStart))monthStart=startOfMonth(selected);render();}));
  }
  function renderList(){
   const day=iso(selected);const matches=filtered().filter(e=>e.date===day).sort((a,b)=>a.type.localeCompare(b.type));
