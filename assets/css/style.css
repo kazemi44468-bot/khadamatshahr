@@ -344,3 +344,21 @@
  .ops-header-inner .ops-nav .nav-menu{position:absolute !important;top:calc(100% + 7px) !important;right:0 !important;left:auto !important}
  .ops-page:before{opacity:.32}
 }
+
+/* دکمه بازگشت به بالای صفحه در تمام صفحات */
+.back-to-top{
+  position:fixed;right:24px;bottom:24px;z-index:50;
+  width:44px;height:44px;display:grid;place-items:center;
+  border:1px solid #c9d8c8;border-radius:9px;
+  background:rgba(255,255,255,.94);color:#315b4c;
+  box-shadow:0 7px 22px rgba(38,65,46,.14);
+  font:700 21px/1 Tahoma,Arial,sans-serif;
+  opacity:0;visibility:hidden;transform:translateY(9px);
+  transition:opacity .22s ease,transform .22s ease,visibility .22s ease,background .2s ease;
+  cursor:pointer;backdrop-filter:blur(8px)
+}
+.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top:hover{background:#315b4c;color:#fff;border-color:#315b4c}
+.back-to-top:focus-visible{outline:3px solid #c6a66b;outline-offset:3px}
+@media(max-width:560px){.back-to-top{right:14px;bottom:14px;width:41px;height:41px}}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
