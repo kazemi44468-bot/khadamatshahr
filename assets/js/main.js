@@ -57,6 +57,8 @@ if(search){
  const communications=prefix+'internal-communications.html';
  const welfare=prefix+'welfare-center.html';
  const coop=prefix+'staff-coop-store.html';
+ const economic=prefix+'employee-economic-center.html';
+ const retirees=prefix+'retiree-center.html';
  const services=prefix+'company-services.html';
  const workforce=prefix+'workforce.html';
  const profile=prefix+'personnel-profile.html';
