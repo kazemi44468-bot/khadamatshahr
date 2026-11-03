@@ -22,12 +22,15 @@
   {date:"2026-11-19",type:"action",dept:"2",title:"ارائه نتایج مطالعات دوره‌ای",detail:"جمع‌بندی گزارش پژوهشی و ارائه به مدیریت",time:"۱۱:۰۰",place:"اداره تحقیق و توسعه"},
   {date:"2026-11-20",type:"action",dept:"4",title:"کنترل وضعیت تجهیزات و تأسیسات",detail:"بازبینی فنی و ثبت گزارش نگهداری",time:"۰۸:۰۰",place:"اداره تأسیسات فنی"},
   {date:"2026-11-21",type:"action",dept:"7",title:"پایش برنامه تفکیک و بازیافت",detail:"ارزیابی شاخص‌های اجرایی و ثبت گزارش",time:"۰۷:۰۰",place:"اداره پسماند"},
-  {date:"2026-11-11",type:"personal",dept:"2",title:"مناسبت تولد همکاران",detail:"۲ مناسبت پرسنلی در این بازه",time:"",place:"اداره تحقیق و توسعه"},
-  {date:"2026-11-18",type:"personal",dept:"1",title:"سالگرد ازدواج همکاران",detail:"۱ مناسبت پرسنلی در این بازه",time:"",place:"اداره اداری و پشتیبانی"},
-  {date:"2026-11-26",type:"personal",dept:"3",title:"مناسبت ازدواج همکاران",detail:"۱ مناسبت پرسنلی در این بازه",time:"",place:"اداره پارک بان و معبربانان"},
-  {date:"2026-11-29",type:"personal",dept:"7",title:"مناسبت تولد همکاران",detail:"۱ مناسبت پرسنلی در این بازه",time:"",place:"اداره پسماند"}
+  {date:"2026-11-11",type:"personal",dept:"2",title:"مناسبت تولد همکاران",detail:"۲ مناسبت پرسنلی در این بازه",personCount:2,time:"",place:"اداره تحقیق و توسعه"},
+  {date:"2026-11-18",type:"personal",dept:"1",title:"سالگرد ازدواج همکاران",detail:"۱ مناسبت پرسنلی در این بازه",personCount:1,time:"",place:"اداره اداری و پشتیبانی"},
+  {date:"2026-11-26",type:"personal",dept:"3",title:"مناسبت ازدواج همکاران",detail:"۱ مناسبت پرسنلی در این بازه",personCount:1,time:"",place:"اداره پارک بان و معبربانان"},
+  {date:"2026-11-29",type:"personal",dept:"7",title:"مناسبت تولد همکاران",detail:"۱ مناسبت پرسنلی در این بازه",personCount:1,time:"",place:"اداره پسماند"},
+  {date:"2026-11-12",type:"resolution",dept:"1",title:"مصوبه یکپارچه‌سازی گزارش عملکرد ماهانه",detail:"مخاطب اجرا: اداره اداری و پشتیبانی · مسئول: کارمند نمونه الف · پرونده R-1405-021",time:"",place:"مهلت ۱۴۰۵/۰۸/۱۲"},
+  {date:"2026-11-15",type:"resolution",dept:"4",title:"مصوبه اولویت‌بندی تعمیرات تجهیزات",detail:"مخاطب اجرا: اداره تأسیسات فنی و امور نگهداری · پرونده R-1405-022",time:"",place:"مهلت ۱۴۰۵/۰۸/۱۵"},
+  {date:"2026-11-16",type:"resolution",dept:"7",title:"مصوبه بازنگری مسیرهای جمع‌آوری پسماند",detail:"مخاطب اجرا: اداره پسماند · پرونده R-1405-025 · نیازمند پیگیری",time:"",place:"مهلت ۱۴۰۵/۰۸/۱۶"}
  ];
- const typeNames={meeting:"جلسه",session:"نشست",action:"اقدام",personal:"مناسبت پرسنلی"};
+ const typeNames={meeting:"جلسه",session:"نشست",action:"اقدام",personal:"مناسبت پرسنلی",resolution:"مصوبه ریاست"};
  const fa=new Intl.DateTimeFormat("fa-IR-u-ca-persian",{day:"numeric"});
  const fullDate=new Intl.DateTimeFormat("fa-IR-u-ca-persian",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
  const monthTitle=new Intl.DateTimeFormat("fa-IR-u-ca-persian",{month:"long",year:"numeric"});
