@@ -28,7 +28,7 @@ function create(type){
 const dir=path.join(__dirname,"../pages/archive/reports");fs.mkdirSync(dir,{recursive:true});
 for(const type of types){const filename=jy+"-"+String(jm).padStart(2,"0")+"-"+type+".html";fs.writeFileSync(path.join(dir,filename),create(type),"utf8");}
 const all=fs.readdirSync(dir).filter(x=>x.endsWith(".html")).sort().reverse();
-const rows=all.map(x=>"<tr><td><a href=\\"archive/reports/"+x+"\\">"+x.replace(".html","")+"</a></td><td>گزارش خودکار دوره‌ای</td><td>آماده چاپ A4</td></tr>").join("");
+const rows=all.map(x=>'<tr><td><a href="archive/reports/'+x+'">'+x.replace(".html","")+'</a></td><td>گزارش خودکار دوره‌ای</td><td>آماده چاپ A4</td></tr>').join("");
 const index='<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>آرشیو گزارش‌های شرکت</title><link rel="stylesheet" href="../assets/css/style.css"></head><body class="ops-page"><main class="ops-main"><section class="ops-intro"><div><h1>آرشیو کاتالوگ‌های گزارش</h1><p>نسخه‌های دوره‌ای تولیدشده توسط فرایند خودکار سامانه</p></div></section><section class="dept-panel"><div class="table-scroll"><table><thead><tr><th>شناسه دوره</th><th>نوع</th><th>وضعیت</th></tr></thead><tbody>'+rows+'</tbody></table></div></section><footer class="ops-footer"><a href="report-catalog.html">بازگشت به گزارش‌ساز</a></footer></main></body></html>';
 fs.writeFileSync(path.join(__dirname,"../pages/report-archive.html"),index,"utf8");
 console.log("Generated report periods:",types.join(", "));
