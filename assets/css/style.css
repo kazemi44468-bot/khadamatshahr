@@ -1023,3 +1023,6 @@ html,body{max-width:100%;overflow-x:clip}
  @page{size:A4;margin:13mm;@bottom-center{content:"صفحه " counter(page) " از " counter(pages);font-family:Vazirmatn,sans-serif;font-size:8pt;color:#788477}}
  .catalog-report-code{display:block}
 }
+
+@media(max-width:850px){.inventory-definitions{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.inventory-definitions{grid-template-columns:repeat(2,minmax(0,1fr))}.inventory-definitions span{font-size:8px;padding:8px}}
