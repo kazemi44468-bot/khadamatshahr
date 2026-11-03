@@ -149,3 +149,70 @@
  .department-intro{padding-top:23px}
  .department-intro h1{font-size:18px}
 }
+
+
+/* بازطراحی مینیمال منو و کارت‌های سازمانی */
+.ops-header{height:62px;background:#fbfcf9;box-shadow:none}
+.ops-header-inner{gap:16px}
+.ops-brand{min-width:245px}
+.ops-nav{width:max-content;max-width:100%;gap:4px;padding:3px;background:#f7f9f5;border:1px solid #dce5da;border-radius:8px;box-shadow:none}
+.ops-nav>a,.nav-dropdown>summary{min-height:27px;padding:4px 10px;border:1px solid transparent;border-radius:5px;font-size:9px;color:#52695a}
+.ops-nav>a:hover,.nav-dropdown>summary:hover,.nav-dropdown[open]>summary{background:#fff;border-color:#e2e9df;box-shadow:none}
+.nav-dropdown>summary{position:relative;padding-left:23px}
+.nav-dropdown>summary:after{content:"";position:absolute;left:9px;top:50%;width:6px;height:6px;border-left:1.5px solid #9a8355;border-bottom:1.5px solid #9a8355;transform:translateY(-65%) rotate(-45deg);transition:transform .18s}
+.nav-dropdown[open]>summary:after{transform:translateY(-25%) rotate(135deg)}
+.nav-dropdown>summary span{display:none}
+.nav-menu{top:calc(100% + 6px);padding:5px;min-width:230px;border-radius:7px;box-shadow:0 10px 24px #203b2c12}
+.nav-menu a{font-size:9px;padding:7px 9px}
+.ops-grid{gap:25px}
+.ops-card{padding:0 19px 15px;border:1px solid #d9e3d7;border-radius:12px;background:#fff;box-shadow:0 4px 15px #263b2c08;overflow:hidden}
+.ops-card:before{display:none}
+.ops-card:after{content:"";position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,#c9b17d 0%,#527b60 48%,#c9b17d 100%);opacity:.9}
+.ops-card-heading{position:relative;margin:0 -19px 13px;padding:15px 19px 12px;background:linear-gradient(100deg,#f8faf6,#edf3eb);border-bottom:1px solid #e2eade;align-items:center}
+.ops-card-title{padding:0;gap:0;transform:none;margin:0}
+.ops-card-title>span:last-child{gap:3px}
+.ops-card-title small{font-size:8px;letter-spacing:.2px;color:#a08755}
+.ops-card-title b{font-size:14px;color:#2d503c;line-height:1.65}
+.ops-card-update{padding-right:12px;border-right:1px solid #dce5d9}
+.ops-card-update small{font-size:8px;color:#8b998c}
+.ops-card-update b{font-size:9px;color:#8a7854}
+.ops-card-desc{font-size:10px;min-height:38px;margin-bottom:12px;color:#748477}
+.ops-common-stats>div{background:#f7f9f5;border:1px solid #e9eee6;border-radius:6px}
+.ops-special-label{padding-top:2px;font-weight:600}
+.ops-kpis>div{border-radius:6px;background:#fbfcfa}
+.ops-card-bottom{border-top:1px solid #e9eee6}
+.ops-card-bottom>b{font-size:9px}
+.ops-summary>div{border-radius:8px;box-shadow:none}
+.ops-summary .summary-label{padding-top:3px}
+.ops-footer{margin-top:34px}
+.company-service-intro{padding:27px 0 20px;border-bottom:1px solid #e4eae1}
+.company-service-intro h1{font-size:25px;color:#284b3a;margin:5px 0}
+.company-service-intro p{font-size:11px;color:#78877b;max-width:720px;margin:5px 0}
+.service-overview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin:20px 0 28px}
+.service-metric{background:#fff;border:1px solid #e2e9df;border-radius:8px;padding:13px 15px}
+.service-metric small,.service-metric b{display:block}
+.service-metric small{font-size:9px;color:#859286}
+.service-metric b{font-size:18px;color:#365e46;margin-top:4px}
+.service-section-title{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:22px 0 13px}
+.service-section-title h2{font-size:17px;color:#315640;margin:0}
+.service-section-title p{font-size:9px;color:#879488;margin:0}
+.service-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.service-item{background:#fff;border:1px solid #e2e9df;border-radius:9px;padding:15px 17px;min-height:130px}
+.service-item h3{font-size:12px;color:#3b6048;margin:0 0 5px}
+.service-item p{font-size:9px;color:#7d8b80;line-height:2;margin:0}
+.service-item small{display:block;margin-top:9px;padding-top:8px;border-top:1px solid #eef1ec;font-size:8px;color:#9a8b6c}
+.service-status{display:inline-block;margin-top:5px;color:#9a8b6c;font-size:8px}
+@media(max-width:850px){.ops-nav{width:max-content;max-width:100%;flex-wrap:wrap}.ops-header-inner{justify-content:space-between}}
+@media(max-width:560px){
+ .ops-header{height:auto;min-height:62px}
+ .ops-header-inner{gap:8px}
+ .ops-nav{order:3;width:100%;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;padding:3px}
+ .ops-nav>a,.nav-dropdown>summary{font-size:8px;padding:4px 8px}
+ .ops-brand{min-width:0}
+ .ops-brand b{font-size:10px}
+ .ops-card-heading{margin-inline:-15px;padding:13px 15px 10px}
+ .ops-card-title b{font-size:12px}
+ .service-overview{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .service-list{grid-template-columns:1fr}
+ .company-service-intro h1{font-size:21px}
+}
