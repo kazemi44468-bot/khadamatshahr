@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: "20"
       - name: Generate report catalog
-        run: node scripts/generate-report.js "${{ inputs.period || 'auto' }}"
+        run: node scripts/generate-report.js "${{ github.event.inputs.period || 'auto' }}"
       - name: Commit report archive
         run: |
           git config user.name "github-actions[bot]"
