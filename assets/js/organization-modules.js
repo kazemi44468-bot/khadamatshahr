@@ -43,7 +43,8 @@
   if(!root)return;
   const input=root.querySelector("[data-personnel-id]"), result=root.querySelector("[data-personnel-result]"), empty=root.querySelector("[data-personnel-empty]");
   function show(){
-   const normalized=input.value.trim().replace(/[۰-۹٠-٩]/g,ch=>"۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".includes(ch)?String("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".indexOf(ch)%10):ch);\n   const person=people.find(p=>p.id===normalized);
+   const normalized=input.value.trim().replace(/[۰-۹٠-٩]/g,ch=>"۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".includes(ch)?String("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".indexOf(ch)%10):ch);
+   const person=people.find(p=>p.id===normalized);
    if(!person){result.hidden=true;empty.hidden=false;return}
    const dept=byId(person.dept);
    result.hidden=false;empty.hidden=true;
