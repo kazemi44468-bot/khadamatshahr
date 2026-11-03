@@ -590,3 +590,10 @@ html,body{max-width:100%;overflow-x:clip}
  .ops-card,.dept-panel,.analytics-panel,.report-box{min-width:0}
  .ops-card-desc,.ops-card-title b,.dept-panel h2{overflow-wrap:anywhere}
 }
+
+
+.chart-donut{position:relative}
+.chart-donut-center{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:19px;font-weight:800;color:#315b47;line-height:1.3}
+.chart-donut-center small{font-size:8px;font-weight:500;color:#879487}
+.chart-stage.combo-stage .chart-bars{height:174px}
+@media(max-width:560px){.chart-stage.combo-stage .chart-bars{height:135px}.chart-donut-center{font-size:13px}.chart-donut-center small{font-size:6px}}
