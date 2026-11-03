@@ -74,7 +74,7 @@ if(search){
  const current=location.pathname.split('/').pop();
  items.forEach(([href,icon,label,key])=>{
   const a=document.createElement('a');a.href=href;a.innerHTML='<span aria-hidden="true">'+icon+'</span>'+label;
-  if(key===current || (key==='index.html'&&current==='index.html') || (key==='departments'&&current==='index.html'&&location.hash==='#departments'))a.classList.add('active');
+  if(key===current || (key==='index.html'&&current==='index.html') || (key==='departments'&&((current.startsWith('department-')&&current!=='department-reports.html')||(current==='index.html'&&location.hash==='#departments'))))a.classList.add('active');
   dock.appendChild(a);
  });
  body.appendChild(dock);
