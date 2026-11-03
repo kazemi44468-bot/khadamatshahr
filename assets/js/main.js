@@ -57,6 +57,7 @@ if(search){
  const profile=prefix+'personnel-profile.html';
  const evaluation=prefix+'performance-evaluation.html';
  const followups=prefix+'special-followups.html';
+ const calendar=prefix+'calendar.html';
  const nav=document.querySelector('.ops-nav');
  if(nav){
   nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu"><a href="'+prefix+'department-1.html">اداره اداری و پشتیبانی</a><a href="'+prefix+'department-2.html">اداره تحقیق و توسعه</a><a href="'+prefix+'department-3.html">اداره پارک بان و معبربانان</a><a href="'+prefix+'department-4.html">اداره تأسیسات فنی و امور نگهداری</a><a href="'+prefix+'department-6.html">اداره فاوا و خدمات فنی</a><a href="'+prefix+'department-7.html">اداره جمع‌آوری، نگهداری و بازیافت پسماند</a></div></details><details class="nav-dropdown"><summary>مدیریت و ارزیابی</summary><div class="nav-menu"><a href="'+workforce+'">مرکز سرمایه انسانی</a><a href="'+profile+'">پروفایل عملکرد پرسنل</a><a href="'+evaluation+'">ارزیابی و رتبه‌بندی</a><a href="'+followups+'">پیگیری دستورات ویژه</a></div></details><a href="'+reports+'">گزارش تلفیقی</a><a href="'+services+'">مرکز خدمات</a>';
@@ -75,7 +76,8 @@ if(search){
   [home+'#departments','▦','ادارات','departments'],
   [workforce,'▤','سرمایه انسانی','workforce.html'],
   [followups,'◷','پیگیری ویژه','special-followups.html'],
-  [reports,'▧','گزارش‌ها','department-reports.html']
+  [reports,'▧','گزارش‌ها','department-reports.html'],
+  [calendar,'▦','تقویم','calendar.html']
  ];
  const current=location.pathname.split('/').pop();
  items.forEach(([href,icon,label,key])=>{
