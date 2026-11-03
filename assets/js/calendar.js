@@ -74,13 +74,15 @@
  typeFilter.addEventListener("change",render);deptFilter.addEventListener("change",render);
  root.querySelectorAll("[data-calendar-count]").forEach(n=>{n.textContent=new Intl.NumberFormat("fa-IR").format(events.filter(e=>e.type===n.dataset.calendarCount).length);});
  const personSummary=root.querySelector("[data-calendar-person-summary]");
- if(personSummary){
-  const people=[
-   {id:"۱۰۰۰۱",name:"کارمند نمونه الف",dept:"اداره اداری و پشتیبانی",meetings:0,actions:1,milestones:1},
-   {id:"۱۰۰۰۲",name:"کارمند نمونه ب",dept:"اداره پارک بان و معبربانان",meetings:0,actions:1,milestones:0},
-   {id:"۱۰۰۰۳",name:"کارمند نمونه پ",dept:"اداره فاوا و خدمات فنی",meetings:0,actions:1,milestones:0}
-  ];
-  personSummary.innerHTML=people.map(p=>"<tr><td>"+p.name+" · "+p.id+"</td><td>"+p.dept+"</td><td>"+p.meetings+"</td><td>"+p.actions+"</td><td>"+p.milestones+"</td><td>"+(p.meetings+p.actions+p.milestones)+"</td></tr>").join("");
+ if(personSummary&&shared){
+  personSummary.innerHTML=shared.people.map(p=>{
+   const personalEvents=events.filter(e=>e.personId===p.id);
+   const assigned=shared.orders.filter(o=>o.targetPerson===p.name);
+   const meetings=personalEvents.filter(e=>e.type==="meeting"||e.type==="session").length;
+   const actions=assigned.length+personalEvents.filter(e=>e.type==="action"||e.type==="resolution").length;
+   const milestones=personalEvents.filter(e=>e.type==="personal").length;
+   return "<tr><td>"+p.name+" · "+p.id+"</td><td>"+shared.byId(p.dept).name+"</td><td>"+fmt(meetings)+"</td><td>"+fmt(actions)+"</td><td>"+fmt(milestones)+"</td><td>"+fmt(meetings+actions+milestones)+"</td></tr>";
+  }).join("");
  }
  const summary=root.querySelector("[data-calendar-department-summary]");
  if(summary){
