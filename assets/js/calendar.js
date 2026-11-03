@@ -71,6 +71,15 @@
  root.querySelector("[data-cal-next]").addEventListener("click",()=>{const n=new Date(monthStart);n.setDate(n.getDate()+monthDays(monthStart));monthStart=startOfMonth(n);selected=new Date(monthStart);render();});
  typeFilter.addEventListener("change",render);deptFilter.addEventListener("change",render);
  root.querySelectorAll("[data-calendar-count]").forEach(n=>{n.textContent=new Intl.NumberFormat("fa-IR").format(events.filter(e=>e.type===n.dataset.calendarCount).length);});
+ const personSummary=root.querySelector("[data-calendar-person-summary]");
+ if(personSummary){
+  const people=[
+   {id:"۱۰۰۰۱",name:"کارمند نمونه الف",dept:"اداره اداری و پشتیبانی",meetings:0,actions:1,milestones:1},
+   {id:"۱۰۰۰۲",name:"کارمند نمونه ب",dept:"اداره پارک بان و معبربانان",meetings:0,actions:1,milestones:0},
+   {id:"۱۰۰۰۳",name:"کارمند نمونه پ",dept:"اداره فاوا و خدمات فنی",meetings:0,actions:1,milestones:0}
+  ];
+  personSummary.innerHTML=people.map(p=>"<tr><td>"+p.name+" · "+p.id+"</td><td>"+p.dept+"</td><td>"+p.meetings+"</td><td>"+p.actions+"</td><td>"+p.milestones+"</td><td>"+(p.meetings+p.actions+p.milestones)+"</td></tr>").join("");
+ }
  const summary=root.querySelector("[data-calendar-department-summary]");
  if(summary){
   const staff={"1":24,"2":12,"3":86,"4":31,"6":17,"7":78};
