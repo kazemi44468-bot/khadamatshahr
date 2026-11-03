@@ -71,5 +71,16 @@
  root.querySelector("[data-cal-next]").addEventListener("click",()=>{const n=new Date(monthStart);n.setDate(n.getDate()+monthDays(monthStart));monthStart=startOfMonth(n);selected=new Date(monthStart);render();});
  typeFilter.addEventListener("change",render);deptFilter.addEventListener("change",render);
  root.querySelectorAll("[data-calendar-count]").forEach(n=>{n.textContent=new Intl.NumberFormat("fa-IR").format(events.filter(e=>e.type===n.dataset.calendarCount).length);});
+ const summary=root.querySelector("[data-calendar-department-summary]");
+ if(summary){
+  const staff={"1":24,"2":12,"3":86,"4":31,"6":17,"7":78};
+  summary.innerHTML=Object.entries(departments).map(([id,name])=>{
+   const list=events.filter(e=>e.dept===id);
+   const sessions=list.filter(e=>e.type==="meeting"||e.type==="session").length;
+   const actions=list.filter(e=>e.type==="action"||e.type==="resolution").length;
+   const milestones=list.filter(e=>e.type==="personal").reduce((n,e)=>n+(e.personCount||1),0);
+   return "<tr><td>"+name+"</td><td>"+staff[id]+"</td><td>"+list.length+"</td><td>"+sessions+"</td><td>"+actions+"</td><td>"+milestones+"</td></tr>";
+  }).join("");
+ }
  render();renderPersonal();
 })();
