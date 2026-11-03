@@ -102,6 +102,7 @@
    const pay=result.querySelector("[data-person-pay-breakdown]");if(pay)pay.innerHTML=person.pay.map(x=>"<tr><td>"+x[0]+"</td><td>"+x[1]+" میلیون تومان</td></tr>").join("");
    const skills=result.querySelector("[data-person-skill-list]");if(skills)skills.innerHTML=person.skills.map(x=>"<div class=\"skill-meter-row\"><span>"+x[0]+"</span><i><b style=\"width:"+x[1]+"%\"></b></i><strong>"+fmt(x[1])+"</strong></div>").join("");
    const assets=result.querySelector("[data-person-assets-list]");if(assets)assets.innerHTML=person.assets.map(x=>"<tr><td>"+x.name+"</td><td>نوع "+x.type+"</td><td>"+fmt(x.qty)+"</td><td>"+x.code+"</td><td>"+x.condition+"</td><td>"+x.date+"</td></tr>").join("");
+   const assetTypes=result.querySelector("[data-person-asset-types]");if(assetTypes){const counts={"1":0,"2":0,"3":0,"4":0};person.assets.forEach(x=>{counts[String(x.type)]=(counts[String(x.type)]||0)+(x.qty||1)});assetTypes.innerHTML=Object.entries(counts).map(([type,count])=>"<article><small>نوع "+type+"</small><b>"+fmt(count)+" قلم</b></article>").join("");}
    const cert=result.querySelector("[data-person-certificates]");if(cert)cert.innerHTML=person.certificates.map(x=>"<li>"+x+"</li>").join("");
    const history=result.querySelector("[data-person-history]");if(history)history.innerHTML=person.history.map(x=>"<div><span>"+x[0]+"</span><b>"+x[1]+" از ۱۰۰</b><span>"+x[2]+"</span></div>").join("");
    const scale=result.querySelector("[data-person-score-scale]");if(scale)scale.innerHTML="<i style='width:"+person.score+"%'></i>";
