@@ -660,3 +660,64 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:850px){.ops-nav-dropdown{display:none}.report-dept-checks{grid-template-columns:repeat(2,minmax(0,1fr))}.report-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.report-live-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.report-filter-grid{grid-template-columns:1fr;gap:8px}.report-dept-heading{align-items:flex-start;flex-direction:column}.report-dept-checks{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.report-dept-checks label{font-size:8px;padding:7px 6px}.report-live-summary{gap:6px}.report-live-summary article{padding:9px}.report-live-summary small{font-size:7px}.report-live-summary b{font-size:19px}.report-bars{height:175px;gap:7px;padding-inline:2px}.report-bar-item{min-width:55px}.report-bar-item small{font-size:7px}.report-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.report-topic-grid>div{padding:9px 7px}.report-topic-grid b{font-size:9px}.report-topic-grid span{font-size:7px}.report-donut{width:90px;height:90px}.report-donut:after{inset:16px}.report-donut .chart-donut-center{font-size:14px}.report-donut .chart-donut-center small{font-size:6px}}
 @media(prefers-reduced-motion:reduce){.report-bar-item i,.trend-series{animation:none;transform:none;stroke-dashoffset:0}}
+
+
+/* اصلاح نهایی زمینه اصلی: شبکه هندسی و قاب‌های گوشه‌ای ظریف */
+.ops-page{
+ background-color:#f3f6f1 !important;
+ background-image:
+  linear-gradient(rgba(75,105,78,.042) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(75,105,78,.042) 1px,transparent 1px),
+  linear-gradient(rgba(191,166,112,.045) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(191,166,112,.045) 1px,transparent 1px) !important;
+ background-size:42px 42px,42px 42px,210px 210px,210px 210px !important;
+ background-position:0 0,0 0,0 0,0 0 !important;
+ background-attachment:fixed !important;
+ position:relative;
+}
+.ops-page:before{
+ content:"";
+ position:fixed;
+ z-index:0;
+ pointer-events:none;
+ inset:0;
+ opacity:.72;
+ background:
+  linear-gradient(#b9a47755,#b9a47755) right 34px top 34px/54px 1px no-repeat,
+  linear-gradient(#b9a47755,#b9a47755) right 34px top 34px/1px 54px no-repeat,
+  linear-gradient(#b9a47738,#b9a47738) right 43px top 43px/36px 1px no-repeat,
+  linear-gradient(#b9a47738,#b9a47738) right 43px top 43px/1px 36px no-repeat,
+  linear-gradient(#66866d42,#66866d42) left 34px bottom 34px/54px 1px no-repeat,
+  linear-gradient(#66866d42,#66886d42) left 34px bottom 34px/1px 54px no-repeat,
+  linear-gradient(#66866d30,#66866d30) left 43px bottom 43px/36px 1px no-repeat,
+  linear-gradient(#66866d30,#66886d30) left 43px bottom 43px/1px 36px no-repeat;
+}
+.ops-header,.ops-main{position:relative;z-index:1}
+
+/* منوی ادارات: فلش ساده CSS، بدون آیکن و نشانه تزئینی */
+.ops-header-inner .ops-nav>.nav-dropdown>summary:after{
+ content:"";
+ width:6px;height:6px;
+ border-left:1px solid #a88f5e;
+ border-bottom:1px solid #a88f5e;
+ transform:rotate(-45deg);
+ margin-right:2px;
+ margin-top:-3px;
+ transition:transform .18s ease;
+}
+.ops-header-inner .ops-nav>.nav-dropdown[open]>summary:after{
+ transform:rotate(135deg);
+ margin-top:3px;
+}
+.ops-header-inner .ops-nav>.nav-dropdown>summary{padding-left:12px !important}
+.ops-header-inner .ops-nav>.nav-dropdown .nav-menu{z-index:120}
+.ops-header-inner .ops-nav>.nav-dropdown .nav-menu a{position:relative}
+.ops-header-inner .ops-nav>.nav-dropdown .nav-menu a:before{
+ content:"";
+ position:absolute;right:5px;top:50%;width:3px;height:3px;
+ border-radius:50%;background:#b99a5e;transform:translateY(-50%);
+}
+.ops-header-inner .ops-nav>.nav-dropdown .nav-menu a{padding-right:16px !important}
+.ops-header-inner .ops-nav>.nav-dropdown .nav-menu a:hover{background:#f0f4ed}
+.ops-common-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:560px){.ops-common-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
