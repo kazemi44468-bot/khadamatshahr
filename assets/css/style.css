@@ -2128,16 +2128,14 @@ body.ops-page .service-metric span{color:#5b7062!important}
 
 /* === پرداخت نهایی پوسته: بازگشت شبکه مربعی، فوتر مینیمال و کنتراست واقعی === */
 body.ops-page{
-  background-color:#f2f5ef!important;
+  background-color:#f3f6f1!important;
+  /* بازگردانی دقیق الگوی مربعی و هندسی هویت بصری قبلی */
   background-image:
-    linear-gradient(rgba(70,105,77,.052) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(70,105,77,.052) 1px,transparent 1px),
-    linear-gradient(rgba(183,153,94,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(183,153,94,.035) 1px,transparent 1px),
-    radial-gradient(ellipse at 9% 7%,rgba(188,164,108,.10),transparent 32%),
-    radial-gradient(ellipse at 92% 48%,rgba(92,135,99,.075),transparent 36%)!important;
-  background-size:36px 36px,36px 36px,180px 180px,180px 180px,auto,auto!important;
-  background-position:0 0,0 0,0 0,0 0,center,center!important;
+    linear-gradient(90deg,rgba(89,126,91,.035) 1px,transparent 1px),
+    linear-gradient(rgba(89,126,91,.035) 1px,transparent 1px),
+    linear-gradient(135deg,rgba(195,166,110,.055) 25%,transparent 25%,transparent 75%,rgba(195,166,110,.055) 75%)!important;
+  background-size:28px 28px,28px 28px,56px 56px!important;
+  background-position:0 0,0 0,14px 14px!important;
   background-attachment:fixed!important;
 }
 body.ops-page:before{opacity:.13!important;pointer-events:none!important}
