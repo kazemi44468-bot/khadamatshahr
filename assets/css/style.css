@@ -2381,3 +2381,13 @@ body.ops-page:before{
 }
 @media(max-width:380px){.ops-brand b{font-size:10px!important}.ops-brand small{font-size:7px!important}.ops-clock{padding:3px 5px!important}.mobile-dock{right:7px;left:7px}.mobile-nav-links{grid-template-columns:1fr}}
 @media print{.mobile-dock,.mobile-nav-panel,.mobile-nav-backdrop{display:none!important}body.ops-page{padding-bottom:0!important}}
+
+/* Mobile/tablet navigation enforcement: hide the header menu and use the bottom dock */
+@media screen and (max-width:900px){
+ body.ops-page .ops-header nav.ops-nav,
+ body.ops-page .ops-header .ops-nav,
+ body.ops-page .ops-header .nav-dropdown,
+ body.ops-page .ops-header .nav-menu{display:none!important;visibility:hidden!important}
+ body.ops-page .mobile-dock{display:grid!important}
+ body.ops-page{padding-bottom:calc(82px + env(safe-area-inset-bottom))!important}
+}
