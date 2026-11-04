@@ -60,6 +60,24 @@ if(search){
   coop:prefix+'staff-coop-store.html',economic:prefix+'employee-economic-center.html',retirees:prefix+'retiree-center.html'
  };
  const nav=document.querySelector('.ops-nav');
+ /* Enforce mobile header-menu removal in the primary navigation controller. */
+ if(nav){
+  const mobileNavQuery=window.matchMedia('(max-width: 900px)');
+  const syncHeaderNav=()=>{
+   if(mobileNavQuery.matches){
+    nav.style.setProperty('display','none','important');
+    nav.setAttribute('aria-hidden','true');
+    nav.querySelectorAll('a,summary').forEach(item=>item.setAttribute('tabindex','-1'));
+   }else{
+    nav.style.removeProperty('display');
+    nav.removeAttribute('aria-hidden');
+    nav.querySelectorAll('a,summary').forEach(item=>item.removeAttribute('tabindex'));
+   }
+  };
+  syncHeaderNav();
+  if(mobileNavQuery.addEventListener)mobileNavQuery.addEventListener('change',syncHeaderNav);
+  else mobileNavQuery.addListener(syncHeaderNav);
+ }
  if(nav){
   nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu">'+
    ['اداره اداری و پشتیبانی','اداره تحقیق و توسعه','اداره پارکبان و معبربانان','اداره تأسیسات فنی و امور نگهداری','اداره فاوا و خدمات فنی','اداره جمع‌آوری و بازیافت پسماند'].map((n,i)=>'<a href="'+urls.departments[i]+'">'+n+'</a>').join('')+
