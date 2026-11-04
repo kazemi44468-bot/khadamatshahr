@@ -78,7 +78,7 @@
   const input=root.querySelector("[data-personnel-id]"), result=root.querySelector("[data-personnel-result]"), empty=root.querySelector("[data-personnel-empty]");
   function show(){
    const normalized=input.value.trim().replace(/[۰-۹٠-٩]/g,ch=>"۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".includes(ch)?String("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".indexOf(ch)%10):ch);
-   const query=normalized.toLocaleLowerCase("fa");\n   const person=people.find(p=>p.id===normalized||p.name.toLocaleLowerCase("fa").includes(query)||p.role.toLocaleLowerCase("fa").includes(query));
+   const query=normalized.toLocaleLowerCase("fa");\n   const person=normalized?people.find(p=>p.id===normalized||p.name.toLocaleLowerCase("fa").includes(query)||p.role.toLocaleLowerCase("fa").includes(query)):null;
    if(!person){result.hidden=true;empty.hidden=false;return}
    const dept=byId(person.dept);
    result.hidden=false;empty.hidden=true;
@@ -95,8 +95,7 @@
    result.querySelector("[data-person-skills]")&&(result.querySelector("[data-person-skills]").textContent=person.skills.map(x=>Array.isArray(x)?x[0]:x).join("، "));
    result.querySelector("[data-person-strengths]").textContent=person.strengths.join("، ");
    result.querySelector("[data-person-development]").textContent=person.development;
-   const set=(key,value)=>{const n=result.querySelector('[data-person-'+key+']');if(n)n.textContent=value;};
-   const photo=result.querySelector("[data-person-photo]");if(photo&&person.photo)photo.src=person.photo;
+   const set=(key,value)=>{result.querySelectorAll("[data-person-"+key+"]").forEach(n=>n.textContent=value);};set("dept",dept.name);set("status",person.status);set("tenure",fmt(person.tenure)+" سال");set("attendance",pct(person.attendance));set("number",person.id);const photo=result.querySelector("[data-person-photo]");if(photo&&person.photo)photo.src=person.photo;
    set("gender",person.gender);set("birth",person.birth);set("startdate",person.startDate);set("number",person.id);set("salary",person.salary+" میلیون تومان");set("bonus",person.bonus+" میلیون تومان");set("benefit",person.benefit+" میلیون تومان");set("reward",fmt(person.reward)+" مورد");set("discipline",fmt(person.discipline)+" مورد");set("attendance",pct(person.attendance));set("tools",person.tools.join("، "));set("assets",person.assets.map(x=>x.name||x).join("، "));set("tools-count",fmt(person.tools.length)+" مورد");set("assets-count",fmt(person.assets.reduce((n,x)=>n+(x.qty||1),0))+" قلم");set("future",person.future);set("contact",person.contact);set("shift",person.workShift);set("supervisor",person.supervisor);set("contract",person.contract);set("insurance",person.insurance);set("location",person.location);set("tasks",fmt(person.tasks));set("missions",fmt(person.missions));set("meetings",fmt(person.meetings));set("resolutions",fmt(person.resolutions));set("tickets",fmt(person.serviceTickets));set("commendations",fmt(person.commendationNotes));set("discipline-notes",fmt(person.disciplineNotes));set("sport-hours",fmt(person.sportHours)+" ساعت");set("sport-events",fmt(person.sportEvents)+" برنامه");const assigned=orders.filter(o=>o.targetPerson===person.name);set("assigned-orders",fmt(assigned.length));const orderList=result.querySelector("[data-person-orders]");if(orderList)orderList.innerHTML=assigned.map(o=>"<tr><td>"+o.id+"</td><td>"+o.title+"</td><td>"+o.deadline+"</td><td>"+o.status+"</td><td>"+fmt(o.progress)+"٪</td></tr>").join("");
    const leave=result.querySelector("[data-person-leave-breakdown]");if(leave)leave.innerHTML=person.leaveBreakdown.map(x=>"<tr><td>"+x[0]+"</td><td>"+x[1]+"</td></tr>").join("");
    const pay=result.querySelector("[data-person-pay-breakdown]");if(pay)pay.innerHTML=person.pay.map(x=>"<tr><td>"+x[0]+"</td><td>"+x[1]+" میلیون تومان</td></tr>").join("");
