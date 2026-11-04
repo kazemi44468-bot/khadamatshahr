@@ -44,84 +44,77 @@ if(search){
 })();
 
 
-/* منوی یکپارچه صفحات عملیاتی و ناوبری موبایل */
+/* ناوبری یکپارچه و منوی دسته‌بندی‌شده موبایل */
 (()=>{
  const body=document.body;
  if(!body.classList.contains('ops-page'))return;
  const inPages=location.pathname.includes('/pages/');
  const prefix=inPages?'':'pages/';
  const home=inPages?'../index.html':'index.html';
- const reports=prefix+'department-reports.html';
- const reportCatalog=prefix+'report-catalog.html';
- const reportArchive=prefix+'report-archive.html';
- const communications=prefix+'internal-communications.html';
- const welfare=prefix+'welfare-center.html';
- const coop=prefix+'staff-coop-store.html';
- const economic=prefix+'employee-economic-center.html';
- const retirees=prefix+'retiree-center.html';
- const services=prefix+'company-services.html';
- const workforce=prefix+'workforce.html';
- const profile=prefix+'personnel-profile.html';
- const evaluation=prefix+'performance-evaluation.html';
- const followups=prefix+'special-followups.html';
- const calendar=prefix+'calendar.html';
- const notices=prefix+'notifications-center.html';
+ const urls={
+  departments:['department-1.html','department-2.html','department-3.html','department-4.html','department-6.html','department-7.html'].map(x=>prefix+x),
+  workforce:prefix+'workforce.html',profile:prefix+'personnel-profile.html',evaluation:prefix+'performance-evaluation.html',
+  followups:prefix+'special-followups.html',notices:prefix+'notifications-center.html',calendar:prefix+'calendar.html',
+  catalog:prefix+'report-catalog.html',archive:prefix+'report-archive.html',reports:prefix+'department-reports.html',
+  services:prefix+'company-services.html',communications:prefix+'internal-communications.html',welfare:prefix+'welfare-center.html',
+  coop:prefix+'staff-coop-store.html',economic:prefix+'employee-economic-center.html',retirees:prefix+'retiree-center.html'
+ };
  const nav=document.querySelector('.ops-nav');
  if(nav){
-  nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu"><a href="'+prefix+'department-1.html">اداره اداری و پشتیبانی</a><a href="'+prefix+'department-2.html">اداره تحقیق و توسعه</a><a href="'+prefix+'department-3.html">اداره پارک بان و معبربانان</a><a href="'+prefix+'department-4.html">اداره تأسیسات فنی و امور نگهداری</a><a href="'+prefix+'department-6.html">اداره فاوا و خدمات فنی</a><a href="'+prefix+'department-7.html">اداره جمع‌آوری، نگهداری و بازیافت پسماند</a></div></details><details class="nav-dropdown"><summary>مدیریت و ارزیابی</summary><div class="nav-menu"><a href="'+workforce+'">مرکز سرمایه انسانی</a><a href="'+profile+'">پروفایل عملکرد پرسنل</a><a href="'+evaluation+'">ارزیابی و رتبه‌بندی</a><a href="'+followups+'">پیگیری دستورات و مصوبات</a><a href="'+notices+'">مرکز اعلانات ریاست</a><a href="'+calendar+'">تقویم و برنامه زمان‌بندی</a><a href="'+reportCatalog+'">کاتالوگ گزارش‌های دوره‌ای</a><a href="'+reportArchive+'">آرشیو گزارش‌ها</a></div></details><details class="nav-dropdown"><summary>مرکز خدمات</summary><div class="nav-menu"><a href="'+services+'">نمای کلی مرکز خدمات</a><a href="'+communications+'">ارتباطات امن کارکنان</a><a href="'+welfare+'">مرکز خدمات رفاهی</a><a href="'+coop+'">فروشگاه و تعاونی مصرف</a><a href="'+economic+'">برنامه‌ریزی اقتصادی و فرصت‌ها</a><a href="'+retirees+'">خدمات و توانمندسازی بازنشستگان</a></div></details><details class="nav-dropdown"><summary>گزارش‌ها</summary><div class="nav-menu"><a href="'+reports+'">گزارش تلفیقی</a><a href="'+reportCatalog+'">کاتالوگ گزارش‌های دوره‌ای</a></div></details>';
+  nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu">'+
+   ['اداره اداری و پشتیبانی','اداره تحقیق و توسعه','اداره پارکبان و معبربانان','اداره تأسیسات فنی و امور نگهداری','اداره فاوا و خدمات فنی','اداره جمع‌آوری و بازیافت پسماند'].map((n,i)=>'<a href="'+urls.departments[i]+'">'+n+'</a>').join('')+
+   '</div></details><details class="nav-dropdown"><summary>مدیریت</summary><div class="nav-menu">'+
+   [[urls.workforce,'سرمایه انسانی'],[urls.profile,'پرونده پرسنلی'],[urls.evaluation,'ارزیابی عملکرد'],[urls.followups,'پیگیری دستورات'],[urls.notices,'اعلانات ریاست'],[urls.calendar,'تقویم شرکت']].map(x=>'<a href="'+x[0]+'">'+x[1]+'</a>').join('')+
+   '</div></details><details class="nav-dropdown"><summary>مرکز خدمات</summary><div class="nav-menu">'+
+   [[urls.services,'نمای کلی خدمات'],[urls.communications,'ارتباطات کارکنان'],[urls.welfare,'خدمات رفاهی'],[urls.coop,'فروشگاه تعاونی'],[urls.economic,'برنامه‌ریزی اقتصادی'],[urls.retirees,'خدمات بازنشستگان']].map(x=>'<a href="'+x[0]+'">'+x[1]+'</a>').join('')+
+   '</div></details><details class="nav-dropdown"><summary>گزارش‌ها</summary><div class="nav-menu">'+
+   [[urls.reports,'گزارش تلفیقی'],[urls.catalog,'کاتالوگ گزارش‌ها'],[urls.archive,'آرشیو گزارش‌ها']].map(x=>'<a href="'+x[0]+'">'+x[1]+'</a>').join('')+
+   '</div></details>';
   const current=location.pathname.split('/').pop();
   nav.querySelectorAll('.nav-dropdown').forEach(menu=>{if(menu.querySelector('a[href$="'+current+'"]'))menu.querySelector('summary').classList.add('active')});
-  nav.querySelectorAll('a').forEach(a=>{
-   const target=a.getAttribute('href').split('#')[0].split('/').pop();
-   if(target===current || (current==='index.html'&&a.getAttribute('href').includes('#departments')))a.classList.add('active');
-   a.addEventListener('click',()=>nav.querySelectorAll('.nav-dropdown').forEach(d=>d.open=false));
-  });
-  nav.querySelectorAll('.nav-dropdown').forEach(menu=>menu.addEventListener('toggle',()=>{
-   if(menu.open)nav.querySelectorAll('.nav-dropdown').forEach(other=>{if(other!==menu)other.open=false});
-  }));
+  nav.querySelectorAll('a').forEach(a=>{if(a.getAttribute('href').split('#')[0].split('/').pop()===current)a.classList.add('active')});
+  nav.querySelectorAll('.nav-dropdown').forEach(menu=>menu.addEventListener('toggle',()=>{if(menu.open)nav.querySelectorAll('.nav-dropdown').forEach(other=>{if(other!==menu)other.open=false})}));
   document.addEventListener('click',event=>{if(!nav.contains(event.target))nav.querySelectorAll('.nav-dropdown').forEach(d=>d.open=false)});
   document.addEventListener('keydown',event=>{if(event.key==='Escape')nav.querySelectorAll('.nav-dropdown').forEach(d=>d.open=false)});
  }
+ const current=location.pathname.split('/').pop();
+ const groups=[
+  {id:'departments',label:'ادارات',icon:'▦',links:urls.departments.map((href,i)=>[href,['اداره اداری و پشتیبانی','اداره تحقیق و توسعه','اداره پارکبان و معبربانان','اداره تأسیسات فنی و امور نگهداری','اداره فاوا و خدمات فنی','اداره جمع‌آوری و بازیافت پسماند'][i]])},
+  {id:'management',label:'مدیریت',icon:'▤',links:[[urls.workforce,'سرمایه انسانی'],[urls.profile,'پرونده پرسنلی'],[urls.evaluation,'ارزیابی عملکرد'],[urls.followups,'پیگیری دستورات ریاست'],[urls.notices,'مرکز اعلانات ریاست'],[urls.calendar,'تقویم شرکت']]},
+  {id:'services',label:'خدمات',icon:'◇',links:[[urls.services,'نمای کلی مرکز خدمات'],[urls.communications,'ارتباطات کارکنان'],[urls.welfare,'خدمات رفاهی'],[urls.coop,'فروشگاه و تعاونی مصرف'],[urls.economic,'برنامه‌ریزی اقتصادی'],[urls.retirees,'خدمات بازنشستگان']]},
+  {id:'reports',label:'گزارش‌ها',icon:'▥',links:[[urls.reports,'گزارش تلفیقی ادارات'],[urls.catalog,'کاتالوگ گزارش‌ها'],[urls.archive,'آرشیو گزارش‌ها']]}
+ ];
  const dock=document.createElement('nav');
  dock.className='mobile-dock';
- dock.setAttribute('aria-label','ناوبری سریع موبایل');
- const current=location.pathname.split('/').pop();
- const items=[
-  [home,'⌂','خانه','index.html'],
-  [home+'#departments','▦','ادارات','departments'],
-  [followups,'◷','پیگیری','special-followups.html'],
-  [services,'◇','خدمات','company-services.html']
- ];
- items.forEach(([href,icon,label,key])=>{
-  const a=document.createElement('a');a.href=href;a.innerHTML='<span class="dock-icon" aria-hidden="true">'+icon+'</span><span>'+label+'</span>';
-  if(key===current || (key==='index.html'&&current==='index.html') || (key==='departments'&&current.startsWith('department-')))a.classList.add('active');
-  dock.appendChild(a);
+ dock.setAttribute('aria-label','منوی اصلی موبایل');
+ const homeLink=document.createElement('a');
+ homeLink.className='dock-home';homeLink.href=home;homeLink.innerHTML='<span class="dock-icon" aria-hidden="true">⌂</span><span>خانه</span>';
+ if(current==='index.html'||current==='')homeLink.classList.add('active');
+ dock.appendChild(homeLink);
+ const panel=document.createElement('div');panel.className='mobile-dock-panel';panel.id='mobile-dock-panel';panel.hidden=true;
+ const panelTitle=document.createElement('div');panelTitle.className='mobile-dock-panel-title';
+ const panelLinks=document.createElement('div');panelLinks.className='mobile-dock-panel-links';
+ panel.append(panelTitle,panelLinks);
+ groups.forEach(group=>{
+  const button=document.createElement('button');button.type='button';button.className='dock-group';button.dataset.group=group.id;
+  button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls',panel.id);
+  button.innerHTML='<span class="dock-icon" aria-hidden="true">'+group.icon+'</span><span>'+group.label+'</span>';
+  if(group.links.some(x=>x[0].split('/').pop()===current))button.classList.add('has-current');
+  button.addEventListener('click',()=>{
+   const already=button.getAttribute('aria-expanded')==='true';
+   dock.querySelectorAll('.dock-group').forEach(b=>{b.setAttribute('aria-expanded','false');b.classList.remove('selected')});
+   if(already){panel.hidden=true;return}
+   button.setAttribute('aria-expanded','true');button.classList.add('selected');
+   panelTitle.textContent=group.label;
+   panelLinks.innerHTML=group.links.map(([href,label])=>'<a href="'+href+'"'+(href.split('/').pop()===current?' aria-current="page"':'')+'>'+label+'</a>').join('');
+   panel.hidden=false;
+  });
+  dock.appendChild(button);
  });
- const more=document.createElement('button');more.type='button';more.innerHTML='<span class="dock-icon" aria-hidden="true">＋</span><span>بیشتر</span>';more.setAttribute('aria-expanded','false');more.setAttribute('aria-controls','mobile-dock-more');
- const panel=document.createElement('div');panel.className='mobile-dock-more';panel.id='mobile-dock-more';
- const extra=[
-  [workforce,'مرکز سرمایه انسانی','workforce.html'],
-  [profile,'پرونده پرسنلی','personnel-profile.html'],
-  [evaluation,'ارزیابی عملکرد','performance-evaluation.html'],
-  [notices,'اعلانات ریاست','notifications-center.html'],
-  [calendar,'تقویم شرکت','calendar.html'],
-  [reportCatalog,'کاتالوگ گزارش‌ها','report-catalog.html'],
-  [reportArchive,'آرشیو گزارش‌ها','report-archive.html'],
-  [reports,'گزارش تلفیقی','department-reports.html'],
-  [communications,'ارتباطات کارکنان','internal-communications.html'],
-  [welfare,'خدمات رفاهی','welfare-center.html'],
-  [coop,'فروشگاه و تعاونی','staff-coop-store.html'],
-  [economic,'برنامه‌ریزی اقتصادی','employee-economic-center.html'],
-  [retirees,'خدمات بازنشستگان','retiree-center.html']
- ];
- extra.forEach(([href,label,key])=>{const a=document.createElement('a');a.href=href;a.textContent=label;if(key===current)a.classList.add('active');panel.appendChild(a)});
- more.addEventListener('click',()=>{const open=panel.classList.toggle('open');more.setAttribute('aria-expanded',String(open))});
- dock.appendChild(more);dock.appendChild(panel);body.appendChild(dock);
- document.addEventListener('click',event=>{if(!dock.contains(event.target)){panel.classList.remove('open');more.setAttribute('aria-expanded','false')}});
- document.addEventListener('keydown',event=>{if(event.key==='Escape'){panel.classList.remove('open');more.setAttribute('aria-expanded','false')}});
-
+ dock.appendChild(panel);body.appendChild(dock);
+ document.addEventListener('click',event=>{if(!dock.contains(event.target)){panel.hidden=true;dock.querySelectorAll('.dock-group').forEach(b=>{b.setAttribute('aria-expanded','false');b.classList.remove('selected')})}});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){panel.hidden=true;dock.querySelectorAll('.dock-group').forEach(b=>{b.setAttribute('aria-expanded','false');b.classList.remove('selected')})}});
 })();
-
 
 /* گزارش‌ساز تعاملی و نمودارهای متحرک */
 (()=> {
