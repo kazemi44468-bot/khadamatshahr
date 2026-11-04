@@ -166,7 +166,8 @@
   const put=(key,value)=>{const n=root.querySelector('[data-notice="'+key+'"]');if(n)n.textContent=fmt(value);};
   const esc=value=>String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
   const statusClass=o=>o.status==="معوق"?"late":o.status==="تکمیل‌شده"?"done":o.status==="ابلاغ‌شده"?"issued":"progress";
-  const statusOrder={"معوق":0,"در حال اجرا":1,"ابلاغ‌شده":2,"تکمیل‌شده":3};\n  const priorityOrder={"فوری":0,"زیاد":1,"متوسط":2,"عادی":3};
+  const statusOrder={"معوق":0,"در حال اجرا":1,"ابلاغ‌شده":2,"تکمیل‌شده":3};
+  const priorityOrder={"فوری":0,"زیاد":1,"متوسط":2,"عادی":3};
   const statuses=[["تکمیل‌شده","done","#4f8660"],["در حال اجرا","progress","#bd9957"],["ابلاغ‌شده","issued","#6c91ad"],["معوق","late","#bf766b"]];
   let status="all",selected=orders.find(o=>o.status==="معوق")||orders[0]||null;
   if(dept){departments.forEach(d=>{const option=document.createElement("option");option.value=d.id;option.textContent=d.name;dept.appendChild(option);});}
