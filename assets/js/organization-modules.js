@@ -78,7 +78,8 @@
   const input=root.querySelector("[data-personnel-id]"), result=root.querySelector("[data-personnel-result]"), empty=root.querySelector("[data-personnel-empty]");
   function show(){
    const normalized=input.value.trim().replace(/[۰-۹٠-٩]/g,ch=>"۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".includes(ch)?String("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".indexOf(ch)%10):ch);
-   const query=normalized.toLocaleLowerCase("fa");\n   const person=normalized?people.find(p=>p.id===normalized||p.name.toLocaleLowerCase("fa").includes(query)||p.role.toLocaleLowerCase("fa").includes(query)):null;
+   const query=normalized.toLocaleLowerCase("fa");
+   const person=normalized?people.find(p=>p.id===normalized||p.name.toLocaleLowerCase("fa").includes(query)||p.role.toLocaleLowerCase("fa").includes(query)):null;
    if(!person){result.hidden=true;empty.hidden=false;return}
    const dept=byId(person.dept);
    result.hidden=false;empty.hidden=true;
