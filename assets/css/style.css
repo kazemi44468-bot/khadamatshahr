@@ -1919,3 +1919,21 @@ body.ops-page [data-personnel-profile] .profile-principles{background:#f4f8f4;bo
  body.ops-page [data-personnel-profile] .profile-result{display:block!important}
  body.ops-page [data-personnel-profile] .profile-identity{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
+
+
+/* فهرست دسترسی سریع به پرونده‌های پرسنلی */
+body.ops-page [data-personnel-profile] .profile-directory-panel{margin:14px 0;padding:15px;background:#fff;border:1px solid #dce6de;border-radius:13px;box-shadow:0 5px 18px rgba(32,55,45,.04)}
+body.ops-page [data-personnel-profile] .profile-directory-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+body.ops-page [data-personnel-profile] .profile-directory-head h2{font-size:13px;color:#244b38!important;margin:4px 0}
+body.ops-page [data-personnel-profile] .profile-directory-head p{font-size:9px;color:#627669!important;margin:0}
+body.ops-page [data-personnel-profile] .profile-directory-count{padding:6px 10px;border-radius:20px;background:#edf4ef;color:#356149;font-size:8px;white-space:nowrap}
+body.ops-page [data-personnel-profile] .profile-directory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+body.ops-page [data-personnel-profile] .profile-person-card{display:flex;align-items:center;gap:10px;min-width:0;padding:10px;text-align:right;border:1px solid #e0e9e2;border-radius:10px;background:#fbfdfb;color:#294b39;cursor:pointer}
+body.ops-page [data-personnel-profile] .profile-person-card:hover{background:#f0f6f1;border-color:#b8d0bf}
+body.ops-page [data-personnel-profile] .profile-person-avatar{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:11px;background:linear-gradient(145deg,#2c6a4d,#5a9670);color:#fff;font-size:15px;font-weight:800}
+body.ops-page [data-personnel-profile] .profile-person-card>span:nth-child(2){display:grid;gap:3px;min-width:0;flex:1}
+body.ops-page [data-personnel-profile] .profile-person-card b{font-size:10px;color:#294b39!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.ops-page [data-personnel-profile] .profile-person-card small{font-size:8px;color:#627669!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.ops-page [data-personnel-profile] .profile-person-card i{font-size:8px;color:#47785a;font-style:normal;white-space:nowrap}
+@media(max-width:620px){body.ops-page [data-personnel-profile] .profile-directory{grid-template-columns:1fr}}
+@media print{body.ops-page [data-personnel-profile] .profile-directory-panel{display:none!important}}
