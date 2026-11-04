@@ -1,4 +1,10 @@
-/* Persian typeface: load the repository's local variable font */
+/* Persian typeface: explicit local font files and weights */
+@font-face{font-family:'ShahrBehesht';src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'ShahrBehesht';src:url('../fonts/Vazirmatn-Medium.woff2') format('woff2');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:'ShahrBehesht';src:url('../fonts/Vazirmatn-SemiBold.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'ShahrBehesht';src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:'ShahrBehesht';src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-style:normal;font-weight:800;font-display:swap}
+@font-face{font-family:'ShahrBehesht';src:url('../fonts/Vazirmatn-Black.woff2') format('woff2');font-style:normal;font-weight:900;font-display:swap}
 @font-face{
   font-family:'ShahrBehesht';
   src:url('../fonts/Vazirmatn%5Bwght%5D.woff2') format('woff2');
@@ -1104,11 +1110,7 @@ html,body{max-width:100%;overflow-x:clip}
 
 
 /* هویت بصری نهایی شهر بهشت: فونت محلی، زمینه هندسی و ناوبری موبایل */
-@font-face{
- font-family:'ShahrBehesht';
- src:url('../fonts/Vazirmatn[wght].woff2') format('woff2');
- font-style:normal;font-weight:100 900;font-display:swap;
-}
+
 html,body{font-family:'ShahrBehesht',sans-serif}
 body.ops-page,body.ops-page *{font-family:'ShahrBehesht',sans-serif!important}
 body.ops-page{
@@ -1532,10 +1534,7 @@ body.ops-page .notice-detail-link{color:#fff!important}
 body.ops-page .ops-footer :is(span,a){color:#355344!important}
 body.ops-page .notice-status-filter button.active{color:#fff!important}
 
-/* Enforce the local Persian font across every page component and form control */
-html,body,body *:not(svg):not(svg *){
-  font-family:'ShahrBehesht',sans-serif !important;
-}
-input,button,select,textarea{
+/* Enforce the local Persian font across all pages, including controls and inline-styled elements */
+html,body,body *:not(svg):not(svg *),input,button,select,textarea{
   font-family:'ShahrBehesht',sans-serif !important;
 }
