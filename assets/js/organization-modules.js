@@ -142,7 +142,8 @@
    if(legend)legend.innerHTML=[["تکمیل‌شده",done,"done"],["در جریان / ابلاغ",active,"active"],["معوق",late,"late"]].map(x=>'<div><i class="'+x[2]+'"></i><span>'+x[0]+'</span><b>'+fmt(x[1])+'</b></div>').join("");
    const chart=root.querySelector("[data-followup-dept-chart]");
    if(chart){const rows=departments.map(d=>{const items=list.filter(o=>o.dept===d.id),n=items.length;if(!n)return null;const dDone=items.filter(o=>o.status==="تکمیل‌شده").length,dLate=items.filter(o=>o.status==="معوق").length,dActive=n-dDone-dLate;return {name:d.name,n,done:dDone,active:dActive,late:dLate};}).filter(Boolean);
-    chart.innerHTML=rows.length?rows.map(x=>'<div class="followup-dept-row"><div><b>'+x.name+'</b><small>'+fmt(x.n)+' دستور</small></div><div class="followup-stack" role="img" aria-label="'+x.name+'؛ تکمیل '+x.done+'، در جریان '+x.active+'، معوق '+x.late+'"><i class="done" style="width:'+(x.done/x.n*100)+'%"></i><i class="active" style="width:'+(x.active/x.n*100)+'%"></i><i class="late" style="width:'+(x.late/x.n*100)+'%"></i></div></div>').join(""):'<p class="followup-chart-empty">با فیلتر فعلی داده‌ای برای مقایسه ادارات وجود ندارد.</p>';}
+    const segment=(value,total,cls)=>{const width=total?value/total*100:0;return '<span class="followup-segment '+cls+'" style="width:'+width+'%;flex-basis:'+width+'%"></span>';};
+    chart.innerHTML=rows.length?rows.map(x=>'<div class="followup-dept-row"><div><b>'+x.name+'</b><small>'+fmt(x.n)+' دستور</small></div><div class="followup-stack" role="img" aria-label="'+x.name+'؛ تکمیل '+fmt(x.done)+'، در جریان '+fmt(x.active)+'، معوق '+fmt(x.late)+'">'+segment(x.done,x.n,'done')+segment(x.active,x.n,'active')+segment(x.late,x.n,'late')+'</div></div>').join(""):'<p class="followup-chart-empty">با فیلتر فعلی داده‌ای برای مقایسه ادارات وجود ندارد.</p>';}
   }
   dept.addEventListener("change",render);status.addEventListener("change",render);render();
  }
