@@ -1855,3 +1855,67 @@ body.ops-page .notice-page .notice-detail{background:linear-gradient(150deg,#fff
  body.ops-page .calendar-event{grid-template-columns:48px minmax(0,1fr)}
  body.ops-page .calendar-event-meta span{font-size:7px}
 }
+
+
+/* === 2026-11-04 | پرونده حرفه‌ای سرمایه انسانی === */
+body.ops-page [data-personnel-profile] .profile-search-panel{border:1px solid #d5e3d8;background:linear-gradient(135deg,#fff 0%,#f4f8f4 100%);box-shadow:0 10px 28px rgba(32,55,45,.07)}
+body.ops-page [data-personnel-profile] .profile-search-row input{height:48px;font-size:12px;border-radius:11px;padding-inline:15px}
+body.ops-page [data-personnel-profile] .profile-search-row button{border-radius:11px;padding-inline:24px;font-weight:800}
+body.ops-page [data-personnel-profile] .profile-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:22px 0 10px;padding:12px 15px;background:#edf4ef;border:1px solid #d9e6dc;border-radius:12px}
+body.ops-page [data-personnel-profile] .profile-toolbar>div{display:grid;gap:3px}
+body.ops-page [data-personnel-profile] .profile-toolbar>div>b{font-size:12px;color:#244b38}
+body.ops-page [data-personnel-profile] .profile-print{border:1px solid #b9d0bf;background:#fff;color:#245b49;border-radius:9px;padding:9px 15px;font:inherit;font-size:10px;font-weight:800;cursor:pointer}
+body.ops-page [data-personnel-profile] .profile-quick-nav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 12px;padding:8px;background:#fff;border:1px solid #e0e9e2;border-radius:11px}
+body.ops-page [data-personnel-profile] .profile-quick-nav a{display:inline-flex;align-items:center;padding:7px 11px;border-radius:8px;background:#f3f7f3;color:#365e48!important;font-size:9px;font-weight:700;text-decoration:none}
+body.ops-page [data-personnel-profile] .profile-quick-nav a:hover{background:#e3efe6}
+body.ops-page [data-personnel-profile] .profile-identity{position:relative;overflow:hidden;min-height:142px;padding:20px;background:linear-gradient(115deg,#214f3d,#2d6a50 70%,#3d8061)!important;border:0!important;box-shadow:0 12px 28px rgba(32,79,58,.15)}
+body.ops-page [data-personnel-profile] .profile-identity:after{content:"";position:absolute;width:210px;height:210px;border:1px solid rgba(255,255,255,.12);border-radius:50%;left:-65px;top:-95px;box-shadow:0 0 0 24px rgba(255,255,255,.035),0 0 0 50px rgba(255,255,255,.025)}
+body.ops-page [data-personnel-profile] .profile-identity :is(h2,p,small,.eyebrow){color:#fff!important;position:relative;z-index:1}
+body.ops-page [data-personnel-profile] .profile-identity .eyebrow{color:#f0d7a5!important}
+body.ops-page [data-personnel-profile] .profile-photo{width:106px;height:122px;border:2px solid rgba(255,255,255,.65);border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,.16);position:relative;z-index:1}
+body.ops-page [data-personnel-profile] .profile-identity h2{font-size:20px;margin:7px 0}
+body.ops-page [data-personnel-profile] .profile-identity p{opacity:.88}
+body.ops-page [data-personnel-profile] .profile-score{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(5px);position:relative;z-index:1}
+body.ops-page [data-personnel-profile] .profile-score :is(small,b){color:#fff!important}
+body.ops-page [data-personnel-profile] .profile-score-scale{background:rgba(255,255,255,.2);width:100%}
+body.ops-page [data-personnel-profile] .profile-score-scale i{background:#e8c77e}
+body.ops-page [data-personnel-profile] .profile-overview-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:11px 0 14px}
+body.ops-page [data-personnel-profile] .profile-overview-strip article{min-width:0;padding:12px;background:#fff;border:1px solid #dfe8e1;border-radius:10px;border-top:3px solid #438568;box-shadow:0 4px 13px rgba(32,55,45,.035)}
+body.ops-page [data-personnel-profile] .profile-overview-strip article:nth-child(2){border-top-color:#4c83a8}
+body.ops-page [data-personnel-profile] .profile-overview-strip article:nth-child(3){border-top-color:#b28b4f}
+body.ops-page [data-personnel-profile] .profile-overview-strip article:nth-child(4){border-top-color:#8874a8}
+body.ops-page [data-personnel-profile] .profile-overview-strip article:nth-child(5){border-top-color:#3e9994}
+body.ops-page [data-personnel-profile] .profile-overview-strip small{display:block;font-size:8px;color:#63776a!important}
+body.ops-page [data-personnel-profile] .profile-overview-strip b{display:block;margin-top:5px;color:#244b38!important;font-size:12px;overflow-wrap:anywhere}
+body.ops-page [data-personnel-profile] .profile-personal-facts>div{background:#fff;border:1px solid #e1e9e2;border-radius:9px;padding:11px}
+body.ops-page [data-personnel-profile] .profile-expanded-grid>article{background:linear-gradient(145deg,#fff,#f8faf8);border-color:#dfe8e1;box-shadow:0 3px 10px rgba(32,55,45,.025)}
+body.ops-page [data-personnel-profile] .profile-expanded-grid small{color:#63776a!important}
+body.ops-page [data-personnel-profile] .profile-expanded-grid b{color:#245b49!important}
+body.ops-page [data-personnel-profile] .profile-section-title{display:flex;align-items:center;gap:9px;padding-bottom:8px;border-bottom:1px solid #dfe8e1;color:#244b38!important}
+body.ops-page [data-personnel-profile] .profile-section-title:before{content:"";width:4px;height:20px;border-radius:4px;background:#b28b4f}
+body.ops-page [data-personnel-profile] .profile-result>.dept-panel,body.ops-page [data-personnel-profile] .profile-detail-grid>.dept-panel{border-radius:12px;padding:16px}
+body.ops-page [data-personnel-profile] .skill-meter-row{display:grid;grid-template-columns:minmax(95px,1fr) minmax(90px,2fr) 34px;align-items:center;gap:10px}
+body.ops-page [data-personnel-profile] .skill-meter-row>span{color:#425b4c!important;font-size:9px}
+body.ops-page [data-personnel-profile] .skill-meter-row>i{height:8px;background:#e8efe9;border-radius:20px;overflow:hidden}
+body.ops-page [data-personnel-profile] .skill-meter-row>i>b{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,#3b8060,#7caf8b)}
+body.ops-page [data-personnel-profile] .skill-meter-row>strong{color:#285c43!important;font-size:10px}
+body.ops-page [data-personnel-profile] .profile-timeline>div{border-right:2px solid #b28b4f;background:#f8faf8;border-radius:0 8px 8px 0;padding:11px;margin:3px 0}
+body.ops-page [data-personnel-profile] .profile-result table{min-width:540px}
+body.ops-page [data-personnel-profile] .profile-principles{background:#f4f8f4;border-color:#dce7de}
+@media(max-width:760px){
+ body.ops-page [data-personnel-profile] .profile-overview-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body.ops-page [data-personnel-profile] .profile-identity{flex-wrap:wrap}
+ body.ops-page [data-personnel-profile] .profile-identity .profile-score{margin-right:0}
+}
+@media(max-width:480px){
+ body.ops-page [data-personnel-profile] .profile-toolbar{align-items:flex-start}
+ body.ops-page [data-personnel-profile] .profile-quick-nav{gap:5px}
+ body.ops-page [data-personnel-profile] .profile-quick-nav a{padding:6px 8px;font-size:8px}
+ body.ops-page [data-personnel-profile] .profile-photo{width:78px;height:92px}
+ body.ops-page [data-personnel-profile] .profile-identity h2{font-size:15px}
+}
+@media print{
+ body.ops-page [data-personnel-profile] .profile-search-panel,body.ops-page [data-personnel-profile] .profile-toolbar,body.ops-page [data-personnel-profile] .profile-quick-nav,body.ops-page .ops-header,body.ops-page .ops-footer{display:none!important}
+ body.ops-page [data-personnel-profile] .profile-result{display:block!important}
+ body.ops-page [data-personnel-profile] .profile-identity{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
