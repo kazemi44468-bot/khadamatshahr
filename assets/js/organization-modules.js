@@ -162,8 +162,31 @@
   const total=orders.length,done=orders.filter(o=>o.status==="تکمیل‌شده").length,late=orders.filter(o=>o.status==="معوق").length,active=total-done-late;
   const put=(key,value)=>{const n=root.querySelector('[data-notice="'+key+'"]');if(n)n.textContent=fmt(value);};
   put("total",total);put("done",done);put("late",late);put("active",active);
-  const list=root.querySelector("[data-notice-list]");
-  if(list)list.innerHTML=orders.slice().sort((a,b)=>(a.status==="معوق"?-1:0)-(b.status==="معوق"?-1:0)).map(o=>'<article class="notice-item '+(o.status==="معوق"?"urgent":o.status==="تکمیل‌شده"?"done":"")+'"><i></i><div><b>'+o.title+'</b><p>'+byId(o.dept).name+' · '+o.owner+' · مهلت '+o.deadline+'</p></div><em>'+o.status+' · '+fmt(o.progress)+'٪</em></article>').join("");
+  const list=root.querySelector("[data-notice-list]"),detail=root.querySelector("[data-notice-detail]");
+  const search=root.querySelector("[data-notice-search]"),dept=root.querySelector("[data-notice-dept]");
+  const count=root.querySelector("[data-notice-count]");
+  let status="all",selected=orders.find(o=>o.status==="معوق")||orders[0];
+  const esc=value=>String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  const statusClass=o=>o.status==="معوق"?"late":o.status==="تکمیل‌شده"?"done":o.status==="ابلاغ‌شده"?"issued":"progress";
+  const detailView=o=>{
+   if(!o){detail.innerHTML='<div class="notice-detail-empty"><span>◎</span><b>موردی انتخاب نشده است</b><p>از فهرست، یک اعلان را انتخاب کنید.</p></div>';return;}
+   const d=byId(o.dept);
+   detail.innerHTML='<div class="notice-detail-top"><span class="notice-status-pill '+statusClass(o)+'">'+esc(o.status)+'</span><small>'+esc(o.id)+'</small></div><span class="eyebrow">جزئیات مورد انتخاب‌شده</span><h3>'+esc(o.title)+'</h3><p class="notice-detail-desc">'+esc(o.detail||"شرح تکمیلی برای این مورد ثبت نشده است.")+'</p><div class="notice-detail-progress"><div><span>درصد پیشرفت</span><b>'+fmt(o.progress)+'٪</b></div><i><b style="width:'+Math.max(0,Math.min(100,o.progress))+'%"></b></i></div><dl class="notice-meta"><div><dt>واحد مرتبط</dt><dd>'+esc(d?d.name:"—")+'</dd></div><div><dt>شناسه پیگیری</dt><dd>'+esc(o.id)+'</dd></div><div><dt>مرجع ابلاغ</dt><dd>'+esc(o.issuer||"ریاست شرکت")+'</dd></div><div><dt>نحوه ثبت</dt><dd>'+esc(o.source||"—")+'</dd></div><div><dt>تاریخ ثبت</dt><dd>'+esc(o.date||"—")+'</dd></div><div><dt>مهلت اقدام</dt><dd>'+esc(o.deadline||"تعیین نشده")+'</dd></div></dl><a class="notice-detail-link" href="special-followups.html">مشاهده دفتر کامل پیگیری‌ها ←</a>';
+  };
+  const render=()=>{
+   const q=(search?.value||"").trim().toLocaleLowerCase("fa"),d=dept?.value||"all";
+   const filtered=orders.filter(o=>{
+    const department=byId(o.dept);
+    return (status==="all"||o.status===status)&&(d==="all"||o.dept===d)&&(!q||[o.title,o.id,o.detail,department?.name,o.status,o.deadline].join(" ").toLocaleLowerCase("fa").includes(q));
+   }).sort((a,b)=>({معوق:0,"در حال اجرا":1,"ابلاغ‌شده":2,"تکمیل‌شده":3}[a.status]-({معوق:0,"در حال اجرا":1,"ابلاغ‌شده":2,"تکمیل‌شده":3}[b.status]));
+   if(count)count.textContent=fmt(filtered.length)+" مورد";
+   if(!filtered.some(o=>o.id===selected?.id))selected=filtered[0]||null;
+   list.innerHTML=filtered.length?filtered.map(o=>'<button type="button" class="notice-item '+statusClass(o)+(selected?.id===o.id?" selected":"")+'" data-notice-id="'+esc(o.id)+'"><span class="notice-item-mark"></span><span class="notice-item-body"><span class="notice-item-top"><b>'+esc(o.title)+'</b><em class="notice-status-pill '+statusClass(o)+'">'+esc(o.status)+'</em></span><small>'+esc(byId(o.dept)?.name||"")+' · مهلت '+esc(o.deadline||"—")+'</small><span class="notice-item-progress"><i><b style="width:'+Math.max(0,Math.min(100,o.progress))+'%"></b></i><strong>'+fmt(o.progress)+'٪</strong></span></span></button>').join(""):'<div class="notice-no-results"><b>موردی پیدا نشد</b><span>فیلترها یا عبارت جست‌وجو را تغییر دهید.</span></div>';
+   detailView(selected);
+   list.querySelectorAll("[data-notice-id]").forEach(button=>button.addEventListener("click",()=>{selected=orders.find(o=>o.id===button.dataset.noticeId);render();}));
+  };
+  root.querySelectorAll("[data-notice-status]").forEach(button=>button.addEventListener("click",()=>{status=button.dataset.noticeStatus;root.querySelectorAll("[data-notice-status]").forEach(x=>x.classList.toggle("active",x===button));render();}));
+  search?.addEventListener("input",render);dept?.addEventListener("change",render);render();
  }
  document.addEventListener("DOMContentLoaded",()=>{initWorkforce();initProfile();initFollowups();initEvaluation();initNotifications();initDepartmentInventory()});
 })();
