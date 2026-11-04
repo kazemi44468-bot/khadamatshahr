@@ -2346,3 +2346,10 @@ body.ops-page :is(
     .service-item,.service-hub-card,.profile-result,.dept-kpi
   ){border-radius:11px!important}
 }
+
+
+/* فرم نرم برای لبه زمین تصویر صفحه نخست؛ حذف شکست‌های تیز */
+.city-ground{
+  clip-path:none!important;
+  border-radius:22px 22px 0 0!important;
+}
