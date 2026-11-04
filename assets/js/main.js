@@ -74,7 +74,13 @@ if(search){
   nav.querySelectorAll('a').forEach(a=>{
    const target=a.getAttribute('href').split('#')[0].split('/').pop();
    if(target===current || (current==='index.html'&&a.getAttribute('href').includes('#departments')))a.classList.add('active');
+   a.addEventListener('click',()=>nav.querySelectorAll('.nav-dropdown').forEach(d=>d.open=false));
   });
+  nav.querySelectorAll('.nav-dropdown').forEach(menu=>menu.addEventListener('toggle',()=>{
+   if(menu.open)nav.querySelectorAll('.nav-dropdown').forEach(other=>{if(other!==menu)other.open=false});
+  }));
+  document.addEventListener('click',event=>{if(!nav.contains(event.target))nav.querySelectorAll('.nav-dropdown').forEach(d=>d.open=false)});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape')nav.querySelectorAll('.nav-dropdown').forEach(d=>d.open=false)});
  }
  const dock=document.createElement('nav');
  dock.className='mobile-dock';
