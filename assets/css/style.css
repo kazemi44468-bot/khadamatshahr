@@ -2353,3 +2353,19 @@ body.ops-page :is(
   clip-path:none!important;
   border-radius:22px 22px 0 0!important;
 }
+
+
+/* === زمینه نهایی: فقط شبکه مربعی، بدون هاله و بافت اضافی === */
+body.ops-page{
+  background-color:#edf2ec!important;
+  background-image:
+    linear-gradient(90deg,rgba(89,126,91,.045) 1px,transparent 1px),
+    linear-gradient(rgba(89,126,91,.045) 1px,transparent 1px)!important;
+  background-size:28px 28px,28px 28px!important;
+  background-position:0 0,0 0!important;
+  background-attachment:fixed!important;
+}
+body.ops-page:before{
+  opacity:0!important;
+  background:none!important;
+}
