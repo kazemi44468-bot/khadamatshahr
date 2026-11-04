@@ -116,6 +116,8 @@
    set("assets-maintenance",fmt(person.assets.filter(x=>(x.condition||"").includes("بازبینی")).length)+" قلم نیازمند بازبینی");
 
   }
+  const directory=root.querySelector("[data-person-directory]");
+  if(directory){directory.innerHTML=people.map(p=>'<button type="button" class="profile-person-card" data-profile-id="'+p.id+'"><span class="profile-person-avatar">'+p.name.trim().slice(0,1)+'</span><span><b>'+p.name+'</b><small>'+p.role+' · شناسه '+fmt(p.id)+'</small></span><i>مشاهده پرونده ←</i></button>').join("");directory.querySelectorAll("[data-profile-id]").forEach(button=>button.addEventListener("click",()=>{input.value=button.dataset.profileId;show();result.scrollIntoView({behavior:"smooth",block:"start"});}));}
   root.querySelector("[data-personnel-search]").addEventListener("click",show);
   input.addEventListener("keydown",e=>{if(e.key==="Enter")show()});
  }
