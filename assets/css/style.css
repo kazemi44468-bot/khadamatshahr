@@ -2124,3 +2124,160 @@ body.ops-page .service-metric span{color:#5b7062!important}
  body.ops-page .inventory-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  body.ops-page .report-topic-grid{grid-template-columns:1fr 1fr}
 }
+
+
+/* === پرداخت نهایی پوسته: بازگشت شبکه مربعی، فوتر مینیمال و کنتراست واقعی === */
+body.ops-page{
+  background-color:#f2f5ef!important;
+  background-image:
+    linear-gradient(rgba(70,105,77,.052) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(70,105,77,.052) 1px,transparent 1px),
+    linear-gradient(rgba(183,153,94,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,153,94,.035) 1px,transparent 1px),
+    radial-gradient(ellipse at 9% 7%,rgba(188,164,108,.10),transparent 32%),
+    radial-gradient(ellipse at 92% 48%,rgba(92,135,99,.075),transparent 36%)!important;
+  background-size:36px 36px,36px 36px,180px 180px,180px 180px,auto,auto!important;
+  background-position:0 0,0 0,0 0,0 0,center,center!important;
+  background-attachment:fixed!important;
+}
+body.ops-page:before{opacity:.13!important;pointer-events:none!important}
+
+/* فوتر مشترک تمام صفحات */
+body.ops-page .ops-footer{
+  position:relative!important;
+  isolation:isolate;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  flex-wrap:wrap;
+  gap:10px 22px!important;
+  width:100vw;
+  margin:42px calc(50% - 50vw) 0!important;
+  padding:19px max(22px,calc((100vw - 1220px)/2)) 20px!important;
+  min-height:68px;
+  border:0!important;
+  border-top:1px solid #dce5da!important;
+  border-radius:0!important;
+  background:linear-gradient(180deg,rgba(250,252,248,.98),rgba(240,245,238,.98))!important;
+  color:#52695a!important;
+  box-shadow:0 -5px 20px rgba(39,65,45,.025)!important;
+  overflow:hidden;
+  font-size:10px!important;
+}
+body.ops-page .ops-footer:before{
+  content:""!important;
+  position:absolute!important;
+  top:0!important;right:0!important;left:0!important;
+  height:2px!important;
+  background:linear-gradient(90deg,transparent 0%,#c4a66c 22%,#6f9478 50%,#c4a66c 78%,transparent 100%)!important;
+  opacity:.8;
+}
+body.ops-page .ops-footer:after{content:none!important;display:none!important}
+body.ops-page .ops-footer span:first-child{
+  color:#294d39!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  letter-spacing:-.15px;
+}
+body.ops-page .ops-footer span:not(:first-child),
+body.ops-page .ops-footer a{
+  color:#617568!important;
+  font-size:9px!important;
+  font-weight:600!important;
+}
+body.ops-page .ops-footer a{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border:1px solid #dbe5dc;
+  border-radius:8px;
+  background:#fff;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+body.ops-page .ops-footer a:hover{
+  color:#285b43!important;
+  background:#edf4ee;
+  border-color:#b9cfbd;
+}
+@media(max-width:560px){
+  body.ops-page .ops-footer{
+    justify-content:center!important;
+    text-align:center;
+    gap:8px!important;
+    margin-top:28px!important;
+    padding:16px 16px 18px!important;
+  }
+  body.ops-page .ops-footer>*{max-width:100%}
+}
+
+/* قرارداد خوانایی: سطوح محتوایی روشن، متن تیره و مرزبندی مشخص */
+body.ops-page :is(
+  .ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,
+  .calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,
+  .notice-insight-card,.notice-control-panel,.notice-guidance,
+  .notice-shortcuts,.notice-results,.notice-detail,.service-item,
+  .service-hub-card,.profile-result,.common-info-grid>div,
+  .common-action-grid>div,.dept-kpi,.inventory-status-grid>div,
+  .report-topic-grid>div,.weight-grid>div,.ops-summary>div,.ops-kpis>div
+){
+  color:#263f32!important;
+  border-color:#d8e3da;
+}
+body.ops-page :is(
+  .ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,
+  .calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,
+  .notice-insight-card,.notice-control-panel,.notice-guidance,
+  .notice-shortcuts,.notice-results,.notice-detail,.service-item,
+  .service-hub-card,.profile-result,.common-info-grid>div,
+  .common-action-grid>div,.dept-kpi,.inventory-status-grid>div,
+  .report-topic-grid>div,.weight-grid>div,.ops-summary>div,.ops-kpis>div
+) :is(h1,h2,h3,h4,b,strong){
+  color:#203f2e!important;
+}
+body.ops-page :is(
+  .ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,
+  .calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,
+  .notice-insight-card,.notice-control-panel,.notice-guidance,
+  .notice-shortcuts,.notice-results,.notice-detail,.service-item,
+  .service-hub-card,.profile-result,.common-info-grid>div,
+  .common-action-grid>div,.dept-kpi,.inventory-status-grid>div,
+  .report-topic-grid>div,.weight-grid>div,.ops-summary>div,.ops-kpis>div
+) :is(p,li,span,small,label,dt,dd,td){
+  color:#40594a!important;
+}
+body.ops-page :is(
+  .ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,
+  .calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,
+  .notice-insight-card,.notice-control-panel,.notice-guidance,
+  .notice-shortcuts,.notice-results,.notice-detail,.service-item,
+  .service-hub-card,.profile-result,.common-info-grid>div,
+  .common-action-grid>div,.dept-kpi,.inventory-status-grid>div,
+  .report-topic-grid>div,.weight-grid>div,.ops-summary>div,.ops-kpis>div
+) :is(.eyebrow,dt,th){
+  color:#526b5b!important;
+}
+body.ops-page :is(.ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,.notice-insight-card,.notice-control-panel,.notice-guidance,.notice-shortcuts,.notice-results,.notice-detail,.service-item,.service-hub-card,.profile-result,.common-info-grid>div,.common-action-grid>div,.dept-kpi,.inventory-status-grid>div,.report-topic-grid>div,.weight-grid>div,.ops-summary>div,.ops-kpis>div) :is(a:not(.notice-status-pill):not(.notice-priority),button:not(.notice-status-pill)){
+  text-decoration-color:#8ba995;
+}
+body.ops-page :is(.ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,.notice-insight-card,.notice-control-panel,.notice-guidance,.notice-shortcuts,.notice-results,.notice-detail,.service-item,.service-hub-card,.profile-result,.common-info-grid>div,.common-action-grid>div,.dept-kpi,.inventory-status-grid>div,.report-topic-grid>div,.weight-grid>div,.ops-summary>div,.ops-kpis>div) :is(input,select,textarea){
+  color:#263f32!important;
+  background:#fff!important;
+  border-color:#c7d6ca!important;
+}
+body.ops-page :is(.ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,.notice-insight-card,.notice-control-panel,.notice-guidance,.notice-shortcuts,.notice-results,.notice-detail,.service-item,.service-hub-card,.profile-result,.common-info-grid>div,.common-action-grid>div,.dept-kpi,.inventory-status-grid>div,.report-topic-grid>div,.weight-grid>div,.ops-summary>div,.ops-kpis>div) :is(input,select,textarea)::placeholder{color:#718276!important;opacity:1}
+
+/* حفظ رنگ معنادار برچسب‌های وضعیت و دکمه‌های اصلی */
+body.ops-page :is(.notice-status-pill,.notice-priority,.ops-badge,.status-pill,.status-badge,.priority-badge){font-weight:800}
+body.ops-page :is(.notice-status-pill,.notice-priority){border:1px solid currentColor}
+
+/* جدول‌ها و ردیف‌های داده با جداسازی واضح */
+body.ops-page table :is(th,td){border-bottom:1px solid #e3eae4}
+body.ops-page table th{background:#eaf1eb!important;color:#294d39!important}
+body.ops-page table td{background:#fff;color:#40594a!important}
+body.ops-page table tbody tr:nth-child(even) td{background:#f6f9f6!important}
+body.ops-page table tbody tr:hover td{background:#edf5ee!important}
+@media(prefers-reduced-motion:reduce){
+ body.ops-page .ops-footer a{transition:none}
+}
