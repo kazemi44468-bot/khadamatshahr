@@ -1596,3 +1596,30 @@ body.ops-page :is(.gold,.accent-gold,.ops-accent){color:#9b773e}
 @media(prefers-reduced-motion:no-preference){
  body.ops-page :is(.ops-card,.ops-panel,.panel,.card,.notice-item,.report-card,.service-card){transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease}
 }
+
+/* Final contrast pass: consistent surfaces and legible text across every section */
+body.ops-page :is(p,li,td,dd,label,small,.muted,.hint,.description,.section-description,.ops-card p,.ops-footer){
+ color:#52675b!important;
+}
+body.ops-page :is(h1,h2,h3,h4,h5,.ops-card-title,.ops-section-title,.section-head,.panel-heading){
+ color:#20372d!important;
+}
+body.ops-page :is(.ops-summary,.notice-summary,.hr-home-metrics,.calendar-overview,.executive-metrics,.service-metric,.ops-kpis,.dept-panel,.report-panel,.activity-panel,.ops-card,.ops-panel,.ops-box,.panel,.card,.notice-item,.notice-detail,.report-card,.service-card,.profile-card,.calendar-card,.dept-card,.summary-card,.metric-card,.stat-card,.table-wrap,.data-panel){
+ background-color:#ffffff!important;
+ border-color:#dce5dc!important;
+}
+body.ops-page :is(a,.text-link,.card-link){color:#28654d}
+body.ops-page :is(.ops-header,.ops-topbar,.ops-nav,.ops-sidebar){background:#ffffff!important;border-color:#dce5dc!important}
+body.ops-page :is(.ops-nav a,.ops-sidebar a){color:#465c50!important}
+body.ops-page :is(.ops-nav a.active,.ops-sidebar a.active){color:#1f6248!important;background:#eaf2eb!important}
+body.ops-page :is(.ops-intro,.notice-hero,.ops-hero,.page-hero){background:linear-gradient(115deg,#214f3d 0%,#2e6b50 58%,#39795d 100%)!important}
+body.ops-page :is(.ops-intro,.notice-hero,.ops-hero,.page-hero) :is(h1,h2,h3,p,span,small,b,strong){color:#ffffff!important}
+body.ops-page :is(.ops-intro,.notice-hero,.ops-hero,.page-hero) .eyebrow{color:#f0d7a5!important}
+body.ops-page :is(th,.table-head,.table-header){background:#edf3ed!important;color:#294b39!important}
+body.ops-page tr:hover td{background:#f5f8f4!important}
+body.ops-page :is(.ops-footer,.site-footer){background:#20372d!important;color:#e8efe9!important}
+body.ops-page :is(.ops-footer,.site-footer) :is(p,span,a,small){color:#d5e1d7!important}
+body.ops-page :is(.notice-status-pill.late,.notice-priority.urgent){color:#a93625!important}
+body.ops-page :is(.notice-status-pill.done,.notice-priority.normal){color:#20583d!important}
+body.ops-page :is(.notice-status-pill.issued,.notice-priority.medium){color:#285c82!important}
+body.ops-page :is(.notice-status-pill.progress,.notice-priority.high){color:#79520a!important}
