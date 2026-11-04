@@ -1520,3 +1520,11 @@ body.ops-page .ops-footer{color:#536a59;border-color:#cfdbcd}
  .notice-control-panel,.notice-results,.notice-detail,.notice-insight-card{box-shadow:none!important;break-inside:avoid}
  .notice-workspace{grid-template-columns:1fr 1fr}
 }
+
+.notice-priority{display:inline-flex;align-items:center;justify-content:center;border-radius:18px;padding:3px 9px;font-size:9px;font-style:normal;font-weight:800;white-space:nowrap}
+.notice-priority.urgent{background:#fff0eb;color:#c24d3b;border:1px solid #f5d1c7}
+.notice-priority.high{background:#fff5df;color:#9a6b12;border:1px solid #f0dfb4}
+.notice-priority.medium{background:#eaf3fb;color:#477da1;border:1px solid #d5e6f3}
+.notice-priority.normal{background:#e9f5ef;color:#28795b;border:1px solid #d5e9dc}
+.notice-item-top{flex-wrap:wrap;gap:7px}
+@media(max-width:650px){.notice-filters{display:grid;grid-template-columns:1fr}.notice-status-filter{overflow-x:auto;flex-wrap:nowrap}.notice-status-filter button{white-space:nowrap}}
