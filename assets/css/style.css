@@ -2279,3 +2279,70 @@ body.ops-page table tbody tr:hover td{background:#edf5ee!important}
 @media(prefers-reduced-motion:reduce){
  body.ops-page .ops-footer a{transition:none}
 }
+
+/* === یکپارچه‌سازی نهایی بافت زمینه و زبان گوشه‌های گرد === */
+/* همان شبکه مربعی نسخه قبلی؛ بدون تغییر به الگوی تزئینی نوک‌تیز */
+body.ops-page{
+  background-color:#edf2ec!important;
+  background-image:
+    linear-gradient(90deg,rgba(89,126,91,.035) 1px,transparent 1px),
+    linear-gradient(rgba(89,126,91,.035) 1px,transparent 1px),
+    linear-gradient(135deg,rgba(195,166,110,.055) 25%,transparent 25%,transparent 75%,rgba(195,166,110,.055) 75%)!important;
+  background-size:28px 28px,28px 28px,56px 56px!important;
+  background-position:0 0,0 0,14px 14px!important;
+  background-attachment:fixed!important;
+}
+
+/* زبان مشترک گوشه‌ها برای تمام سطوح محتوایی */
+body.ops-page :is(
+  .ops-intro,.intro-stamp,.ops-card,.dept-panel,.analytics-panel,
+  .report-box,.report-panel,.calendar-panel,.followup-chart-card,
+  .hr-panel,.activity-panel,.notice-insight-card,.notice-control-panel,
+  .notice-guidance,.notice-shortcuts,.notice-results,.notice-detail,
+  .service-item,.service-hub-card,.profile-result,.common-info-grid>div,
+  .common-action-grid>div,.dept-kpi,.inventory-status-grid>div,
+  .report-topic-grid>div,.weight-grid>div,.ops-summary>div,.ops-kpis>div,
+  .calendar-overview>article,.notice-summary>article,.hr-summary-grid>article,
+  .dept-hr-metrics>article,.service-metric,.dept-calendar-panel,
+  .table-scroll,.notice-workspace,.notice-steps>div
+){
+  border-radius:13px!important;
+}
+
+/* کنترل‌ها و اجزای تعاملی هم‌خانواده با کارت‌ها */
+body.ops-page :is(
+  input,select,textarea,.ops-button,.button,.notice-print-button,
+  .notice-search,.notice-select,.notice-status-filter button,
+  .notice-item,.notice-detail-link,.ops-footer a,.hr-view-all
+){
+  border-radius:10px!important;
+}
+
+/* برچسب‌ها و نشان‌های وضعیت گرد و کپسولی باقی بمانند */
+body.ops-page :is(
+  .notice-status-pill,.notice-priority,.ops-badge,.status-pill,
+  .status-badge,.priority-badge,.notice-hero-tags span
+){
+  border-radius:999px!important;
+}
+
+/* گوشه‌های تزئینی شکسته یا برش‌خورده در کارت‌ها حذف شوند؛
+   عناصر نموداری و نشان‌های دایره‌ای مستثنا هستند. */
+body.ops-page :is(
+  .ops-intro,.ops-card,.dept-panel,.analytics-panel,.report-box,
+  .report-panel,.calendar-panel,.followup-chart-card,.hr-panel,
+  .activity-panel,.notice-insight-card,.notice-control-panel,
+  .notice-guidance,.notice-shortcuts,.notice-results,.notice-detail,
+  .service-item,.service-hub-card,.profile-result,.dept-kpi
+)::before{
+  border-radius:inherit;
+}
+@media(max-width:650px){
+  body.ops-page :is(
+    .ops-intro,.ops-card,.dept-panel,.analytics-panel,.report-box,
+    .report-panel,.calendar-panel,.followup-chart-card,.hr-panel,
+    .activity-panel,.notice-insight-card,.notice-control-panel,
+    .notice-guidance,.notice-shortcuts,.notice-results,.notice-detail,
+    .service-item,.service-hub-card,.profile-result,.dept-kpi
+  ){border-radius:11px!important}
+}
