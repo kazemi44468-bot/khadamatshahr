@@ -2062,3 +2062,65 @@ body.ops-page .notice-page .notice-hero-stamp{background:rgba(255,255,255,.1);bo
 @media print{
  body.ops-page .notice-page .notice-detail,body.ops-page .notice-page .notice-item{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
+
+
+/* ریزپرداخت چیدمان صفحات اداره‌ها، گزارش‌ها و داشبوردهای خدمات */
+body.ops-page .ops-main{padding-bottom:10px}
+body.ops-page :is(.common-info-grid>div,.common-action-grid>div,.dept-kpi,.inventory-status-grid>div,.report-topic-grid>div,.weight-grid>div){
+ background:linear-gradient(145deg,#fff,#f5f8f5)!important;
+ border:1px solid #dfe8e1!important;
+ border-radius:10px;
+ box-shadow:0 3px 12px rgba(31,55,41,.035);
+}
+body.ops-page .common-info-grid>div{padding:12px}
+body.ops-page .common-info-grid small{color:#627769!important}
+body.ops-page .common-info-grid b{color:#28563f!important}
+body.ops-page .common-action-grid>div{padding:13px;transition:transform .18s ease,box-shadow .18s ease}
+body.ops-page .common-action-grid>div:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(31,55,41,.08)}
+body.ops-page .dept-kpi{position:relative;overflow:hidden;padding:13px}
+body.ops-page .dept-kpi:before{content:"";position:absolute;right:0;top:0;bottom:0;width:3px;background:#4a8966}
+body.ops-page .dept-kpi:nth-child(4n+2):before{background:#4c83a8}
+body.ops-page .dept-kpi:nth-child(4n+3):before{background:#b28b4f}
+body.ops-page .dept-kpi:nth-child(4n):before{background:#8874a8}
+body.ops-page .dept-kpi small{color:#5d7264!important}
+body.ops-page .dept-kpi>b{color:#285b43!important}
+body.ops-page .dept-chart-grid>.dept-panel{min-width:0;padding:15px}
+body.ops-page .dept-content-grid{align-items:stretch}
+body.ops-page .dept-content-grid>.dept-panel{min-width:0;padding:15px}
+body.ops-page .work-row{padding:11px 9px;border-bottom:1px solid #e8eee9;border-radius:7px}
+body.ops-page .work-row:nth-child(even){background:#f8faf8}
+body.ops-page .work-row :is(span,b,strong){color:#40594a}
+body.ops-page .dept-calendar-panel{overflow:hidden;border:1px solid #dce6de!important;border-radius:12px}
+body.ops-page .inventory-status-grid>div{padding:12px}
+body.ops-page .inventory-status-grid small{color:#617568!important}
+body.ops-page .inventory-status-grid b{color:#285b43!important}
+body.ops-page .report-topic-grid>div{padding:14px}
+body.ops-page .report-topic-grid>div b{color:#28543d!important}
+body.ops-page .report-topic-grid>div span{color:#52695a!important}
+body.ops-page .analytics-panel{min-width:0;padding:15px}
+body.ops-page .analytics-panel-head{border-bottom:1px solid #e7eee8;padding-bottom:9px;margin-bottom:12px}
+body.ops-page .evaluation-lead{border-color:#d6e4d9!important;background:linear-gradient(115deg,#edf5ef,#f8f8f1)!important}
+body.ops-page .evaluation-lead :is(small,b,span){color:#28543d!important}
+body.ops-page .followup-chart-card{min-width:0;padding:15px}
+body.ops-page .followup-chart-head{padding-bottom:9px;border-bottom:1px solid #e8eee9;margin-bottom:12px}
+body.ops-page .notice-summary article span,
+body.ops-page .calendar-overview article span,
+body.ops-page .hr-summary-grid article span,
+body.ops-page .dept-hr-metrics article span,
+body.ops-page .service-metric span{color:#5b7062!important}
+@media(max-width:900px){
+ body.ops-page .dept-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body.ops-page .dept-chart-grid,body.ops-page .dept-content-grid,body.ops-page .analytics-grid,body.ops-page .followup-charts{grid-template-columns:1fr}
+ body.ops-page .common-info-grid,body.ops-page .common-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ body.ops-page .ops-main{width:calc(100% - 24px)}
+ body.ops-page .dept-chart-grid,body.ops-page .dept-content-grid{gap:8px}
+ body.ops-page .dept-chart-grid>.dept-panel,body.ops-page .dept-content-grid>.dept-panel{padding:11px}
+ body.ops-page .common-info-grid,body.ops-page .common-action-grid{gap:7px}
+ body.ops-page .common-info-grid>div,body.ops-page .common-action-grid>div{padding:9px}
+ body.ops-page .dept-kpi-grid{gap:7px}
+ body.ops-page .dept-kpi{padding:10px}
+ body.ops-page .inventory-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body.ops-page .report-topic-grid{grid-template-columns:1fr 1fr}
+}
