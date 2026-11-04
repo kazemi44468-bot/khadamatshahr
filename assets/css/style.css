@@ -352,7 +352,7 @@
   border:1px solid #c9d8c8;border-radius:9px;
   background:rgba(255,255,255,.94);color:#315b4c;
   box-shadow:0 7px 22px rgba(38,65,46,.14);
-  font:700 21px/1 Tahoma,Arial,sans-serif;
+  font:700 21px/1 'Vazirmatn',sans-serif;
   opacity:0;visibility:hidden;transform:translateY(9px);
   transition:opacity .22s ease,transform .22s ease,visibility .22s ease,background .2s ease;
   cursor:pointer;backdrop-filter:blur(8px)
