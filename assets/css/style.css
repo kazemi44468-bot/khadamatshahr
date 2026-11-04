@@ -1401,7 +1401,6 @@ body.ops-page .ops-footer{color:#536a59;border-color:#cfdbcd}
 
 
 /* هویت بصری یکپارچه و خوانا */
-@font-face{font-family:'ShahrBehesht';src:url('../fonts/Vazirmatn[wght].woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
 html,body,button,input,select,textarea{font-family:'ShahrBehesht',sans-serif}
 body.ops-page,body.ops-page *{font-family:'ShahrBehesht',sans-serif!important}
 body.ops-page{--ink:#24332e;--muted:#596b63;--green:#245b49;--green2:#36745d;--gold:#ad8649;--paper:#f3f5f1;--line:#dce3dc;background:#f3f5f1;color:#24332e}
@@ -1502,3 +1501,25 @@ body.ops-page{--ink:#24332e;--muted:#596b63;--green:#245b49;--green2:#36745d;--g
 }
 @media(max-width:420px){.mobile-dock-panel-links{grid-template-columns:1fr}.ops-brand b{font-size:10px}}
 @media print{.mobile-dock,.ops-header .ops-nav{display:none!important}body.ops-page{padding:0;background:#fff}}
+
+/* کنتراست قطعی متن‌ها در تمام صفحات عملیاتی */
+body.ops-page :is(p,li,td,dd,label,.profile-hint,.profile-copy,.notice-detail-desc,.notice-item small,.service-item p,.service-hub-card span,.hr-detail-list span){color:#43574a!important}
+body.ops-page :is(h1,h2,h3,h4,.ops-card-title b,.notice-item-top b,.notice-results-head b,.notice-detail h3,.section-head h2,.dept-panel-head h2){color:#203b2e!important}
+body.ops-page :is(th,dt,.summary-label,.ops-special-label,.eyebrow){color:#405c49!important}
+body.ops-page :is(.ops-summary small,.notice-summary small,.hr-home-metrics small,.calendar-overview small,.executive-metrics small,.service-metric small){color:#4c6254!important}
+body.ops-page :is(.ops-summary b,.notice-summary b,.hr-home-metrics b,.calendar-overview b,.executive-metrics b,.service-metric b,.ops-kpis b){color:#245b49!important}
+body.ops-page .ops-intro :is(h1,p,span,small),body.ops-page .notice-hero :is(h1,p,span,small){color:#fff!important}
+body.ops-page .ops-intro .eyebrow,body.ops-page .notice-hero .eyebrow{color:#f2d9a8!important}
+body.ops-page .ops-intro .intro-stamp b,body.ops-page .notice-hero .notice-hero-stamp b{color:#ffe2a9!important}
+body.ops-page .ops-intro .intro-stamp,body.ops-page .notice-hero .notice-hero-stamp{color:#fff!important}
+body.ops-page .notice-status-pill.late{color:#a93625!important}
+body.ops-page .notice-status-pill.done{color:#20583d!important}
+body.ops-page .notice-status-pill.issued{color:#285c82!important}
+body.ops-page .notice-status-pill.progress{color:#79520a!important}
+body.ops-page .notice-priority.urgent{color:#a93625!important}
+body.ops-page .notice-priority.high{color:#79520a!important}
+body.ops-page .notice-priority.medium{color:#285c82!important}
+body.ops-page .notice-priority.normal{color:#20583d!important}
+body.ops-page .notice-detail-link{color:#fff!important}
+body.ops-page .ops-footer :is(span,a){color:#355344!important}
+body.ops-page .notice-status-filter button.active{color:#fff!important}
