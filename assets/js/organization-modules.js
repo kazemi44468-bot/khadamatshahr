@@ -133,7 +133,16 @@
    root.querySelector("[data-followup-progress]").textContent=pct(avg);
    const breakdown=root.querySelector("[data-followup-breakdown]");
    if(breakdown){const groups=[...departments.map(d=>({label:d.name,items:list.filter(o=>o.dept===d.id)})),...people.map(p=>({label:p.name,items:list.filter(o=>o.targetPerson===p.name)}))].filter(g=>g.items.length);
-    breakdown.innerHTML=groups.map(g=>{const done=g.items.filter(o=>o.status==="تکمیل‌شده").length;const late=g.items.filter(o=>o.status==="معوق").length;return "<tr><td>"+g.label+"</td><td>"+fmt(g.items.length)+"</td><td>"+fmt(done)+"</td><td>"+fmt(late)+"</td><td>"+fmt(g.items.length-done-late)+"</td></tr>";}).join("");}
+    breakdown.innerHTML=groups.map(g=>{const done=g.items.filter(o=>o.status==="تکمیل‌شده").length;const late=g.items.filter(o=>o.status==="معوق").length;return "<tr><td>"+g.label+"</td><td>"+fmt(g.items.length)+"</td><td>"+fmt(done)+"</td><td>"+fmt(late)+"</td><td>"+fmt(g.items.length-done-late)+"</td></tr>";}).join("")||'<tr><td colspan="5">موردی برای نمایش وجود ندارد</td></tr>';}
+   const done=list.filter(o=>o.status==="تکمیل‌شده").length, late=list.filter(o=>o.status==="معوق").length, active=list.length-done-late;
+   const donut=root.querySelector("[data-followup-status-chart]");
+   if(donut){const total=list.length||1, a=done/total*100,b=(done+active)/total*100;donut.style.background=list.length?'conic-gradient(#548363 0 '+a+'%,#c3a66e '+a+'% '+b+'%,#c98272 '+b+'% 100%)':'conic-gradient(#e8eee6 0 100%)';}
+   const totalNode=root.querySelector("[data-followup-chart-total]");if(totalNode)totalNode.textContent=fmt(list.length);
+   const legend=root.querySelector("[data-followup-status-legend]");
+   if(legend)legend.innerHTML=[["تکمیل‌شده",done,"done"],["در جریان / ابلاغ",active,"active"],["معوق",late,"late"]].map(x=>'<div><i class="'+x[2]+'"></i><span>'+x[0]+'</span><b>'+fmt(x[1])+'</b></div>').join("");
+   const chart=root.querySelector("[data-followup-dept-chart]");
+   if(chart){const rows=departments.map(d=>{const items=list.filter(o=>o.dept===d.id),n=items.length;if(!n)return null;const dDone=items.filter(o=>o.status==="تکمیل‌شده").length,dLate=items.filter(o=>o.status==="معوق").length,dActive=n-dDone-dLate;return {name:d.name,n,done:dDone,active:dActive,late:dLate};}).filter(Boolean);
+    chart.innerHTML=rows.length?rows.map(x=>'<div class="followup-dept-row"><div><b>'+x.name+'</b><small>'+fmt(x.n)+' دستور</small></div><div class="followup-stack" role="img" aria-label="'+x.name+'؛ تکمیل '+x.done+'، در جریان '+x.active+'، معوق '+x.late+'"><i class="done" style="width:'+(x.done/x.n*100)+'%"></i><i class="active" style="width:'+(x.active/x.n*100)+'%"></i><i class="late" style="width:'+(x.late/x.n*100)+'%"></i></div></div>').join(""):'<p class="followup-chart-empty">با فیلتر فعلی داده‌ای برای مقایسه ادارات وجود ندارد.</p>';}
   }
   dept.addEventListener("change",render);status.addEventListener("change",render);render();
  }
