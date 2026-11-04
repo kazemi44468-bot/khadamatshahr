@@ -84,22 +84,42 @@ if(search){
  }
  const dock=document.createElement('nav');
  dock.className='mobile-dock';
- dock.setAttribute('aria-label','منوی موبایل');
- const items=[
-  [home,'⌂','نمای کلان','index.html'],
-  [home+'#departments','▦','ادارات','departments'],
-  [workforce,'▤','سرمایه انسانی','workforce.html'],
-  [followups,'◷','پیگیری ویژه','special-followups.html'],
-  [reportCatalog,'▧','کاتالوگ','report-catalog.html'],
-  [calendar,'▦','تقویم','calendar.html']
- ];
+ dock.setAttribute('aria-label','ناوبری سریع موبایل');
  const current=location.pathname.split('/').pop();
+ const items=[
+  [home,'⌂','خانه','index.html'],
+  [home+'#departments','▦','ادارات','departments'],
+  [followups,'◷','پیگیری','special-followups.html'],
+  [services,'◇','خدمات','company-services.html']
+ ];
  items.forEach(([href,icon,label,key])=>{
-  const a=document.createElement('a');a.href=href;a.innerHTML='<span aria-hidden="true">'+icon+'</span>'+label;
-  if(key===current || (key==='index.html'&&current==='index.html') || (key==='departments'&&((current.startsWith('department-')&&current!=='department-reports.html')||(current==='index.html'&&location.hash==='#departments'))))a.classList.add('active');
+  const a=document.createElement('a');a.href=href;a.innerHTML='<span class="dock-icon" aria-hidden="true">'+icon+'</span><span>'+label+'</span>';
+  if(key===current || (key==='index.html'&&current==='index.html') || (key==='departments'&&current.startsWith('department-')))a.classList.add('active');
   dock.appendChild(a);
  });
- body.appendChild(dock);
+ const more=document.createElement('button');more.type='button';more.innerHTML='<span class="dock-icon" aria-hidden="true">＋</span><span>بیشتر</span>';more.setAttribute('aria-expanded','false');more.setAttribute('aria-controls','mobile-dock-more');
+ const panel=document.createElement('div');panel.className='mobile-dock-more';panel.id='mobile-dock-more';
+ const extra=[
+  [workforce,'مرکز سرمایه انسانی','workforce.html'],
+  [profile,'پرونده پرسنلی','personnel-profile.html'],
+  [evaluation,'ارزیابی عملکرد','performance-evaluation.html'],
+  [notices,'اعلانات ریاست','notifications-center.html'],
+  [calendar,'تقویم شرکت','calendar.html'],
+  [reportCatalog,'کاتالوگ گزارش‌ها','report-catalog.html'],
+  [reportArchive,'آرشیو گزارش‌ها','report-archive.html'],
+  [reports,'گزارش تلفیقی','department-reports.html'],
+  [communications,'ارتباطات کارکنان','internal-communications.html'],
+  [welfare,'خدمات رفاهی','welfare-center.html'],
+  [coop,'فروشگاه و تعاونی','staff-coop-store.html'],
+  [economic,'برنامه‌ریزی اقتصادی','employee-economic-center.html'],
+  [retirees,'خدمات بازنشستگان','retiree-center.html']
+ ];
+ extra.forEach(([href,label,key])=>{const a=document.createElement('a');a.href=href;a.textContent=label;if(key===current)a.classList.add('active');panel.appendChild(a)});
+ more.addEventListener('click',()=>{const open=panel.classList.toggle('open');more.setAttribute('aria-expanded',String(open))});
+ dock.appendChild(more);dock.appendChild(panel);body.appendChild(dock);
+ document.addEventListener('click',event=>{if(!dock.contains(event.target)){panel.classList.remove('open');more.setAttribute('aria-expanded','false')}});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){panel.classList.remove('open');more.setAttribute('aria-expanded','false')}});
+
 })();
 
 
@@ -167,4 +187,19 @@ if(search){
  $('#select-all-depts').addEventListener('click',()=>{root.querySelectorAll('[data-dept]').forEach(x=>x.checked=true);render()});
  $('#clear-depts').addEventListener('click',()=>{root.querySelectorAll('[data-dept]').forEach(x=>x.checked=false);render()});
  render();
+})();
+
+/* فارسی‌سازی یکپارچه ارقام در محتوای ثابت و محتوای پویا */
+(()=> {
+ const digits={'0':'۰','1':'۱','2':'۲','3':'۳','4':'۴','5':'۵','6':'۶','7':'۷','8':'۸','9':'۹','٠':'۰','١':'۱','٢':'۲','٣':'۳','٤':'۴','٥':'۵','٦':'۶','٧':'۷','٨':'۸','٩':'۹'};
+ const localize=value=>String(value).replace(/[0-9٠-٩]/g,ch=>digits[ch]||ch);
+ const process=node=>{
+  if(node.nodeType===Node.TEXT_NODE){if(/[0-9٠-٩]/.test(node.nodeValue))node.nodeValue=localize(node.nodeValue);return;}
+  if(node.nodeType!==Node.ELEMENT_NODE)return;
+  ['placeholder','title','aria-label'].forEach(attr=>{const value=node.getAttribute(attr);if(value&&/[0-9٠-٩]/.test(value))node.setAttribute(attr,localize(value));});
+  if(node.matches('input[readonly],input[disabled],output')){if(/[0-9٠-٩]/.test(node.value))node.value=localize(node.value);}
+  node.childNodes.forEach(process);
+ };
+ if(document.body){process(document.body);new MutationObserver(records=>records.forEach(record=>{record.addedNodes.forEach(process);if(record.type==='characterData')process(record.target)})).observe(document.body,{subtree:true,childList:true,characterData:true});}
+ document.body.dataset.page=location.pathname.split('/').pop().replace('.html','')||'home';
 })();
