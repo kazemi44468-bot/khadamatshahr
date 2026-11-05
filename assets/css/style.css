@@ -3615,3 +3615,110 @@ body.ops-page .ops-footer span:first-child{font-weight:800!important;color:#1769
   body.ops-page .ops-header{background-position:top right!important}
   body.ops-page .ops-footer{padding:18px 16px!important;flex-direction:column!important;align-items:flex-start!important;gap:5px!important}
 }
+
+
+/* === Layout, compact sticky header and selectable official color systems === */
+:root{
+ --ui-accent:#1769aa;--ui-accent-dark:#174d79;--ui-accent-soft:#eaf2f8;
+ --ui-accent-line:#d2e1ec;--ui-page:#f4f7fa;--ui-surface:#fff;
+ --ui-ink:#24384a;--ui-muted:#64788a;--ui-shadow:0 8px 24px rgba(25,55,80,.07);
+}
+html,body{min-height:100%;margin:0}
+body.ops-page{
+ min-height:100vh!important;display:flex!important;flex-direction:column!important;
+ background-color:var(--ui-page)!important;color:var(--ui-ink)!important;
+}
+body.ops-page .ops-header{
+ position:sticky!important;top:0!important;z-index:100!important;
+ transition:box-shadow .22s ease,background-color .22s ease!important;
+}
+body.ops-page .ops-header-inner{min-height:86px;transition:min-height .22s ease,padding .22s ease!important}
+body.ops-page .ops-main{
+ flex:1 0 auto!important;display:flex!important;flex-direction:column!important;
+ min-height:calc(100vh - 86px)!important;
+}
+body.ops-page .ops-footer{margin-top:auto!important;flex:0 0 auto!important}
+body.ops-page .ops-header.is-compact{
+ box-shadow:0 5px 18px rgba(23,50,77,.17)!important;
+ background-color:rgba(220,229,237,.96)!important;
+ backdrop-filter:blur(12px);
+}
+body.ops-page .ops-header.is-compact .ops-header-inner{min-height:58px!important}
+body.ops-page .ops-header.is-compact .ops-brand small,
+body.ops-page .ops-header.is-compact .ops-clock small{display:none!important}
+body.ops-page .ops-header.is-compact .ops-logo{width:36px!important;height:36px!important}
+body.ops-page .ops-header.is-compact .ops-brand b{font-size:14px!important}
+body.ops-page .ops-header.is-compact .ops-clock{padding:5px 9px!important}
+body.ops-page .ops-header-inner{gap:12px!important}
+body.ops-page .ops-brand,body.ops-page .ops-nav,body.ops-page .ops-clock{min-width:0}
+body.ops-page .ops-theme-control{position:relative;flex:0 0 auto;z-index:120}
+body.ops-page .ops-theme-toggle{
+ display:inline-flex;align-items:center;justify-content:center;gap:7px;
+ min-height:36px;padding:7px 11px;border:1px solid rgba(23,105,170,.24);
+ border-radius:10px;background:rgba(255,255,255,.68);color:#244d6b;
+ font:inherit;font-size:11px;font-weight:700;cursor:pointer;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.7);white-space:nowrap;
+}
+body.ops-page .ops-theme-toggle:hover{background:#fff;border-color:rgba(23,105,170,.45)}
+body.ops-page .ops-theme-toggle .theme-swatch{
+ width:13px;height:13px;border-radius:50%;background:var(--ui-accent);
+ border:2px solid #fff;box-shadow:0 0 0 1px var(--ui-accent-line)
+}
+body.ops-page .ops-theme-panel{
+ position:absolute;top:calc(100% + 10px);left:0;width:min(290px,calc(100vw - 30px));
+ padding:13px;background:#fff;border:1px solid #d9e3eb;border-radius:15px;
+ box-shadow:0 16px 40px rgba(20,48,70,.2);color:#24384a;
+}
+body.ops-page .ops-theme-panel[hidden]{display:none!important}
+body.ops-page .ops-theme-panel>strong{display:block;font-size:12px;margin:0 0 4px;color:#203c54}
+body.ops-page .ops-theme-panel>p{font-size:10px;color:#687d8e;margin:0 0 10px}
+body.ops-page .ops-theme-options{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+body.ops-page .ops-theme-option{
+ display:flex;align-items:center;gap:8px;min-width:0;padding:9px 8px;
+ border:1px solid #e1e8ee;border-radius:10px;background:#fbfcfd;
+ color:#344e63;font:inherit;font-size:10px;cursor:pointer;text-align:right;
+}
+body.ops-page .ops-theme-option[aria-pressed=true]{
+ border-color:var(--ui-accent);background:var(--ui-accent-soft);
+ box-shadow:inset 0 0 0 1px var(--ui-accent)
+}
+body.ops-page .ops-theme-dots{display:flex;direction:ltr;gap:3px;flex:0 0 auto}
+body.ops-page .ops-theme-dots i{width:10px;height:10px;border-radius:50%}
+body.ops-page :is(.ops-card,.report-box,.analytics-panel,.dept-panel,.notice-item,
+ .service-hub-card,.hr-module-card,.hr-home-links>a,.department-schedule-card,
+ .ops-summary>div,.executive-metrics>div,.service-metric,.hr-home-metrics>article,
+ .calendar-overview>article,.dept-kpi,.common-info-grid>div,.common-action-grid>div){
+ min-width:0;overflow-wrap:anywhere;
+}
+body.ops-page :is(.ops-card,.report-box,.analytics-panel,.dept-panel,.notice-item,
+ .service-hub-card,.hr-module-card,.hr-home-links>a,.department-schedule-card){
+ border-radius:15px!important;box-shadow:var(--ui-shadow)!important;
+}
+body.ops-page :is(.ops-card h2,.ops-card h3,.analytics-panel h3,.report-heading h2,
+ .section-head h2,.department-intro h1){color:var(--ui-accent-dark)!important}
+body.ops-page :is(.ops-card p,.analytics-panel p,.report-empty span,.section-head p){color:var(--ui-muted)!important}
+body.ops-page :is(.ops-card-bottom b,.hr-view-all,.quick-access-number,.ops-badge,
+ .ops-special-label,.summary-label){color:var(--ui-accent)!important}
+body.ops-page :is(.ops-summary b,.executive-metrics b,.hr-home-metrics b,
+ .calendar-overview b,.dept-kpi>b){color:var(--ui-accent-dark)!important}
+body.ops-page :is(.ops-card,.analytics-panel,.report-box,.dept-panel,.notice-item,
+ .service-hub-card,.hr-module-card,.department-schedule-card){border-color:var(--ui-accent-line)!important}
+body.ops-page :is(input,select,textarea):focus{border-color:var(--ui-accent)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--ui-accent) 14%,transparent)!important}
+body.ops-page :is(button,.btn-primary,.button-dark,.dept-item-actions button):not(.ops-theme-option){
+ transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+@media(max-width:900px){
+ body.ops-page .ops-header-inner{min-height:70px!important;gap:8px!important}
+ body.ops-page .ops-theme-toggle{width:36px;height:36px;padding:0;font-size:0}
+ body.ops-page .ops-theme-toggle .theme-swatch{width:15px;height:15px}
+ body.ops-page .ops-header.is-compact .ops-header-inner{min-height:56px!important}
+ body.ops-page .ops-theme-panel{left:0;right:auto}
+}
+@media(max-width:560px){
+ body.ops-page .ops-main{min-height:calc(100vh - 70px)!important}
+ body.ops-page .ops-footer{width:100%!important}
+ body.ops-page .ops-header.is-compact .ops-brand b{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.ops-page .ops-header,body.ops-page .ops-header-inner{transition:none!important}
+}
