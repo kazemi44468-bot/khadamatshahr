@@ -204,14 +204,7 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
 })();
 
 
-/* هدر چسبان؛ بدون ابزار انتخاب رنگ */
-(()=>{
- const header=document.querySelector('.ops-header');
- if(!document.body.classList.contains('ops-page')||!header)return;
- const update=()=>header.classList.toggle('is-compact',window.scrollY>42);
- window.addEventListener('scroll',update,{passive:true});
- update();
-})();
+/* هدر در اسکرول بدون تغییر اندازه و حالت باقی می‌ماند؛ تغییرات فقط برای دکمه بازگشت به بالا است. */
 
 
 /* فوتر کاملاً خالی؛ انتقال به بیرون از محتوای اصلی برای پوشش تمام عرض */
