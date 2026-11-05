@@ -4306,3 +4306,19 @@ body.ops-page .back-to-top.is-visible{
 @media(max-width:600px){#ops-back-to-top{left:13px!important;bottom:43px!important;width:35px!important;height:35px!important;min-width:35px!important}}
 @media(prefers-reduced-motion:reduce){#ops-back-to-top{transition:none!important}}
 @media print{#ops-back-to-top{display:none!important}}
+
+/* یکسان‌سازی کارت‌های وضعیت و برچسب‌های بخش‌های مختلف */
+body.ops-page .notice-summary>article,
+body.ops-page :is(.notice-total,.notice-done,.notice-late,.notice-active,.service-metric,.dept-kpi,.executive-metrics>div,.ops-summary>div){
+ background:#fff!important;color:#2e3d34!important;border:1px solid #dce6dd!important;
+ box-shadow:0 3px 12px rgba(43,67,51,.045)!important;
+}
+body.ops-page .notice-summary>article{border-top:2px solid #8aa18e!important}
+body.ops-page :is(.notice-total,.notice-done,.notice-late,.notice-active) :is(small,span){color:#718076!important}
+body.ops-page :is(.notice-total,.notice-done,.notice-late,.notice-active) b{color:#365646!important}
+body.ops-page :is(.notice-status-filter button,.notice-filters button,.filter-chip){
+ color:#53675a!important;background:#f5f8f4!important;border:1px solid #dce6dd!important;
+}
+body.ops-page :is(.notice-status-filter button.active,.notice-filters button.active,.filter-chip.active){
+ color:#365646!important;background:#edf3ee!important;border-color:#bfcfc1!important;
+}
