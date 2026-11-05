@@ -2391,3 +2391,120 @@ body.ops-page:before{
  body.ops-page .mobile-dock{display:grid!important}
  body.ops-page{padding-bottom:calc(82px + env(safe-area-inset-bottom))!important}
 }
+
+
+/* === اصلاح نهایی تعادل کارت‌ها، لبه‌ها و چیدمان برنامه ادارات === */
+body.ops-page :is(
+ .ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,
+ .calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,
+ .notice-insight-card,.notice-control-panel,.notice-guidance,
+ .notice-shortcuts,.notice-results,.notice-detail,.service-item,
+ .service-hub-card,.profile-result,.calendar-overview>article,
+ .dept-kpi,.service-metric,.hr-home-overview
+){
+ box-sizing:border-box!important;
+ border-radius:14px!important;
+ clip-path:none!important;
+}
+body.ops-page :is(
+ .ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,
+ .calendar-panel,.followup-chart-card,.hr-panel,.activity-panel,
+ .notice-insight-card,.notice-control-panel,.notice-guidance,
+ .notice-shortcuts,.notice-results,.notice-detail,.service-item,
+ .service-hub-card,.profile-result
+){
+ overflow:hidden!important;
+}
+body.ops-page :is(.ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,.service-item,.service-hub-card)::before,
+body.ops-page :is(.ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,.service-item,.service-hub-card)::after{
+ border-radius:inherit!important;
+ clip-path:none!important;
+}
+body.ops-page .ops-card-heading{margin-inline:0!important;border-radius:0!important}
+body.ops-page .ops-card{padding:0 18px 15px!important}
+body.ops-page .ops-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+body.ops-page .calendar-overview{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}
+body.ops-page .calendar-overview>article{min-width:0;overflow:hidden;border-top-width:2px!important}
+body.ops-page .calendar-event{overflow:hidden;min-width:0;border-radius:12px!important}
+body.ops-page .calendar-event-content{min-width:0;overflow-wrap:anywhere}
+body.ops-page .calendar-event-meta span{max-width:100%;overflow-wrap:anywhere}
+body.ops-page .calendar-legend{display:flex;flex-wrap:wrap;gap:9px 14px}
+body.ops-page .calendar-legend i.training,
+body.ops-page .calendar-day em.training{background:#8b70b4!important}
+body.ops-page .calendar-event.training{border-right:3px solid #8b70b4!important}
+body.ops-page .calendar-event.meeting{border-right:3px solid #477b9b}
+body.ops-page .calendar-event.action{border-right:3px solid #b28b4f}
+body.ops-page .calendar-event.session{border-right:3px solid #5c9478}
+body.ops-page .calendar-event.personal{border-right:3px solid #ad8291}
+body.ops-page .calendar-event.resolution{border-right:3px solid #a77a45}
+
+/* فهرست ادارات: کارت‌های هم‌اندازه، بدون ردیف‌های باریک و لینک‌های جداافتاده */
+body.ops-page .department-schedule-list{
+ display:grid!important;
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:9px!important;
+ padding-top:10px!important;
+}
+body.ops-page .department-schedule-card{
+ display:grid!important;
+ grid-template-columns:38px minmax(0,1fr) auto!important;
+ align-items:center!important;
+ gap:10px!important;
+ min-width:0!important;
+ min-height:76px!important;
+ padding:10px 11px!important;
+ border:1px solid #e0e8df!important;
+ border-radius:12px!important;
+ background:#f9fbf8!important;
+ text-decoration:none!important;
+ transition:background .18s ease,border-color .18s ease,transform .18s ease!important;
+}
+body.ops-page .department-schedule-card:hover{
+ background:#f0f6ef!important;
+ border-color:#b8cdb9!important;
+ transform:translateY(-1px);
+}
+body.ops-page .schedule-code{
+ display:grid;place-items:center;
+ width:36px;height:36px;
+ border:1px solid #dce7da;
+ border-radius:11px;
+ background:#edf3eb;
+ color:#54745a;
+ font-size:12px;font-weight:800;
+}
+body.ops-page .schedule-copy{display:grid;gap:3px;min-width:0}
+body.ops-page .schedule-copy b{
+ color:#294b38!important;font-size:10px!important;line-height:1.7;
+ overflow-wrap:anywhere;
+}
+body.ops-page .schedule-copy small{
+ color:#718174!important;font-size:8px!important;line-height:1.7;
+}
+body.ops-page .schedule-open{
+ display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ padding:7px 9px;
+ border:1px solid #d8e4d7;
+ border-radius:9px;
+ background:#fff;
+ color:#376448!important;
+ font-size:8px;font-weight:800;white-space:nowrap;
+}
+body.ops-page .schedule-open i{font-style:normal;font-size:12px}
+body.ops-page .department-schedule-card:hover .schedule-open{
+ background:#315f45;color:#fff!important;border-color:#315f45;
+}
+@media(max-width:850px){
+ body.ops-page .calendar-overview{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body.ops-page .department-schedule-list{grid-template-columns:1fr!important}
+}
+@media(max-width:560px){
+ body.ops-page :is(.ops-card,.dept-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,.service-item,.service-hub-card){border-radius:12px!important}
+ body.ops-page .ops-card{padding:0 12px 13px!important}
+ body.ops-page .ops-card-heading{margin-inline:0!important;padding:12px 12px 10px!important}
+ body.ops-page .department-schedule-card{grid-template-columns:34px minmax(0,1fr)!important;gap:8px!important;padding:9px!important}
+ body.ops-page .schedule-code{width:32px;height:32px;font-size:10px}
+ body.ops-page .schedule-open{grid-column:2;justify-self:start;padding:5px 8px}
+ body.ops-page .calendar-overview{gap:7px!important}
+ body.ops-page .calendar-overview>article{padding:10px!important}
+}
