@@ -263,7 +263,8 @@ if(search){
  const footer=document.querySelector('.ops-footer');
  if(footer&&!footer.dataset.refined){
   footer.dataset.refined='true';
-  footer.innerHTML='<div class="ops-footer-inner"><div class="ops-footer-brand"><strong>شرکت خدمات شهری شهر بهشت</strong><p>سامانه یکپارچه پایش، مدیریت و ارائه خدمات شهری؛ با تمرکز بر شفافیت عملکرد، هماهنگی سازمانی و بهبود مستمر خدمات.</p><small>سامانه وضعیت و عملکرد سازمان</small></div><div class="ops-footer-group"><h4>دسترسی سریع</h4><a href="index.html">صفحه نخست</a><a href="pages/about.html">معرفی شرکت</a><a href="pages/company-services.html">خدمات شرکت</a></div><div class="ops-footer-group"><h4>بخش‌های سامانه</h4><a href="pages/notifications-center.html">مرکز اعلانات</a><a href="pages/calendar.html">تقویم و برنامه‌ها</a><a href="pages/department-reports.html">گزارش‌های مدیریتی</a></div></div><div class="ops-footer-bottom"><span>© شرکت خدمات شهری شهر بهشت</span><b>سامانه وضعیت و عملکرد سازمان</b></div>';
+  const base=location.pathname.includes("/pages/")?"../":"";
+  footer.innerHTML='<div class="ops-footer-inner"><div class="ops-footer-brand"><strong>شرکت خدمات شهری شهر بهشت</strong><p>سامانه یکپارچه پایش، مدیریت و ارائه خدمات شهری؛ با تمرکز بر شفافیت عملکرد، هماهنگی سازمانی و بهبود مستمر خدمات.</p><small>سامانه وضعیت و عملکرد سازمان</small></div><div class="ops-footer-group"><h4>دسترسی سریع</h4><a href="'+base+'index.html">صفحه نخست</a><a href="'+base+'pages/about.html">معرفی شرکت</a><a href="'+base+'pages/company-services.html">خدمات شرکت</a></div><div class="ops-footer-group"><h4>بخش‌های سامانه</h4><a href="'+base+'pages/notifications-center.html">مرکز اعلانات</a><a href="'+base+'pages/calendar.html">تقویم و برنامه‌ها</a><a href="'+base+'pages/department-reports.html">گزارش‌های مدیریتی</a></div></div><div class="ops-footer-bottom"><span>© شرکت خدمات شهری شهر بهشت</span><b>سامانه وضعیت و عملکرد سازمان</b></div>'
  }
  const themeButton=document.querySelector('.ops-theme-toggle');
  if(themeButton){
