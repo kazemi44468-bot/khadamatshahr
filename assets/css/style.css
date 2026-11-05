@@ -3141,3 +3141,14 @@ body.ops-page .survey-page .survey-storage-note{background:#f7f5ee!important;bor
 @media(prefers-reduced-motion:reduce){
   body.ops-page *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
+
+
+/* v3 layering correction: keep ornaments above surface paint and content above ornaments */
+body.ops-page .ops-intro::before,
+body.ops-page .company-service-intro::before,
+body.ops-page .ops-intro::after,
+body.ops-page .company-service-intro::after{z-index:0!important}
+body.ops-page .ops-intro>*,
+body.ops-page .company-service-intro>*{position:relative;z-index:1}
+body.ops-page :is(.ops-summary>div,.notice-summary>article,.service-metric,.hr-summary-grid>article,.hr-home-metrics>article,.calendar-overview>article,.dept-kpi)::before{z-index:0!important}
+body.ops-page :is(.ops-summary>div,.notice-summary>article,.service-metric,.hr-summary-grid>article,.hr-home-metrics>article,.calendar-overview>article,.dept-kpi)>*{position:relative;z-index:1}
