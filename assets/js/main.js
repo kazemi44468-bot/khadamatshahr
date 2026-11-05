@@ -74,7 +74,7 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
    '</div></details><details class="nav-dropdown"><summary>مرکز خدمات</summary><div class="nav-menu">'+
    [[urls.services,'نمای کلی خدمات'],[urls.communications,'ارتباطات کارکنان'],[urls.welfare,'خدمات رفاهی'],[urls.coop,'فروشگاه تعاونی'],[urls.economic,'برنامه‌ریزی اقتصادی'],[urls.retirees,'خدمات بازنشستگان']].map(x=>'<a href="'+x[0]+'">'+x[1]+'</a>').join('')+
    '</div></details><details class="nav-dropdown"><summary>گزارش‌ها</summary><div class="nav-menu">'+
-   [[urls.reports,'گزارش تلفیقی'],[urls.catalog,'کاتالوگ گزارش‌ها'],[urls.archive,'آرشیو گزارش‌ها'],[urls.participation,'نظرسنجی']].map(x=>'<a href="'+x[0]+'">'+x[1]+'</a>').join('')+
+   [[urls.reports,'گزارش تلفیقی'],[urls.participation,'نظرسنجی']].map(x=>'<a href="'+x[0]+'">'+x[1]+'</a>').join('')+
    '</div></details>';
   nav.classList.add('ops-nav-framed');
   nav.style.setProperty('border','1px solid #aebfcd','important');
