@@ -246,7 +246,7 @@ if(search){
  function applyTheme(key){
   const t=themes[key]||themes.blue,root=document.documentElement;
   root.dataset.colorTheme=key;
-  Object.entries(t).forEach(([name,value])=>root.style.setProperty('--ui-'+name,value));
+  const cssVars={accent:'--ui-accent',dark:'--ui-accent-dark',soft:'--ui-accent-soft',line:'--ui-accent-line',page:'--ui-page',ink:'--ui-ink',muted:'--ui-muted'};Object.entries(t).forEach(([name,value])=>root.style.setProperty(cssVars[name],value));
   document.body.dataset.colorTheme=key;
   document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===key)));
   try{localStorage.setItem('shahrbehesht-color-theme',key)}catch(e){}
