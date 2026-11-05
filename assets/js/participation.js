@@ -6,7 +6,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const read=()=>{try{const x=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(x)?x:[]}catch{return []}};
 const save=x=>localStorage.setItem(KEY,JSON.stringify(x));
 let surveys=read();
-const surveyForm=document.getElementById('survey-form'),resultForm=document.getElementById('result-form'),select=document.getElementById('result-survey'),archive=document.getElementById('survey-archive'),filter=document.getElementById('survey-filter');
+const surveyForm=document.getElementById('survey-form'),resultForm=document.getElementById('result-form'),select=document.getElementById('result-survey'),archive=document.getElementById('survey-archive'),filter=document.getElementById('survey-filter');const initialDept=new URLSearchParams(location.search).get('dept');if(initialDept&&Array.from(filter.options).some(o=>o.value===initialDept))filter.value=initialDept;
 function totalVotes(s){return (s.results||[]).reduce((n,r)=>n+(Number(r.count)||0),0)}
 function refreshSelect(){const old=select.value;select.innerHTML='<option value="">انتخاب نظرسنجی</option>'+surveys.slice().reverse().map(s=>'<option value="'+esc(s.id)+'">'+esc(s.title)+' — '+esc(names[s.dept]||s.dept)+'</option>').join('');if(surveys.some(s=>s.id===old))select.value=old}
 function render(){
