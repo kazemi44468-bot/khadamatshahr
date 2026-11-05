@@ -247,18 +247,14 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
 
 
 
-/* فوتر ساده، کامل و وسط‌چین برای همه صفحات */
+/* فوتر مینیمال: فقط نام شرکت */
 (()=>{
- if(!document.body.classList.contains('ops-page'))return;
  const footer=document.querySelector('.ops-footer,.site-footer');
- if(footer){
-  const base=location.pathname.includes('/pages/')?'../':'';
-  footer.className='ops-footer';
-  footer.innerHTML='<div class="ops-footer-simple"><strong>شرکت خدمات شهری شهر بهشت</strong><p>سامانه وضعیت و عملکرد سازمان</p><nav aria-label="پیوندهای پایین صفحه"><a href="'+base+'index.html">صفحه نخست</a><a href="'+base+'pages/about.html">معرفی شرکت</a><a href="'+base+'pages/company-services.html">خدمات شرکت</a><a href="'+base+'pages/contact.html">تماس</a></nav><small>© کلیه حقوق این سامانه محفوظ است.</small></div>';
- }
- const themeButton=document.querySelector('.ops-theme-toggle');
- if(themeButton){
-  themeButton.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v13H4z"/><path d="M8 9h.01M12 9h.01M16 9h.01M8 14h8"/></svg>';
-  themeButton.setAttribute('aria-label','انتخاب رنگ');themeButton.setAttribute('title','انتخاب رنگ');
- }
-})();
+ if(!footer)return;
+ footer.className='ops-footer';
+ footer.replaceChildren();
+ const name=document.createElement('span');
+ name.className='ops-footer-company-name';
+ name.textContent='شرکت خدمات شهری شهر بهشت';
+ footer.appendChild(name);
+})();;
