@@ -4763,3 +4763,110 @@ body.ops-page .ops-header.is-compact{height:54px!important;min-height:54px!impor
 body.ops-page .ops-header.is-compact .ops-header-inner{height:54px!important;min-height:54px!important;}
 body.ops-page .ops-header.is-compact .ops-brand small,
 body.ops-page .ops-header.is-compact .ops-clock small{display:initial!important;}
+
+
+/* === Final shared visual pass: header menu frame, matching footer, readable contrast === */
+body.ops-page header.ops-header .ops-header-inner nav.ops-nav{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:3px!important;width:max-content!important;max-width:calc(100% - 300px)!important;
+  height:34px!important;min-height:34px!important;padding:4px 6px!important;
+  margin:0!important;flex:0 1 auto!important;
+  background-color:rgba(255,255,255,.78)!important;
+  background-image:linear-gradient(180deg,rgba(255,255,255,.88),rgba(239,245,249,.78))!important;
+  border:1px solid rgba(23,76,112,.30)!important;border-radius:10px!important;
+  box-shadow:0 2px 9px rgba(23,50,77,.10),inset 0 1px 0 #fff!important;
+  outline:1px solid rgba(255,255,255,.48)!important;outline-offset:-3px!important;
+}
+body.ops-page header.ops-header .ops-header-inner nav.ops-nav>a,
+body.ops-page header.ops-header .ops-header-inner nav.ops-nav>.nav-dropdown>summary{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  min-height:25px!important;height:25px!important;padding:3px 10px!important;
+  border-radius:7px!important;color:#29465d!important;background:transparent!important;
+  font-size:9px!important;font-weight:650!important;white-space:nowrap!important;
+}
+body.ops-page header.ops-header .ops-header-inner nav.ops-nav>a:hover,
+body.ops-page header.ops-header .ops-header-inner nav.ops-nav>.nav-dropdown>summary:hover,
+body.ops-page header.ops-header .ops-header-inner nav.ops-nav>.nav-dropdown[open]>summary{
+  color:#155b8d!important;background:#fff!important;
+  box-shadow:0 1px 5px rgba(23,50,77,.10)!important;
+}
+body.ops-page header.ops-header .ops-header-inner nav.ops-nav .nav-menu{
+  background:#fff!important;border:1px solid #cbd9e3!important;
+  box-shadow:0 12px 28px rgba(23,50,77,.16)!important;
+}
+@media(min-width:851px){
+ body.ops-page header.ops-header .ops-header-inner{
+  width:min(1160px,calc(100% - 48px))!important;max-width:1160px!important;
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;
+  column-gap:18px!important;
+ }
+ body.ops-page header.ops-header .ops-brand{grid-column:1!important;justify-self:start!important}
+ body.ops-page header.ops-header .ops-header-inner nav.ops-nav{grid-column:2!important;justify-self:center!important}
+ body.ops-page header.ops-header .ops-clock{grid-column:3!important;justify-self:end!important}
+}
+@media(max-width:850px){
+ body.ops-page header.ops-header .ops-header-inner nav.ops-nav{
+  width:max-content!important;max-width:100%!important;flex:0 1 auto!important;
+  margin:0 auto!important;justify-content:center!important;
+ }
+}
+@media(max-width:560px){
+ body.ops-page header.ops-header .ops-header-inner nav.ops-nav{display:none!important}
+}
+
+/* Footer echoes the patterned blue header; one concise institutional line */
+body.ops-page footer.ops-footer,
+body.ops-page footer.site-footer{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:center!important;gap:0!important;
+ min-height:86px!important;margin-top:26px!important;padding:18px 18px 16px!important;
+ background-color:#dce5ed!important;background-image:url("../images/backhead.png")!important;
+ background-repeat:repeat!important;background-position:top right!important;
+ background-size:auto!important;background-blend-mode:normal!important;
+ border:0!important;border-top:1px solid rgba(23,105,170,.30)!important;
+ box-shadow:0 -3px 14px rgba(23,50,77,.055)!important;
+ color:#17324d!important;text-align:center!important;
+}
+body.ops-page footer.ops-footer::before,
+body.ops-page footer.site-footer::before{
+ content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;
+ display:block!important;background:linear-gradient(90deg,rgba(220,229,237,.35),rgba(255,255,255,.48),rgba(220,229,237,.35))!important;
+ pointer-events:none!important;
+}
+body.ops-page footer.ops-footer::after,
+body.ops-page footer.site-footer::after{
+ content:"خدمات منسجم، شهری بهتر؛ با همراهی و مشارکت شهروندان."!important;
+ display:block!important;position:relative!important;z-index:1!important;
+ margin-top:5px!important;color:#38566e!important;font-size:10px!important;
+ font-weight:500!important;line-height:1.9!important;
+}
+body.ops-page footer.ops-footer>*,
+body.ops-page footer.site-footer>*{display:none!important}
+
+/* Contrast-safe page palette */
+body.ops-page{
+ --navy:#243746!important;--green:#36566d!important;--green-dark:#243746!important;
+ --paper:#f4f6f8!important;--line:#dce4ea!important;--muted:#586b79!important;
+ color:#263746!important;background:#f4f6f8!important;
+}
+body.ops-page :is(.ops-main,.container,.page-content){color:#263746!important}
+body.ops-page :is(h1,h2,h3,h4,h5,strong,b,th,.ops-card-title,.ops-section-title,.section-head,.panel-heading){
+ color:#243b4d!important;
+}
+body.ops-page :is(p,li,label,small,.muted,.hint,.section-head p,.report-empty span,.ops-card-title p,.service-item p,.notice-section-title p){
+ color:#586b79!important;
+}
+body.ops-page :is(.ops-card,.report-box,.analytics-panel,.dept-panel,.notice-item,.service-hub-card,.hr-module-card,.hr-home-links>a,.department-schedule-card,.ops-summary>div,.executive-metrics>div,.service-metric,.hr-home-metrics>article,.calendar-overview>article,.dept-kpi,.common-info-grid>div,.common-action-grid>div,.report-panel,.calendar-panel,.activity-panel,.finance-panel,.survey-report-card,.table-panel,.catalog-document,.profile-search-panel,.profile-directory-panel,.notice-insight-card,.notice-guidance,.notice-shortcuts,.notice-control-panel,.notice-results,.notice-detail,.service-item,.survey-form,.survey-panel,.department-section,.department-tools,.dashboard-panel,.ops-panel,.ops-box,.panel,.card,.report-card,.service-card,.profile-card,.calendar-card,.dept-card,.summary-card,.metric-card,.stat-card,.table-wrap,.data-panel){
+ color:#263746!important;background:#fff!important;border-color:#dce4ea!important;
+}
+body.ops-page :is(.ops-card,.report-box,.analytics-panel,.dept-panel,.notice-item,.service-hub-card,.hr-module-card,.report-panel,.calendar-panel,.activity-panel,.finance-panel,.survey-report-card,.table-panel,.catalog-document,.profile-search-panel,.profile-directory-panel,.notice-detail,.service-item,.survey-form,.survey-panel,.department-section,.dashboard-panel) :is(p,li,small,span,label){
+ color:#586b79!important;
+}
+body.ops-page :is(.ops-kpis>div,.dept-kpi,.ops-search,.department-alert,.notice-summary>article,.notice-status-filter button,.notice-filters button,.filter-chip){
+ border-color:#d7e1e8!important;
+}
+body.ops-page table thead th{background:#eaf0f4!important;color:#243b4d!important}
+body.ops-page table tbody td{color:#405565!important}
+body.ops-page :is(input,select,textarea){color:#263746!important;background:#fff!important;border-color:#cbd8e1!important}
+body.ops-page :is(input,select,textarea)::placeholder{color:#687b89!important;opacity:1!important}
