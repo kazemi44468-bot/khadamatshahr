@@ -3525,10 +3525,10 @@ body.ops-page .ops-header{
   isolation:isolate;
   overflow:visible;
   background-color:#edf2e9!important;
-  background-image:linear-gradient(105deg,rgba(244,247,239,.76),rgba(231,240,229,.70) 55%,rgba(238,242,229,.76)),url("../images/pattern.png")!important;
-  background-position:center center,left top;
-  background-repeat:no-repeat,repeat;
-  background-size:100% 100%,auto auto;
+  background-image:url("../images/pattern.png"),linear-gradient(105deg,rgba(244,247,239,.22),rgba(231,240,229,.18) 55%,rgba(238,242,229,.22))!important;
+  background-position:left top,center;
+  background-repeat:repeat,no-repeat;
+  background-size:88px auto,100% 100%;
   border-bottom:1px solid #d4dfd2!important;
   box-shadow:0 4px 16px rgba(38,66,45,.07)!important;
 }
@@ -3567,6 +3567,6 @@ body.ops-page .ops-clock small{
 }
 @media(max-width:760px){
   .site-header,.ops-header,body.ops-page .site-header,body.ops-page .ops-header{
-    background-size:100% 100%,auto auto;
+    background-size:76px auto,100% 100%;
   }
 }
