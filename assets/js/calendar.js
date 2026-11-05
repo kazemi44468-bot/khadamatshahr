@@ -99,15 +99,17 @@
  root.querySelector("[data-cal-next]").addEventListener("click",()=>{const n=new Date(monthStart);n.setDate(n.getDate()+monthDays(monthStart));monthStart=startOfMonth(n);selected=new Date(monthStart);render();});
  typeFilter.addEventListener("change",render);deptFilter.addEventListener("change",render);
  root.querySelectorAll("[data-calendar-count]").forEach(n=>{n.textContent=new Intl.NumberFormat("fa-IR").format(events.filter(e=>e.type===n.dataset.calendarCount).length);});
+ const totalNode=root.querySelector("[data-calendar-total]");if(totalNode)totalNode.textContent=fmt(events.length);
  const personSummary=root.querySelector("[data-calendar-person-summary]");
  if(personSummary&&shared){
   personSummary.innerHTML=shared.people.map(p=>{
    const personalEvents=events.filter(e=>e.personId===p.id);
    const assigned=shared.orders.filter(o=>o.targetPerson===p.name);
    const meetings=personalEvents.filter(e=>e.type==="meeting"||e.type==="session").length;
+   const trainings=personalEvents.filter(e=>e.type==="training").length;
    const actions=assigned.length+personalEvents.filter(e=>e.type==="action"||e.type==="resolution").length;
    const milestones=personalEvents.filter(e=>e.type==="personal").length;
-   return "<tr><td>"+p.name+" · "+p.id+"</td><td>"+shared.byId(p.dept).name+"</td><td>"+fmt(meetings)+"</td><td>"+fmt(actions)+"</td><td>"+fmt(milestones)+"</td><td>"+fmt(meetings+actions+milestones)+"</td></tr>";
+   return "<tr><td>"+p.name+" · "+p.id+"</td><td>"+shared.byId(p.dept).name+"</td><td>"+fmt(meetings)+"</td><td>"+fmt(trainings)+"</td><td>"+fmt(actions)+"</td><td>"+fmt(milestones)+"</td><td>"+fmt(meetings+trainings+actions+milestones)+"</td></tr>";
   }).join("");
  }
  const summary=root.querySelector("[data-calendar-department-summary]");
@@ -116,9 +118,10 @@
   summary.innerHTML=Object.entries(departments).map(([id,name])=>{
    const list=events.filter(e=>e.dept===id);
    const sessions=list.filter(e=>e.type==="meeting"||e.type==="session").length;
+   const trainings=list.filter(e=>e.type==="training").length;
    const actions=list.filter(e=>e.type==="action"||e.type==="resolution").length;
    const milestones=list.filter(e=>e.type==="personal").reduce((n,e)=>n+(e.personCount||1),0);
-   return "<tr><td>"+name+"</td><td>"+staff[id]+"</td><td>"+list.length+"</td><td>"+sessions+"</td><td>"+actions+"</td><td>"+milestones+"</td></tr>";
+   return "<tr><td>"+name+"</td><td>"+staff[id]+"</td><td>"+list.length+"</td><td>"+sessions+"</td><td>"+trainings+"</td><td>"+actions+"</td><td>"+milestones+"</td></tr>";
   }).join("");
  }
  render();renderPersonal();
