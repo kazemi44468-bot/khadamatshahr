@@ -2624,3 +2624,53 @@ body.ops-page .hr-home-links>a:hover{background:#f0f6f0!important;border-color:#
  body.ops-page .hr-home-links{grid-template-columns:1fr!important;gap:8px!important}
  body.ops-page .hr-home-links>a{min-height:60px!important;padding:10px 12px!important}
 }
+
+
+/* نوار دسترسی سریع در ابتدای داشبورد ریاست */
+body.ops-page .home-quick-access{
+ display:grid!important;
+ grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ gap:11px!important;
+ margin:0 0 25px!important;
+}
+body.ops-page .home-quick-access>a{
+ display:grid!important;
+ grid-template-columns:34px minmax(0,1fr) 18px!important;
+ align-items:center!important;
+ gap:10px!important;
+ min-width:0!important;
+ min-height:76px!important;
+ padding:12px 13px!important;
+ border:1px solid #dce6de!important;
+ border-radius:13px!important;
+ background:#fff!important;
+ box-shadow:0 3px 12px rgba(35,61,43,.035)!important;
+ text-decoration:none!important;
+ transition:border-color .18s ease,background .18s ease,transform .18s ease!important;
+}
+body.ops-page .home-quick-access>a:hover{
+ background:#f8fbf7!important;
+ border-color:#b9cfbd!important;
+ transform:translateY(-1px);
+}
+body.ops-page .quick-access-number{
+ display:grid;place-items:center;
+ width:32px;height:32px;
+ border-radius:10px;
+ background:#edf3ec;
+ border:1px solid #e0e9df;
+ color:#66816b!important;
+ font-size:10px;font-weight:800;
+}
+body.ops-page .home-quick-access>a>span:nth-child(2){display:grid;gap:3px;min-width:0}
+body.ops-page .home-quick-access b{font-size:10px!important;color:#2c4e39!important;line-height:1.8}
+body.ops-page .home-quick-access small{font-size:8px!important;color:#718175!important;line-height:1.8}
+body.ops-page .home-quick-access i{font-style:normal;color:#829a84;font-size:16px;text-align:center}
+@media(max-width:900px){body.ops-page .home-quick-access{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:560px){
+ body.ops-page .home-quick-access{gap:8px!important;margin-bottom:18px!important}
+ body.ops-page .home-quick-access>a{grid-template-columns:29px minmax(0,1fr) 12px!important;gap:7px!important;min-height:69px!important;padding:9px!important}
+ body.ops-page .quick-access-number{width:28px;height:28px;font-size:9px}
+ body.ops-page .home-quick-access b{font-size:9px!important}
+ body.ops-page .home-quick-access small{font-size:7px!important}
+}
