@@ -2706,3 +2706,25 @@ body.ops-page .report-empty{padding:18px;text-align:center;color:#7a887d;font-si
  body.ops-page .report-controls{break-inside:avoid}
  body.ops-page .report-visuals{break-inside:avoid}
 }
+
+/* ماژول‌های مدیریتی و ثبت آیتم‌های تکمیلی */
+body.ops-page .dept-items-note{margin:0 0 14px;padding:12px 15px;border:1px solid #e2e8df;border-radius:12px;background:#f7faf6;color:#607165;font-size:10px;line-height:2}
+body.ops-page .dept-item-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:14px;border:1px solid #e5ebe3;border-radius:13px;background:#fbfcfa}
+body.ops-page .dept-item-form label{display:grid;gap:6px;min-width:0;color:#52665a;font-size:10px;font-weight:700}
+body.ops-page .dept-item-form input,body.ops-page .dept-item-form select,body.ops-page .dept-item-form textarea{width:100%;min-width:0;box-sizing:border-box;padding:10px 11px;border:1px solid #dce5dc;border-radius:9px;background:#fff;color:#344c3b;font:11px 'Vazirmatn',sans-serif;outline:none}
+body.ops-page .dept-item-form input:focus,body.ops-page .dept-item-form select:focus,body.ops-page .dept-item-form textarea:focus{border-color:#7eaa87;box-shadow:0 0 0 3px rgba(92,137,101,.10)}
+body.ops-page .dept-item-wide{grid-column:1/-1}
+body.ops-page .dept-item-actions{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+body.ops-page .dept-item-actions button{padding:10px 17px;border:1px solid #315f45;border-radius:9px;background:#315f45;color:#fff;font:700 10px 'Vazirmatn',sans-serif;cursor:pointer}
+body.ops-page .dept-item-actions span{color:#7b897d;font-size:9px}
+body.ops-page .dept-items-list{margin-top:16px}
+body.ops-page .dept-items-list-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:9px;color:#425b49;font-size:10px}
+body.ops-page .item-state{display:inline-block;padding:4px 8px;border-radius:20px;background:#f4efe2;color:#8b7041;font-size:9px;white-space:nowrap}
+body.ops-page .finance-note{display:block;color:#839084;font-size:9px;margin-top:3px}
+body.ops-page .feedback-list{display:grid;gap:10px}
+body.ops-page .feedback-card{padding:13px;border:1px solid #e3eae2;border-radius:12px;background:#fff}
+body.ops-page .feedback-card>div{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#365541;font-size:10px}
+body.ops-page .feedback-card>div span,body.ops-page .feedback-card>small{color:#7a897c;font-size:9px}
+body.ops-page .feedback-card p{margin:9px 0;color:#58695c;font-size:10px;line-height:2}
+@media(max-width:650px){body.ops-page .dept-item-form{grid-template-columns:1fr;padding:11px}body.ops-page .dept-item-wide{grid-column:auto}body.ops-page .dept-item-actions{grid-column:auto}}
+@media print{body.ops-page .dept-item-form,body.ops-page .dept-item-actions button{display:none!important}}
