@@ -3302,3 +3302,188 @@ body.ops-page .ops-footer{border-color:#DCE5DD!important;color:#66786D!important
 @media(max-width:560px){
   body.ops-page .survey-page .survey-archive{grid-template-columns:1fr!important}
 }
+
+
+/* ==========================================================
+   Index2 design language — site-wide component and grid refinement
+   Keep existing header/footer/menu structure; unify surfaces and rhythm.
+   ========================================================== */
+:root{
+  --ref-green-950:#122a1e;--ref-green-900:#1a3a2a;--ref-green-800:#234a35;
+  --ref-green-700:#2d5a40;--ref-green-600:#3a6f4f;--ref-green-500:#4d8060;
+  --ref-green-100:#e3ede5;--ref-green-50:#f2f7f3;
+  --ref-gold-800:#8a6b2e;--ref-gold-700:#a8863f;--ref-gold-600:#c5a66b;
+  --ref-gold-400:#dbc78f;--ref-gold-100:#f7efd9;
+  --ref-cream:#faf8f3;--ref-cream-2:#f3efe6;--ref-cream-3:#ebe5d6;
+  --ref-ink-950:#151815;--ref-ink-900:#1f2421;--ref-ink-800:#2d332f;
+  --ref-ink-700:#3d4540;--ref-ink-600:#565e58;--ref-ink-500:#6b736d;
+  --ref-line:#e4e0d5;--ref-line-soft:#efece3;
+  --ref-shadow-sm:0 2px 6px rgba(26,58,42,.08),0 1px 2px rgba(0,0,0,.04);
+  --ref-shadow-md:0 8px 24px rgba(26,58,42,.10),0 2px 6px rgba(0,0,0,.04);
+  --ref-shadow-lg:0 18px 48px rgba(26,58,42,.15),0 4px 12px rgba(0,0,0,.06);
+}
+body.ops-page{
+  background-color:var(--ref-cream)!important;
+  color:var(--ref-ink-700)!important;
+  background-image:
+    radial-gradient(ellipse at 12% 4%,rgba(197,166,107,.09),transparent 28%),
+    radial-gradient(ellipse at 92% 18%,rgba(77,128,96,.07),transparent 30%)!important;
+}
+body.ops-page .ops-main{width:min(1280px,calc(100% - 48px));}
+body.ops-page :is(.dept-panel,.hr-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,
+  .followup-chart-card,.activity-panel,.notice-insight-card,.notice-control-panel,.notice-guidance,
+  .notice-shortcuts,.notice-results,.notice-detail,.hr-home-overview,.profile-result,.service-panel,
+  .finance-panel,.survey-featured,.survey-report-card,.report-table-panel,.evaluation-table-panel,
+  .table-panel,.catalog-document,.catalog-page,.profile-search-panel,.profile-directory-panel){
+  border:1px solid var(--ref-line)!important;
+  border-radius:16px!important;
+  box-shadow:var(--ref-shadow-sm)!important;
+}
+body.ops-page :is(.dept-panel,.hr-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,
+  .followup-chart-card,.activity-panel,.notice-insight-card,.notice-control-panel,.notice-guidance,
+  .notice-shortcuts,.notice-results,.notice-detail,.hr-home-overview,.profile-result,.service-panel,
+  .finance-panel,.survey-featured,.survey-report-card,.report-table-panel,.evaluation-table-panel,
+  .table-panel,.profile-search-panel,.profile-directory-panel){background:#fff!important}
+body.ops-page :is(.section-head h2,.dept-panel-head h2,.panel-heading h2,.service-section-title h2,
+  .notice-section-title h2,.followup-chart-head h2,.profile-section-title h2){
+  color:var(--ref-green-900)!important;
+}
+body.ops-page :is(.section-head p,.dept-panel-head p,.panel-heading p,.service-section-title p,
+  .notice-section-title p,.followup-chart-head p,.profile-hint){
+  color:var(--ref-ink-500)!important;
+}
+body.ops-page :is(.ops-summary>div,.notice-summary>article,.service-metric,.hr-summary-grid>article,
+  .hr-home-metrics>article,.calendar-overview>article,.dept-kpi,.common-info-grid>div,
+  .common-action-grid>div,.profile-expanded-grid>article,.profile-personal-facts>div,
+  .report-topic-grid>div,.catalog-kpis article,.survey-featured-meta>div){
+  background:linear-gradient(145deg,#fff,var(--ref-cream))!important;
+  border:1px solid var(--ref-line)!important;
+  border-radius:13px!important;
+  box-shadow:var(--ref-shadow-sm)!important;
+}
+body.ops-page :is(.ops-summary b,.notice-summary b,.service-metric b,.hr-summary-grid b,
+  .hr-home-metrics b,.calendar-overview b,.dept-kpi>b,.common-info-grid b,
+  .profile-expanded-grid b,.catalog-kpis b){color:var(--ref-green-800)!important}
+body.ops-page :is(.ops-card,.service-hub-card,.hr-module-card,.hr-home-links>a,.department-schedule-card){
+  border:1px solid var(--ref-line)!important;
+  border-radius:16px!important;
+  background:linear-gradient(150deg,#fff,#fbfaf6)!important;
+  box-shadow:var(--ref-shadow-sm)!important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+body.ops-page :is(.ops-card,.service-hub-card,.hr-module-card,.hr-home-links>a,.department-schedule-card):hover{
+  transform:translateY(-3px);
+  border-color:#cbd9cb!important;
+  box-shadow:var(--ref-shadow-md)!important;
+}
+body.ops-page :is(.ops-card h3,.service-hub-card b,.hr-module-card b,.hr-home-links b){
+  color:var(--ref-green-900)!important;
+}
+body.ops-page :is(.ops-card p,.service-hub-card span,.hr-module-card span,.hr-home-links span){
+  color:var(--ref-ink-500)!important;
+}
+body.ops-page :is(.summary-label,.ops-card-title small,.section-kicker,.service-hub-card small){
+  color:var(--ref-gold-700)!important;
+}
+body.ops-page :is(.table-period,.hr-view-all,.quick-access-number,.survey-topic,.survey-status){
+  background:var(--ref-green-50)!important;
+  border-color:#d8e5d9!important;
+  color:var(--ref-green-800)!important;
+}
+body.ops-page :is(.dept-items-note,.profile-hint,.report-data-note,.survey-storage-note,.oversight-note,.profile-principles){
+  background:linear-gradient(135deg,#f8f6ef,#f4f7f1)!important;
+  border-color:#e7e1d2!important;
+  color:var(--ref-ink-600)!important;
+  border-radius:13px!important;
+}
+body.ops-page :is(input,select,textarea){
+  border-color:#dddccf!important;
+  border-radius:10px!important;
+  color:var(--ref-ink-800)!important;
+  background:#fff!important;
+}
+body.ops-page :is(input,select,textarea):focus{
+  border-color:var(--ref-green-500)!important;
+  box-shadow:0 0 0 3px rgba(77,128,96,.13)!important;
+}
+body.ops-page :is(button,.btn-primary,.button-dark,.dept-item-actions button,.survey-form-actions button:not(.secondary)){
+  border-radius:10px!important;
+}
+body.ops-page :is(.ops-intro,.company-service-intro,.survey-hero){
+  box-shadow:var(--ref-shadow-md)!important;
+}
+body.ops-page .ops-footer{color:var(--ref-ink-500)!important;border-color:var(--ref-line)!important}
+
+/* Balanced desktop grids: prevent long single-column cards and empty horizontal bands. */
+body.ops-page :is(.ops-summary,.notice-summary,.service-overview,.hr-summary-grid,.dept-kpi-grid,
+  .common-info-grid,.common-action-grid,.profile-personal-facts,.ops-grid){
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:14px!important;
+}
+body.ops-page .ops-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr))!important}
+body.ops-page :is(.home-quick-access,.service-hub-grid,.service-list,.notice-grid,.notice-bottom-grid,
+  .management-lower,.dept-content-grid,.dept-chart-grid,.analytics-grid,.followup-charts,
+  .notice-insights,.report-topic-grid,.hr-detail-grid,.service-process-grid,.profile-detail-grid){
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:15px!important;
+}
+body.ops-page :is(.hr-module-grid,.hr-home-links,.profile-expanded-grid,.catalog-service-grid){
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+body.ops-page :is(.ops-reports,.report-filter-grid,.report-extra-metrics,.evaluation-weight-grid){
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+body.ops-page .notice-steps{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+body.ops-page .report-dept-checks{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+body.ops-page .calendar-layout{grid-template-columns:minmax(0,1.25fr) minmax(300px,.85fr)!important}
+body.ops-page .survey-page div#survey-archive.survey-archive{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))!important;
+  gap:16px!important;
+  align-items:stretch!important;
+}
+body.ops-page :is(.ops-card,.service-hub-card,.hr-module-card,.department-card,.survey-report-card){min-width:0}
+body.ops-page :is(.ops-card,.service-hub-card,.hr-module-card,.department-card){height:100%}
+
+/* Medium screens retain two-column information density; only complex charts stack. */
+@media(max-width:1080px){
+  body.ops-page .ops-main{width:min(100% - 36px,980px)}
+  body.ops-page :is(.ops-summary,.notice-summary,.service-overview,.hr-summary-grid,.dept-kpi-grid,
+    .common-info-grid,.common-action-grid,.profile-personal-facts){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  body.ops-page .ops-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  body.ops-page :is(.hr-module-grid,.hr-home-links,.profile-expanded-grid,.catalog-service-grid){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  body.ops-page .report-dept-checks{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+  body.ops-page :is(.home-quick-access,.service-hub-grid,.service-list,.notice-grid,.notice-bottom-grid,
+    .management-lower,.dept-content-grid,.dept-chart-grid,.analytics-grid,.followup-charts,
+    .notice-insights,.report-topic-grid,.hr-detail-grid,.service-process-grid,.profile-detail-grid,
+    .ops-reports,.report-filter-grid){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  body.ops-page .calendar-layout{grid-template-columns:1fr!important}
+  body.ops-page .notice-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:560px){
+  body.ops-page .ops-main{width:calc(100% - 26px)!important}
+  body.ops-page :is(.ops-summary,.notice-summary,.service-overview,.hr-summary-grid,.dept-kpi-grid,
+    .common-info-grid,.common-action-grid,.profile-personal-facts,.ops-grid,.hr-module-grid,
+    .hr-home-links,.profile-expanded-grid,.catalog-service-grid,.home-quick-access,.service-hub-grid,
+    .service-list,.notice-grid,.notice-bottom-grid,.management-lower,.dept-content-grid,
+    .dept-chart-grid,.analytics-grid,.followup-charts,.notice-insights,.report-topic-grid,
+    .hr-detail-grid,.service-process-grid,.profile-detail-grid,.ops-reports,.report-filter-grid,
+    .report-dept-checks){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+  body.ops-page :is(.dept-content-grid,.dept-chart-grid,.analytics-grid,.followup-charts,.notice-insights,
+    .notice-bottom-grid,.management-lower,.calendar-layout){grid-template-columns:1fr!important}
+  body.ops-page :is(.ops-summary>div,.notice-summary>article,.service-metric,.hr-summary-grid>article,
+    .hr-home-metrics>article,.calendar-overview>article,.dept-kpi){padding:12px!important}
+  body.ops-page .survey-page div#survey-archive.survey-archive{grid-template-columns:1fr!important}
+  body.ops-page .ops-card{padding:16px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body.ops-page :is(.ops-card,.service-hub-card,.hr-module-card,.hr-home-links>a){transition:none!important}
+}
