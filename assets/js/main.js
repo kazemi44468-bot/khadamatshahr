@@ -247,14 +247,11 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
 
 
 
-/* فوتر مینیمال: فقط نام شرکت */
+/* فوتر کاملاً خالی؛ انتقال به بیرون از محتوای اصلی برای پوشش تمام عرض */
 (()=>{
  const footer=document.querySelector('.ops-footer,.site-footer');
  if(!footer)return;
  footer.className='ops-footer';
  footer.replaceChildren();
- const name=document.createElement('span');
- name.className='ops-footer-company-name';
- name.textContent='شرکت خدمات شهری شهر بهشت';
- footer.appendChild(name);
-})();;
+ if(footer.parentElement!==document.body)document.body.appendChild(footer);
+})();
