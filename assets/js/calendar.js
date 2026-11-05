@@ -31,7 +31,7 @@
   {date:"2026-11-06",type:"resolution",dept:"4",orderId:"R-1405-022",title:"مصوبه اولویت‌بندی تعمیرات تجهیزات",detail:"",time:"",place:""},
   {date:"2026-11-07",type:"resolution",dept:"7",orderId:"R-1405-025",title:"مصوبه بازنگری مسیرهای جمع‌آوری پسماند",detail:"",time:"",place:""}
  ];
- 
+ events.push(
   /* برنامه جلسات ریاست با مدیران ادارات و برنامه‌های تکمیلی زمان‌دار */
   {date:"2026-11-10",type:"meeting",dept:"all",personId:"10001",title:"جلسه رئیس شرکت با اداره اداری و پشتیبانی",detail:"مرور وضعیت نیروی انسانی، مکاتبات، پشتیبانی و تصمیم‌گیری درباره درخواست‌های ارجاعی",time:"۰۸:۳۰",place:"اتاق جلسات ریاست"},
   {date:"2026-11-11",type:"meeting",dept:"all",personId:"10006",title:"جلسه رئیس شرکت با اداره تحقیق و توسعه",detail:"ارائه گزارش طرح‌های پژوهشی، اولویت‌بندی مطالعات و تعیین خروجی‌های قابل تحویل",time:"۰۹:۰۰",place:"اتاق جلسات ریاست"},
@@ -55,7 +55,7 @@
   {date:"2026-11-27",type:"action",dept:"4",personId:"10004",title:"بازدید مشترک ایمنی و تأسیسات",detail:"ثبت نواقص، تعیین مسئول رفع و زمان‌بندی اقدام اصلاحی",time:"۰۸:۰۰",place:"محدوده عملیاتی"},
   {date:"2026-11-28",type:"session",dept:"all",title:"نشست هماهنگی برنامه هفته آینده",detail:"تطبیق تقویم ادارات، جلسات ریاست، آموزش‌ها و مأموریت‌های میدانی",time:"۱۰:۳۰",place:"دبیرخانه مدیریت"},
   {date:"2026-11-30",type:"meeting",dept:"all",title:"جلسه ماهانه پایش تعهدات و مصوبات",detail:"بررسی وضعیت مصوبات، موارد معوق و تعیین برنامه پیگیری ماه بعد",time:"۰۹:۰۰",place:"اتاق جلسات مرکزی"}
- 
+ );
  const shared=window.CITY_ORG_DATA;
  if(shared)events.forEach(e=>{if(e.orderId){const o=shared.orders.find(x=>x.id===e.orderId);if(o){e.title=o.title;e.detail="مخاطب اجرا: "+shared.byId(o.dept).name+" · مسئول: "+o.owner+" · پرونده "+o.id;e.place="مهلت "+o.deadline+" · "+o.status;}}});
  const typeNames={meeting:"جلسه",session:"نشست",action:"اقدام",training:"آموزش",personal:"مناسبت پرسنلی",resolution:"مصوبه ریاست"};
