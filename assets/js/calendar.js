@@ -116,7 +116,7 @@
  if(summary){
   const staff={"1":24,"2":12,"3":86,"4":31,"6":17,"7":78};
   summary.innerHTML=Object.entries(departments).map(([id,name])=>{
-   const list=events.filter(e=>e.dept===id);
+   const list=events.filter(e=>e.dept===id||(e.dept==="all"&&e.personId&&shared&&shared.people.some(p=>p.id===e.personId&&p.dept==="d"+id)));
    const sessions=list.filter(e=>e.type==="meeting"||e.type==="session").length;
    const trainings=list.filter(e=>e.type==="training").length;
    const actions=list.filter(e=>e.type==="action"||e.type==="resolution").length;
