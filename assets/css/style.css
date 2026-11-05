@@ -4462,3 +4462,82 @@ body.ops-page .ops-footer::before,body.ops-page .site-footer::before{
  color:#526b80!important;box-shadow:0 3px 12px rgba(42,57,70,.11)!important;
 }
 #ops-back-to-top:hover{background:#edf1f4!important;border-color:#c8d3dc!important;color:#354c60!important}
+
+
+/* Header correction: restore the restrained blue identity and reduce its height */
+.ops-header{
+  height:54px !important;
+  min-height:54px !important;
+  position:relative !important;
+  background:linear-gradient(180deg,#f5f8fb 0%,#eaf0f5 100%) !important;
+  border:0 !important;
+  border-bottom:1px solid #cbd8e2 !important;
+  box-shadow:0 2px 8px rgba(53,76,96,.055) !important;
+  backdrop-filter:none !important;
+}
+.ops-header:before,
+.ops-header:after{
+  content:"" !important;
+  position:absolute !important;
+  right:0 !important;
+  left:0 !important;
+  pointer-events:none !important;
+}
+.ops-header:before{
+  top:0 !important;
+  height:2px !important;
+  background:linear-gradient(90deg,transparent 0%,#c5a66b 16%,#718da5 50%,#c5a66b 84%,transparent 100%) !important;
+}
+.ops-header:after{
+  bottom:0 !important;
+  height:1px !important;
+  background:linear-gradient(90deg,transparent,#b8c9d7 18%,#8ea6ba 50%,#b8c9d7 82%,transparent) !important;
+  opacity:.9 !important;
+}
+.ops-header-inner{
+  height:100% !important;
+  min-height:0 !important;
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+  gap:12px !important;
+}
+.ops-brand{min-width:0 !important;gap:8px !important}
+.ops-brand .ops-logo{width:31px !important;height:31px !important;font-size:18px !important;border-radius:8px 8px 8px 2px !important}
+.ops-brand b{font-size:11px !important;line-height:1.45 !important}
+.ops-brand small{font-size:8px !important;line-height:1.35 !important}
+.ops-header-inner .ops-nav{
+  height:30px !important;
+  min-height:30px !important;
+  background:rgba(255,255,255,.62) !important;
+  border-color:#d3dee7 !important;
+  box-shadow:inset 0 1px 2px rgba(53,76,96,.035) !important;
+}
+.ops-header-inner .ops-nav>a,
+.ops-header-inner .ops-nav>.nav-dropdown>summary{
+  height:23px !important;
+  min-height:23px !important;
+  color:#435d73 !important;
+}
+.ops-clock{
+  padding:3px 7px !important;
+  min-width:0 !important;
+  background:rgba(255,255,255,.58) !important;
+  border-color:#d5e0e8 !important;
+}
+.ops-clock span,.ops-clock small{font-size:7px !important;color:#71899b !important}
+.ops-clock b{font-size:10px !important;color:#354c60 !important}
+@media(max-width:850px){
+  .ops-header{height:auto !important;min-height:54px !important}
+  .ops-header-inner{height:auto !important;min-height:54px !important;padding:5px 0 !important;gap:6px 10px !important}
+  .ops-header-inner .ops-nav{height:29px !important;min-height:29px !important}
+}
+@media(max-width:560px){
+  .ops-header{min-height:52px !important}
+  .ops-header-inner{min-height:52px !important;padding:4px 0 !important;gap:5px 8px !important}
+  .ops-brand .ops-logo{width:29px !important;height:29px !important;font-size:17px !important}
+  .ops-brand b{font-size:10px !important}
+  .ops-brand small{font-size:7px !important}
+  .ops-header-inner .ops-nav{height:27px !important;min-height:27px !important;padding:2px !important}
+  .ops-header-inner .ops-nav>a,
+  .ops-header-inner .ops-nav>.nav-dropdown>summary{height:21px !important;min-height:21px !important;padding:2px 6px !important;font-size:8px !important}
+}
