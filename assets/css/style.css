@@ -3514,3 +3514,59 @@ body.ops-page .ops-footer :is(span,a),body.ops-page .site-footer :is(span,a,p,sm
 body.ops-page .ops-footer :is(span:first-child,a:hover),body.ops-page .site-footer :is(.brand-mark,a:hover){color:#E6D2A2!important}
 body.ops-page .footer-bottom{border-color:rgba(255,255,255,.16)!important;color:rgba(255,255,255,.72)!important}
 @media(max-width:760px){body.ops-page .ops-nav,body.ops-page .main-nav{background-size:auto,140px auto!important}body.ops-page .ops-header,body.ops-page .site-header{background-position:center!important}}
+
+
+/* Header refinement: lighter green-ivory surface with the existing ornamental pattern */
+.site-header,
+.ops-header,
+body.ops-page .site-header,
+body.ops-page .ops-header{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  background-color:#edf2e9!important;
+  background-image:linear-gradient(105deg,rgba(244,247,239,.91),rgba(231,240,229,.88) 55%,rgba(238,242,229,.91)),url("../images/pattern.png")!important;
+  background-position:center,center;
+  background-repeat:repeat;
+  background-size:auto,190px auto;
+  border-bottom:1px solid #d4dfd2!important;
+  box-shadow:0 4px 16px rgba(38,66,45,.07)!important;
+}
+.site-header .brand strong,
+.site-header .brand small,
+.ops-header .ops-brand,
+.ops-header .ops-brand b,
+.ops-header .ops-brand small,
+.ops-header .brand,
+.ops-header .brand b,
+.ops-header .brand small,
+body.ops-page .ops-brand,
+body.ops-page .ops-brand b,
+body.ops-page .ops-brand small,
+body.ops-page .brand,
+body.ops-page .brand b,
+body.ops-page .brand small{
+  color:#294b39!important;
+}
+.ops-header .ops-brand small,
+.ops-header .brand small,
+body.ops-page .ops-brand small,
+body.ops-page .brand small{
+  color:#657d6b!important;
+}
+body.ops-page .ops-clock{
+  color:#355744!important;
+  background:rgba(255,255,255,.62)!important;
+  border:1px solid rgba(126,153,124,.35)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+}
+body.ops-page .ops-clock span,
+body.ops-page .ops-clock b,
+body.ops-page .ops-clock small{
+  color:#456650!important;
+}
+@media(max-width:760px){
+  .site-header,.ops-header,body.ops-page .site-header,body.ops-page .ops-header{
+    background-size:auto,145px auto;
+  }
+}
