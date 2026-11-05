@@ -76,6 +76,12 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
    '</div></details><details class="nav-dropdown"><summary>گزارش‌ها</summary><div class="nav-menu">'+
    [[urls.reports,'گزارش تلفیقی'],[urls.catalog,'کاتالوگ گزارش‌ها'],[urls.archive,'آرشیو گزارش‌ها'],[urls.participation,'نظرسنجی']].map(x=>'<a href="'+x[0]+'">'+x[1]+'</a>').join('')+
    '</div></details>';
+  nav.classList.add('ops-nav-framed');
+  nav.style.setProperty('border','1px solid #aebfcd','important');
+  nav.style.setProperty('border-radius','11px','important');
+  nav.style.setProperty('background','#f8fbfd','important');
+  nav.style.setProperty('padding','5px 7px','important');
+  nav.style.setProperty('box-shadow','0 2px 0 rgba(255,255,255,.95) inset,0 3px 10px rgba(35,58,76,.09)','important');
   const current=location.pathname.split('/').pop();
   nav.querySelectorAll('.nav-dropdown').forEach(menu=>{if(menu.querySelector('a[href$="'+current+'"]'))menu.querySelector('summary').classList.add('active')});
   nav.querySelectorAll('a').forEach(a=>{if(a.getAttribute('href').split('#')[0].split('/').pop()===current)a.classList.add('active')});
