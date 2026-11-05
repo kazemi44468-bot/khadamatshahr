@@ -3152,3 +3152,153 @@ body.ops-page .ops-intro>*,
 body.ops-page .company-service-intro>*{position:relative;z-index:1}
 body.ops-page :is(.ops-summary>div,.notice-summary>article,.service-metric,.hr-summary-grid>article,.hr-home-metrics>article,.calendar-overview>article,.dept-kpi)::before{z-index:0!important}
 body.ops-page :is(.ops-summary>div,.notice-summary>article,.service-metric,.hr-summary-grid>article,.hr-home-metrics>article,.calendar-overview>article,.dept-kpi)>*{position:relative;z-index:1}
+
+
+/* ==========================================================
+   DeepSeek palette alignment — final shared visual layer
+   Forest green / warm neutral / muted gold; preserve layout.
+   ========================================================== */
+:root{
+  --ink:#43574A;
+  --muted:#66786D;
+  --green:#234F40;
+  --green2:#36745D;
+  --gold:#AD8649;
+  --paper:#F3F5F1;
+  --line:#DCE5DD;
+  --white:#FFFFFF;
+}
+body.ops-page{
+  --ds-green-950:#17372D;
+  --ds-green-900:#234F40;
+  --ds-green-800:#285C49;
+  --ds-green-700:#2F6852;
+  --ds-green-600:#36745D;
+  --ds-green-500:#548B72;
+  --ds-green-100:#E5EEE8;
+  --ds-green-50:#F0F5F1;
+  --ds-gold-800:#795D32;
+  --ds-gold-700:#916F3B;
+  --ds-gold-600:#AD8649;
+  --ds-gold-400:#C8AA76;
+  --ds-gold-100:#F5EFE3;
+  --ds-cream:#F3F5F1;
+  --ds-cream-2:#EAEFE9;
+  --ds-ink-950:#26382E;
+  --ds-ink-900:#43574A;
+  --ds-ink-800:#4B6052;
+  --ds-ink-700:#566B5D;
+  --ds-ink-600:#66786D;
+  --ds-ink-500:#78877D;
+  --ds-line:#DCE5DD;
+  --ds-line-soft:#E8EDE8;
+  background-color:#F3F5F1!important;
+  background-image:
+    linear-gradient(rgba(35,79,64,.027) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(35,79,64,.027) 1px,transparent 1px),
+    linear-gradient(rgba(173,134,73,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(173,134,73,.025) 1px,transparent 1px)!important;
+  background-size:28px 28px,28px 28px,56px 56px,56px 56px!important;
+  background-position:0 0!important;
+  color:#43574A!important;
+}
+body.ops-page:before{
+  opacity:.38!important;
+  background:
+    linear-gradient(#AD864944,#AD864944) right 28px top 28px/44px 1px no-repeat,
+    linear-gradient(#AD864944,#AD864944) right 28px top 28px/1px 44px no-repeat,
+    linear-gradient(#36745D35,#36745D35) left 28px bottom 28px/44px 1px no-repeat,
+    linear-gradient(#36745D35,#36745D35) left 28px bottom 28px/1px 44px no-repeat!important;
+}
+body.ops-page :is(.ops-header,.site-header){
+  background:rgba(255,255,255,.96)!important;
+  border-color:#DCE5DD!important;
+}
+body.ops-page :is(.ops-brand,.ops-nav a,.ops-nav summary,.ops-clock b){color:#234F40!important}
+body.ops-page :is(.ops-intro,.company-service-intro,.survey-hero){
+  background:linear-gradient(125deg,#234F40 0%,#2D6250 68%,#36745D 100%)!important;
+}
+body.ops-page :is(.ops-intro h1,.company-service-intro h1,.survey-hero h1){color:#FFFFFF!important}
+body.ops-page :is(.ops-intro p,.company-service-intro p,.survey-hero p){color:rgba(255,255,255,.86)!important}
+body.ops-page :is(.dept-panel,.hr-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,.followup-chart-card,.activity-panel,.notice-insight-card,.notice-control-panel,.notice-guidance,.notice-shortcuts,.notice-results,.notice-detail,.hr-home-overview,.profile-result,.service-panel,.finance-panel,.survey-featured,.survey-report-card){
+  background:#FFFFFF!important;
+  border-color:#DCE5DD!important;
+  border-radius:18px!important;
+}
+body.ops-page :is(h1,h2,h3,h4,.section-head,.survey-section-head h2){color:#234F40}
+body.ops-page :is(p,small,.muted,.section-head p){color:#66786D}
+body.ops-page :is(button,.btn-primary,.button-dark,.dept-item-actions button,.survey-form-actions button:not(.secondary)){
+  background:linear-gradient(135deg,#234F40,#36745D)!important;
+  border-color:#285C49!important;
+  color:#FFFFFF!important;
+  border-radius:12px!important;
+}
+body.ops-page :is(input,select,textarea){
+  border-color:#D4DED6!important;
+  color:#43574A!important;
+  background:#FFFFFF!important;
+  border-radius:11px!important;
+}
+body.ops-page :is(input,select,textarea):focus{
+  border-color:#36745D!important;
+  box-shadow:0 0 0 3px rgba(54,116,93,.14)!important;
+}
+body.ops-page :is(.survey-topic,.survey-status,.quick-access-number,.table-period,.hr-view-all){
+  background:#EAF1EB!important;
+  color:#285C49!important;
+  border-color:#D5E2D8!important;
+}
+body.ops-page :is(.survey-storage-note,.report-data-note,.dept-items-note,.profile-hint){
+  background:#F5EFE3!important;
+  border-color:#E8DCC5!important;
+  color:#66583F!important;
+  border-radius:12px!important;
+}
+body.ops-page .survey-page .survey-hero .eyebrow{
+  color:#E9D5AF!important;
+  background:rgba(173,134,73,.16)!important;
+  border-color:rgba(200,170,118,.38)!important;
+}
+body.ops-page .survey-page .survey-action.primary{
+  background:#AD8649!important;
+  border-color:#AD8649!important;
+  color:#17372D!important;
+}
+body.ops-page .survey-page .survey-summary article:before,
+body.ops-page .survey-page .survey-featured:before{
+  background:linear-gradient(90deg,#36745D,#AD8649,#36745D)!important;
+}
+body.ops-page .survey-page .survey-featured-meta div{
+  background:#F3F5F1!important;
+  border-color:#DCE5DD!important;
+}
+body.ops-page .survey-page .survey-donut{
+  background:conic-gradient(#36745D 0 55%,#AD8649 55% 85%,#C5CEC7 85%)!important;
+}
+body.ops-page .survey-page .survey-donut b,
+body.ops-page .survey-page .survey-featured-meta b{color:#234F40!important}
+body.ops-page .survey-page .survey-archive{
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))!important;
+  gap:16px!important;
+}
+body.ops-page .survey-page .survey-report-card{
+  border-radius:17px!important;
+  box-shadow:0 4px 14px rgba(35,79,64,.07)!important;
+}
+body.ops-page .survey-page .survey-report-card:hover{
+  box-shadow:0 9px 22px rgba(35,79,64,.12)!important;
+}
+body.ops-page .survey-page .survey-report-card h3,
+body.ops-page .survey-page .survey-result-label strong{color:#234F40!important}
+body.ops-page .survey-page .survey-bar span{
+  background:linear-gradient(90deg,#36745D,#234F40)!important;
+}
+body.ops-page .ops-footer{border-color:#DCE5DD!important;color:#66786D!important}
+@media(max-width:760px){
+  body.ops-page .survey-page .survey-archive{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+@media(max-width:560px){
+  body.ops-page .survey-page .survey-archive{grid-template-columns:1fr!important}
+}
