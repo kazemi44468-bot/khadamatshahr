@@ -3516,22 +3516,19 @@ body.ops-page .footer-bottom{border-color:rgba(255,255,255,.16)!important;color:
 @media(max-width:760px){body.ops-page .ops-nav,body.ops-page .main-nav{background-size:auto,140px auto!important}body.ops-page .ops-header,body.ops-page .site-header{background-position:center!important}}
 
 
-/* Header refinement: lighter green-ivory surface with the existing ornamental pattern */
+/* Header refinement: single natural-size pattern on the actual site header */
 .site-header,
-.ops-header,
-body.ops-page .site-header,
-body.ops-page .ops-header{
+header.ops-header,
+body.ops-page > header.ops-header,
+body.ops-page .site-header{
   position:relative;
   isolation:isolate;
   overflow:visible;
   background-color:#edf2e9!important;
   background-image:url("../images/pattern.png"),linear-gradient(105deg,rgba(244,247,239,.22),rgba(231,240,229,.18) 55%,rgba(238,242,229,.22))!important;
-  background-position:center center,center;
+  background-position:center center,center center;
   background-repeat:no-repeat,no-repeat;
   background-size:auto,100% 100%;
-  border-bottom:1px solid #d4dfd2!important;
-  box-shadow:0 4px 16px rgba(38,66,45,.07)!important;
-}
 .site-header .brand strong,
 .site-header .brand small,
 .ops-header .ops-brand,
@@ -3566,7 +3563,7 @@ body.ops-page .ops-clock small{
   color:#456650!important;
 }
 @media(max-width:760px){
-  .site-header,.ops-header,body.ops-page .site-header,body.ops-page .ops-header{
+  .site-header,header.ops-header,body.ops-page > header.ops-header,body.ops-page .site-header{
     background-size:auto,100% 100%;
   }
 }
