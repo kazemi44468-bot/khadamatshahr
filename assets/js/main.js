@@ -242,3 +242,13 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
  });
  update();
 })();
+
+
+/* بارگذاری نسخه تازه استایل مشترک در همه صفحات */
+(()=> {
+ const link=[...document.querySelectorAll('link[rel="stylesheet"]')].find(el=>/assets\/css\/style\.css(?:\?|$)/.test(el.getAttribute('href')||''));
+ if(!link)return;
+ const url=new URL(link.href,document.baseURI);
+ url.searchParams.set('v','neutral-slate-20261105');
+ if(link.href!==url.href)link.href=url.href;
+})();
