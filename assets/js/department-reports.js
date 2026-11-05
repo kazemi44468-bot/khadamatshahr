@@ -7,12 +7,12 @@
  if(!data||!Array.isArray(data.departments)){root.querySelector(".report-data-note").textContent="داده‌های پایه سازمان بارگذاری نشدند؛ گزارش قابل محاسبه نیست.";return;}
  const {departments,fmt,pct}=data;
  const activity={
-  d1:{total:37,done:33,active:4},
-  d2:{total:20,done:18,active:2},
-  d3:{total:232,done:199,active:33},
-  d4:{total:89,done:77,active:12},
-  d6:{total:65,done:58,active:7},
-  d7:{total:295,done:249,active:46}
+  d1:{total:38,done:33,active:4,late:1},
+  d2:{total:21,done:18,active:2,late:1},
+  d3:{total:246,done:199,active:33,late:14},
+  d4:{total:94,done:77,active:12,late:5},
+  d6:{total:67,done:58,active:7,late:2},
+  d7:{total:312,done:249,active:46,late:17}
  };
  const topics={
   actions:{label:"اقدامات ثبت‌شده",unit:"مورد",value:d=>activity[d.id].total},
@@ -40,7 +40,7 @@
   const actionTotal=total(arr,d=>activity[d.id].total);
   const doneTotal=total(arr,d=>activity[d.id].done);
   const staffTotal=total(arr,d=>d.staff);
-  const completion=actionTotal?Math.round(doneTotal/actionTotal*100):0;
+  const completion=weighted(arr,"completion");
   q("#report-selected-count").textContent=fmt(arr.length)+" اداره انتخاب‌شده";
   q("#report-metric-label").textContent=t.label;
   q("#report-metric-total").textContent=fmtValue(metricTotal)+(t.unit==="درصد"?"٪":"");
@@ -68,7 +68,7 @@
   }).join(""):'<p class="report-empty">برای نمایش پروفایل، دست‌کم یک اداره را انتخاب کنید.</p>';
   q("#report-trend-legend").innerHTML='<span>مبنای شاخص‌ها: درصد</span>';
   const tbody=q("#report-comparison-table tbody");
-  tbody.innerHTML=arr.map(d=>'<tr><td>'+d.code+' · '+d.name+'</td><td>'+fmtValue(t.value(d))+(t.unit==="درصد"?"٪":" "+t.unit)+'</td><td>'+fmt(d.staff)+'</td><td>'+fmt(activity[d.id].total)+'</td><td>'+pct(d.completion)+'</td></tr>').join("")||'<tr><td colspan="5">اداره‌ای انتخاب نشده است.</td></tr>';
+  tbody.innerHTML=arr.map(d=>'<tr><td>'+d.code+' · '+d.name+'</td><td>'+fmtValue(t.value(d))+(t.unit==="درصد"?"٪":" "+t.unit)+'</td><td>'+fmt(d.staff)+'</td><td>'+fmt(activity[d.id].total)+'</td><td>'+fmt(activity[d.id].done)+'</td><td>'+fmt(activity[d.id].active)+'</td><td>'+fmt(activity[d.id].late)+'</td><td>'+pct(d.completion)+'</td></tr>').join("")||'<tr><td colspan="8">اداره‌ای انتخاب نشده است.</td></tr>';
  }
  const requestedDept=new URLSearchParams(window.location.search).get("dept");
  if(requestedDept&&checks.some(c=>c.dataset.dept===requestedDept)){checks.forEach(c=>c.checked=c.dataset.dept===requestedDept);}
