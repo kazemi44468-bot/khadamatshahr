@@ -204,47 +204,14 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
 })();
 
 
-/* هدر چسبان مینیمال + انتخاب‌گر پایدار ترکیب رنگ */
+/* هدر چسبان؛ بدون ابزار انتخاب رنگ */
 (()=>{
  const header=document.querySelector('.ops-header');
- if(!document.body.classList.contains('ops-page'))return;
- if(header){
-  const update=()=>header.classList.toggle('is-compact',window.scrollY>42);
-  window.addEventListener('scroll',update,{passive:true});update();
-  const inner=header.querySelector('.ops-header-inner');
-  if(inner&&!inner.querySelector('.ops-theme-control')){
-   const control=document.createElement('div');control.className='ops-theme-control';
-   control.innerHTML='<button class="ops-theme-toggle" type="button" aria-expanded="false" aria-controls="ops-theme-panel"><span class="theme-swatch" aria-hidden="true"></span><span>رنگ‌بندی</span></button><section class="ops-theme-panel" id="ops-theme-panel" hidden><strong>ترکیب رنگ سامانه</strong><p>یکی از رنگ‌بندی‌های رسمی را انتخاب کنید؛ انتخاب شما در صفحات سایت حفظ می‌شود.</p><div class="ops-theme-options"><button type="button" class="ops-theme-option" data-theme-choice="blue" aria-pressed="true"><span class="ops-theme-dots"><i style="background:#527b98"></i><i style="background:#dce5ed"></i><i style="background:#f4f7f9"></i></span>آبی سازمانی</button><button type="button" class="ops-theme-option" data-theme-choice="teal" aria-pressed="false"><span class="ops-theme-dots"><i style="background:#397f80"></i><i style="background:#eaf4f3"></i><i style="background:#f5f9f8"></i></span>فیروزه‌ای</button><button type="button" class="ops-theme-option" data-theme-choice="green" aria-pressed="false"><span class="ops-theme-dots"><i style="background:#547c65"></i><i style="background:#edf4ef"></i><i style="background:#f6f9f6"></i></span>سبز یشمی</button><button type="button" class="ops-theme-option" data-theme-choice="indigo" aria-pressed="false"><span class="ops-theme-dots"><i style="background:#65769b"></i><i style="background:#eef1f7"></i><i style="background:#f6f8fb"></i></span>آبی لاجوردی</button></div></section>';
-   inner.appendChild(control);
-   const toggle=control.querySelector('.ops-theme-toggle'),panel=control.querySelector('.ops-theme-panel');
-   toggle.addEventListener('click',()=>{const open=panel.hidden;panel.hidden=!open;toggle.setAttribute('aria-expanded',String(open))});
-   document.addEventListener('click',e=>{if(!control.contains(e.target)){panel.hidden=true;toggle.setAttribute('aria-expanded','false')}});
-   document.addEventListener('keydown',e=>{if(e.key==='Escape'){panel.hidden=true;toggle.setAttribute('aria-expanded','false')}});
-   control.querySelectorAll('[data-theme-choice]').forEach(btn=>btn.addEventListener('click',()=>{
-    applyTheme(btn.dataset.themeChoice);panel.hidden=true;toggle.setAttribute('aria-expanded','false');
-   }));
-  }
- }
- const themes={
-  blue:{accent:'#527b98',dark:'#34566f',soft:'#eaf1f5',line:'#d8e3ea',page:'#f4f7f9',ink:'#2c3e4b',muted:'#687b88'},
-  teal:{accent:'#397f80',dark:'#285f60',soft:'#eaf4f3',line:'#d5e7e5',page:'#f5f9f8',ink:'#2b4142',muted:'#687d7d'},
-  green:{accent:'#547c65',dark:'#385c49',soft:'#edf4ef',line:'#dce8df',page:'#f6f9f6',ink:'#304238',muted:'#6e7f73'},
-  indigo:{accent:'#65769b',dark:'#465979',soft:'#eef1f7',line:'#dce3ed',page:'#f6f8fb',ink:'#303e52',muted:'#6e7b8c'}
- };
- function applyTheme(key){
-  const t=themes[key]||themes.blue,root=document.documentElement;
-  root.dataset.colorTheme=key;
-  const cssVars={accent:'--ui-accent',dark:'--ui-accent-dark',soft:'--ui-accent-soft',line:'--ui-accent-line',page:'--ui-page',ink:'--ui-ink',muted:'--ui-muted'};Object.entries(t).forEach(([name,value])=>root.style.setProperty(cssVars[name],value));
-  document.body.dataset.colorTheme=key;
-  document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===key)));
-  try{localStorage.setItem('shahrbehesht-color-theme',key)}catch(e){}
-  const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=t.page;
- }
- let saved='blue';try{saved=localStorage.getItem('shahrbehesht-color-theme')||'blue'}catch(e){}
- applyTheme(saved);
+ if(!document.body.classList.contains('ops-page')||!header)return;
+ const update=()=>header.classList.toggle('is-compact',window.scrollY>42);
+ window.addEventListener('scroll',update,{passive:true});
+ update();
 })();
-
-
 
 
 /* فوتر کاملاً خالی؛ انتقال به بیرون از محتوای اصلی برای پوشش تمام عرض */
