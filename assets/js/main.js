@@ -214,3 +214,44 @@ if(search){
  if(document.body){process(document.body);new MutationObserver(records=>records.forEach(record=>{record.addedNodes.forEach(process);if(record.type==='characterData')process(record.target)})).observe(document.body,{subtree:true,childList:true,characterData:true});}
  document.body.dataset.page=location.pathname.split('/').pop().replace('.html','')||'home';
 })();
+
+
+/* هدر چسبان مینیمال + انتخاب‌گر پایدار ترکیب رنگ */
+(()=>{
+ const header=document.querySelector('.ops-header');
+ if(!document.body.classList.contains('ops-page'))return;
+ if(header){
+  const update=()=>header.classList.toggle('is-compact',window.scrollY>42);
+  window.addEventListener('scroll',update,{passive:true});update();
+  const inner=header.querySelector('.ops-header-inner');
+  if(inner&&!inner.querySelector('.ops-theme-control')){
+   const control=document.createElement('div');control.className='ops-theme-control';
+   control.innerHTML='<button class="ops-theme-toggle" type="button" aria-expanded="false" aria-controls="ops-theme-panel"><span class="theme-swatch" aria-hidden="true"></span><span>رنگ‌بندی</span></button><section class="ops-theme-panel" id="ops-theme-panel" hidden><strong>ترکیب رنگ سامانه</strong><p>یکی از رنگ‌بندی‌های رسمی را انتخاب کنید؛ انتخاب شما در صفحات سایت حفظ می‌شود.</p><div class="ops-theme-options"><button type="button" class="ops-theme-option" data-theme-choice="blue" aria-pressed="true"><span class="ops-theme-dots"><i style="background:#1769aa"></i><i style="background:#dce5ed"></i><i style="background:#f4f7fa"></i></span>آبی سازمانی</button><button type="button" class="ops-theme-option" data-theme-choice="teal" aria-pressed="false"><span class="ops-theme-dots"><i style="background:#16817d"></i><i style="background:#dcefeb"></i><i style="background:#f2f8f6"></i></span>فیروزه‌ای</button><button type="button" class="ops-theme-option" data-theme-choice="green" aria-pressed="false"><span class="ops-theme-dots"><i style="background:#397b59"></i><i style="background:#e2eee5"></i><i style="background:#f4f8f3"></i></span>سبز یشمی</button><button type="button" class="ops-theme-option" data-theme-choice="indigo" aria-pressed="false"><span class="ops-theme-dots"><i style="background:#5366a5"></i><i style="background:#e7eafa"></i><i style="background:#f5f6fb"></i></span>آبی لاجوردی</button></div></section>';
+   inner.appendChild(control);
+   const toggle=control.querySelector('.ops-theme-toggle'),panel=control.querySelector('.ops-theme-panel');
+   toggle.addEventListener('click',()=>{const open=panel.hidden;panel.hidden=!open;toggle.setAttribute('aria-expanded',String(open))});
+   document.addEventListener('click',e=>{if(!control.contains(e.target)){panel.hidden=true;toggle.setAttribute('aria-expanded','false')}});
+   document.addEventListener('keydown',e=>{if(e.key==='Escape'){panel.hidden=true;toggle.setAttribute('aria-expanded','false')}});
+   control.querySelectorAll('[data-theme-choice]').forEach(btn=>btn.addEventListener('click',()=>{
+    applyTheme(btn.dataset.themeChoice);panel.hidden=true;toggle.setAttribute('aria-expanded','false');
+   }));
+  }
+ }
+ const themes={
+  blue:{accent:'#1769aa',dark:'#174d79',soft:'#eaf2f8',line:'#d2e1ec',page:'#f4f7fa',ink:'#24384a',muted:'#64788a'},
+  teal:{accent:'#16817d',dark:'#125e5b',soft:'#e4f3f0',line:'#cce5df',page:'#f2f8f6',ink:'#24413e',muted:'#637e79'},
+  green:{accent:'#397b59',dark:'#285a40',soft:'#e8f2e9',line:'#d1e3d3',page:'#f4f8f3',ink:'#2b4032',muted:'#687b6c'},
+  indigo:{accent:'#5366a5',dark:'#3d4f88',soft:'#eceffc',line:'#d9def2',page:'#f5f6fb',ink:'#303b5c',muted:'#6e7895'}
+ };
+ function applyTheme(key){
+  const t=themes[key]||themes.blue,root=document.documentElement;
+  root.dataset.colorTheme=key;
+  Object.entries(t).forEach(([name,value])=>root.style.setProperty('--ui-'+name,value));
+  document.body.dataset.colorTheme=key;
+  document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===key)));
+  try{localStorage.setItem('shahrbehesht-color-theme',key)}catch(e){}
+  const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=t.page;
+ }
+ let saved='blue';try{saved=localStorage.getItem('shahrbehesht-color-theme')||'blue'}catch(e){}
+ applyTheme(saved);
+})();
