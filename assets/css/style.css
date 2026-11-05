@@ -4322,3 +4322,143 @@ body.ops-page :is(.notice-status-filter button,.notice-filters button,.filter-ch
 body.ops-page :is(.notice-status-filter button.active,.notice-filters button.active,.filter-chip.active){
  color:#365646!important;background:#edf3ee!important;border-color:#bfcfc1!important;
 }
+
+
+/* === هویت بصری خنثی و رسمی؛ جایگزین کامل طیف سبز === */
+:root{
+ --ui-accent:#526b80!important;--ui-accent-dark:#354c60!important;
+ --ui-accent-soft:#edf1f4!important;--ui-accent-line:#dce3e9!important;
+ --ui-page:#f6f7f8!important;--ui-surface:#fff!important;
+ --ui-ink:#293744!important;--ui-muted:#75818b!important;
+ --ui-shadow:0 3px 12px rgba(42,57,70,.055)!important;
+ --green:#526b80!important;--green2:#71899b!important;
+ --green-dark:#354c60!important;--navy:#293b4a!important;
+ --gold:#b39a70!important;--paper:#f6f7f8!important;
+ --line:#dfe5ea!important;--muted:#75818b!important;
+ --soft:#edf1f4!important;--page-tint:#f1f3f5!important;
+ --ink:#293744!important;
+ --ds-green-950:#263746!important;--ds-green-900:#354c60!important;
+ --ds-green-800:#435d72!important;--ds-green-700:#526b80!important;
+ --ds-green-600:#657e92!important;--ds-green-500:#8297a8!important;
+ --ds-green-100:#eaf0f4!important;--ds-green-50:#f5f7f9!important;
+ --ref-green-950:#263746!important;--ref-green-900:#354c60!important;
+ --ref-green-800:#435d72!important;--ref-green-700:#526b80!important;
+ --ref-green-600:#657e92!important;--ref-green-500:#8297a8!important;
+ --ref-green-100:#eaf0f4!important;--ref-green-50:#f5f7f9!important;
+ --ds-gold-800:#806b4b!important;--ds-gold-700:#9a835e!important;
+ --ds-gold-600:#b39a70!important;--ds-gold-400:#d1c2a5!important;
+ --ds-gold-100:#f5f1e9!important;
+ --ds-cream:#f7f7f5!important;--ds-cream-2:#f1f1ee!important;
+ --ds-ink-950:#222e38!important;--ds-ink-900:#293744!important;
+ --ds-ink-800:#3a4854!important;--ds-ink-700:#4a5864!important;
+ --ds-ink-600:#64717c!important;--ds-ink-500:#7a858e!important;
+ --ds-line:#e1e5e8!important;--ds-line-soft:#edf0f2!important;
+ --page-ink:#293744!important;--page-text:#465562!important;
+ --page-muted:#78838c!important;--page-line:#dfe5ea!important;
+ --page-soft:#f3f5f6!important;--page-green:#526b80!important;
+ --page-teal:#647f91!important;--page-blue:#526b80!important;
+ --page-gold:#a88e63!important;
+}
+body.ops-page{
+ color:#293744!important;background:#f6f7f8!important;
+ background-image:none!important;
+}
+/* بازگردانی هدر به فرم ساده قبلی: زمینه سفید، منوی بدون باکس و خط طلایی ظریف */
+body.ops-page .ops-header{
+ height:auto!important;min-height:76px!important;
+ background:#fff!important;background-image:none!important;
+ border-bottom:1px solid #e2e6e9!important;
+ box-shadow:0 2px 9px rgba(37,52,65,.035)!important;color:#293744!important;
+}
+body.ops-page .ops-header::after{height:0!important;display:none!important}
+body.ops-page .ops-header-inner{
+ min-height:76px!important;align-items:center!important;
+}
+body.ops-page .ops-brand,body.ops-page .ops-brand b{color:#354c60!important}
+body.ops-page .ops-brand small{color:#7a858e!important}
+body.ops-page .ops-logo{
+ background:#354c60!important;color:#f5f1e9!important;
+ border:1px solid #b39a70!important;box-shadow:none!important;
+}
+body.ops-page .ops-nav{
+ background:transparent!important;border:0!important;
+ box-shadow:none!important;border-radius:0!important;
+}
+body.ops-page .ops-nav>a,body.ops-page .ops-nav summary{
+ color:#667480!important;background:transparent!important;
+}
+body.ops-page .ops-nav>a:hover,body.ops-page .ops-nav summary:hover,
+body.ops-page .ops-nav>a.active,body.ops-page .ops-nav details[open]>summary{
+ color:#354c60!important;background:transparent!important;border-color:transparent!important;
+}
+body.ops-page .ops-nav>a.active::after,body.ops-page .ops-nav>details[open]>summary::after{
+ background:#b39a70!important;
+}
+body.ops-page .ops-nav .nav-menu{
+ background:#fff!important;border:1px solid #e1e6ea!important;
+ box-shadow:0 9px 24px rgba(42,57,70,.09)!important;
+}
+body.ops-page .ops-nav .nav-menu a{color:#465562!important}
+body.ops-page .ops-nav .nav-menu a:hover{background:#f1f3f5!important;color:#354c60!important}
+body.ops-page .ops-clock{
+ color:#465562!important;background:#f7f8f9!important;
+ border:1px solid #e1e6ea!important;box-shadow:none!important;
+}
+body.ops-page .ops-clock :is(span,b,small){color:#64717c!important}
+/* زمینه‌ها، پنل‌ها و کارت‌ها */
+body.ops-page :is(.ops-intro,.company-service-intro,.survey-hero,.page-hero,.hero-panel,.hero-banner,.department-hero,.service-hero,.report-hero,.notice-hero,.department-intro,.oversight-note){
+ color:#293744!important;background:linear-gradient(125deg,#fff 0%,#f2f4f6 100%)!important;
+ border:1px solid #e0e5e9!important;box-shadow:0 3px 12px rgba(42,57,70,.035)!important;
+}
+body.ops-page :is(.ops-intro,.company-service-intro,.survey-hero,.page-hero,.hero-panel,.hero-banner,.department-hero,.service-hero,.report-hero,.notice-hero,.department-intro,.oversight-note) :is(h1,h2,h3,strong,b){color:#354c60!important}
+body.ops-page :is(.ops-intro,.company-service-intro,.survey-hero,.page-hero,.hero-panel,.hero-banner,.department-hero,.service-hero,.report-hero,.notice-hero,.department-intro,.oversight-note) :is(p,small,span,li){color:#75818b!important}
+body.ops-page :is(.ops-card,.report-box,.analytics-panel,.dept-panel,.notice-item,.service-hub-card,.hr-module-card,.hr-home-links>a,.department-schedule-card,.ops-summary>div,.executive-metrics>div,.service-metric,.hr-home-metrics>article,.calendar-overview>article,.dept-kpi,.common-info-grid>div,.common-action-grid>div,.report-panel,.calendar-panel,.activity-panel,.finance-panel,.survey-report-card,.table-panel,.catalog-document,.profile-search-panel,.profile-directory-panel,.notice-insight-card,.notice-guidance,.notice-shortcuts,.notice-control-panel,.notice-results,.notice-detail,.service-item,.survey-form,.survey-panel,.department-section,.department-tools,.dashboard-panel){
+ color:#34424e!important;background:#fff!important;border:1px solid #e1e6ea!important;
+ box-shadow:0 2px 10px rgba(42,57,70,.035)!important;
+}
+body.ops-page :is(.ops-card h2,.ops-card h3,.analytics-panel h3,.report-heading h2,.section-head h2,.department-intro h1,.panel-heading h2,.service-section-title h2,.notice-section-title h2,.profile-section-title h2,.notice-results-head b,.service-item h3){color:#354c60!important}
+body.ops-page :is(.ops-card p,.analytics-panel p,.report-empty span,.section-head p,.muted,.hint,.service-item p,.notice-section-title p){color:#75818b!important}
+body.ops-page :is(.ops-summary b,.executive-metrics b,.hr-home-metrics b,.calendar-overview b,.dept-kpi>b,.ops-card-bottom b,.quick-access-number,.hr-view-all,.service-metric b,.notice-summary b){color:#435d72!important}
+/* آیکون‌ها و نشانگرها؛ فقط طلایی ملایم برای تأکید */
+body.ops-page :is(.ops-icon,.summary-icon,.ops-number,.panel-mark,.report-heading>span,.eyebrow,.section-kicker){
+ color:#a88e63!important;
+}
+body.ops-page .ops-icon{background:#f5f1e9!important;border:1px solid #eee7da!important}
+body.ops-page :is(.ops-badge,.survey-topic,.survey-status,.summary-label,.notice-hero-tags span,.oversight-tags span){
+ background:#f5f1e9!important;color:#806b4b!important;border:1px solid #ece4d6!important;
+}
+/* دکمه‌ها، فیلترها و وضعیت‌ها */
+body.ops-page :is(.btn-primary,.button-dark,.survey-form-actions button:not(.secondary),.dept-item-actions button,.notice-print-button){
+ background:#526b80!important;border-color:#526b80!important;color:#fff!important;
+}
+body.ops-page :is(.btn-primary,.button-dark,.survey-form-actions button:not(.secondary),.dept-item-actions button,.notice-print-button):hover{
+ background:#354c60!important;border-color:#354c60!important;
+}
+body.ops-page :is(button.secondary,.secondary-button,.btn-secondary,.notice-status-filter button,.notice-filters button,.filter-chip){
+ color:#526273!important;background:#f5f6f7!important;border-color:#e0e5e9!important;
+}
+body.ops-page :is(.notice-status-filter button.active,.notice-filters button.active,.filter-chip.active){
+ color:#354c60!important;background:#edf1f4!important;border-color:#cbd5dd!important;
+}
+body.ops-page :is(.notice-total,.notice-done,.notice-late,.notice-active,.notice-summary>article){
+ background:#fff!important;color:#34424e!important;border:1px solid #e1e6ea!important;
+}
+body.ops-page .notice-summary>article{border-top:2px solid #b39a70!important}
+body.ops-page :is(.notice-total,.notice-done,.notice-late,.notice-active) b{color:#354c60!important}
+body.ops-page table thead th{background:#edf1f4!important;color:#354c60!important;border-color:#e0e5e9!important}
+body.ops-page table tbody tr:nth-child(even){background:#f8f9fa!important}
+body.ops-page table tbody td{border-color:#e9edef!important;color:#465562!important}
+body.ops-page :is(input,select,textarea){border-color:#dfe5e9!important;background:#fff!important;color:#293744!important}
+body.ops-page :is(input,select,textarea):focus{border-color:#8297a8!important;box-shadow:0 0 0 3px rgba(82,107,128,.11)!important}
+body.ops-page .ops-footer,body.ops-page .site-footer{
+ background:#f1f3f5!important;border-top-color:#e0e5e9!important;
+}
+body.ops-page .ops-footer::before,body.ops-page .site-footer::before{
+ background:linear-gradient(90deg,transparent,#b39a70,#8297a8,#b39a70,transparent)!important;
+}
+/* دکمه بازگشت به بالا با همان رنگ‌بندی خنثی */
+#ops-back-to-top{
+ border-color:#dce3e9!important;background:rgba(255,255,255,.96)!important;
+ color:#526b80!important;box-shadow:0 3px 12px rgba(42,57,70,.11)!important;
+}
+#ops-back-to-top:hover{background:#edf1f4!important;border-color:#c8d3dc!important;color:#354c60!important}
