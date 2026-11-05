@@ -222,3 +222,23 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
  footer.replaceChildren();
  if(footer.parentElement!==document.body)document.body.appendChild(footer);
 })();
+
+
+/* دکمه بازگشت به بالای صفحه؛ فعال در تمام صفحات سامانه */
+(()=> {
+ if(!document.body.classList.contains('ops-page')||document.getElementById('ops-back-to-top'))return;
+ const button=document.createElement('button');
+ button.type='button';
+ button.id='ops-back-to-top';
+ button.setAttribute('aria-label','بازگشت به بالای صفحه');
+ button.title='بازگشت به بالای صفحه';
+ button.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></svg>';
+ document.body.appendChild(button);
+ const update=()=>button.classList.toggle('is-visible',window.scrollY>320);
+ window.addEventListener('scroll',update,{passive:true});
+ button.addEventListener('click',()=>{
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+ });
+ update();
+})();
