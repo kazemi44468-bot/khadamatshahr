@@ -2732,3 +2732,10 @@ body.ops-page .feedback-card p{margin:9px 0;color:#58695c;font-size:10px;line-he
 body.ops-page .dept-module-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 body.ops-page .dept-module-links .table-period{white-space:nowrap}
 @media(max-width:560px){body.ops-page .dept-module-links{width:100%}body.ops-page .dept-module-links a{flex:1;text-align:center}}
+
+body.ops-page .finance-bars{display:grid;gap:13px;padding:8px 2px}
+body.ops-page .finance-bar-row{display:grid;gap:6px}
+body.ops-page .finance-bar-row>div{display:flex;justify-content:space-between;gap:12px;color:#53675a;font-size:10px}
+body.ops-page .finance-bar-row strong{color:#315f45;font-size:10px;font-variant-numeric:tabular-nums}
+body.ops-page .finance-bar-row>i{display:block;height:9px;overflow:hidden;border-radius:12px;background:#edf1ec}
+body.ops-page .finance-bar-row>i span{display:block;height:100%;border-radius:12px;background:#71947a}
