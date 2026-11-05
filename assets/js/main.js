@@ -255,3 +255,21 @@ if(search){
  let saved='blue';try{saved=localStorage.getItem('shahrbehesht-color-theme')||'blue'}catch(e){}
  applyTheme(saved);
 })();
+
+
+/* ساخت فوتر چندبخشی هم‌سبک مرکز آموزش و آیکن‌های مینیمال */
+(()=>{
+ if(!document.body.classList.contains('ops-page'))return;
+ const footer=document.querySelector('.ops-footer');
+ if(footer&&!footer.dataset.refined){
+  footer.dataset.refined='true';
+  footer.innerHTML='<div class="ops-footer-inner"><div class="ops-footer-brand"><strong>شرکت خدمات شهری شهر بهشت</strong><p>سامانه یکپارچه پایش، مدیریت و ارائه خدمات شهری؛ با تمرکز بر شفافیت عملکرد، هماهنگی سازمانی و بهبود مستمر خدمات.</p><small>سامانه وضعیت و عملکرد سازمان</small></div><div class="ops-footer-group"><h4>دسترسی سریع</h4><a href="index.html">صفحه نخست</a><a href="pages/about.html">معرفی شرکت</a><a href="pages/company-services.html">خدمات شرکت</a></div><div class="ops-footer-group"><h4>بخش‌های سامانه</h4><a href="pages/notifications-center.html">مرکز اعلانات</a><a href="pages/calendar.html">تقویم و برنامه‌ها</a><a href="pages/department-reports.html">گزارش‌های مدیریتی</a></div></div><div class="ops-footer-bottom"><span>© شرکت خدمات شهری شهر بهشت</span><b>سامانه وضعیت و عملکرد سازمان</b></div>';
+ }
+ const themeButton=document.querySelector('.ops-theme-toggle');
+ if(themeButton){
+  themeButton.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.2a2 2 0 0 0 1.4-3.4 1.8 1.8 0 0 1 1.3-3.1H18a3 3 0 0 0 3-3c0-4.7-4-8.5-9-8.5Z"/><path d="M7.5 10h.01M10 6.8h.01M15 7.8h.01"/></svg>';
+  themeButton.setAttribute('aria-label','انتخاب ترکیب رنگ');themeButton.setAttribute('title','انتخاب ترکیب رنگ');
+ }
+ const back=document.querySelector('.back-to-top');
+ if(back){back.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6.5 10.5 12 5l5.5 5.5"/></svg>';}
+})();
