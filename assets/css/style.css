@@ -5215,3 +5215,105 @@ body.ops-page :is(.calendar-toolbar button,.dept-mini-calendar .calendar-toolbar
  background:#fff!important;
  border-color:#cbd9e3!important;
 }
+
+
+/* Targeted calendar contrast correction — calendar surfaces must remain light */
+body.ops-page main[data-org-calendar] .calendar-layout,
+body.ops-page main[data-org-calendar] .calendar-layout .calendar-panel,
+body.ops-page main[data-org-calendar] .calendar-toolbar,
+body.ops-page main[data-org-calendar] .calendar-weekdays,
+body.ops-page main[data-org-calendar] .calendar-legend,
+body.ops-page main[data-org-calendar] .calendar-event-list,
+body.ops-page main[data-org-calendar] .calendar-meeting-stats,
+body.ops-page .dept-calendar-panel .dept-mini-calendar,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-toolbar,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-weekdays,
+body.ops-page .dept-calendar-panel .dept-mini-footer{
+ color-scheme:light!important;
+ background-color:#f8fafc!important;
+ background-image:none!important;
+ color:#344b5f!important;
+}
+body.ops-page main[data-org-calendar] .calendar-toolbar,
+body.ops-page main[data-org-calendar] .calendar-weekdays,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-toolbar,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-weekdays{
+ background-color:#edf3f7!important;
+}
+body.ops-page main[data-org-calendar] .calendar-days button.calendar-day,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-days button.calendar-day{
+ appearance:none!important;
+ -webkit-appearance:none!important;
+ color-scheme:light!important;
+ background-color:#fff!important;
+ background-image:none!important;
+ color:#263f54!important;
+ border:1px solid #d6e1e9!important;
+ opacity:1!important;
+ box-shadow:0 1px 2px rgba(35,58,76,.035)!important;
+}
+body.ops-page main[data-org-calendar] .calendar-days button.calendar-day *,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-days button.calendar-day *{
+ color:#263f54!important;
+ opacity:1!important;
+}
+body.ops-page main[data-org-calendar] .calendar-days button.calendar-day.outside,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-days button.calendar-day.outside{
+ background-color:#eef2f5!important;color:#788b9b!important;
+}
+body.ops-page main[data-org-calendar] .calendar-days button.calendar-day.outside *,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-days button.calendar-day.outside *{
+ color:#788b9b!important;
+}
+body.ops-page main[data-org-calendar] .calendar-days button.calendar-day.today,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-days button.calendar-day.today{
+ background-color:#eaf2f8!important;border-color:#9bb6c9!important;
+}
+body.ops-page main[data-org-calendar] .calendar-days button.calendar-day.selected,
+body.ops-page .dept-calendar-panel .dept-mini-calendar .calendar-days button.calendar-day.selected{
+ background-color:#dceaf4!important;border-color:#789bb4!important;
+}
+body.ops-page main[data-org-calendar] .calendar-event,
+body.ops-page main[data-org-calendar] .calendar-empty,
+body.ops-page .dept-calendar-panel .dept-calendar-event{
+ background:#fff!important;background-image:none!important;color:#344b5f!important;
+}
+body.ops-page main[data-org-calendar] .calendar-event :is(b,p,span,small),
+body.ops-page .dept-calendar-panel .dept-calendar-event :is(b,p,span,small){
+ color:#465e70!important;
+}
+
+/* Notice list: light cards with distinct but restrained status accents */
+body.ops-page .notice-page .notice-results .notice-list .notice-item{
+ background:#fff!important;background-image:none!important;color:#293744!important;
+ border:1px solid #dce4ea!important;border-right:3px solid #9aaebe!important;
+ box-shadow:0 2px 8px rgba(42,57,70,.035)!important;
+}
+body.ops-page .notice-page .notice-results .notice-list .notice-item :is(b,strong,span,small){
+ color:#465562!important;
+}
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-item-top>b{
+ color:#263746!important;
+}
+body.ops-page .notice-page .notice-results .notice-list .notice-item.selected{
+ background:#edf3f7!important;border-color:#9db3c3!important;
+}
+body.ops-page .notice-page .notice-results .notice-list .notice-item.late{border-right-color:#c47b70!important}
+body.ops-page .notice-page .notice-results .notice-list .notice-item.done{border-right-color:#7c9b91!important}
+body.ops-page .notice-page .notice-results .notice-list .notice-item.issued{border-right-color:#789bb4!important}
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-status-pill.late,
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-priority.urgent{
+ background:#f9e9e6!important;color:#934b43!important;border-color:#edcfca!important;
+}
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-status-pill.done,
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-priority.normal{
+ background:#eaf1ed!important;color:#496b5d!important;border-color:#d2e0d8!important;
+}
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-status-pill.issued,
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-priority.medium{
+ background:#eaf1f7!important;color:#426b89!important;border-color:#d2e0ea!important;
+}
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-status-pill.progress,
+body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-priority.high{
+ background:#f7f0e2!important;color:#80683c!important;border-color:#e9dec8!important;
+}
