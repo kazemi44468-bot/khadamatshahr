@@ -3827,3 +3827,24 @@ body.ops-page .back-to-top svg{width:17px!important;height:17px!important;stroke
  body.ops-page .back-to-top{right:14px!important;bottom:14px!important}
 }
 @media(max-width:390px){body.ops-page .ops-footer .ops-footer-inner{grid-template-columns:1fr!important}body.ops-page .ops-footer .ops-footer-brand{grid-column:auto!important}}
+
+/* Theme-aware contrast and surface consistency across every dashboard page */
+body.ops-page :is(.ops-intro,.company-service-intro,.survey-hero,.page-hero,.hero-panel,.hero-banner,.department-hero,.service-hero,.report-hero){
+ background-color:var(--ui-accent-dark)!important;
+ background-image:linear-gradient(112deg,color-mix(in srgb,var(--ui-accent-dark) 96%,#102131),color-mix(in srgb,var(--ui-accent) 88%,#263c50) 62%,color-mix(in srgb,var(--ui-accent) 72%,#607d8c))!important;
+ border:1px solid color-mix(in srgb,var(--ui-accent) 32%,#fff)!important;
+ box-shadow:0 12px 30px color-mix(in srgb,var(--ui-accent-dark) 13%,transparent)!important;
+}
+body.ops-page :is(.ops-intro,.company-service-intro,.survey-hero,.page-hero,.hero-panel,.hero-banner,.department-hero,.service-hero,.report-hero) :is(.eyebrow,.kicker){color:#f3e4c2!important;background:rgba(255,255,255,.10)!important;border-color:rgba(255,255,255,.22)!important}
+body.ops-page :is(.ops-intro,.company-service-intro,.survey-hero,.page-hero,.hero-panel,.hero-banner,.department-hero,.service-hero,.report-hero) :is(a,button){color:var(--ui-accent-dark)!important;background:#f7f9fb!important;border-color:rgba(255,255,255,.45)!important}
+body.ops-page :is(.ops-card,.dept-panel,.hr-panel,.analytics-panel,.report-box,.report-panel,.calendar-panel,.followup-chart-card,.activity-panel,.notice-insight-card,.notice-control-panel,.notice-guidance,.notice-shortcuts,.notice-results,.notice-detail,.hr-home-overview,.profile-result,.service-panel,.finance-panel,.survey-featured,.survey-report-card,.report-table-panel,.evaluation-table-panel,.table-panel,.catalog-document,.catalog-page,.profile-search-panel,.profile-directory-panel){border-color:var(--ui-accent-line)!important;box-shadow:0 4px 16px rgba(28,54,75,.055)!important}
+body.ops-page :is(.ops-card,.service-hub-card,.hr-module-card,.hr-home-links>a,.department-schedule-card):hover{border-color:color-mix(in srgb,var(--ui-accent) 36%,white)!important;box-shadow:0 10px 25px color-mix(in srgb,var(--ui-accent) 10%,transparent)!important}
+body.ops-page :is(.ops-summary>div,.notice-summary>article,.service-metric,.hr-summary-grid>article,.hr-home-metrics>article,.calendar-overview>article,.dept-kpi,.common-info-grid>div,.common-action-grid>div,.profile-expanded-grid>article,.profile-personal-facts>div,.report-topic-grid>div,.catalog-kpis article,.survey-featured-meta>div){background:linear-gradient(145deg,#fff,var(--ui-page))!important;border-color:var(--ui-accent-line)!important}
+body.ops-page :is(.ops-summary b,.notice-summary b,.service-metric b,.hr-summary-grid b,.hr-home-metrics b,.calendar-overview b,.dept-kpi>b,.common-info-grid b,.ops-card-bottom b,.quick-access-number,.hr-view-all,.section-head h2,.dept-panel-head h2,.panel-heading h2,.service-section-title h2,.notice-section-title h2,.followup-chart-head h2,.profile-section-title h2){color:var(--ui-accent-dark)!important}
+body.ops-page :is(.ops-badge,.survey-topic,.survey-status,.summary-label,.ops-card-title small,.section-kicker,.service-hub-card small){background:var(--ui-accent-soft)!important;color:var(--ui-accent-dark)!important;border-color:var(--ui-accent-line)!important}
+body.ops-page :is(.ops-nav>a:hover,.ops-nav summary:hover,.ops-nav details[open]>summary,.nav-menu a:hover){color:var(--ui-accent-dark)!important}
+body.ops-page :is(.btn-primary,.button-dark,.survey-form-actions button:not(.secondary),.dept-item-actions button){background:var(--ui-accent)!important;border-color:var(--ui-accent)!important;color:#fff!important}
+body.ops-page :is(.btn-primary,.button-dark,.survey-form-actions button:not(.secondary),.dept-item-actions button):hover{background:var(--ui-accent-dark)!important;border-color:var(--ui-accent-dark)!important}
+body.ops-page table thead th{background:var(--ui-accent-soft)!important;color:var(--ui-accent-dark)!important}
+body.ops-page table tbody tr:nth-child(even){background:color-mix(in srgb,var(--ui-page) 72%,white)!important}
+body.ops-page :is(input,select,textarea){border-color:var(--ui-accent-line)!important;background:#fff!important;color:var(--ui-ink)!important}
