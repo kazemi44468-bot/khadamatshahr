@@ -4137,3 +4137,7 @@ body.ops-page .ops-footer::after,body.ops-page .site-footer::after{content:none!
  body.ops-page .ops-nav{gap:7px 13px!important;min-height:36px!important}
  body.ops-page .ops-nav>a,body.ops-page .ops-nav>details{height:36px!important}
 }
+
+/* فوتر باید کاملاً خالی بماند؛ محتوای قدیمی HTML نیز نمایش داده نشود */
+body.ops-page .ops-footer>*,
+body.ops-page .site-footer>*{display:none!important}
