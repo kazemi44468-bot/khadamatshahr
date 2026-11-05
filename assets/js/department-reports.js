@@ -70,6 +70,8 @@
   const tbody=q("#report-comparison-table tbody");
   tbody.innerHTML=arr.map(d=>'<tr><td>'+d.code+' · '+d.name+'</td><td>'+fmtValue(t.value(d))+(t.unit==="درصد"?"٪":" "+t.unit)+'</td><td>'+fmt(d.staff)+'</td><td>'+fmt(activity[d.id].total)+'</td><td>'+pct(d.completion)+'</td></tr>').join("")||'<tr><td colspan="5">اداره‌ای انتخاب نشده است.</td></tr>';
  }
+ const requestedDept=new URLSearchParams(window.location.search).get("dept");
+ if(requestedDept&&checks.some(c=>c.dataset.dept===requestedDept)){checks.forEach(c=>c.checked=c.dataset.dept===requestedDept);}
  checks.forEach(c=>c.addEventListener("change",render));
  topic.addEventListener("change",render);
  q("#select-all-depts").addEventListener("click",()=>{checks.forEach(c=>c.checked=true);render();});
