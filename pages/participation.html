@@ -8,7 +8,7 @@
 <title>مرکز نظرسنجی | شرکت خدمات شهری شهر بهشت</title>
 <link rel="preload" href="../assets/fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css?v=survey-grid-4col-20261105">
+<link rel="stylesheet" href="../assets/css/style.css?v=index2-layout-refresh-20261105">
 <style>
 /* پوسته اختصاصی مرکز نظرسنجی؛ هم‌راستا با هویت سبز و طلایی سامانه */
 body.ops-page .survey-page{max-width:1240px}
@@ -74,20 +74,20 @@ body.ops-page .survey-page{max-width:1240px}
 @media(prefers-reduced-motion:reduce){.survey-report-card{transition:none}}
 @media print{.survey-hero{print-color-adjust:exact;-webkit-print-color-adjust:exact}.survey-form-panel,.survey-filters,.ops-header,.mobile-dock{display:none!important}.survey-report-card{break-inside:avoid}}
 /* Archive grid: 4 columns on wide screens, 3 on medium, 2 on tablet, 1 on phone. */
-body.ops-page .survey-page #survey-archive .survey-archive{
+body.ops-page .survey-page div#survey-archive.survey-archive{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
  gap:16px;
  align-items:stretch;
 }
 @media(max-width:1050px){
- body.ops-page .survey-page #survey-archive .survey-archive{grid-template-columns:repeat(3,minmax(0,1fr))}
+ body.ops-page .survey-page div#survey-archive.survey-archive{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media(max-width:820px){
- body.ops-page .survey-page #survey-archive .survey-archive{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body.ops-page .survey-page div#survey-archive.survey-archive{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:560px){
- body.ops-page .survey-page #survey-archive .survey-archive{grid-template-columns:1fr}
+ body.ops-page .survey-page div#survey-archive.survey-archive{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -120,7 +120,7 @@ body.ops-page .survey-page #survey-archive .survey-archive{
   </article>
  </section>
 
- <section id="survey-archive">
+ <section id="survey-archive-section">
   <div class="survey-section-head survey-list-head"><div><span class="eyebrow">آرشیو و داشبورد نتایج</span><h2>نظرسنجی‌های ثبت‌شده</h2><p>فیلتر بر اساس اداره و جست‌وجوی عنوان نظرسنجی.</p></div><div class="survey-filters"><select id="survey-filter" aria-label="فیلتر اداره"><option value="">همه ادارات</option><option value="1">اداری و پشتیبانی</option><option value="2">تحقیق و توسعه</option><option value="3">پارکبان و معبربانان</option><option value="4">تأسیسات فنی و نگهداری</option><option value="6">فاوا و خدمات فنی</option><option value="7">جمع‌آوری و بازیافت پسماند</option><option value="company">ستاد / کل شرکت</option></select><input type="search" id="survey-search" placeholder="جست‌وجوی عنوان..." aria-label="جست‌وجوی نظرسنجی"></div></div>
   <div id="survey-archive" class="survey-archive"></div><div id="no-results" class="survey-empty" hidden><b>نتیجه‌ای پیدا نشد</b><span>عبارت جست‌وجو یا فیلتر اداره را تغییر دهید.</span></div>
  </section>
