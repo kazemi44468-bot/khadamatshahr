@@ -164,7 +164,7 @@ const seeds=[
 {id:'seed-9',dept:'3',topic:'ایمنی و محیط کار',title:'ارزیابی تجهیزات و ایمنی نیروهای میدانی',date:'۱۴۰۵/۰۴/۰۵',population:86,respondents:72,results:[['رضایت زیاد',40],['رضایت متوسط',21],['نارضایتی',11]]},
 {id:'seed-10',dept:'6',topic:'فرایندهای اداری',title:'نظرسنجی کیفیت سامانه‌های اداری',date:'۱۴۰۵/۰۳/۱۵',population:210,respondents:178,results:[['رضایت زیاد',93],['رضایت متوسط',55],['نارضایتی',30]]}
 ].map(s=>({...s,results:s.results.map(([label,count])=>({label,count}))}));
-const deptNames={'1':'اداری و پشتیبانی','2':'تحقیق و توسعه','3':'پارکبان و معبربانان','4':'تأسیسات فنی و نگهداری','6':'فاوا و خدمات فنی','7':'جمع‌آوری و بازیافت پسماند',company:'ستاد / کل شرکت'};
+const deptNames={'1':'اداری و پشتیبانی','2':'تحقیق و توسعه','3':'پارکبان و معبربانان','4':'تأسیسات فنی و نگهداری','6':'فاوا و خدمات فنی','7':'جمع‌آوری و بازیافت پسماند','8':'بازرسی و تحقیقات محلی',company:'ستاد / کل شرکت'};
 const num=n=>Number(n||0).toLocaleString('fa-IR');
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function load(){try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(v)?v:[]}catch{return[]}}
