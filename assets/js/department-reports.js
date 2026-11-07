@@ -12,7 +12,8 @@
   d3:{total:246,done:199,active:33,late:14},
   d4:{total:94,done:77,active:12,late:5},
   d6:{total:67,done:58,active:7,late:2},
-  d7:{total:312,done:249,active:46,late:17}
+  d7:{total:312,done:249,active:46,late:17},
+  d8:{total:0,done:0,active:0,late:0}
  };
  const topics={
   actions:{label:"اقدامات ثبت‌شده",unit:"مورد",value:d=>activity[d.id].total},
