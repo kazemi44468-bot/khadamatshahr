@@ -31,7 +31,7 @@
  const topic=q('[name="topic"]'), checks=[...root.querySelectorAll('[data-dept]')];
  const selected=()=>departments.filter(d=>checks.some(c=>c.checked&&c.dataset.dept===d.id));
  const total=(arr,fn)=>arr.reduce((n,d)=>n+fn(d),0);
- const weighted=(arr,key)=>arr.length?Math.round(total(arr,d=>d[key]*activity[d.id].total)/total(arr,d=>activity[d.id].total)):0;
+ const weighted=(arr,key)=>{const weight=total(arr,d=>activity[d.id]?.total||0);return weight?Math.round(total(arr,d=>(d[key]||0)*(activity[d.id]?.total||0))/weight):0;};
  const fmtValue=n=>fmt(Math.round(n*10)/10);
  const safeWidth=n=>Math.max(0,Math.min(100,Number(n)||0));
  function render(){
