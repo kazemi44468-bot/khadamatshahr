@@ -40,7 +40,7 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
  const prefix=inPages?'':'pages/';
  const home=inPages?'../index.html':'index.html';
  const urls={
-  departments:['department-1.html','department-2.html','department-3.html','department-4.html','department-6.html','department-7.html'].map(x=>prefix+x),
+  departments:['department-1.html','department-2.html','department-3.html','department-4.html','department-6.html','department-7.html','department-8.html'].map(x=>prefix+x),
   workforce:prefix+'workforce.html',profile:prefix+'personnel-profile.html',evaluation:prefix+'performance-evaluation.html',
   followups:prefix+'special-followups.html',notices:prefix+'notifications-center.html',calendar:prefix+'calendar.html',
   catalog:prefix+'report-catalog.html',archive:prefix+'report-archive.html',reports:prefix+'department-reports.html',participation:prefix+'participation.html',
@@ -68,7 +68,7 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
  }
  if(nav){
   nav.innerHTML='<a href="'+home+'">نمای کلان</a><details class="nav-dropdown"><summary>ادارات کل</summary><div class="nav-menu">'+
-   ['اداره اداری و پشتیبانی','اداره تحقیق و توسعه','اداره پارکبان و معبربانان','اداره تأسیسات فنی و امور نگهداری','اداره فاوا و خدمات فنی','اداره جمع‌آوری و بازیافت پسماند'].map((n,i)=>'<a href="'+urls.departments[i]+'">'+n+'</a>').join('')+
+   ['اداره اداری و پشتیبانی','اداره تحقیق و توسعه','اداره پارکبان و معبربانان','اداره تأسیسات فنی و امور نگهداری','اداره فاوا و خدمات فنی','اداره جمع‌آوری و بازیافت پسماند','اداره بازرسی و تحقیقات محلی'].map((n,i)=>'<a href="'+urls.departments[i]+'">'+n+'</a>').join('')+
    '</div></details><details class="nav-dropdown"><summary>مدیریت</summary><div class="nav-menu">'+
    [[urls.workforce,'سرمایه انسانی'],[urls.profile,'پرونده پرسنلی'],[urls.evaluation,'ارزیابی عملکرد'],[urls.followups,'پیگیری دستورات'],[urls.notices,'اعلانات ریاست'],[urls.calendar,'تقویم شرکت']].map(x=>'<a href="'+x[0]+'">'+x[1]+'</a>').join('')+
    '</div></details><details class="nav-dropdown"><summary>مرکز خدمات</summary><div class="nav-menu">'+
@@ -138,7 +138,8 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
   {id:'d3',name:'پارکبان و معبربانان',staff:86,ot:1240,bonus:420,skill:18,reward:12,discipline:7,actions:246,done:199},
   {id:'d4',name:'تأسیسات فنی و نگهداری',staff:31,ot:540,bonus:265,skill:11,reward:7,discipline:3,actions:94,done:77},
   {id:'d6',name:'فاوا و خدمات فنی',staff:17,ot:214,bonus:185,skill:10,reward:5,discipline:1,actions:67,done:58},
-  {id:'d7',name:'جمع‌آوری و بازیافت پسماند',staff:78,ot:1080,bonus:390,skill:15,reward:9,discipline:8,actions:312,done:249}
+  {id:'d7',name:'جمع‌آوری و بازیافت پسماند',staff:78,ot:1080,bonus:390,skill:15,reward:9,discipline:8,actions:312,done:249},
+  {id:'d8',name:'بازرسی و تحقیقات محلی',staff:0,ot:0,bonus:0,skill:0,reward:0,discipline:0,actions:0,done:0}
  ];
  const metrics={
   actions:{label:'اقدامات ثبت‌شده',unit:'مورد',key:'actions'},
