@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const KEY='shahrbehesht.surveys.v1';
-const names={'1':'اداری و پشتیبانی','2':'تحقیق و توسعه','3':'پارکبان و معبربانان','4':'تأسیسات فنی و نگهداری','6':'فاوا و خدمات فنی','7':'جمع‌آوری و بازیافت پسماند',company:'ستاد / کل شرکت'};
+const names={'1':'اداری و پشتیبانی','2':'تحقیق و توسعه','3':'پارکبان و معبربانان','4':'تأسیسات فنی و نگهداری','6':'فاوا و خدمات فنی','7':'جمع‌آوری و بازیافت پسماند','8':'بازرسی و تحقیقات محلی',company:'ستاد / کل شرکت'};
 const fa=n=>new Intl.NumberFormat('fa-IR').format(n);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const read=()=>{try{const x=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(x)?x:[]}catch{return []}};
