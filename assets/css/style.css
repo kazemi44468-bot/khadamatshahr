@@ -1095,7 +1095,7 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:560px){.followup-chart-card{padding:14px}.followup-dept-row{grid-template-columns:1fr;gap:4px}.followup-dept-row>div:first-child{align-items:center}.followup-stack{height:10px}.followup-donut{width:122px;height:122px;flex-basis:122px}.followup-donut:after{inset:15px}}
 
 
-/* هویت بصری نهایی شهر بهشت: فونت محلی، زمینه هندسی و ناوبری موبایل */
+/* هویت بصری نهایی شهرسازان: فونت محلی، زمینه هندسی و ناوبری موبایل */
 
 html,body{font-family:'Vazirmatn',sans-serif}
 body.ops-page,body.ops-page *{font-family:'Vazirmatn',sans-serif!important}
@@ -1522,7 +1522,7 @@ body.ops-page .notice-status-filter button.active{color:#fff!important}
 
 
 
-/* === شهر بهشت | تایپوگرافی و هویت بصری یکپارچه === */
+/* === شهرسازان | تایپوگرافی و هویت بصری یکپارچه === */
 @font-face{font-family:'Vazirmatn';src:url('../fonts/Vazirmatn-Thin.woff2') format('woff2');font-style:normal;font-weight:100;font-display:swap}
 @font-face{font-family:'Vazirmatn';src:url('../fonts/Vazirmatn-ExtraLight.woff2') format('woff2');font-style:normal;font-weight:200;font-display:swap}
 @font-face{font-family:'Vazirmatn';src:url('../fonts/Vazirmatn-Light.woff2') format('woff2');font-style:normal;font-weight:300;font-display:swap}
