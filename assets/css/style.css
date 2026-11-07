@@ -5317,3 +5317,35 @@ body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-sta
 body.ops-page .notice-page .notice-results .notice-list .notice-item .notice-priority.high{
  background:#f7f0e2!important;color:#80683c!important;border-color:#e9dec8!important;
 }
+
+
+/* اداره ۰۸ ـ میز کار ثبت مأموریت، تحقیقات و پیگیری نواقص */
+body.ops-page .inspection-workbench{margin-top:22px}
+body.ops-page .inspection-note{padding:11px 14px;margin:0 0 16px;border:1px solid #dce5ec;border-right:3px solid #7896ad;border-radius:9px;background:#f5f8fa;color:#526779;font-size:10px;line-height:2}
+body.ops-page .inspection-forms-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+body.ops-page .inspection-form-card{min-width:0;padding:15px;border:1px solid #e0e7ec;border-radius:12px;background:linear-gradient(145deg,#fff,#fafcfd)}
+body.ops-page .inspection-form-wide{grid-column:1/-1}
+body.ops-page .inspection-card-title{display:flex;align-items:flex-start;gap:10px;margin-bottom:13px}
+body.ops-page .inspection-card-title>span{display:grid;place-items:center;flex:0 0 32px;height:32px;border-radius:9px;background:#edf3f7;color:#526f86;font-size:11px;font-weight:700}
+body.ops-page .inspection-card-title h3,body.ops-page .inspection-records-head h3{margin:0;color:#30485b;font-size:13px}
+body.ops-page .inspection-card-title p{margin:4px 0 0;color:#788b99;font-size:9px}
+body.ops-page .inspection-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+body.ops-page .inspection-form label,body.ops-page .inspection-filters label{display:grid;gap:5px;min-width:0;color:#607789;font-size:9px}
+body.ops-page .inspection-form input,body.ops-page .inspection-form select,body.ops-page .inspection-form textarea,body.ops-page .inspection-filters select{width:100%;min-width:0;box-sizing:border-box;padding:9px 10px;border:1px solid #dce4e9;border-radius:8px;background:#fff;color:#304657;font:10px 'Vazirmatn',sans-serif}
+body.ops-page .inspection-form textarea{resize:vertical;line-height:1.9}
+body.ops-page .inspection-form :is(input,select,textarea):focus,body.ops-page .inspection-filters select:focus{outline:0;border-color:#7896ad;box-shadow:0 0 0 3px rgba(91,125,151,.11)}
+body.ops-page .inspection-wide{grid-column:1/-1}
+body.ops-page .inspection-form button{justify-self:start;min-width:145px;padding:9px 17px;border:1px solid #506f88;border-radius:8px;background:#506f88;color:#fff;font:10px 'Vazirmatn',sans-serif;cursor:pointer}
+body.ops-page .inspection-form button:hover{background:#405e76}
+body.ops-page .inspection-records{margin-top:20px;padding-top:17px;border-top:1px solid #e7edf1}
+body.ops-page .inspection-records-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+body.ops-page .inspection-record-count{padding:6px 10px;border:1px solid #dce5ec;border-radius:20px;background:#f6f9fb;color:#536e83;font-size:9px}
+body.ops-page .inspection-filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+body.ops-page .inspection-filters label{min-width:170px}
+body.ops-page .inspection-record-table{min-width:760px}
+body.ops-page .inspection-record-table td{vertical-align:middle}
+body.ops-page .inspection-record-table select{max-width:145px;padding:6px;border:1px solid #dce4e9;border-radius:7px;background:#fff;color:#40596d;font:9px 'Vazirmatn',sans-serif}
+body.ops-page .inspection-delete{padding:5px 9px;border:1px solid #e6d9d7;border-radius:7px;background:#fff;color:#94665e;font:9px 'Vazirmatn',sans-serif;cursor:pointer}
+body.ops-page .inspection-empty{padding:18px;text-align:center;color:#788b99}
+@media(max-width:720px){body.ops-page .inspection-forms-grid{grid-template-columns:1fr}body.ops-page .inspection-form-wide{grid-column:auto}body.ops-page .inspection-form{grid-template-columns:1fr}body.ops-page .inspection-wide{grid-column:auto}body.ops-page .inspection-records-head{align-items:flex-start;flex-direction:column}body.ops-page .inspection-filters{display:grid;grid-template-columns:1fr 1fr}body.ops-page .inspection-filters label{min-width:0}}
+@media print{body.ops-page .inspection-form-card,body.ops-page .inspection-filters,body.ops-page .inspection-form button,body.ops-page .inspection-delete{display:none!important}body.ops-page .inspection-record-table{min-width:0}}
