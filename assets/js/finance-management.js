@@ -1,21 +1,37 @@
 (()=>{'use strict';
-const K='shahrbehesht.finance.v1';
-const N={'1':'اداری و پشتیبانی','2':'تحقیق و توسعه','3':'پارکبان و معبربانان','4':'تأسیسات فنی و نگهداری','6':'فاوا و خدمات فنی','7':'جمع‌آوری و بازیافت پسماند',company:'ستاد شرکت'};
-const f=n=>new Intl.NumberFormat('fa-IR').format(n);
-const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let a=[];try{a=JSON.parse(localStorage.getItem(K)||'[]')}catch{}
-const form=document.getElementById('finance-form'),rows=document.getElementById('finance-rows');
+const KEY='shahrbehesht.finance.v2';
+const DEPTS={'1':'اداری و پشتیبانی','2':'تحقیق و توسعه','3':'پارک‌بان و معبربانان','4':'تأسیسات فنی و نگهداری','6':'فاوا و خدمات فنی','7':'جمع‌آوری و بازیافت پسماند','8':'بازرسی و تحقیقات محلی',company:'ستاد / کل شرکت'};
+const TYPES={capacity:'ظرفیت قابل دریافت اعتبار',approved:'اعتبار مصوب',received:'اعتبار دریافت‌شده',allocated:'تخصیص اعتبار',expense:'هزینه عمومی / عملیاتی',overtime:'اضافه‌کاری',performance:'کارانه',allowance:'فوق‌العاده و مزایا',invoice:'فاکتور خرید / خدمات',fuel:'سوخت و انرژی',purchase:'خرید و تدارکات',damage:'خسارت و حوادث',contract:'قرارداد و تعهدات',settlement:'تسویه فاکتور / بدهی',other:'سایر هزینه‌ها'};
+const CATS={personnel:'نیروی انسانی',operations:'عملیات و خدمات شهری',fuel:'سوخت و انرژی',procurement:'خرید و تدارکات',maintenance:'تعمیرات و نگهداری',damages:'خسارت و حوادث',contracts:'قراردادها و پیمانکاران',welfare:'رفاه و پشتیبانی',technology:'فناوری و ارتباطات',other:'سایر'};
+const COST_TYPES=['expense','overtime','performance','allowance','invoice','fuel','purchase','damage','contract','other'];
+const $=id=>document.getElementById(id),fmt=n=>Math.round(Number(n)||0).toLocaleString('fa-IR'),pct=(a,b)=>b>0?Math.round(a/b*100):0,esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let records=[];try{records=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(records))records=[]}catch{records=[]}
+const total=fn=>records.filter(fn).reduce((s,x)=>s+(Number(x.amount)||0),0);
+const costs=()=>records.filter(x=>COST_TYPES.includes(x.type));
+const spent=()=>costs().reduce((s,x)=>s+(+x.amount||0),0);
+function card(label,value,sub,ratio){return '<article class="finance-flow-card"><div><small>'+label+'</small><b>'+fmt(value)+'</b><span>'+sub+'</span></div><i><b style="width:'+Math.min(100,Math.max(0,ratio||0))+'%"></b></i></article>'}
 function render(){
- const sum=type=>a.filter(x=>x.type===type).reduce((s,x)=>s+(+x.amount||0),0);
- document.getElementById('finance-approved').textContent=f(sum('اعتبار مصوب'));
- document.getElementById('finance-allocated').textContent=f(sum('اعتبار تخصیص‌یافته'));
- document.getElementById('finance-total').textContent=f(a.filter(x=>['هزینه و خرید','فاکتور','اضافه‌کاری','کارانه','تصادف و خسارت'].includes(x.type)).reduce((s,x)=>s+(+x.amount||0),0));
- document.getElementById('finance-open').textContent=f(a.filter(x=>!['پرداخت‌شده','تسویه‌شده'].includes(x.status)).length);
- const sums=Object.keys(N).map(k=>({name:N[k],value:a.filter(x=>x.dept===k&&['هزینه و خرید','فاکتور','اضافه‌کاری','کارانه','تصادف و خسارت'].includes(x.type)).reduce((s,x)=>s+(+x.amount||0),0)})).filter(x=>x.value>0);
- const max=Math.max(1,...sums.map(x=>x.value));
- document.getElementById('finance-dept-bars').innerHTML=sums.length?sums.map(x=>'<div class="finance-bar-row"><div><b>'+e(x.name)+'</b><strong>'+f(x.value)+' تومان</strong></div><i><span style="width:'+Math.round(x.value/max*100)+'%"></span></i></div>').join(''):'<p>با ثبت رویدادهای مالی، مقایسه ادارات نمایش داده می‌شود.</p>';
- rows.innerHTML=a.length?a.slice().reverse().map(x=>'<tr><td>'+e(N[x.dept])+'</td><td>'+e(x.type)+'</td><td>'+e(x.title)+'</td><td>'+f(+x.amount||0)+'</td><td>'+e(x.status)+'</td><td>'+e(x.date||'—')+'</td></tr>').join(''):'<tr><td colspan="6">هنوز رویداد مالی ثبت نشده است.</td></tr>';
+ const capacity=total(x=>x.type==='capacity'),approved=total(x=>x.type==='approved'),received=total(x=>x.type==='received'),allocated=total(x=>x.type==='allocated'),expense=spent(),balance=Math.max(0,allocated-expense);
+ [['f-capacity',capacity],['f-approved',approved],['f-received',received],['f-allocated',allocated],['f-spent',expense],['f-balance',balance]].forEach(([id,v])=>$(id).textContent=fmt(v));
+ $('finance-flow').innerHTML=card('ظرفیت قابل پیگیری',capacity,'مبنای برنامه‌ریزی دریافت',100)+card('اعتبار مصوب',approved,'سهم از ظرفیت: '+pct(approved,capacity)+'٪',pct(approved,capacity))+card('اعتبار دریافت‌شده',received,'تحقق دریافت نسبت به مصوب: '+pct(received,approved)+'٪',pct(received,approved))+card('تخصیص به واحدها',allocated,'نسبت تخصیص به دریافتی: '+pct(allocated,received)+'٪',pct(allocated,received))+card('هزینه و تعهد ثبت‌شده',expense,'نسبت هزینه به تخصیص: '+pct(expense,allocated)+'٪',pct(expense,allocated));
+ const ratios=[['ظرفیت دریافت‌نشده',Math.max(0,capacity-received),pct(received,capacity),'دریافت‌شده از ظرفیت'],['مصوب دریافت‌نشده',Math.max(0,approved-received),pct(received,approved),'تحقق دریافت اعتبار'],['اعتبار تخصیص‌نیافته',Math.max(0,received-allocated),pct(allocated,received),'درصد تخصیص از دریافتی'],['مانده پس از هزینه',balance,pct(expense,allocated),'مصرف اعتبار تخصیصی']];
+ $('finance-ratios').innerHTML=ratios.map(x=>'<article><small>'+x[0]+'</small><b>'+fmt(x[1])+' تومان</b><div class="finance-mini-track"><i style="width:'+x[2]+'%"></i></div><span>'+x[3]+' · '+fmt(x[2])+'٪</span></article>').join('');
+ const totalCost=expense,deptRows=Object.entries(DEPTS).map(([id,name])=>{const alloc=total(x=>x.dept===id&&x.type==='allocated'),cost=total(x=>x.dept===id&&COST_TYPES.includes(x.type)),docs=total(x=>x.dept===id&&COST_TYPES.includes(x.type)&&x.documented);return{id,name,alloc,cost,docs,share:pct(cost,totalCost),use:pct(cost,alloc),doc:pct(docs,cost)}}).filter(x=>x.alloc||x.cost);
+ $('finance-dept-chart').innerHTML=deptRows.length?deptRows.map(d=>'<div class="finance-dept-bar"><div><b>'+esc(d.name)+'</b><small>تخصیص '+fmt(d.alloc)+' · هزینه '+fmt(d.cost)+' تومان</small></div><div class="finance-double-track"><i class="allocation" style="width:'+pct(d.alloc,Math.max(allocated,totalCost,1))+'%"></i><i class="spending" style="width:'+pct(d.cost,Math.max(allocated,totalCost,1))+'%"></i></div><strong>سهم هزینه '+fmt(d.share)+'٪</strong></div>').join(''):'<p class="finance-empty">پس از ثبت تخصیص و هزینه، مقایسه ادارات در این بخش نمایش داده می‌شود.</p>';
+ const catRows=Object.entries(CATS).map(([id,name])=>({id,name,value:total(x=>COST_TYPES.includes(x.type)&&x.category===id)})).filter(x=>x.value>0).sort((a,b)=>b.value-a.value);
+ $('finance-category-chart').innerHTML=catRows.length?catRows.map((x,i)=>'<div class="finance-category-row"><div><b>'+esc(x.name)+'</b><strong>'+fmt(x.value)+' تومان · '+fmt(pct(x.value,totalCost))+'٪</strong></div><i><b style="width:'+pct(x.value,totalCost)+'%"></b></i></div>').join(''):'<p class="finance-empty">هنوز هزینه‌ای در دسته‌بندی‌ها ثبت نشده است.</p>';
+ const docs=total(x=>COST_TYPES.includes(x.type)&&x.documented),invoices=records.filter(x=>x.type==='invoice'),invoiceSum=invoices.reduce((s,x)=>s+(+x.amount||0),0),settled=invoices.filter(x=>x.status==='تسویه‌شده'),settledSum=settled.reduce((s,x)=>s+(+x.amount||0),0),paid=total(x=>COST_TYPES.includes(x.type)&&['پرداخت‌شده','تسویه‌شده'].includes(x.status));
+ const docCards=[['مبلغ دارای مستند',docs,pct(docs,totalCost)+'٪ از کل هزینه'],['هزینه بدون مستند',Math.max(0,totalCost-docs),'نیازمند تکمیل سند'],['مبلغ کل فاکتورها',invoiceSum,invoices.length.toLocaleString('fa-IR')+' فاکتور'],['فاکتورهای تسویه‌شده',settledSum,settled.length.toLocaleString('fa-IR')+' از '+invoices.length.toLocaleString('fa-IR')+' فاکتور'],['مبلغ پرداخت / تسویه هزینه‌ها',paid,pct(paid,totalCost)+'٪ از هزینه‌ها']];
+ $('finance-documents').innerHTML=docCards.map(x=>'<article><small>'+x[0]+'</small><b>'+fmt(x[1])+' تومان</b><span>'+x[2]+'</span></article>').join('');
+ const personnel=[['اضافه‌کاری',total(x=>x.type==='overtime')],['کارانه',total(x=>x.type==='performance')],['فوق‌العاده و مزایا',total(x=>x.type==='allowance')]];
+ $('finance-personnel-costs').innerHTML=personnel.map(x=>'<article><small>'+x[0]+'</small><b>'+fmt(x[1])+' تومان</b><span>سهم از هزینه کل: '+fmt(pct(x[1],totalCost))+'٪</span></article>').join('');
+ $('finance-dept-rows').innerHTML=deptRows.length?deptRows.map(d=>'<tr><td>'+esc(d.name)+'</td><td>'+fmt(d.alloc)+'</td><td>'+fmt(d.cost)+'</td><td>'+fmt(d.share)+'٪</td><td>'+fmt(d.use)+'٪</td><td>'+fmt(d.docs)+'</td><td>'+fmt(d.doc)+'٪</td></tr>').join(''):'<tr><td colspan="7" class="finance-empty">هنوز داده‌ای برای مقایسه ادارات ثبت نشده است.</td></tr>';
+ $('finance-count').textContent=fmt(records.length)+' رویداد';
+ $('finance-rows').innerHTML=records.length?records.slice().reverse().map((x,i)=>'<tr><td>'+fmt(records.length-i)+'</td><td>'+esc(DEPTS[x.dept]||'—')+'</td><td>'+esc(TYPES[x.type]||x.type)+'</td><td>'+esc(x.title)+'</td><td>'+fmt(x.amount)+'</td><td>'+esc(x.status)+'</td><td>'+(x.documented?'دارد':'ندارد')+'</td><td>'+esc(x.date||'—')+'</td><td><button type="button" class="finance-delete" data-delete="'+esc(x.id)+'">حذف</button></td></tr>').join(''):'<tr><td colspan="9" class="finance-empty">هنوز رویداد مالی ثبت نشده است.</td></tr>';
 }
-form.addEventListener('submit',ev=>{ev.preventDefault();const x=Object.fromEntries(new FormData(form).entries());x.id=Date.now();x.amount=String(x.amount).replace(/[,٬\\s]/g,'');x.date=x.date||new Intl.DateTimeFormat('fa-IR').format(new Date());a.push(x);localStorage.setItem(K,JSON.stringify(a));form.reset();render()});
-document.getElementById('finance-print').addEventListener('click',()=>window.print());render();
+const form=$('finance-form');
+form.addEventListener('submit',ev=>{ev.preventDefault();const x=Object.fromEntries(new FormData(form).entries());x.id=String(Date.now())+'-'+Math.random().toString(36).slice(2,7);x.amount=Number(x.amount);x.documented=form.elements.documented.checked;x.date=x.date||new Intl.DateTimeFormat('fa-IR').format(new Date());if(['overtime','performance','allowance'].includes(x.type))x.category='personnel';if(x.type==='fuel')x.category='fuel';if(x.type==='purchase')x.category='procurement';if(x.type==='damage')x.category='damages';if(x.type==='contract')x.category='contracts';records.push(x);try{localStorage.setItem(KEY,JSON.stringify(records));form.reset();render()}catch{alert('ذخیره اطلاعات در مرورگر ممکن نشد. فضای ذخیره‌سازی را بررسی کنید.')}});
+$('finance-rows').addEventListener('click',ev=>{const b=ev.target.closest('[data-delete]');if(!b)return;records=records.filter(x=>String(x.id)!==b.dataset.delete);localStorage.setItem(KEY,JSON.stringify(records));render()});
+$('finance-print').addEventListener('click',()=>window.print());
+render();
 })();
