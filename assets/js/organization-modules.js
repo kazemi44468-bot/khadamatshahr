@@ -104,6 +104,46 @@
    const milestones=root.querySelector("[data-profile-milestones]");
    if(milestones)milestones.innerHTML=[["موعد پایان قرارداد / حکم","employment"],["موعد ارزیابی عملکرد بعدی","evaluation"],["موعد آموزش الزامی","training"],["موعد چک‌آپ پزشکی","medical"],["موعد تمدید تجهیزات","assets"],["برنامه ارتقا یا تغییر سمت","career"]].map(([label,key])=>'<label class="profile-milestone-card"><span>'+label+'</span><input type="date" data-milestone="'+key+'" value="'+escProfile(saved.milestones?.[key]||"")+'"></label>').join("");
    root.querySelectorAll("[data-profile-field],[data-workshop],[data-mission],[data-milestone]").forEach(el=>el.addEventListener("change",()=>{if(el.dataset.profileField){const [group,key]=el.dataset.profileField.split(".");saved[group]=saved[group]||{};saved[group][key]=el.value;if(group==="fitness"&&["height","weight"].includes(key)){const h=Number(saved.fitness.height)/100,w=Number(saved.fitness.weight);if(h>0&&w>0){saved.fitness.bmi=(w/(h*h)).toFixed(1);const bmi=root.querySelector('[data-profile-field="fitness.bmi"]');if(bmi)bmi.value=saved.fitness.bmi;}}}else if(el.dataset.workshop!==undefined){const i=Number(el.dataset.workshop);saved.workshops=saved.workshops||[];saved.workshops[i]=saved.workshops[i]||{};saved.workshops[i][el.dataset.key]=el.value;}else if(el.dataset.mission!==undefined){const i=Number(el.dataset.mission);saved.missions=saved.missions||missions;saved.missions[i]=saved.missions[i]||{...missions[i]};saved.missions[i][el.dataset.key]=el.value;}else if(el.dataset.milestone){saved.milestones=saved.milestones||{};saved.milestones[el.dataset.milestone]=el.value;}persist();}));
+   const personEventsKey="city-person-events-"+person.id;
+   let personEvents=(()=>{try{const x=JSON.parse(localStorage.getItem(personEventsKey)||"[]");return Array.isArray(x)?x:[]}catch(e){return []}})();
+   const eventNames={birthday:"تولد",marriage:"ازدواج","marriage-anniversary":"سالگرد ازدواج",promotion:"ترفیع و ارتقا",appointment:"انتصاب یا تغییر سمت",contract:"تمدید قرارداد یا حکم",evaluation:"ارزیابی عملکرد",training:"آموزش و گواهی",leave:"مرخصی و بازگشت به کار",retirement:"بازنشستگی",award:"تقدیر و مناسبت سازمانی",other:"سایر رویدادها"};
+   const eventForm=result.querySelector("[data-person-event-form]");
+   const eventBody=result.querySelector("[data-person-event-list]");
+   const today=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");};
+   const dateText=value=>value?new Intl.DateTimeFormat("fa-IR-u-ca-persian",{dateStyle:"medium"}).format(new Date(value+"T12:00:00")):"—";
+   const actionText=e=>!e.actionRequired?"اقدامی تعریف نشده":e.actionStatus==="done"?"انجام شده":e.actionDue&&e.actionDue<today()?"معوق · موعد گذشته":e.actionStatus==="in-progress"?"در حال انجام":"انجام نشده";
+   const persistPersonEvents=()=>{try{localStorage.setItem(personEventsKey,JSON.stringify(personEvents))}catch(e){}};
+   function renderPersonEvents(){
+    if(!eventBody)return;
+    eventBody.innerHTML=personEvents.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(e=>{
+     const timing=e.date<today()?"رویداد گذشته":"پیش‌رو";
+     const action=actionText(e),actionClass=action.startsWith("معوق")?"is-overdue":action==="انجام شده"?"is-done":e.actionRequired?"is-upcoming":"";
+     return '<tr data-person-event-row="'+escProfile(e.id)+'"><td><b>'+escProfile(e.title)+'</b><small>'+escProfile(eventNames[e.eventType]||"سایر رویدادها")+'</small></td><td>'+dateText(e.date)+'</td><td><span class="profile-event-status '+(timing==="رویداد گذشته"?"is-overdue":"is-upcoming")+'">'+timing+'</span></td><td>'+(e.actionRequired?"بله":"خیر")+'</td><td><span class="profile-event-status '+actionClass+'">'+action+'</span><select class="profile-event-action" data-event-status="'+escProfile(e.id)+'"><option value="pending" '+(e.actionStatus==="pending"?"selected":"")+'>انجام نشده</option><option value="in-progress" '+(e.actionStatus==="in-progress"?"selected":"")+'>در حال انجام</option><option value="done" '+(e.actionStatus==="done"?"selected":"")+'>انجام شده</option></select></td><td><input class="profile-event-action" type="date" data-event-due="'+escProfile(e.id)+'" value="'+escProfile(e.actionDue||"")+'"></td><td><button type="button" class="profile-event-delete" data-event-delete="'+escProfile(e.id)+'">حذف</button></td></tr>';
+    }).join("")||'<tr><td colspan="7" class="finance-empty">رویدادی برای این پرونده ثبت نشده است.</td></tr>';
+   }
+   if(eventForm&&!eventForm.dataset.bound){
+    eventForm.dataset.bound="1";
+    eventForm.addEventListener("submit",ev=>{
+     ev.preventDefault();const values=Object.fromEntries(new FormData(eventForm).entries());
+     const event={id:String(Date.now())+"-"+Math.random().toString(36).slice(2,7),personId:person.id,personName:person.name,dept:person.dept,eventType:values.eventType||"other",title:String(values.title||"").trim(),date:values.date,detail:String(values.detail||"").trim(),actionRequired:eventForm.elements.actionRequired.checked,actionDue:values.actionDue||"",actionStatus:values.actionStatus||"pending"};
+     if(!event.title||!event.date)return;
+     personEvents.push(event);persistPersonEvents();eventForm.reset();renderPersonEvents();
+    });
+   }
+   if(eventBody&&!eventBody.dataset.bound){
+    eventBody.dataset.bound="1";
+    eventBody.addEventListener("change",ev=>{
+     const status=ev.target.closest("[data-event-status]"),due=ev.target.closest("[data-event-due]");const id=(status||due)?.dataset.eventStatus||(due?.dataset.eventDue);
+     if(!id)return;const event=personEvents.find(x=>String(x.id)===String(id));if(!event)return;
+     if(status)event.actionStatus=status.value;if(due)event.actionDue=due.value;persistPersonEvents();renderPersonEvents();
+    });
+    eventBody.addEventListener("click",ev=>{
+     const button=ev.target.closest("[data-event-delete]");if(!button)return;
+     personEvents=personEvents.filter(x=>String(x.id)!==String(button.dataset.eventDelete));persistPersonEvents();renderPersonEvents();
+    });
+   }
+   renderPersonEvents();
+
   }
   function show(){
    const normalized=input.value.trim().replace(/[۰-۹٠-٩]/g,ch=>"۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".includes(ch)?String("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".indexOf(ch)%10):ch);
