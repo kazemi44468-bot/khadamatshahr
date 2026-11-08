@@ -33,17 +33,14 @@ function sampleDate(id){
  return faDate(new Date(jalaliToGregorian(y,m,15)));
 }
 function jalaliToGregorian(jy,jm,jd){
- let y=jy-979,days=365*y+Math.floor(y/33)*8+Math.floor((y%33+3)/4);
- for(let i=1;i<jm;i++)days+=i<=6?31:30;
- days+=jd-1;
- let gy=1600+400*Math.floor(days/146097);days%=146097;
- let leap=true;
- if(days>=36525){days--;gy+=100*Math.floor(days/36524);days%=36524;if(days>=365)days++;else leap=false;}
- gy+=4*Math.floor(days/1461);days%=1461;
- if(days>=366){leap=false;days--;gy+=Math.floor(days/365);}
- const monthDays=[0,31,leap?29:28,31,30,31,30,31,31,30,31,30,31];
- let gm=1;while(gm<=12&&days>=monthDays[gm]){days-=monthDays[gm];gm++;}
- return new Date(gy,gm-1,days+1);
+ const guess=new Date(jy+621,jm+2,jd);
+ for(let offset=-40;offset<=40;offset++){
+  const candidate=new Date(guess);candidate.setDate(candidate.getDate()+offset);
+  const parts=new Intl.DateTimeFormat('en-US-u-ca-persian',{year:'numeric',month:'numeric',day:'numeric'}).formatToParts(candidate);
+  const y=Number(parts.find(x=>x.type==='year').value),m=Number(parts.find(x=>x.type==='month').value),d=Number(parts.find(x=>x.type==='day').value);
+  if(y===jy&&m===jm&&d===jd)return candidate;
+ }
+ return null;
 }
 if(!localStorage.getItem(KEY+'_seeded')){
  if(records.length===0){
@@ -64,6 +61,8 @@ if(!localStorage.getItem(KEY+'_seeded')){
 }
 
 function persist(){localStorage.setItem(KEY,JSON.stringify(records))}
+// تاریخ نمونه‌های قدیمی که یکسان ثبت شده بودند، برای نمایش صحیح فیلتر دوره‌ای توزیع می‌شود؛ داده‌های کاربر تغییر نمی‌کند.
+records=records.map(x=>x.sample?{...x,date:sampleDate(String(x.id||'').replace(/^sample-/,'')||'budget')}:x);
 persist();
 let visibleRecords=[];
 const periodNames={year:'یک‌ساله',half:'شش‌ماهه',quarter:'فصلی',month:'ماهانه',week:'هفتگی',all:'تمام سوابق'};
