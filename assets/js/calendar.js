@@ -58,7 +58,7 @@
  );
  const hrEventNames={birthday:"تولد",marriage:"ازدواج","marriage-anniversary":"سالگرد ازدواج",promotion:"ترفیع و ارتقا",appointment:"انتصاب یا تغییر سمت",contract:"تمدید قرارداد یا حکم",evaluation:"ارزیابی عملکرد",training:"آموزش و گواهی",leave:"مرخصی و بازگشت به کار",retirement:"بازنشستگی",award:"تقدیر و مناسبت سازمانی",other:"سایر رویدادها"};
  const localToday=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");};
- const hrActionLabel=e=>!e.actionRequired?"اقدامی تعریف نشده":e.actionStatus==="done"?"انجام شده":e.actionDue&&e.actionDue<localToday()?"معوق · موعد گذشته":e.actionStatus==="in-progress"?"در حال انجام":"انجام نشده";
+ const hrActionLabel=e=>!e.actionRequired?"اقدامی تعریف نشده":e.actionStatus==="done"?"انجام شده":e.actionDue&&e.actionDue<localToday()?"معوق · موعد گذشته":e.actionDue===localToday()?"موعد امروز":e.actionStatus==="in-progress"?"در حال انجام":"انجام نشده";
  const hrEvents=[];
  for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(!key||!key.startsWith("city-person-events-"))continue;try{const personId=key.slice("city-person-events-".length);const rows=JSON.parse(localStorage.getItem(key)||"[]");if(Array.isArray(rows))rows.forEach(e=>hrEvents.push({...e,type:"personal",personId,dept:String(e.dept||"").replace(/^d/,""),hrEventType:e.eventType||"other",actionLabel:hrActionLabel(e),personName:e.personName||""}));}catch(e){}}
  events.push(...hrEvents.map(e=>({...e,detail:[e.detail||"",e.personName||"",e.actionRequired?"اقدام: "+e.actionLabel:""].filter(Boolean).join(" · ")})));
