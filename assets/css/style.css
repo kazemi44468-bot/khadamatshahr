@@ -5382,3 +5382,109 @@ body.ops-page .profile-milestone-grid{display:grid;grid-template-columns:repeat(
 body.ops-page .profile-milestone-card{padding:12px;border:1px solid #e1e8ed;border-radius:10px;background:#fafcfd}
 @media(max-width:760px){body.ops-page .profile-health-grid,body.ops-page .profile-milestone-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.ops-page .profile-workshop-grid{grid-template-columns:1fr}body.ops-page .profile-extension-section{padding:14px}body.ops-page .profile-extension-head{flex-direction:column}body.ops-page .profile-training-summary,body.ops-page .profile-mission-summary{grid-template-columns:1fr}}
 @media print{body.ops-page .profile-extension-section{break-inside:avoid;box-shadow:none}body.ops-page .profile-asset-check-table input,body.ops-page .profile-data-field input,body.ops-page .profile-workshop-card input{border-color:#bbb}}
+
+/* خوانایی و تعادل رنگ در پرونده پرسنلی */
+body.ops-page [data-personnel-profile] .profile-score{background:#f3f5f7!important;border:1px solid #dce3e8!important;backdrop-filter:none!important}
+body.ops-page [data-personnel-profile] .profile-score :is(small,b){color:#354451!important}
+body.ops-page [data-personnel-profile] .profile-score-scale{background:#e4e9ed!important}
+body.ops-page [data-personnel-profile] .profile-score-scale i{background:#637f95!important}
+body.ops-page [data-personnel-profile] .profile-overview-strip article{background:#fff!important;border:1px solid #dfe4e8!important;border-top:2px solid #9aa9b5!important}
+body.ops-page [data-personnel-profile] .profile-overview-strip article:nth-child(n){border-top-color:#9aa9b5!important}
+body.ops-page [data-personnel-profile] .profile-overview-strip small{color:#667581!important}
+body.ops-page [data-personnel-profile] .profile-expanded-grid>article,
+body.ops-page [data-personnel-profile] .profile-personal-facts>div{background:#f7f8f9!important;background-image:none!important;border:1px solid #e0e5e9!important;box-shadow:none!important}
+body.ops-page [data-personnel-profile] .profile-expanded-grid small,
+body.ops-page [data-personnel-profile] .profile-personal-facts small{color:#697782!important}
+body.ops-page [data-personnel-profile] .profile-expanded-grid b,
+body.ops-page [data-personnel-profile] .profile-personal-facts b{color:#303d48!important}
+body.ops-page [data-personnel-profile] .profile-training-summary article,
+body.ops-page [data-personnel-profile] .profile-mission-summary article,
+body.ops-page [data-personnel-profile] .profile-workshop-card,
+body.ops-page [data-personnel-profile] .profile-milestone-card{background:#f7f8f9!important;background-image:none!important;border-color:#dfe4e8!important;box-shadow:none!important}
+body.ops-page [data-personnel-profile] .profile-training-summary small,
+body.ops-page [data-personnel-profile] .profile-mission-summary small,
+body.ops-page [data-personnel-profile] .profile-data-field,
+body.ops-page [data-personnel-profile] .profile-workshop-card label,
+body.ops-page [data-personnel-profile] .profile-milestone-card{color:#586672!important}
+body.ops-page [data-personnel-profile] .profile-training-summary b,
+body.ops-page [data-personnel-profile] .profile-mission-summary b,
+body.ops-page [data-personnel-profile] .profile-workshop-card>b{color:#303d48!important}
+body.ops-page [data-personnel-profile] .profile-workshop-number,
+body.ops-page [data-personnel-profile] .profile-extension-count{background:#edf0f2!important;color:#465562!important;border-color:#d9e0e5!important}
+body.ops-page [data-personnel-profile] .profile-current-status.is-active{background:#edf1f3!important;color:#405966!important}
+body.ops-page [data-personnel-profile] .profile-check{color:#485762!important}
+body.ops-page [data-personnel-profile] .skill-meter-row{color:#4b5b67!important}
+body.ops-page [data-personnel-profile] .skill-meter-row>i{background:#e7ebee!important}
+body.ops-page [data-personnel-profile] .skill-meter-row>i>b{background:#758b9c!important}
+body.ops-page [data-personnel-profile] .profile-identity{background:#f4f6f7!important;color:#344451!important}
+body.ops-page [data-personnel-profile] .profile-identity :is(h2,p,.eyebrow){color:#344451!important}
+body.ops-page [data-personnel-profile] .profile-identity .profile-score{background:#fff!important}
+body.ops-page [data-personnel-profile] .profile-identity .profile-score :is(small,b){color:#354451!important}
+/* مرکز مالی تجمیعی */
+body.ops-page.finance-page{background:#f4f6f8!important}
+body.ops-page .finance-data-note{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;margin:0 0 16px;border:1px solid #dce3e8;border-right:3px solid #8798a6;border-radius:10px;background:#f8fafb;color:#53616d;font-size:10px;line-height:2}
+body.ops-page .finance-data-note b{white-space:nowrap;color:#344451}
+body.ops-page .finance-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+body.ops-page .finance-kpis article{padding:16px;border:1px solid #dfe5e9;border-radius:12px;background:#fff;box-shadow:0 3px 12px rgba(37,52,64,.035)}
+body.ops-page .finance-kpis small,body.ops-page .finance-kpis span{display:block;color:#697783;font-size:10px}
+body.ops-page .finance-kpis b{display:block;margin:7px 0;color:#293844;font-size:clamp(18px,2vw,25px);overflow-wrap:anywhere}
+body.ops-page .finance-panel{padding:20px;margin:16px 0;border:1px solid #dfe5e9;border-radius:13px;background:#fff;box-shadow:0 3px 14px rgba(37,52,64,.035)}
+body.ops-page .finance-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px}
+body.ops-page .finance-section-head h2{margin:4px 0;color:#2f3e4a;font-size:16px}
+body.ops-page .finance-section-head p{margin:4px 0;color:#71808b;font-size:10px;line-height:1.9}
+body.ops-page .finance-flow-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+body.ops-page .finance-flow-card{padding:12px;border:1px solid #e1e6ea;border-radius:10px;background:#f8f9fa}
+body.ops-page .finance-flow-card small,body.ops-page .finance-flow-card span{display:block;color:#687681;font-size:9px}
+body.ops-page .finance-flow-card b{display:block;margin:6px 0;color:#2e3b46;font-size:16px;overflow-wrap:anywhere}
+body.ops-page .finance-flow-card>i,.finance-category-row>i{display:block;height:7px;margin-top:10px;border-radius:10px;background:#e6eaed;overflow:hidden}
+body.ops-page .finance-flow-card>i>b,.finance-category-row>i>b{display:block;height:100%;border-radius:10px;background:#8295a4}
+body.ops-page .finance-ratio-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+body.ops-page .finance-ratio-grid article{padding:12px;border:1px solid #e3e7ea;border-radius:10px;background:#fff}
+body.ops-page .finance-ratio-grid small,body.ops-page .finance-ratio-grid span{display:block;color:#6d7983;font-size:9px}
+body.ops-page .finance-ratio-grid b{display:block;margin:6px 0;color:#35434e;font-size:14px}
+body.ops-page .finance-mini-track{height:6px;margin:8px 0;border-radius:9px;background:#e9edef;overflow:hidden}
+body.ops-page .finance-mini-track i{display:block;height:100%;background:#8a9ba8;border-radius:9px}
+body.ops-page .finance-two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+body.ops-page .finance-chart-legend{display:flex;gap:14px;margin-bottom:12px;color:#697681;font-size:9px}
+body.ops-page .finance-chart-legend span{display:flex;align-items:center;gap:6px}
+body.ops-page .finance-dot{width:9px;height:9px;border-radius:3px;background:#a7b4bd}
+body.ops-page .finance-dot.spending{background:#647d90}
+body.ops-page .finance-dept-chart,.finance-category-chart{display:grid;gap:13px}
+body.ops-page .finance-dept-bar>div:first-child,.finance-category-row>div{display:flex;justify-content:space-between;gap:8px;align-items:center}
+body.ops-page .finance-dept-bar b,.finance-category-row b{color:#35434e;font-size:10px}
+body.ops-page .finance-dept-bar small{color:#77838c;font-size:9px}
+body.ops-page .finance-dept-bar strong,.finance-category-row strong{color:#5d6c77;font-size:9px;white-space:nowrap}
+body.ops-page .finance-double-track{height:11px;display:flex;gap:2px;margin:7px 0;border-radius:10px;background:#edf0f2;overflow:hidden}
+body.ops-page .finance-double-track i{display:block;height:100%;border-radius:8px}
+body.ops-page .finance-double-track .allocation{background:#aab8c2}
+body.ops-page .finance-double-track .spending{background:#627d91}
+body.ops-page .finance-category-row>i{margin-top:6px}
+body.ops-page .finance-document-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+body.ops-page .finance-document-grid article,body.ops-page .finance-personnel-grid article{padding:13px;border:1px solid #e1e6ea;border-radius:10px;background:#f8f9fa}
+body.ops-page .finance-document-grid small,body.ops-page .finance-document-grid span,body.ops-page .finance-personnel-grid small,body.ops-page .finance-personnel-grid span{display:block;color:#6b7882;font-size:9px;line-height:1.8}
+body.ops-page .finance-document-grid b,body.ops-page .finance-personnel-grid b{display:block;margin:7px 0;color:#2f3d48;font-size:15px;overflow-wrap:anywhere}
+body.ops-page .finance-personnel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body.ops-page .finance-table{min-width:850px}
+body.ops-page .finance-table th{background:#f1f4f6;color:#475762}
+body.ops-page .finance-table td{color:#45535e}
+body.ops-page .finance-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+body.ops-page .finance-form>label{display:grid;gap:6px;color:#596975;font-size:10px;min-width:0}
+body.ops-page .finance-form input,body.ops-page .finance-form select,body.ops-page .finance-form textarea{width:100%;min-width:0;box-sizing:border-box;padding:10px;border:1px solid #dce3e8;border-radius:8px;background:#fff;color:#35434e;font:10px 'Vazirmatn',sans-serif}
+body.ops-page .finance-form input:focus,body.ops-page .finance-form select:focus,body.ops-page .finance-form textarea:focus{outline:0;border-color:#879aa8;box-shadow:0 0 0 3px rgba(100,124,141,.12)}
+body.ops-page .finance-form-wide{grid-column:1/-1}
+body.ops-page .finance-form .finance-document-check{display:flex;align-items:center;gap:8px;grid-column:1/-1}
+body.ops-page .finance-document-check input{width:16px;height:16px;accent-color:#657f92}
+body.ops-page .finance-form-actions{display:flex;align-items:center;gap:12px;grid-column:1/-1;flex-wrap:wrap}
+body.ops-page .finance-form-actions button,.finance-secondary-btn{padding:9px 18px;border:1px solid #526d80;border-radius:8px;background:#526d80;color:#fff;font:10px 'Vazirmatn',sans-serif;cursor:pointer}
+body.ops-page .finance-form-actions span{color:#74818a;font-size:9px}
+body.ops-page .finance-secondary-btn{background:#fff;color:#506779;border-color:#d6dfe5}
+body.ops-page .finance-delete{padding:5px 9px;border:1px solid #e4d8d6;border-radius:7px;background:#fff;color:#965c54;font:9px 'Vazirmatn',sans-serif;cursor:pointer}
+body.ops-page .finance-record-count{padding:6px 10px;border-radius:20px;background:#f0f3f5;color:#52616d;font-size:9px}
+body.ops-page .finance-scope-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body.ops-page .finance-scope-grid article{padding:13px;border:1px solid #e2e7ea;border-radius:10px;background:#f8f9fa}
+body.ops-page .finance-scope-grid b{display:block;color:#35434e;font-size:11px}
+body.ops-page .finance-scope-grid span{display:block;margin-top:5px;color:#6d7a84;font-size:9px;line-height:1.9}
+body.ops-page .finance-empty{padding:16px;text-align:center;color:#7a858e;font-size:10px}
+@media(max-width:900px){body.ops-page .finance-flow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.ops-page .finance-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body.ops-page .finance-document-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.ops-page .finance-ratio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.ops-page .finance-two-col{grid-template-columns:1fr}}
+@media(max-width:600px){body.ops-page .finance-panel{padding:13px}body.ops-page .finance-kpis{gap:8px}body.ops-page .finance-kpis article{padding:11px}body.ops-page .finance-form{grid-template-columns:1fr}body.ops-page .finance-form-wide{grid-column:auto}body.ops-page .finance-scope-grid{grid-template-columns:1fr 1fr}body.ops-page .finance-personnel-grid{grid-template-columns:1fr}body.ops-page .finance-section-head{flex-direction:column}}
+@media print{body.ops-page.finance-page{background:#fff!important}body.ops-page .finance-panel,body.ops-page .finance-kpis article{box-shadow:none;break-inside:avoid}body.ops-page .finance-form,body.ops-page .finance-delete,body.ops-page .finance-secondary-btn,body.ops-page .mobile-dock,body.ops-page .ops-header{display:none!important}body.ops-page .finance-table{min-width:0}body.ops-page .finance-panel{padding:8px;margin:8px 0}}
