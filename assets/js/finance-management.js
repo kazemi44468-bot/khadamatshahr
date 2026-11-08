@@ -30,7 +30,7 @@ function sampleDate(id){
  if(/^a/.test(id))back=Math.max(1,({a3:1,a4:2,a6:3,a7:4,a8:5}[id]||1));
  else back=1+(Number(String(id).replace(/\D/g,''))%7);
  let total=p.y*12+(p.m-1)-back, y=Math.floor(total/12), m=total%12+1;
- return faDate(new Date(jalaliToGregorian(y,m,15)));
+ return faDate(new Date(jalaliToGregorian(y,m,25)));
 }
 function jalaliToGregorian(jy,jm,jd){
  const guess=new Date(jy+621,jm+2,jd);
