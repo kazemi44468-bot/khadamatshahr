@@ -121,26 +121,24 @@
      return '<tr data-person-event-row="'+escProfile(e.id)+'"><td><b>'+escProfile(e.title)+'</b><small>'+escProfile(eventNames[e.eventType]||"سایر رویدادها")+'</small></td><td>'+dateText(e.date)+'</td><td><span class="profile-event-status '+(timing==="رویداد گذشته"?"is-overdue":"is-upcoming")+'">'+timing+'</span></td><td>'+(e.actionRequired?"بله":"خیر")+'</td><td><span class="profile-event-status '+actionClass+'">'+action+'</span><select class="profile-event-action" data-event-status="'+escProfile(e.id)+'"><option value="pending" '+(e.actionStatus==="pending"?"selected":"")+'>انجام نشده</option><option value="in-progress" '+(e.actionStatus==="in-progress"?"selected":"")+'>در حال انجام</option><option value="done" '+(e.actionStatus==="done"?"selected":"")+'>انجام شده</option></select></td><td><input class="profile-event-action" type="date" data-event-due="'+escProfile(e.id)+'" value="'+escProfile(e.actionDue||"")+'"></td><td><button type="button" class="profile-event-delete" data-event-delete="'+escProfile(e.id)+'">حذف</button></td></tr>';
     }).join("")||'<tr><td colspan="7" class="finance-empty">رویدادی برای این پرونده ثبت نشده است.</td></tr>';
    }
-   if(eventForm&&!eventForm.dataset.bound){
-    eventForm.dataset.bound="1";
-    eventForm.addEventListener("submit",ev=>{
+   if(eventForm){
+    eventForm.onsubmit=ev=>{
      ev.preventDefault();const values=Object.fromEntries(new FormData(eventForm).entries());
      const event={id:String(Date.now())+"-"+Math.random().toString(36).slice(2,7),personId:person.id,personName:person.name,dept:person.dept,eventType:values.eventType||"other",title:String(values.title||"").trim(),date:values.date,detail:String(values.detail||"").trim(),actionRequired:eventForm.elements.actionRequired.checked,actionDue:values.actionDue||"",actionStatus:values.actionStatus||"pending"};
      if(!event.title||!event.date)return;
      personEvents.push(event);persistPersonEvents();eventForm.reset();renderPersonEvents();
-    });
+    };
    }
-   if(eventBody&&!eventBody.dataset.bound){
-    eventBody.dataset.bound="1";
-    eventBody.addEventListener("change",ev=>{
-     const status=ev.target.closest("[data-event-status]"),due=ev.target.closest("[data-event-due]");const id=(status||due)?.dataset.eventStatus||(due?.dataset.eventDue);
+   if(eventBody){
+    eventBody.onchange=ev=>{
+     const status=ev.target.closest("[data-event-status]"),due=ev.target.closest("[data-event-due]");const id=status?status.dataset.eventStatus:due?.dataset.eventDue;
      if(!id)return;const event=personEvents.find(x=>String(x.id)===String(id));if(!event)return;
      if(status)event.actionStatus=status.value;if(due)event.actionDue=due.value;persistPersonEvents();renderPersonEvents();
-    });
-    eventBody.addEventListener("click",ev=>{
+    };
+    eventBody.onclick=ev=>{
      const button=ev.target.closest("[data-event-delete]");if(!button)return;
      personEvents=personEvents.filter(x=>String(x.id)!==String(button.dataset.eventDelete));persistPersonEvents();renderPersonEvents();
-    });
+    };
    }
    renderPersonEvents();
 
