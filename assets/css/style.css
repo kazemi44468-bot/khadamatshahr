@@ -5349,3 +5349,36 @@ body.ops-page .inspection-delete{padding:5px 9px;border:1px solid #e6d9d7;border
 body.ops-page .inspection-empty{padding:18px;text-align:center;color:#788b99}
 @media(max-width:720px){body.ops-page .inspection-forms-grid{grid-template-columns:1fr}body.ops-page .inspection-form-wide{grid-column:auto}body.ops-page .inspection-form{grid-template-columns:1fr}body.ops-page .inspection-wide{grid-column:auto}body.ops-page .inspection-records-head{align-items:flex-start;flex-direction:column}body.ops-page .inspection-filters{display:grid;grid-template-columns:1fr 1fr}body.ops-page .inspection-filters label{min-width:0}}
 @media print{body.ops-page .inspection-form-card,body.ops-page .inspection-filters,body.ops-page .inspection-form button,body.ops-page .inspection-delete{display:none!important}body.ops-page .inspection-record-table{min-width:0}}
+
+/* پرونده فردی توسعه‌یافته: دارایی، سلامت، آموزش و مأموریت */
+body.ops-page .profile-extension-section{margin:22px 0;padding:20px;border:1px solid #dfe7ed;border-radius:14px;background:#fff;box-shadow:0 5px 18px rgba(39,57,72,.035)}
+body.ops-page .profile-extension-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:15px}
+body.ops-page .profile-extension-head h2{margin:4px 0;color:#30485b;font-size:17px}
+body.ops-page .profile-extension-head h3{margin:4px 0;color:#30485b;font-size:14px}
+body.ops-page .profile-extension-head p{margin:4px 0;color:#718494;font-size:10px}
+body.ops-page .profile-extension-count{white-space:nowrap;padding:6px 11px;border:1px solid #dce5ec;border-radius:20px;background:#f4f7fa;color:#526f86;font-size:10px}
+body.ops-page .profile-asset-check-table{min-width:1050px}
+body.ops-page .profile-asset-check-table input,body.ops-page .profile-asset-check-table select,body.ops-page .profile-data-field input,body.ops-page .profile-workshop-card input,body.ops-page .profile-milestone-card input{width:100%;min-width:100px;padding:8px 9px;border:1px solid #dce5ec;border-radius:7px;background:#fff;color:#344b5f;font:10px 'Vazirmatn',sans-serif}
+body.ops-page .profile-asset-check-table .profile-inline-input{min-width:160px}
+body.ops-page .profile-check{display:flex;align-items:center;gap:6px;white-space:nowrap;color:#50677a;font-size:10px}
+body.ops-page .profile-check input{width:16px;min-width:16px;height:16px;accent-color:#587b96}
+body.ops-page .profile-current-status{display:inline-block;padding:4px 8px;border-radius:20px;background:#edf2f5;color:#617487;font-size:9px;white-space:nowrap}
+body.ops-page .profile-current-status.is-active{background:#eaf1f7;color:#456b88}
+body.ops-page .profile-current-status.is-expired{background:#faece9;color:#98574f}
+body.ops-page .profile-health-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:12px 0}
+body.ops-page .profile-data-field,body.ops-page .profile-workshop-card label,body.ops-page .profile-milestone-card{display:grid;gap:6px;color:#617789;font-size:10px}
+body.ops-page .profile-subhead{margin-top:22px;padding-top:14px;border-top:1px solid #e7edf1}
+body.ops-page .profile-training-summary,body.ops-page .profile-mission-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
+body.ops-page .profile-training-summary article,body.ops-page .profile-mission-summary article{padding:12px;border:1px solid #e1e8ed;border-radius:10px;background:#f8fafb}
+body.ops-page .profile-training-summary small,body.ops-page .profile-mission-summary small{display:block;color:#718494;font-size:9px}
+body.ops-page .profile-training-summary b,body.ops-page .profile-mission-summary b{display:block;margin-top:4px;color:#354f65;font-size:15px}
+body.ops-page .profile-workshop-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body.ops-page .profile-workshop-card{position:relative;display:grid;gap:10px;padding:15px;border:1px solid #e0e7ed;border-radius:11px;background:#fbfcfd}
+body.ops-page .profile-workshop-card>b{color:#344d62;font-size:12px}
+body.ops-page .profile-workshop-number{position:absolute;left:13px;top:12px;display:grid;place-items:center;width:25px;height:25px;border-radius:8px;background:#eaf1f6;color:#506f88;font-size:10px}
+body.ops-page .profile-workshop-fields{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+body.ops-page [data-profile-missions] input,body.ops-page [data-profile-missions] select{min-width:120px;padding:7px;border:1px solid #dce5ec;border-radius:7px;background:#fff;font:10px 'Vazirmatn',sans-serif;color:#344b5f}
+body.ops-page .profile-milestone-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body.ops-page .profile-milestone-card{padding:12px;border:1px solid #e1e8ed;border-radius:10px;background:#fafcfd}
+@media(max-width:760px){body.ops-page .profile-health-grid,body.ops-page .profile-milestone-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.ops-page .profile-workshop-grid{grid-template-columns:1fr}body.ops-page .profile-extension-section{padding:14px}body.ops-page .profile-extension-head{flex-direction:column}body.ops-page .profile-training-summary,body.ops-page .profile-mission-summary{grid-template-columns:1fr}}
+@media print{body.ops-page .profile-extension-section{break-inside:avoid;box-shadow:none}body.ops-page .profile-asset-check-table input,body.ops-page .profile-data-field input,body.ops-page .profile-workshop-card input{border-color:#bbb}}
