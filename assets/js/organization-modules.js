@@ -111,12 +111,12 @@
    const eventBody=result.querySelector("[data-person-event-list]");
    const today=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");};
    const dateText=value=>value?new Intl.DateTimeFormat("fa-IR-u-ca-persian",{dateStyle:"medium"}).format(new Date(value+"T12:00:00")):"—";
-   const actionText=e=>!e.actionRequired?"اقدامی تعریف نشده":e.actionStatus==="done"?"انجام شده":e.actionDue&&e.actionDue<today()?"معوق · موعد گذشته":e.actionStatus==="in-progress"?"در حال انجام":"انجام نشده";
+   const actionText=e=>!e.actionRequired?"اقدامی تعریف نشده":e.actionStatus==="done"?"انجام شده":e.actionDue&&e.actionDue<today()?"معوق · موعد گذشته":e.actionDue===today()?"موعد امروز":e.actionStatus==="in-progress"?"در حال انجام":"انجام نشده";
    const persistPersonEvents=()=>{try{localStorage.setItem(personEventsKey,JSON.stringify(personEvents))}catch(e){}};
    function renderPersonEvents(){
     if(!eventBody)return;
     eventBody.innerHTML=personEvents.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(e=>{
-     const timing=e.date<today()?"رویداد گذشته":"پیش‌رو";
+     const timing=e.date<today()?"رویداد گذشته":e.date===today()?"امروز":"پیش‌رو";
      const action=actionText(e),actionClass=action.startsWith("معوق")?"is-overdue":action==="انجام شده"?"is-done":e.actionRequired?"is-upcoming":"";
      return '<tr data-person-event-row="'+escProfile(e.id)+'"><td><b>'+escProfile(e.title)+'</b><small>'+escProfile(eventNames[e.eventType]||"سایر رویدادها")+'</small></td><td>'+dateText(e.date)+'</td><td><span class="profile-event-status '+(timing==="رویداد گذشته"?"is-overdue":"is-upcoming")+'">'+timing+'</span></td><td>'+(e.actionRequired?"بله":"خیر")+'</td><td><span class="profile-event-status '+actionClass+'">'+action+'</span><select class="profile-event-action" data-event-status="'+escProfile(e.id)+'"><option value="pending" '+(e.actionStatus==="pending"?"selected":"")+'>انجام نشده</option><option value="in-progress" '+(e.actionStatus==="in-progress"?"selected":"")+'>در حال انجام</option><option value="done" '+(e.actionStatus==="done"?"selected":"")+'>انجام شده</option></select></td><td><input class="profile-event-action" type="date" data-event-due="'+escProfile(e.id)+'" value="'+escProfile(e.actionDue||"")+'"></td><td><button type="button" class="profile-event-delete" data-event-delete="'+escProfile(e.id)+'">حذف</button></td></tr>';
     }).join("")||'<tr><td colspan="7" class="finance-empty">رویدادی برای این پرونده ثبت نشده است.</td></tr>';
