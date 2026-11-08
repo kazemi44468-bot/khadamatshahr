@@ -39,7 +39,7 @@
   {date:"2026-11-15",type:"meeting",dept:"all",personId:"10004",title:"جلسه رئیس شرکت با اداره تأسیسات فنی و امور نگهداری",detail:"بررسی خرابی‌های باز، برنامه نگهداری پیشگیرانه و اولویت تعمیرات",time:"۰۹:۰۰",place:"اتاق جلسات ریاست"},
   {date:"2026-11-16",type:"meeting",dept:"all",personId:"10003",title:"جلسه رئیس شرکت با اداره فاوا و خدمات فنی",detail:"مرور پایداری سامانه‌ها، امنیت اطلاعات، پشتیبانی کاربران و برنامه توسعه زیرساخت",time:"۰۹:۰۰",place:"اتاق جلسات ریاست"},
   {date:"2026-11-17",type:"meeting",dept:"all",personId:"10005",title:"جلسه رئیس شرکت با اداره جمع‌آوری و بازیافت پسماند",detail:"ارزیابی ناوگان، مسیرهای جمع‌آوری، شاخص‌های پاکیزگی و برنامه بازیافت",time:"۰۸:۳۰",place:"اتاق جلسات ریاست"},
-  {date:"2026-11-18",type:"meeting",dept:"all",title:"جلسه شورای مدیران و جمع‌بندی عملکرد ادارات",detail:"ارائه گزارش شش اداره، بررسی انحراف برنامه‌ها و تصویب اقدامات اصلاحی",time:"۱۰:۰۰",place:"سالن جلسات مرکزی"},
+  {date:"2026-11-18",type:"meeting",dept:"all",title:"جلسه شورای مدیران و جمع‌بندی عملکرد ادارات",detail:"ارائه گزارش هفت اداره، بررسی انحراف برنامه‌ها و تصویب اقدامات اصلاحی",time:"۱۰:۰۰",place:"سالن جلسات مرکزی"},
   {date:"2026-11-19",type:"meeting",dept:"1",personId:"10001",title:"جلسه هفتگی هماهنگی اداره اداری و پشتیبانی",detail:"تقسیم کار هفتگی، وضعیت درخواست‌ها و مرور پرونده‌های دارای مهلت",time:"۰۹:۰۰",place:"اتاق اداره"},
   {date:"2026-11-19",type:"meeting",dept:"2",personId:"10006",title:"جلسه هفتگی شورای پژوهش",detail:"کنترل نقاط عطف طرح‌ها و بررسی مستندات مطالعاتی",time:"۱۱:۰۰",place:"اتاق اداره"},
   {date:"2026-11-20",type:"meeting",dept:"3",personId:"10002",title:"جلسه هفتگی سرپرستان مناطق",detail:"توزیع برنامه شیفت‌ها، مرور گزارش‌های میدانی و رفع موانع",time:"۰۸:۰۰",place:"اتاق عملیات"},
@@ -56,6 +56,12 @@
   {date:"2026-11-28",type:"session",dept:"all",title:"نشست هماهنگی برنامه هفته آینده",detail:"تطبیق تقویم ادارات، جلسات ریاست، آموزش‌ها و مأموریت‌های میدانی",time:"۱۰:۳۰",place:"دبیرخانه مدیریت"},
   {date:"2026-11-30",type:"meeting",dept:"all",title:"جلسه ماهانه پایش تعهدات و مصوبات",detail:"بررسی وضعیت مصوبات، موارد معوق و تعیین برنامه پیگیری ماه بعد",time:"۰۹:۰۰",place:"اتاق جلسات مرکزی"}
  );
+ const hrEventNames={birthday:"تولد",marriage:"ازدواج","marriage-anniversary":"سالگرد ازدواج",promotion:"ترفیع و ارتقا",appointment:"انتصاب یا تغییر سمت",contract:"تمدید قرارداد یا حکم",evaluation:"ارزیابی عملکرد",training:"آموزش و گواهی",leave:"مرخصی و بازگشت به کار",retirement:"بازنشستگی",award:"تقدیر و مناسبت سازمانی",other:"سایر رویدادها"};
+ const localToday=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");};
+ const hrActionLabel=e=>!e.actionRequired?"اقدامی تعریف نشده":e.actionStatus==="done"?"انجام شده":e.actionDue&&e.actionDue<localToday()?"معوق · موعد گذشته":e.actionStatus==="in-progress"?"در حال انجام":"انجام نشده";
+ const hrEvents=[];
+ for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(!key||!key.startsWith("city-person-events-"))continue;try{const personId=key.slice("city-person-events-".length);const rows=JSON.parse(localStorage.getItem(key)||"[]");if(Array.isArray(rows))rows.forEach(e=>hrEvents.push({...e,type:"personal",personId,dept:String(e.dept||"").replace(/^d/,""),hrEventType:e.eventType||"other",actionLabel:hrActionLabel(e),personName:e.personName||""}));}catch(e){}}
+ events.push(...hrEvents.map(e=>({...e,detail:[e.detail||"",e.personName||"",e.actionRequired?"اقدام: "+e.actionLabel:""].filter(Boolean).join(" · ")})));
  const shared=window.CITY_ORG_DATA;
  if(shared)events.forEach(e=>{if(e.orderId){const o=shared.orders.find(x=>x.id===e.orderId);if(o){e.title=o.title;e.detail="مخاطب اجرا: "+shared.byId(o.dept).name+" · مسئول: "+o.owner+" · پرونده "+o.id;e.place="مهلت "+o.deadline+" · "+o.status;}}});
  const typeNames={meeting:"جلسه",session:"نشست",action:"اقدام",training:"آموزش",personal:"مناسبت پرسنلی",resolution:"مصوبه ریاست"};
@@ -78,7 +84,7 @@
  function startOfMonth(d){const x=new Date(d);x.setHours(12,0,0,0);const k=keyOf(x);while(true){const p=new Date(x);p.setDate(p.getDate()-1);if(keyOf(p)!==k)break;x.setTime(p.getTime());}return x;}
  function monthDays(first){const k=keyOf(first);let n=0;const x=new Date(first);while(keyOf(x)===k){n++;x.setDate(x.getDate()+1);}return n;}
  function filtered(){return events.filter(e=>(typeFilter.value==="all"||e.type===typeFilter.value)&&(deptFilter.value==="all"||e.dept==="all"||e.dept===deptFilter.value));}
- function card(e){const d=fromIso(e.date);return '<article class="calendar-event"><div class="calendar-event-date"><b>'+dayNumber(d)+'</b><span>'+new Intl.DateTimeFormat("fa-IR-u-ca-persian",{month:"short"}).format(d)+'</span></div><div class="calendar-event-content"><b>'+e.title+'</b><p>'+e.detail+'</p><div class="calendar-event-meta"><span>'+typeNames[e.type]+'</span><span>'+ (e.dept==="all"?"ستاد شرکت":departments[e.dept])+'</span>'+(e.time?'<span>'+e.time+'</span>':'')+(e.place?'<span>'+e.place+'</span>':'')+'</div></div></article>';}
+ function card(e){const d=fromIso(e.date);const hr=e.hrEventType?'<span>'+hrEventNames[e.hrEventType]+'</span><span>'+e.actionLabel+'</span>'+(e.actionDue?'<span>مهلت اقدام: '+new Intl.DateTimeFormat("fa-IR-u-ca-persian",{dateStyle:"medium"}).format(fromIso(e.actionDue))+'</span>':''):'';return '<article class="calendar-event"><div class="calendar-event-date"><b>'+dayNumber(d)+'</b><span>'+new Intl.DateTimeFormat("fa-IR-u-ca-persian",{month:"short"}).format(d)+'</span></div><div class="calendar-event-content"><b>'+e.title+'</b><p>'+e.detail+'</p><div class="calendar-event-meta"><span>'+typeNames[e.type]+'</span><span>'+ (e.dept==="all"?"ستاد شرکت":departments[e.dept]||"")+'</span>'+hr+(e.time?'<span>'+e.time+'</span>':'')+(e.place?'<span>'+e.place+'</span>':'')+'</div></div></article>';}
  function renderGrid(){
   monthLabel.textContent=monthTitle.format(monthStart);
   const first=new Date(monthStart);const offset=(first.getDay()+1)%7;const total=monthDays(first);const rows=Math.ceil((offset+total)/7);const today=iso(new Date());
@@ -114,7 +120,7 @@
  }
  const summary=root.querySelector("[data-calendar-department-summary]");
  if(summary){
-  const staff={"1":24,"2":12,"3":86,"4":31,"6":17,"7":78};
+  const staff={"1":24,"2":12,"3":86,"4":31,"6":17,"7":78,"8":0};
   summary.innerHTML=Object.entries(departments).map(([id,name])=>{
    const list=events.filter(e=>e.dept===id||(e.dept==="all"&&e.personId&&shared&&shared.people.some(p=>p.id===e.personId&&p.dept==="d"+id)));
    const sessions=list.filter(e=>e.type==="meeting"||e.type==="session").length;
