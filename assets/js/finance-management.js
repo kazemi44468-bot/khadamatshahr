@@ -75,7 +75,9 @@ form.addEventListener('submit',ev=>{
  ev.preventDefault();const x=Object.fromEntries(new FormData(form).entries());x.id=String(Date.now())+'-'+Math.random().toString(36).slice(2,7);x.amount=Number(x.amount);x.documented=form.elements.documented.checked;x.date=x.date||new Intl.DateTimeFormat('fa-IR').format(new Date());
  if(x.type==='approved'&&x.dept!=='company'){alert('اعتبار مصوب کل شرکت باید فقط یک‌بار با انتخاب «ستاد / کل شرکت» ثبت شود.');return}
  if(x.type==='allocated'&&x.dept==='company'){alert('تخصیص اعتبار باید به نام اداره مقصد ثبت شود؛ تخصیص ستادی را به‌عنوان اعتبار مصوب ثبت نکنید.');return}
- if(x.type==='approved'&&records.some(r=>r.type==='approved'&&r.dept==='company')){if(!confirm('قبلاً اعتبار مصوب ثبت شده است. آیا این مبلغ، اصلاح یا ثبت تکمیلی اعتبار مصوب است؟'))return}
+ if(x.type==='approved'&&records.some(r=>r.type==='approved'&&r.dept==='company')){alert('اعتبار مصوب کل شرکت قبلاً ثبت شده است. برای اصلاح مبلغ، ابتدا ردیف قبلی را از دفتر رویدادها حذف و سپس مبلغ صحیح را ثبت کنید.');return}
+ const duplicate=records.some(r=>COST_TYPES.includes(x.type)&&COST_TYPES.includes(r.type)&&r.dept===x.dept&&Number(r.amount)===x.amount&&String(r.title||'').trim()===String(x.title||'').trim()&&String(r.date||'')===String(x.date||'')&&String(r.reference||'')===String(x.reference||''));
+ if(duplicate){alert('رویدادی با همین اداره، مبلغ، شرح، تاریخ و شماره سند قبلاً ثبت شده است؛ برای جلوگیری از دوباره‌شماری، ثبت تکراری انجام نشد.');return}
  if(['overtime','performance','allowance'].includes(x.type))x.category='personnel';
  if(x.type==='fuel')x.category='fuel';if(x.type==='purchase')x.category='procurement';if(x.type==='damage')x.category='damages';if(x.type==='contract')x.category='contracts';
  records.push(x);try{persist();form.reset();render()}catch{alert('ذخیره اطلاعات در مرورگر ممکن نشد. فضای ذخیره‌سازی را بررسی کنید.')}
