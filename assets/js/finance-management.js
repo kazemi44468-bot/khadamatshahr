@@ -97,8 +97,8 @@ function donut(items,totalValue,label){
 function render(){
  visibleRecords=getVisibleRecords();
  const period=$('finance-period')?.value||'year';
- if($('finance-period-caption'))$('finance-period-caption').textContent='نمایش اطلاعات '+periodNames[period]+'؛ مبنای محاسبه تمام شاخص‌ها و نمودارهای این صفحه';
- const approved=sum(x=>x.type==='approved'&&x.dept==='company');
+ if($('finance-period-caption'))$('finance-period-caption').textContent='نمایش اطلاعات '+periodNames[period]+'؛ تخصیص و هزینه‌کرد مربوط به این بازه است و اعتبار مصوب، سقف جاری شرکت است';
+ const approved=records.filter(x=>x.type==='approved'&&x.dept==='company').reduce((s,x)=>s+(Number(x.amount)||0),0);
  const allocated=sum(x=>x.type==='allocated');
  const expense=spent();
  const balance=allocated-expense;
