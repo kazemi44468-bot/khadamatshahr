@@ -19,9 +19,35 @@ try{
 records=records.filter(x=>!String(x.id||'').startsWith('demo-')&&!['capacity','received'].includes(x.type));
 
 // ارقام پایه صرفاً برای تکمیل اولیه داشبورد هستند؛ با برچسب نمونه نمایش داده می‌شوند و قابل ویرایش/حذف‌اند.
+function sampleDate(id){
+ const now=new Date();
+ const fmtParts=d=>{const p=new Intl.DateTimeFormat('en-US-u-ca-persian',{year:'numeric',month:'numeric',day:'numeric'}).formatToParts(d);return{y:Number(p.find(x=>x.type==='year').value),m:Number(p.find(x=>x.type==='month').value),d:Number(p.find(x=>x.type==='day').value)}};
+ const faDate=d=>new Intl.DateTimeFormat('fa-IR-u-ca-persian',{year:'numeric',month:'2-digit',day:'2-digit'}).format(d).replace(/\u200e/g,'');
+ const recent={'a1':1,'a2':3,'e81':1,'e82':2,'e83':3,'e84':4,'e85':5};
+ if(id==='budget')return faDate(new Date(jalaliToGregorian(...(()=>{const p=fmtParts(now);return[p.y,1,1]})())));
+ if(recent[id]){const d=new Date(now);d.setDate(d.getDate()-recent[id]);return faDate(d);}
+ const p=fmtParts(now);let back=1;
+ if(/^a/.test(id))back=Math.max(1,({a3:1,a4:2,a6:3,a7:4,a8:5}[id]||1));
+ else back=1+(Number(String(id).replace(/\D/g,''))%7);
+ let total=p.y*12+(p.m-1)-back, y=Math.floor(total/12), m=total%12+1;
+ return faDate(new Date(jalaliToGregorian(y,m,15)));
+}
+function jalaliToGregorian(jy,jm,jd){
+ let y=jy-979,days=365*y+Math.floor(y/33)*8+Math.floor((y%33+3)/4);
+ for(let i=1;i<jm;i++)days+=i<=6?31:30;
+ days+=jd-1;
+ let gy=1600+400*Math.floor(days/146097);days%=146097;
+ let leap=true;
+ if(days>=36525){days--;gy+=100*Math.floor(days/36524);days%=36524;if(days>=365)days++;else leap=false;}
+ gy+=4*Math.floor(days/1461);days%=1461;
+ if(days>=366){leap=false;days--;gy+=Math.floor(days/365);}
+ const monthDays=[0,31,leap?29:28,31,30,31,30,31,31,30,31,30,31];
+ let gm=1;while(gm<=12&&days>=monthDays[gm]){days-=monthDays[gm];gm++;}
+ return new Date(gy,gm-1,days+1);
+}
 if(!localStorage.getItem(KEY+'_seeded')){
  if(records.length===0){
-  const base=(id,dept,type,amount,title,category,status='پرداخت‌شده',documented=true)=>({id:'sample-'+id,dept,type,amount,title,category,status,documented,date:'۱۴۰۵/۰۸/۱۵',reference:'نمونه-'+id,note:'داده نمایشی اولیه؛ پیش از استفاده مدیریتی با اطلاعات واقعی جایگزین شود.',sample:true});
+  const base=(id,dept,type,amount,title,category,status='پرداخت‌شده',documented=true)=>({id:'sample-'+id,dept,type,amount,title,category,status,documented,date:sampleDate(id),reference:'نمونه-'+id,note:'داده نمایشی اولیه؛ پیش از استفاده مدیریتی با اطلاعات واقعی جایگزین شود.',sample:true});
   records=[
    base('budget','company','approved',12000000000,'اعتبار مصوب اولیه کل شرکت','other','ثبت اولیه'),
    base('a1','1','allocated',1200000000,'تخصیص دوره‌ای اداره اداری و پشتیبانی','other','تأییدشده'),base('a2','2','allocated',900000000,'تخصیص دوره‌ای اداره تحقیق و توسعه','other','تأییدشده'),base('a3','3','allocated',2400000000,'تخصیص دوره‌ای اداره پارکبان و معبربانان','other','تأییدشده'),base('a4','4','allocated',1800000000,'تخصیص دوره‌ای اداره تأسیسات فنی','other','تأییدشده'),base('a6','6','allocated',1100000000,'تخصیص دوره‌ای اداره فاوا و خدمات فنی','other','تأییدشده'),base('a7','7','allocated',1700000000,'تخصیص دوره‌ای اداره پسماند','other','تأییدشده'),base('a8','8','allocated',900000000,'تخصیص دوره‌ای اداره بازرسی و تحقیقات محلی','other','تأییدشده'),
@@ -39,8 +65,33 @@ if(!localStorage.getItem(KEY+'_seeded')){
 
 function persist(){localStorage.setItem(KEY,JSON.stringify(records))}
 persist();
-const sum=fn=>records.filter(fn).reduce((s,x)=>s+(Number(x.amount)||0),0);
-const costs=()=>records.filter(x=>COST_TYPES.includes(x.type));
+let visibleRecords=[];
+const periodNames={year:'یک‌ساله',half:'شش‌ماهه',quarter:'فصلی',month:'ماهانه',week:'هفتگی',all:'تمام سوابق'};
+function normalizeDigits(s){return String(s||'').replace(/[۰-۹٠-٩]/g,ch=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(ch)>=0?'۰۱۲۳۴۵۶۷۸۹'.indexOf(ch):'٠١٢٣٤٥٦٧٨٩'.indexOf(ch)));}
+function recordDate(value){
+ const s=normalizeDigits(value).trim(),m=s.match(/(\d{4})[\/.-](\d{1,2})[\/.-](\d{1,2})/);
+ if(!m)return null;const y=Number(m[1]),mo=Number(m[2]),d=Number(m[3]);
+ if(y>=1700)return new Date(y,mo-1,d);
+ if(mo<1||mo>12||d<1||d>31)return null;
+ return jalaliToGregorian(y,mo,d);
+}
+function getVisibleRecords(){
+ const period=$('finance-period')?.value||'year';if(period==='all')return records.slice();
+ const now=new Date();now.setHours(23,59,59,999);let start;
+ if(period==='week'){const dayOffset=(now.getDay()+1)%7;start=new Date(now);start.setDate(now.getDate()-dayOffset);start.setHours(0,0,0,0);}
+ else{
+  const p=new Intl.DateTimeFormat('en-US-u-ca-persian',{year:'numeric',month:'numeric'}).formatToParts(new Date());
+  const y=Number(p.find(x=>x.type==='year').value),m=Number(p.find(x=>x.type==='month').value);
+  let first=1;
+  if(period==='month')first=m;
+  if(period==='quarter')first=Math.floor((m-1)/3)*3+1;
+  if(period==='half')first=m<=6?1:7;
+  start=jalaliToGregorian(y,first,1);start.setHours(0,0,0,0);
+ }
+ return records.filter(x=>{const d=recordDate(x.date);return d&&d>=start&&d<=now;});
+}
+const sum=fn=>visibleRecords.filter(fn).reduce((s,x)=>s+(Number(x.amount)||0),0);
+const costs=()=>visibleRecords.filter(x=>COST_TYPES.includes(x.type));
 const spent=()=>costs().reduce((s,x)=>s+(Number(x.amount)||0),0);
 function donut(items,totalValue,label){
  const palette=['#52738b','#91a7b7','#c2cdd5','#a58d78','#718b9d','#b6a39a','#9ba9a8','#cfb98e'];
@@ -48,6 +99,9 @@ function donut(items,totalValue,label){
  return '<div class="finance-donut-layout"><div class="finance-donut" style="background:conic-gradient('+(segments.length?segments.join(','):'#e8edf0 0 100%')+')"><div><b>'+fmt(totalValue)+'</b><small>'+label+'</small></div></div><div class="finance-donut-legend">'+items.map((x,i)=>'<div><i style="background:'+palette[i%palette.length]+'"></i><span>'+esc(x.name)+'</span><b>'+fmt(x.value)+' تومان</b><small>'+fmt(pct(x.value,totalValue))+'٪</small></div>').join('')+'</div></div>';
 }
 function render(){
+ visibleRecords=getVisibleRecords();
+ const period=$('finance-period')?.value||'year';
+ if($('finance-period-caption'))$('finance-period-caption').textContent='نمایش اطلاعات '+periodNames[period]+'؛ مبنای محاسبه تمام شاخص‌ها و نمودارهای این صفحه';
  const approved=sum(x=>x.type==='approved'&&x.dept==='company');
  const allocated=sum(x=>x.type==='allocated');
  const expense=spent();
@@ -79,7 +133,7 @@ function render(){
  const catRows=Object.entries(CATS).map(([id,name])=>({name,value:sum(x=>COST_TYPES.includes(x.type)&&x.category===id)})).filter(x=>x.value>0);
  $('finance-category-chart').innerHTML=donut(catRows,expense,'هزینه‌ها');
  const docs=sum(x=>COST_TYPES.includes(x.type)&&x.documented);
- const invoices=records.filter(x=>x.type==='invoice'),invoiceSum=invoices.reduce((s,x)=>s+(+x.amount||0),0);
+ const invoices=visibleRecords.filter(x=>x.type==='invoice'),invoiceSum=invoices.reduce((s,x)=>s+(+x.amount||0),0);
  const settled=invoices.filter(x=>x.status==='تسویه‌شده').reduce((s,x)=>s+(+x.amount||0),0);
  const paid=sum(x=>COST_TYPES.includes(x.type)&&['پرداخت‌شده','تسویه‌شده'].includes(x.status));
  const docCards=[['مبلغ دارای مستند',docs,pct(docs,expense)+'٪ از کل هزینه'],['هزینه بدون مستند',Math.max(0,expense-docs),'نیازمند تکمیل سند'],['مبلغ کل فاکتورها',invoiceSum,invoices.length.toLocaleString('fa-IR')+' فاکتور'],['فاکتورهای تسویه‌شده',settled,'از مجموع فاکتورهای ثبت‌شده'],['مبلغ پرداخت / تسویه هزینه‌ها',paid,pct(paid,expense)+'٪ از هزینه‌ها']];
@@ -87,8 +141,8 @@ function render(){
  const personnel=[['اضافه‌کاری',sum(x=>x.type==='overtime')],['کارانه',sum(x=>x.type==='performance')],['فوق‌العاده و مزایا',sum(x=>x.type==='allowance')]];
  $('finance-personnel-costs').innerHTML=personnel.map(x=>'<article><small>'+x[0]+'</small><b>'+fmt(x[1])+' تومان</b><span>سهم از هزینه کل: '+fmt(pct(x[1],expense))+'٪</span></article>').join('');
  $('finance-dept-rows').innerHTML=deptRows.map(d=>'<tr><td>'+esc(d.name)+'</td><td>'+fmt(d.allocation)+'</td><td>'+fmt(d.cost)+'</td><td>'+fmt(d.share)+'٪</td><td>'+fmt(d.use)+'٪</td><td>'+fmt(d.documented)+'</td><td>'+fmt(d.doc)+'٪</td></tr>').join('')+'<tr class="finance-total-row"><th>مجموع شرکت</th><th>'+fmt(allocated)+'</th><th>'+fmt(expense)+'</th><th>۱۰۰٪</th><th>'+fmt(pct(expense,allocated))+'٪</th><th>'+fmt(docs)+'</th><th>'+fmt(pct(docs,expense))+'٪</th></tr>';
- $('finance-count').textContent=fmt(records.length)+' رویداد';
- $('finance-rows').innerHTML=records.length?records.slice().reverse().map((x,i)=>'<tr><td>'+fmt(records.length-i)+'</td><td>'+esc(x.dept==='company'?'ستاد / کل شرکت':DEPTS[x.dept]||'—')+'</td><td>'+esc(TYPES[x.type]||x.type)+'</td><td>'+esc(x.title)+'</td><td>'+fmt(x.amount)+'</td><td>'+esc(x.status)+'</td><td>'+(x.documented?'دارد':'ندارد')+'</td><td>'+esc(x.date||'—')+'</td><td><button type="button" class="finance-secondary-btn" data-edit="'+esc(x.id)+'">ویرایش</button> <button type="button" class="finance-delete" data-delete="'+esc(x.id)+'">حذف</button></td></tr>').join(''):'<tr><td colspan="9" class="finance-empty">هنوز رویداد مالی ثبت نشده است.</td></tr>';
+ $('finance-count').textContent=fmt(visibleRecords.length)+' رویداد در بازه انتخابی';
+ $('finance-rows').innerHTML=visibleRecords.length?visibleRecords.slice().reverse().map((x,i)=>'<tr><td>'+fmt(visibleRecords.length-i)+'</td><td>'+esc(x.dept==='company'?'ستاد / کل شرکت':DEPTS[x.dept]||'—')+'</td><td>'+esc(TYPES[x.type]||x.type)+'</td><td>'+esc(x.title)+'</td><td>'+fmt(x.amount)+'</td><td>'+esc(x.status)+'</td><td>'+(x.documented?'دارد':'ندارد')+'</td><td>'+esc(x.date||'—')+'</td><td><button type="button" class="finance-secondary-btn" data-edit="'+esc(x.id)+'">ویرایش</button> <button type="button" class="finance-delete" data-delete="'+esc(x.id)+'">حذف</button></td></tr>').join(''):'<tr><td colspan="9" class="finance-empty">هنوز رویداد مالی ثبت نشده است.</td></tr>';
 }
 const form=$('finance-form');
 form.addEventListener('submit',ev=>{
@@ -104,5 +158,6 @@ form.addEventListener('submit',ev=>{
 });
 $('finance-rows').addEventListener('click',ev=>{const edit=ev.target.closest('[data-edit]');if(edit){const x=records.find(r=>String(r.id)===edit.dataset.edit);if(!x)return;['dept','type','category','amount','status','date','title','reference','note'].forEach(k=>{if(form.elements[k])form.elements[k].value=x[k]??''});form.elements.documented.checked=!!x.documented;$('finance-edit-id').value=x.id;const submit=form.querySelector('[type=submit]');if(submit)submit.textContent='ذخیره اصلاحات';$('finance-entry').scrollIntoView({behavior:'smooth',block:'start'});return}const b=ev.target.closest('[data-delete]');if(!b)return;if(!confirm('این رویداد مالی حذف شود؟'))return;records=records.filter(x=>String(x.id)!==b.dataset.delete);persist();render()});
 $('finance-print').addEventListener('click',()=>window.print());
+$('finance-period')?.addEventListener('change',render);
 render();
 })();
