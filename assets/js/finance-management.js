@@ -17,6 +17,26 @@ try{
 }catch{records=[]}
 // Remove only previously generated demo rows and obsolete non-operational categories; preserve user-entered records.
 records=records.filter(x=>!String(x.id||'').startsWith('demo-')&&!['capacity','received'].includes(x.type));
+
+// ارقام پایه صرفاً برای تکمیل اولیه داشبورد هستند؛ با برچسب نمونه نمایش داده می‌شوند و قابل ویرایش/حذف‌اند.
+if(!localStorage.getItem(KEY+'_seeded')){
+ if(records.length===0){
+  const base=(id,dept,type,amount,title,category,status='پرداخت‌شده',documented=true)=>({id:'sample-'+id,dept,type,amount,title,category,status,documented,date:'۱۴۰۵/۰۸/۱۵',reference:'نمونه-'+id,note:'داده نمایشی اولیه؛ پیش از استفاده مدیریتی با اطلاعات واقعی جایگزین شود.',sample:true});
+  records=[
+   base('budget','company','approved',12000000000,'اعتبار مصوب اولیه کل شرکت','other','ثبت اولیه'),
+   base('a1','1','allocated',1200000000,'تخصیص دوره‌ای اداره اداری و پشتیبانی','other','تأییدشده'),base('a2','2','allocated',900000000,'تخصیص دوره‌ای اداره تحقیق و توسعه','other','تأییدشده'),base('a3','3','allocated',2400000000,'تخصیص دوره‌ای اداره پارکبان و معبربانان','other','تأییدشده'),base('a4','4','allocated',1800000000,'تخصیص دوره‌ای اداره تأسیسات فنی','other','تأییدشده'),base('a6','6','allocated',1100000000,'تخصیص دوره‌ای اداره فاوا و خدمات فنی','other','تأییدشده'),base('a7','7','allocated',1700000000,'تخصیص دوره‌ای اداره پسماند','other','تأییدشده'),base('a8','8','allocated',900000000,'تخصیص دوره‌ای اداره بازرسی و تحقیقات محلی','other','تأییدشده'),
+   base('e11','1','expense',520000000,'هزینه‌های جاری و پشتیبانی اداری','operations'),base('e12','1','overtime',95000000,'اضافه‌کاری کارکنان اداری','personnel'),base('e13','1','performance',85000000,'کارانه عملکرد دوره‌ای','personnel'),base('e14','1','allowance',50000000,'فوق‌العاده و مزایای پرسنلی','personnel'),base('e15','1','invoice',100000000,'فاکتور خدمات و ملزومات اداری','procurement','در انتظار پرداخت'),
+   base('e21','2','expense',250000000,'هزینه مطالعات و طرح‌های توسعه','operations'),base('e22','2','invoice',160000000,'فاکتور خدمات پژوهشی و تخصصی','procurement'),base('e23','2','contract',120000000,'تعهد قرارداد مطالعاتی','contracts','در انتظار پرداخت'),base('e24','2','overtime',45000000,'اضافه‌کاری کارشناسی','personnel'),base('e25','2','performance',45000000,'کارانه پروژه‌های پژوهشی','personnel'),
+   base('e31','3','expense',900000000,'هزینه عملیات و خدمات میدانی','operations'),base('e32','3','fuel',420000000,'سوخت و انرژی ناوگان عملیاتی','fuel'),base('e33','3','overtime',260000000,'اضافه‌کاری نیروهای میدانی','personnel'),base('e34','3','invoice',180000000,'فاکتور تجهیزات و ملزومات میدانی','procurement'),base('e35','3','damage',70000000,'خسارت و حوادث عملیاتی','damages','در انتظار تأیید'),base('e36','3','other',120000000,'سایر هزینه‌های خدمات شهری','other'),
+   base('e41','4','expense',500000000,'هزینه تعمیرات و نگهداری تأسیسات','maintenance'),base('e42','4','purchase',280000000,'خرید قطعات و تجهیزات فنی','procurement'),base('e43','4','contract',220000000,'قرارداد سرویس و نگهداری','contracts','در انتظار پرداخت'),base('e44','4','fuel',160000000,'سوخت و انرژی تجهیزات','fuel'),base('e45','4','overtime',120000000,'اضافه‌کاری گروه فنی','personnel'),base('e46','4','invoice',140000000,'فاکتور تعمیرات تخصصی','maintenance'),
+   base('e61','6','expense',210000000,'هزینه پشتیبانی فناوری و ارتباطات','technology'),base('e62','6','purchase',180000000,'خرید تجهیزات فاوا','procurement'),base('e63','6','contract',120000000,'قرارداد پشتیبانی سامانه‌ها','contracts','در انتظار پرداخت'),base('e64','6','overtime',70000000,'اضافه‌کاری خدمات فنی','personnel'),base('e65','6','allowance',60000000,'فوق‌العاده تخصصی','personnel'),base('e66','6','invoice',140000000,'فاکتور تجهیزات و خدمات فناوری','technology'),
+   base('e71','7','expense',480000000,'هزینه عملیات جمع‌آوری و بازیافت','operations'),base('e72','7','fuel',350000000,'سوخت ناوگان جمع‌آوری','fuel'),base('e73','7','overtime',210000000,'اضافه‌کاری نیروهای خدماتی','personnel'),base('e74','7','purchase',150000000,'خرید لوازم و تجهیزات خدماتی','procurement'),base('e75','7','invoice',120000000,'فاکتور تعمیر و خدمات ناوگان','maintenance'),
+   base('e81','8','expense',260000000,'هزینه عملیات بازرسی و تحقیقات محلی','operations'),base('e82','8','contract',120000000,'قرارداد خدمات کارشناسی','contracts','در انتظار پرداخت'),base('e83','8','purchase',80000000,'خرید تجهیزات بازرسی','procurement'),base('e84','8','overtime',50000000,'اضافه‌کاری کارشناسان','personnel'),base('e85','8','invoice',80000000,'فاکتور خدمات و ملزومات بازرسی','procurement')
+  ];
+ }
+ localStorage.setItem(KEY+'_seeded','1');
+}
+
 function persist(){localStorage.setItem(KEY,JSON.stringify(records))}
 persist();
 const sum=fn=>records.filter(fn).reduce((s,x)=>s+(Number(x.amount)||0),0);
@@ -68,21 +88,21 @@ function render(){
  $('finance-personnel-costs').innerHTML=personnel.map(x=>'<article><small>'+x[0]+'</small><b>'+fmt(x[1])+' تومان</b><span>سهم از هزینه کل: '+fmt(pct(x[1],expense))+'٪</span></article>').join('');
  $('finance-dept-rows').innerHTML=deptRows.map(d=>'<tr><td>'+esc(d.name)+'</td><td>'+fmt(d.allocation)+'</td><td>'+fmt(d.cost)+'</td><td>'+fmt(d.share)+'٪</td><td>'+fmt(d.use)+'٪</td><td>'+fmt(d.documented)+'</td><td>'+fmt(d.doc)+'٪</td></tr>').join('')+'<tr class="finance-total-row"><th>مجموع شرکت</th><th>'+fmt(allocated)+'</th><th>'+fmt(expense)+'</th><th>۱۰۰٪</th><th>'+fmt(pct(expense,allocated))+'٪</th><th>'+fmt(docs)+'</th><th>'+fmt(pct(docs,expense))+'٪</th></tr>';
  $('finance-count').textContent=fmt(records.length)+' رویداد';
- $('finance-rows').innerHTML=records.length?records.slice().reverse().map((x,i)=>'<tr><td>'+fmt(records.length-i)+'</td><td>'+esc(x.dept==='company'?'ستاد / کل شرکت':DEPTS[x.dept]||'—')+'</td><td>'+esc(TYPES[x.type]||x.type)+'</td><td>'+esc(x.title)+'</td><td>'+fmt(x.amount)+'</td><td>'+esc(x.status)+'</td><td>'+(x.documented?'دارد':'ندارد')+'</td><td>'+esc(x.date||'—')+'</td><td><button type="button" class="finance-delete" data-delete="'+esc(x.id)+'">حذف</button></td></tr>').join(''):'<tr><td colspan="9" class="finance-empty">هنوز رویداد مالی ثبت نشده است.</td></tr>';
+ $('finance-rows').innerHTML=records.length?records.slice().reverse().map((x,i)=>'<tr><td>'+fmt(records.length-i)+'</td><td>'+esc(x.dept==='company'?'ستاد / کل شرکت':DEPTS[x.dept]||'—')+'</td><td>'+esc(TYPES[x.type]||x.type)+'</td><td>'+esc(x.title)+'</td><td>'+fmt(x.amount)+'</td><td>'+esc(x.status)+'</td><td>'+(x.documented?'دارد':'ندارد')+'</td><td>'+esc(x.date||'—')+'</td><td><button type="button" class="finance-secondary-btn" data-edit="'+esc(x.id)+'">ویرایش</button> <button type="button" class="finance-delete" data-delete="'+esc(x.id)+'">حذف</button></td></tr>').join(''):'<tr><td colspan="9" class="finance-empty">هنوز رویداد مالی ثبت نشده است.</td></tr>';
 }
 const form=$('finance-form');
 form.addEventListener('submit',ev=>{
  ev.preventDefault();const x=Object.fromEntries(new FormData(form).entries());x.id=String(Date.now())+'-'+Math.random().toString(36).slice(2,7);x.amount=Number(x.amount);x.documented=form.elements.documented.checked;x.date=x.date||new Intl.DateTimeFormat('fa-IR').format(new Date());
  if(x.type==='approved'&&x.dept!=='company'){alert('اعتبار مصوب کل شرکت باید فقط یک‌بار با انتخاب «ستاد / کل شرکت» ثبت شود.');return}
  if(x.type==='allocated'&&x.dept==='company'){alert('تخصیص اعتبار باید به نام اداره مقصد ثبت شود؛ تخصیص ستادی را به‌عنوان اعتبار مصوب ثبت نکنید.');return}
- if(x.type==='approved'&&records.some(r=>r.type==='approved'&&r.dept==='company')){alert('اعتبار مصوب کل شرکت قبلاً ثبت شده است. برای اصلاح مبلغ، ابتدا ردیف قبلی را از دفتر رویدادها حذف و سپس مبلغ صحیح را ثبت کنید.');return}
- const duplicate=records.some(r=>COST_TYPES.includes(x.type)&&COST_TYPES.includes(r.type)&&r.dept===x.dept&&Number(r.amount)===x.amount&&String(r.title||'').trim()===String(x.title||'').trim()&&String(r.date||'')===String(x.date||'')&&String(r.reference||'')===String(x.reference||''));
+ if(!x.editId&&x.type==='approved'&&records.some(r=>r.type==='approved'&&r.dept==='company')){alert('اعتبار مصوب کل شرکت قبلاً ثبت شده است. برای اصلاح مبلغ، ابتدا ردیف قبلی را از دفتر رویدادها حذف و سپس مبلغ صحیح را ثبت کنید.');return}
+ const duplicate=!x.editId&&records.some(r=>COST_TYPES.includes(x.type)&&COST_TYPES.includes(r.type)&&r.dept===x.dept&&Number(r.amount)===x.amount&&String(r.title||'').trim()===String(x.title||'').trim()&&String(r.date||'')===String(x.date||'')&&String(r.reference||'')===String(x.reference||''));
  if(duplicate){alert('رویدادی با همین اداره، مبلغ، شرح، تاریخ و شماره سند قبلاً ثبت شده است؛ برای جلوگیری از دوباره‌شماری، ثبت تکراری انجام نشد.');return}
  if(['overtime','performance','allowance'].includes(x.type))x.category='personnel';
  if(x.type==='fuel')x.category='fuel';if(x.type==='purchase')x.category='procurement';if(x.type==='damage')x.category='damages';if(x.type==='contract')x.category='contracts';
- records.push(x);try{persist();form.reset();render()}catch{alert('ذخیره اطلاعات در مرورگر ممکن نشد. فضای ذخیره‌سازی را بررسی کنید.')}
+ if(x.editId){const idx=records.findIndex(r=>String(r.id)===String(x.editId));if(idx>=0){delete x.editId;x.id=records[idx].id;x.sample=false;records[idx]={...records[idx],...x};}}else{delete x.editId;x.sample=false;records.push(x)}try{persist();form.reset();$('finance-edit-id').value='';const submit=form.querySelector('[type=submit]');if(submit)submit.textContent='ثبت و محاسبه مجدد';render()}catch{alert('ذخیره اطلاعات در مرورگر ممکن نشد. فضای ذخیره‌سازی را بررسی کنید.')}
 });
-$('finance-rows').addEventListener('click',ev=>{const b=ev.target.closest('[data-delete]');if(!b)return;if(!confirm('این رویداد مالی حذف شود؟'))return;records=records.filter(x=>String(x.id)!==b.dataset.delete);persist();render()});
+$('finance-rows').addEventListener('click',ev=>{const edit=ev.target.closest('[data-edit]');if(edit){const x=records.find(r=>String(r.id)===edit.dataset.edit);if(!x)return;['dept','type','category','amount','status','date','title','reference','note'].forEach(k=>{if(form.elements[k])form.elements[k].value=x[k]??''});form.elements.documented.checked=!!x.documented;$('finance-edit-id').value=x.id;const submit=form.querySelector('[type=submit]');if(submit)submit.textContent='ذخیره اصلاحات';$('finance-entry').scrollIntoView({behavior:'smooth',block:'start'});return}const b=ev.target.closest('[data-delete]');if(!b)return;if(!confirm('این رویداد مالی حذف شود؟'))return;records=records.filter(x=>String(x.id)!==b.dataset.delete);persist();render()});
 $('finance-print').addEventListener('click',()=>window.print());
 render();
 })();
