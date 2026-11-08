@@ -27,7 +27,7 @@ function sampleDate(id){
  if(id==='budget')return faDate(new Date(jalaliToGregorian(...(()=>{const p=fmtParts(now);return[p.y,1,1]})())));
  if(recent[id]){const d=new Date(now);d.setDate(d.getDate()-recent[id]);return faDate(d);}
  const p=fmtParts(now);let back=1;
- if(/^a/.test(id))back=Math.max(1,({a3:1,a4:2,a6:3,a7:4,a8:5}[id]||1));
+ if(/^a/.test(id))back=Math.max(1,({a3:1,a4:3,a6:5,a7:7,a8:9}[id]||1));
  else back=1+(Number(String(id).replace(/\D/g,''))%7);
  let total=p.y*12+(p.m-1)-back, y=Math.floor(total/12), m=total%12+1;
  return faDate(new Date(jalaliToGregorian(y,m,25)));
