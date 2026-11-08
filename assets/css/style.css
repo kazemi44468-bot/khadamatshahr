@@ -5454,7 +5454,7 @@ body.ops-page .finance-dept-bar>div:first-child,.finance-category-row>div{displa
 body.ops-page .finance-dept-bar b,.finance-category-row b{color:#35434e;font-size:10px}
 body.ops-page .finance-dept-bar small{color:#77838c;font-size:9px}
 body.ops-page .finance-dept-bar strong,.finance-category-row strong{color:#5d6c77;font-size:9px;white-space:nowrap}
-body.ops-page .finance-double-track{height:11px;display:flex;gap:2px;margin:7px 0;border-radius:10px;background:#edf0f2;overflow:hidden}
+body.ops-page .finance-double-track{height:7px;display:block;margin:6px 0;border-radius:10px;background:#edf0f2;overflow:hidden}
 body.ops-page .finance-double-track i{display:block;height:100%;border-radius:8px}
 body.ops-page .finance-double-track .allocation{background:#aab8c2}
 body.ops-page .finance-double-track .spending{background:#627d91}
