@@ -76,6 +76,7 @@
 .finance-secondary-btn{background:#eef3f6;color:#3d5c72;border:1px solid #dce5eb}
 .finance-delete{border:1px solid #e5c9c3;border-radius:7px;padding:5px 9px;background:#fff8f6;color:#a44e42;font:inherit;cursor:pointer}
 .finance-record-count{font-size:11px;color:#718293}
+.finance-period-panel{padding:15px 18px}.finance-period-controls{display:flex;align-items:end;gap:16px;flex-wrap:wrap}.finance-period-controls label{display:grid;gap:6px;min-width:210px;font-size:11px;color:#526b7d}.finance-period-controls select{border:1px solid #d8e1e8;border-radius:9px;padding:10px 12px;background:#fff;color:#334e61;font:inherit}.finance-period-controls>span{font-size:11px;color:#64798a;padding:9px 0}.finance-period-panel .finance-section-head{margin-bottom:10px}
 .finance-sample-note{margin-top:12px;padding:9px 13px;border:1px solid #e7d7b7;border-radius:9px;background:#fffaf1;color:#826638;font-size:11px}.finance-sample-tag{display:inline-block;padding:2px 6px;border-radius:5px;background:#fff3d8;color:#8a6729;font-size:9px}.finance-empty{text-align:center;color:#84929d;padding:20px}
 @media(max-width:900px){.finance-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.finance-document-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.finance-personnel-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.finance-share-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.finance-panel{padding:14px}.finance-kpis{gap:9px}.finance-kpis article{padding:13px}.finance-ratio-grid{grid-template-columns:1fr}.finance-document-grid,.finance-personnel-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.finance-donut-layout{grid-template-columns:115px minmax(0,1fr);gap:8px}.finance-donut{width:110px;height:110px}.finance-donut>div{width:75px;height:75px}.finance-donut b{font-size:12px}.finance-form{grid-template-columns:1fr}.finance-form-wide{grid-column:auto}.finance-section-head h2{font-size:16px}}
@@ -86,6 +87,10 @@
 <header class="ops-header"><div class="ops-header-inner"><a class="ops-brand" href="../index.html"><span class="ops-logo">ش</span><span><b>شرکت خدمات شهری شهرسازان</b><small>سامانه وضعیت و عملکرد سازمان</small></span></a><nav class="ops-nav" aria-label="ناوبری اصلی"></nav><div class="ops-clock"><span>مرکز مالی</span><b id="clock">—</b><small id="date">—</small></div></div></header>
 <main class="ops-main" data-finance-center>
 <section class="ops-intro"><div><span class="eyebrow">مدیریت منابع · اعتبارات و هزینه‌کرد</span><h1>مرکز تجمیع و پایش مالی شرکت</h1><p>نمای مدیریتی اعتبار مصوب، تخصیص به اداره‌ها و هزینه‌کرد واقعی؛ بدون درآمد یا ظرفیت فرضی.</p></div><div class="intro-stamp"><span>گزارش مالی</span><b>۰۱</b><small>نمای کل شرکت</small></div><div class="finance-sample-note" id="finance-sample-note">ارقام فعلی، داده‌های نمونه و قابل ویرایش هستند؛ پیش از استفاده رسمی، آن‌ها را اصلاح یا حذف کنید.</div></section>
+<section class="finance-panel finance-period-panel" aria-label="بازه گزارش مالی">
+<div class="finance-section-head"><div><span class="eyebrow">دوره گزارش</span><h2>انتخاب بازه زمانی</h2></div></div>
+<div class="finance-period-controls"><label for="finance-period">بازه زمانی گزارش<select id="finance-period"><option value="year" selected>یک‌ساله</option><option value="half">شش‌ماهه</option><option value="quarter">فصلی</option><option value="month">ماهانه</option><option value="week">هفتگی</option><option value="all">تمام سوابق</option></select></label><span id="finance-period-caption" aria-live="polite">گزارش یک‌ساله</span></div>
+</section>
 <section class="finance-kpis" aria-label="شاخص‌های کلیدی مالی">
 <article><small>اعتبار مصوب کل شرکت</small><b id="f-approved">۰</b><span>تومان</span></article>
 <article><small>اعتبار تخصیص‌یافته</small><b id="f-allocated">۰</b><span>تومان</span></article>
