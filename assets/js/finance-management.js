@@ -104,9 +104,9 @@ function render(){
  const balance=allocated-expense;
  [['f-approved',approved],['f-allocated',allocated],['f-spent',expense],['f-balance',balance]].forEach(([id,v])=>$(id).textContent=fmt(v));
  const ratios=[
-  {label:'درصد تخصیص از اعتبار مصوب',value:pct(allocated,approved),amount:allocated,base:approved,color:'allocation'},
-  {label:'درصد هزینه‌کرد از اعتبار تخصیص‌یافته',value:pct(expense,allocated),amount:expense,base:allocated,color:'spending'},
-  {label:'درصد هزینه‌کرد از اعتبار مصوب',value:pct(expense,approved),amount:expense,base:approved,color:'approved'}
+  {label:'تخصیص این بازه نسبت به اعتبار مصوب سالیانه',value:pct(allocated,approved),amount:allocated,base:approved,color:'allocation'},
+  {label:'هزینه‌کرد این بازه نسبت به تخصیص همین بازه',value:pct(expense,allocated),amount:expense,base:allocated,color:'spending'},
+  {label:'هزینه‌کرد این بازه نسبت به اعتبار مصوب سالیانه',value:pct(expense,approved),amount:expense,base:approved,color:'approved'}
  ];
  $('finance-ratios').innerHTML=ratios.map(x=>'<article class="finance-ratio-card"><div><small>'+x.label+'</small><b>'+fmt(x.value)+'٪</b></div><div class="finance-ratio-track"><i class="'+x.color+'" style="width:'+Math.min(100,Math.max(0,x.value))+'%"></i></div><span>'+fmt(x.amount)+' از '+fmt(x.base)+' تومان</span></article>').join('');
  const alerts=[];
@@ -154,6 +154,7 @@ form.addEventListener('submit',ev=>{
 });
 $('finance-rows').addEventListener('click',ev=>{const edit=ev.target.closest('[data-edit]');if(edit){const x=records.find(r=>String(r.id)===edit.dataset.edit);if(!x)return;['dept','type','category','amount','status','date','title','reference','note'].forEach(k=>{if(form.elements[k])form.elements[k].value=x[k]??''});form.elements.documented.checked=!!x.documented;$('finance-edit-id').value=x.id;const submit=form.querySelector('[type=submit]');if(submit)submit.textContent='ذخیره اصلاحات';$('finance-entry').scrollIntoView({behavior:'smooth',block:'start'});return}const b=ev.target.closest('[data-delete]');if(!b)return;if(!confirm('این رویداد مالی حذف شود؟'))return;records=records.filter(x=>String(x.id)!==b.dataset.delete);persist();render()});
 $('finance-print').addEventListener('click',()=>window.print());
+document.querySelectorAll('[data-finance-period]').forEach(button=>{button.addEventListener('click',()=>{const select=$('finance-period');if(!select)return;select.value=button.dataset.financePeriod;render();});button.addEventListener('keydown',ev=>{if(!['ArrowLeft','ArrowRight'].includes(ev.key))return;ev.preventDefault();const buttons=Array.from(document.querySelectorAll('[data-finance-period]'));const index=buttons.indexOf(button);const next=buttons[(index+(ev.key==='ArrowLeft'?1:-1)+buttons.length)%buttons.length];next.focus();next.click();});});
 $('finance-period')?.addEventListener('change',render);
 render();
 })();
