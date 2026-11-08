@@ -65,7 +65,7 @@ function persist(){localStorage.setItem(KEY,JSON.stringify(records))}
 records=records.map(x=>x.sample?{...x,date:sampleDate(String(x.id||'').replace(/^sample-/,'')||'budget')}:x);
 persist();
 let visibleRecords=[];
-const periodNames={year:'یک‌ساله',half:'شش‌ماهه',quarter:'فصلی',month:'ماهانه',week:'هفتگی',all:'تمام سوابق'};
+const periodNames={year:'یک‌ساله اخیر',half:'شش‌ماهه اخیر',quarter:'سه‌ماهه اخیر',month:'یک‌ماهه اخیر',week:'هفت روز اخیر',all:'تمام سوابق'};
 function normalizeDigits(s){return String(s||'').replace(/[۰-۹٠-٩]/g,ch=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(ch)>=0?'۰۱۲۳۴۵۶۷۸۹'.indexOf(ch):'٠١٢٣٤٥٦٧٨٩'.indexOf(ch)));}
 function recordDate(value){
  const s=normalizeDigits(value).trim(),m=s.match(/(\d{4})[\/.-](\d{1,2})[\/.-](\d{1,2})/);
@@ -76,17 +76,14 @@ function recordDate(value){
 }
 function getVisibleRecords(){
  const period=$('finance-period')?.value||'year';if(period==='all')return records.slice();
- const now=new Date();now.setHours(23,59,59,999);let start;
- if(period==='week'){const dayOffset=(now.getDay()+1)%7;start=new Date(now);start.setDate(now.getDate()-dayOffset);start.setHours(0,0,0,0);}
+ const now=new Date();now.setHours(23,59,59,999);let start=new Date(now);
+ if(period==='week'){start.setDate(start.getDate()-6);}
  else{
-  const p=new Intl.DateTimeFormat('en-US-u-ca-persian',{year:'numeric',month:'numeric'}).formatToParts(new Date());
-  const y=Number(p.find(x=>x.type==='year').value),m=Number(p.find(x=>x.type==='month').value);
-  let first=1;
-  if(period==='month')first=m;
-  if(period==='quarter')first=Math.floor((m-1)/3)*3+1;
-  if(period==='half')first=m<=6?1:7;
-  start=jalaliToGregorian(y,first,1);start.setHours(0,0,0,0);
+  const months={month:1,quarter:3,half:6,year:12}[period]||12;
+  const day=start.getDate();start.setDate(1);start.setMonth(start.getMonth()-months);
+  const lastDay=new Date(start.getFullYear(),start.getMonth()+1,0).getDate();start.setDate(Math.min(day,lastDay));
  }
+ start.setHours(0,0,0,0);
  return records.filter(x=>{const d=recordDate(x.date);return d&&d>=start&&d<=now;});
 }
 const sum=fn=>visibleRecords.filter(fn).reduce((s,x)=>s+(Number(x.amount)||0),0);
