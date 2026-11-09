@@ -11,7 +11,7 @@ button{cursor:pointer}
 .intro-main{width:min(100%,700px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;padding:4px 0 5px;text-align:center}
 .intro-brand{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
 .intro-logo{display:block;width:clamp(112px,13vw,148px);height:clamp(112px,13vw,148px);object-fit:contain;object-position:center;filter:drop-shadow(0 5px 14px #0004)}
-.intro-logo-box{width:clamp(142px,17vw,178px);height:clamp(142px,17vw,178px);display:grid;place-items:center;padding:12px;border:1px solid #ffffffa8;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(239,245,249,.82));box-shadow:0 10px 30px #061a2b45,inset 0 1px 0 #fff}
+.intro-logo-box{width:clamp(142px,17vw,178px);height:clamp(142px,17vw,178px);display:grid;place-items:center;padding:12px;border:1px solid rgba(255,255,255,.48);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.25),rgba(210,229,242,.10));box-shadow:0 12px 32px rgba(3,20,36,.24),inset 0 1px 0 rgba(255,255,255,.52);backdrop-filter:blur(16px) saturate(145%);-webkit-backdrop-filter:blur(16px) saturate(145%)}
 .intro-portals{width:min(100%,570px);display:flex;flex-direction:column;align-items:center;gap:10px}
 .intro-brand-name{display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap;font-size:clamp(15px,1.8vw,20px);line-height:1.5}
 .intro-brand-name span{font-weight:400;color:#e8edf2}
@@ -69,3 +69,22 @@ button{cursor:pointer}
 .intro-portal-box .portal-grid{width:100%}
 .intro-portal-box .companies-link{margin-top:0}
 @media(max-width:420px){.intro-portal-box{padding:9px;border-radius:12px;gap:8px}}
+
+
+/* خوانایی و هماهنگی شیشه‌ای درگاه اینترو */
+.intro-portal-box{background:linear-gradient(145deg,rgba(12,39,63,.56),rgba(15,47,73,.42))!important;border:1px solid rgba(255,255,255,.38)!important;box-shadow:0 16px 38px rgba(3,18,32,.30),inset 0 1px rgba(255,255,255,.18)!important;backdrop-filter:blur(15px) saturate(125%)!important;-webkit-backdrop-filter:blur(15px) saturate(125%)!important}
+.portal-card{background:linear-gradient(145deg,rgba(255,255,255,.17),rgba(255,255,255,.08))!important;border-color:rgba(255,255,255,.38)!important;text-shadow:0 1px 3px rgba(0,0,0,.30)}
+.portal-card:disabled{opacity:.82!important;color:#fff!important}
+.portal-card:disabled .portal-title{color:rgba(255,255,255,.94)!important}
+.portal-card:disabled .portal-state{color:#f2e6cf!important}
+.portal-enabled{background:linear-gradient(135deg,rgba(231,197,133,.30),rgba(255,255,255,.13))!important;border-color:rgba(239,211,161,.82)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10),0 4px 12px rgba(0,0,0,.12)}
+.companies-link{background:rgba(255,255,255,.13)!important;border-color:rgba(255,255,255,.48)!important;color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.35);font-weight:700}
+.companies-link span{color:#f4dcae!important}
+.login-panel{background:linear-gradient(145deg,#fff 0%,#f3f7fa 100%)!important;border:1px solid #d7e2ea!important;box-shadow:0 24px 70px rgba(0,0,0,.48),inset 0 1px #fff!important}
+.login-panel h2{color:#173a59!important;font-size:20px!important}
+.login-panel label{color:#294a62!important;font-size:12px!important}
+.login-panel input,.login-panel select{background:#fff!important;border:1px solid #b9cbd8!important;color:#173a59!important}
+.login-panel input::placeholder{color:#8193a1!important}
+.login-panel button[type=submit]{background:linear-gradient(135deg,#244e70,#173a59)!important;color:#fff!important;border:1px solid #173a59!important;font-weight:700}
+.login-panel .login-brand{border-color:#dbe4ea!important}
+@media(max-width:420px){.intro-logo-box{background:linear-gradient(145deg,rgba(255,255,255,.25),rgba(210,229,242,.10))!important;backdrop-filter:blur(14px) saturate(145%)!important}}
