@@ -6,27 +6,27 @@ html,body{min-height:100%;margin:0}
 body{font-family:Vazirmatn,Tahoma,sans-serif;background:#102c49 url("../images/introback.webp") center center/cover fixed no-repeat}
 button,input,select{font:inherit}
 button{cursor:pointer}
-.intro{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(24px,5vh,52px);padding:clamp(20px,5vw,64px);position:relative;isolation:isolate}
-.intro:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(115deg,rgba(5,22,39,.86),rgba(10,38,63,.72) 52%,rgba(8,31,52,.62))}
-.intro-main{width:min(100%,920px);display:flex;align-items:center;justify-content:center;gap:clamp(28px,7vw,90px);padding:clamp(18px,3vw,34px) 0}
-.intro-brand{display:flex;align-items:center;gap:16px}
-.intro-logo{width:clamp(76px,11vw,118px);height:clamp(76px,11vw,118px);object-fit:contain;filter:drop-shadow(0 8px 20px #0005)}
-.intro-brand-name{display:flex;flex-direction:column;gap:3px;white-space:nowrap;font-size:clamp(17px,2.2vw,25px);line-height:1.55}
+.intro{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(18px,3.5vh,34px);padding:clamp(18px,4vw,48px);position:relative;isolation:isolate}
+.intro:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(115deg,rgba(5,22,39,.28),rgba(10,38,63,.16) 52%,rgba(8,31,52,.22))}
+.intro-main{width:min(100%,760px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:17px;padding:8px 0 12px;text-align:center}
+.intro-brand{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center}
+.intro-logo{display:block;width:clamp(66px,8vw,88px);height:clamp(66px,8vw,88px);object-fit:contain;object-position:center;filter:drop-shadow(0 5px 14px #0004)}
+.intro-brand-name{display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap;font-size:clamp(15px,1.8vw,20px);line-height:1.5}
 .intro-brand-name span{font-weight:400;color:#e8edf2}
 .intro-brand-name strong{font-size:1.2em;color:#fff}
-.intro-copy{border-right:1px solid #ffffff55;padding-right:clamp(24px,4vw,54px);display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.intro-copy{display:flex;flex-direction:column;align-items:center;gap:9px}
 .intro-kicker{font-size:12px;color:var(--gold);letter-spacing:.4px}
-.intro-copy h1{font-size:clamp(20px,3vw,32px);line-height:1.6;margin:0;font-weight:700;color:#fff}
-.intro-login{display:flex;align-items:center;gap:32px;padding:11px 18px;border:1px solid #e0c58f;border-radius:7px;background:linear-gradient(120deg,#ead5aa,#c5a36d);color:#18334d;font-size:13px;font-weight:700;box-shadow:0 8px 24px #061a2b55;transition:transform .2s,filter .2s}
+.intro-copy h1{font-size:clamp(18px,2.3vw,25px);line-height:1.5;margin:0;font-weight:700;color:#fff;text-shadow:0 2px 12px #071b2d66}
+.intro-login{display:flex;align-items:center;gap:24px;padding:8px 15px;border:1px solid #e0c58f;border-radius:7px;background:linear-gradient(120deg,#ead5aa,#c5a36d);color:#18334d;font-size:13px;font-weight:700;box-shadow:0 8px 24px #061a2b55;transition:transform .2s,filter .2s}
 .intro-login:hover{transform:translateY(-2px);filter:brightness(1.06)}
 .intro-login span{font-size:18px}
-.portal-grid{width:min(100%,920px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.portal-card{min-height:112px;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px;padding:16px;border:1px solid var(--line);border-radius:9px;background:linear-gradient(145deg,#ffffff1c,#ffffff0b);color:#fff;text-align:right;backdrop-filter:blur(9px);transition:background .2s,border-color .2s,transform .2s}
+.portal-grid{width:min(100%,760px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.portal-card{min-height:82px;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:linear-gradient(145deg,#ffffff1c,#ffffff0b);color:#fff;text-align:right;backdrop-filter:blur(9px);transition:background .2s,border-color .2s,transform .2s}
 .portal-card:disabled{cursor:default;opacity:.68}
 .portal-enabled{border-color:#d7b77b99;background:linear-gradient(145deg,#ffffff28,#ffffff10)}
 .portal-enabled:hover{transform:translateY(-3px);background:#ffffff2b;border-color:var(--gold)}
 .portal-index{font-size:10px;color:#e0c58f}
-.portal-title{font-size:14px;font-weight:700;line-height:1.7}
+.portal-title{font-size:12px;font-weight:700;line-height:1.55}
 .portal-state{width:100%;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#d8e0e8}
 .portal-enabled .portal-state{color:#f1d9a9}
 .portal-state b{font-size:17px;font-weight:400}
@@ -52,6 +52,6 @@ button{cursor:pointer}
 .login-submit span{font-size:17px}
 .login-message{min-height:18px;margin:9px 0 0;color:#a36e32;font-size:10px;line-height:1.8}
 @keyframes login-in{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
-@media(max-width:760px){.intro{gap:28px;padding:30px 18px}.intro-main{flex-direction:column;gap:22px;padding:8px 0}.intro-copy{align-items:center;text-align:center;border-right:0;border-top:1px solid #ffffff55;padding:18px 0 0;width:min(100%,420px)}.intro-copy h1{font-size:23px}.portal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.portal-card{min-height:102px;padding:13px}.portal-title{font-size:12px}}
-@media(max-width:420px){body{background-attachment:scroll}.intro{padding:24px 13px}.intro-brand{gap:11px}.intro-logo{width:70px;height:70px}.intro-brand-name{font-size:17px}.intro-copy h1{font-size:20px}.portal-card{min-height:94px;padding:11px}.portal-title{font-size:11px}.login-panel{padding:23px 19px}}
+@media(max-width:760px){.intro{gap:22px;padding:24px 16px}.intro-main{gap:14px;padding:4px 0}.intro-copy{width:100%;padding:0}.intro-copy h1{font-size:21px}.portal-grid{width:min(100%,520px);grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.portal-card{min-height:76px;padding:9px 11px}.portal-title{font-size:11px}}
+@media(max-width:420px){body{background-attachment:scroll}.intro{padding:20px 12px;gap:18px}.intro-logo{width:62px;height:62px}.intro-brand-name{font-size:15px}.intro-copy h1{font-size:18px}.portal-card{min-height:72px;padding:8px 9px}.portal-title{font-size:10px}.login-panel{padding:23px 19px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
