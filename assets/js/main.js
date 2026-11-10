@@ -38,7 +38,7 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
  if(!body.classList.contains('ops-page'))return;
  const inPages=location.pathname.includes('/pages/');
  const prefix=inPages?'':'pages/';
- const home=inPages?'../dashboard.html':'dashboard.html';
+ const home=inPages?'../dashboard.html':'#overview';
  const urls={
   departments:['department-1.html','department-2.html','department-3.html','department-4.html','department-6.html','department-7.html','department-8.html'].map(x=>prefix+x),
   finance:prefix+'finance-management.html',workforce:prefix+'workforce.html',profile:prefix+'personnel-profile.html',evaluation:prefix+'performance-evaluation.html',
