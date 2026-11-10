@@ -38,7 +38,7 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
  if(!body.classList.contains('ops-page'))return;
  const inPages=location.pathname.includes('/pages/');
  const prefix=inPages?'':'pages/';
- const home=inPages?'../index.html':'index.html';
+ const home=inPages?'../dashboard.html':'dashboard.html';
  const urls={
   departments:['department-1.html','department-2.html','department-3.html','department-4.html','department-6.html','department-7.html','department-8.html'].map(x=>prefix+x),
   finance:prefix+'finance-management.html',workforce:prefix+'workforce.html',profile:prefix+'personnel-profile.html',evaluation:prefix+'performance-evaluation.html',
@@ -48,6 +48,8 @@ document.querySelectorAll('.back-to-top').forEach(node=>node.remove());
   coop:prefix+'staff-coop-store.html',economic:prefix+'employee-economic-center.html',retirees:prefix+'retiree-center.html'
  };
  const nav=document.querySelector('.ops-nav');
+ /* داخل سامانه، نشان و پیوندهای خانه باید به نمای اصلی سامانه برگردند، نه درگاه معرفی. */
+ document.querySelectorAll('a[href="../index.html"],a[href="index.html"]').forEach(link=>{link.href=home;});
  /* Enforce mobile header-menu removal in the primary navigation controller. */
  if(nav){
   const mobileNavQuery=window.matchMedia('(max-width: 900px)');
